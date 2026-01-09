@@ -402,6 +402,21 @@ def process_minio_object(
 
     # ---- 6. catalog update for original DOC/DOCX file ---- #
     try:
+        # NEW: Metadata (after Document)
+        doc = Document(io.BytesIO(data))
+        props = doc.core_properties
+        doc_metadata = {
+            'author': props.author,
+            'created': props.created.isoformat() if props.created else None,
+            'modified': props.modified.isoformat() if props.modified else None,
+            'title': props.title,
+            'subject': props.subject,
+            'category': props.category,
+            'comments': props.comments,
+            'table_count': len(tables),
+            'paragraph_count': len(doc.paragraphs)
+        }
+
         catalog_updater(
             object_name=object_name,
             object_size=file_size,
@@ -409,6 +424,7 @@ def process_minio_object(
             row_count=total_rows,
             text_extracted=bool(text and text.strip()),
             content_hash=file_hash,
+            metadata=doc_metadata  # NEW
         )
         logger.info(f"[docx] Updated catalog for {object_name}")
     except Exception as e:

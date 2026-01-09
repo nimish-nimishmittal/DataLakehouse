@@ -1,5 +1,3 @@
-# python-etl/pipelines/image_pipeline.py
-
 import io
 import logging
 import hashlib
@@ -175,13 +173,27 @@ def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalo
             cursor.close()
 
         # 6. Update catalog
+        import exifread
+        tags = exifread.process_file(io.BytesIO(data)) if data else {}
+        exif_data = {tag: str(tags[tag]) for tag in tags if 'EXIF' in tag or 'GPS' in tag}  # e.g., {'EXIF DateTimeOriginal': '2025:01:01 12:00:00'}
+
+        image_metadata = {
+            'width': width,
+            'height': height,
+            'format': fmt,
+            'mode': img.mode if img else None,
+            'exif': exif_data
+        }
+
+        # Update catalog with metadata
         catalog_updater(
             object_name=object_name,
             object_size=file_size,
             file_format='image',
             row_count=None,
             text_extracted=bool(ocr_text and ocr_text.strip()),
-            content_hash=file_hash
+            content_hash=file_hash,
+            metadata=image_metadata  # NEW
         )
         
         logger.info(

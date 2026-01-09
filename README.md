@@ -4,6 +4,10 @@ sudo docker compose build
 
 sudo docker compose up -d
 
+combining the above two...
+
+sudo docker compose up -d --build
+
 localhost:9000 - minio
 
 minioadmin

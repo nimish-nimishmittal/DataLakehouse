@@ -1,3 +1,4 @@
+// src/services/api.js
 import axios from 'axios';
 
 const API_BASE = 'http://localhost:8000/api';
@@ -9,18 +10,24 @@ const api = axios.create({
   },
 });
 
+// Automatically add Bearer token to every request
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export const dashboardAPI = {
+  login: (credentials) => api.post('/auth/login', credentials),
+  register: (credentials) => api.post('/auth/register', credentials),
   getMetrics: () => api.get('/dashboard/metrics'),
-  getFiles: (params) => api.get('/files', { params }),
-  getFileDetails: (id) => api.get(`/files/${id}`),
-  deleteFile: (id) => api.delete(`/files/${id}`),
+  getFiles: (params = {}) => api.get('/files', { params }),
   uploadFile: (formData) => api.post('/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
-  search: (query) => api.get('/search', { params: { query } }),
-  getStorageStats: () => api.get('/stats/storage'),
-  getProcessingStats: () => api.get('/stats/processing'),
-  healthCheck: () => api.get('/health'),
+  getHealth: () => api.get('/health'),
 };
 
 export default api;

@@ -1,0 +1,60 @@
+project tree for gpt reference..
+
+nimish@nimish-pc:~/Desktop/minio-lakehouse$ tree
+.
+├── airflow
+│   └── dags
+│       ├── dispatcher_pipeline_dag.py
+│       ├── ingest_local_folder_dag.py
+│       └── minio_dispatcher_dag.py
+├── docker
+│   └── airflow
+│       ├── airflow_logs
+│       │   ├── dag_id=distillationDAG
+│       │   ├── dag_id=ingestionDAG
+│       │   ├── dag_processor_manager
+│       │   │   └── dag_processor_manager.log
+│       │   └── scheduler
+│       ├── Dockerfile
+│       └── plugins
+├── docker-compose.yml
+├── init-scripts
+├── python-etl
+│   ├── Dockerfile
+│   ├── etl_manager.py
+│   ├── pipelines
+│   │   ├── docx_pipeline.py
+│   │   ├── image_pipeline.py
+│   │   ├── __init__.py
+│   │   ├── pdf_pipeline.py
+│   │   ├── ppt_pipeline.py
+│   │   ├── __pycache__
+│   │   │   ├── docx_pipeline.cpython-311.pyc
+│   │   │   ├── image_pipeline.cpython-311.pyc
+│   │   │   ├── __init__.cpython-311.pyc
+│   │   │   ├── pdf_pipeline.cpython-311.pyc
+│   │   │   └── structured_pipeline.cpython-311.pyc
+│   │   └── structured_pipeline.py
+│   ├── requirements.txt
+│   └── uploader_app.py
+├── sample
+└── sample-data
+    ├── customer.csv
+    ├── products.csv
+    └── sales.csv
+
+334 directories, 471 files
+nimish@nimish-pc:~/Desktop/minio-lakehouse$ 
+
+steps to create hashed passwords...
+(venv) nimish@nimish-pc:~/Desktop/jwtcreate$ python3
+Python 3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import bcrypt
+>>> password = b"adminpassword"
+>>> salt = bcrypt.gensalt()
+>>> hashed = bcrypt.hashpw(password, salt)
+>>> print(hashed.decode('utf-8'))
+>>> exit()
+(venv) nimish@nimish-pc:~/Desktop/jwtcreate$ 
+

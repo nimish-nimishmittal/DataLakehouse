@@ -6,6 +6,7 @@ from minio.error import S3Error
 import psycopg2
 from psycopg2.extras import execute_values
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -39,11 +40,11 @@ class LakehouseETL:
         row_count: int | None = None,
         text_extracted: bool = False,
         content_hash: str | None = None,
+        uploaded_by: int | None = None,
+        metadata: dict | None = None,  # NEW
     ):
         """
         Upsert entry into minio_data_catalog table.
-
-        NOTE: bucket_name is implicit (self.bucket_name).
         """
         cursor = self.pg_conn.cursor()
         try:
@@ -60,6 +61,7 @@ class LakehouseETL:
                     content_hash TEXT,
                     last_modified TIMESTAMP,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    uploaded_by INTEGER,
                     UNIQUE(bucket_name, object_name)
                 )
                 """
@@ -67,33 +69,28 @@ class LakehouseETL:
 
             cursor.execute(
                 """
+                ALTER TABLE minio_data_catalog ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::JSONB
+                """
+            )
+
+            cursor.execute(
+                """
                 INSERT INTO minio_data_catalog
-                    (bucket_name, object_name, object_size, file_format,
-                     row_count, text_extracted, content_hash)
-                VALUES (%s,%s,%s,%s,%s,%s,%s)
+                (bucket_name, object_name, object_size, file_format, row_count, text_extracted, content_hash, uploaded_by, metadata)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (bucket_name, object_name) DO UPDATE
-                SET object_size   = EXCLUDED.object_size,
-                    file_format   = EXCLUDED.file_format,
-                    row_count     = EXCLUDED.row_count,
-                    text_extracted= EXCLUDED.text_extracted,
-                    content_hash  = EXCLUDED.content_hash,
+                SET object_size = EXCLUDED.object_size,
+                    file_format = EXCLUDED.file_format,
+                    row_count = EXCLUDED.row_count,
+                    text_extracted = EXCLUDED.text_extracted,
+                    content_hash = EXCLUDED.content_hash,
+                    uploaded_by = EXCLUDED.uploaded_by,
+                    metadata = EXCLUDED.metadata,  -- NEW
                     last_modified = CURRENT_TIMESTAMP
                 """,
-                (
-                    self.bucket_name,
-                    object_name,
-                    object_size,
-                    file_format,
-                    row_count,
-                    text_extracted,
-                    content_hash,
-                ),
+                (self.bucket_name, object_name, object_size, file_format, row_count, text_extracted, content_hash, uploaded_by, json.dumps(metadata or {}))
             )
             self.pg_conn.commit()
-        except Exception:
-            self.pg_conn.rollback()
-            logger.exception("[etl] Failed updating catalog")
-            raise
         finally:
             cursor.close()
 
@@ -284,10 +281,10 @@ def run_pipeline_for_object(object_name: str):
         image_pipeline.process_minio_object(
             etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
         )
-    # elif ext in ("ppt", "pptx"):
-    #     ppt_pipeline.process_minio_object(
-    #         etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
-    #     )
+    elif ext in ("ppt", "pptx"):
+        ppt_pipeline.process_minio_object(
+            etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
+        )
     else:
         logger.error(f"Unsupported format: {ext}")
         return

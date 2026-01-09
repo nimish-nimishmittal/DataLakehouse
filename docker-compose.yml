@@ -68,7 +68,7 @@ services:
       POSTGRES_DB: lakehouse_db
       POSTGRES_USER: lakehouse_user
       POSTGRES_PASSWORD: lakehouse_pass
-
+      JWT_SECRET: 0e22bafb4673f430ab2dbf83192efc50bfc70fecef2da81a9abea84daec736bc
       MINIO_ENDPOINT: minio:9000
       MINIO_ACCESS_KEY: minioadmin
       MINIO_SECRET_KEY: minioadmin123
@@ -82,6 +82,30 @@ services:
     command: ["python", "-u", "uploader_app.py"]
     networks:
       - lakehouse_network
+  
+  backend-api:
+    build:
+      context: ./backend-api
+      dockerfile: Dockerfile
+    container_name: lakehouse_api
+    depends_on:
+      - postgres
+      - minio
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: lakehouse_db
+      POSTGRES_USER: lakehouse_user
+      POSTGRES_PASSWORD: lakehouse_pass
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin123
+      MINIO_BUCKET: lakehouse-data
+      JWT_SECRET_KEY: 0e22bafb4673f430ab2dbf83192efc50bfc70fecef2da81a9abea84daec736bc
+    ports:
+      - "8000:8000"
+    networks:
+      - lakehouse_network
+    restart: unless-stopped
 
   airflow:
     build:
