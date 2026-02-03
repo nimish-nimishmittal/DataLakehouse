@@ -10,6 +10,7 @@ from minio import Minio
 import psycopg2
 from datetime import datetime
 import magic
+import json
 
 # Landing bucket (same as Flask uploader)
 MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "minio:9000")

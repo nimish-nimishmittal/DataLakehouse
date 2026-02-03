@@ -10,7 +10,6 @@ const api = axios.create({
   },
 });
 
-// Automatically add Bearer token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -27,7 +26,20 @@ export const dashboardAPI = {
   uploadFile: (formData) => api.post('/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
+  deleteFile: (id) => api.delete(`/files/${id}`),
   getHealth: () => api.get('/health'),
+  getJobs: () => api.get('/jobs'),
+  getSystemStats: () => api.get('/admin/system/stats'),
+  getDiagnostics: () => api.get('/admin/diagnostics'),
+  downloadFile: (id) => api.get(`/files/download/${id}`, { responseType: 'blob' }),
+  triggerJob: (id) => api.post(`/jobs/trigger/${id}`),
+  searchDocuments: (query) => api.get(`/search?query=${query}`),
+
+  // User Management
+  getUsers: () => api.get('/admin/users'),
+  addUser: (userData) => api.post('/admin/users', userData),
+  deleteUser: (userId) => api.delete(`/admin/users/${userId}`),
+  getAuditLogs: () => api.get('/admin/audit-logs'),
 };
 
 export default api;

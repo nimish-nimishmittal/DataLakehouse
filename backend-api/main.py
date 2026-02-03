@@ -1,23 +1,46 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File, Depends
+from fastapi import FastAPI, HTTPException, UploadFile, File, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
-from typing import List, Optional, Annotated
+from typing import List, Optional, Annotated, Dict, Any
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from minio import Minio
 from datetime import datetime, timedelta
 import os
 import io
+import json
+import logging
+import requests
+from requests.auth import HTTPBasicAuth
+import magic
 from werkzeug.utils import secure_filename
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-import logging
-logger = logging.getLogger(__name__)
+# Setup logging
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("LakehouseAPI")
 
-app = FastAPI(title="Lakehouse Admin API")
+# API Metadata for Swagger UI
+tags_metadata = [
+    {"name": "Authentication", "description": "Identity and Access Management"},
+    {"name": "Dashboard", "description": "Metrics and visualization data"},
+    {"name": "Files", "description": "Data catalog and object storage operations"},
+    {"name": "Jobs", "description": "Airflow ETL pipeline monitoring"},
+    {"name": "Admin", "description": "Privileged system operations"},
+    {"name": "Health", "description": "System readiness and status"},
+]
+
+app = FastAPI(
+    title="Data Lakehouse Enterprise API",
+    description="Unified API gateway for the Enterprise Data Lakehouse including Object Storage, Catalog, and ETL Monitoring.",
+    version="2.0.0",
+    openapi_tags=tags_metadata,
+    docs_url="/api/docs",
+    redoc_url="/api/redoc",
+    openapi_url="/api/openapi.json"
+)
 
 # CORS for React frontend
 app.add_middleware(
@@ -52,11 +75,16 @@ ALLOWED_EXT = {
     'png', 'jpg', 'jpeg', 'tiff', 'pptx', 'ppt'
 }
 
-SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'your-super-secret-key-here')  # From env
+SECRET_KEY = os.getenv('JWT_SECRET_KEY', '0e22bafb4673f430ab2dbf83192efc50bfc70fecef2da81a9abea84daec736bc')
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30  # Token lifetime
+ACCESS_TOKEN_EXPIRE_MINUTES = 480  # Increased for enterprise session
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
+
+# Airflow Config
+AIRFLOW_URL = os.getenv('AIRFLOW_URL', 'http://airflow_lakehouse:8080/api/v1')
+AIRFLOW_USER = os.getenv('AIRFLOW_USER', 'admin')
+AIRFLOW_PASS = os.getenv('AIRFLOW_PASS', 'admin')
 
 # NEW: Pydantic Models
 class User(BaseModel):
@@ -137,6 +165,22 @@ class RoleChecker:
 # Allow only admins for certain endpoints
 admin_only = RoleChecker(["admin"])
 
+# NEW: Audit Helper
+def log_audit(user_id: Optional[int], action: str, details: str = None, ip: str = None):
+    conn = get_db()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "INSERT INTO audit_logs (user_id, action, details, ip_address) VALUES (%s, %s, %s, %s)",
+            (user_id, action, details, ip)
+        )
+        conn.commit()
+    except Exception as e:
+        logger.error(f"Audit log failed: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
 # NEW: Login Endpoint
 @app.post("/api/auth/login", response_model=Token)
 async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
@@ -148,6 +192,7 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
         data={"sub": user['username'], "id": user['id'], "role": user['role']},
         expires_delta=access_token_expires
     )
+    log_audit(user['id'], "LOGIN", f"User {user['username']} logged in")
     return {"access_token": access_token}
 
 @app.post("/api/auth/change-password")
@@ -221,7 +266,7 @@ async def get_dashboard_metrics(current_user: Annotated[User, Depends(get_curren
     """Get key metrics for dashboard cards"""
     conn = get_db()
     cursor = conn.cursor()
-    
+
     # Build base conditions for RBAC
     conditions = []
     params = []
@@ -229,42 +274,29 @@ async def get_dashboard_metrics(current_user: Annotated[User, Depends(get_curren
         conditions.append("uploaded_by = %s")
         params.append(current_user.id)
 
-    where_clause = "WHERE " + " AND ".join(conditions) if conditions else ""
-    base_params = params.copy()
+    where_clause = f"WHERE {' AND '.join(conditions)}" if conditions else ""
 
     try:
         # Total documents
-        cursor.execute(f"SELECT COUNT(*) as total FROM minio_data_catalog {where_clause}", base_params)
-        total_docs = cursor.fetchone()['total']
-        
+        cursor.execute(f"SELECT COUNT(*) as total FROM minio_data_catalog {where_clause}", params)
+        total_docs = cursor.fetchone().get('total', 0)
+
         # Processed today
-        today_params = base_params.copy()
         today_clause = where_clause + (" AND " if where_clause else "WHERE ") + "DATE(created_at) = CURRENT_DATE"
-        cursor.execute(f"SELECT COUNT(*) as today FROM minio_data_catalog {today_clause}", today_params)
-        processed_today = cursor.fetchone()['today']
-        
-        # Files in raw (fixed!)
-        raw_params = base_params.copy()
+        cursor.execute(f"SELECT COUNT(*) as today FROM minio_data_catalog {today_clause}", params)
+        processed_today = cursor.fetchone().get('today', 0)
+
+        # Files in raw
         raw_clause = where_clause + (" AND " if where_clause else "WHERE ") + "object_name LIKE 'raw/%'"
-        if raw_params:
-            cursor.execute(
-                f"SELECT COUNT(*) as raw_count FROM minio_data_catalog {raw_clause}",
-                raw_params
-            )
-        else:
-            cursor.execute(
-                f"SELECT COUNT(*) as raw_count FROM minio_data_catalog {raw_clause}"
-            )
-        raw_count = cursor.fetchone()['raw_count']
-        
+        cursor.execute(f"SELECT COUNT(*) as raw_count FROM minio_data_catalog {raw_clause}", params)
+        raw_count = cursor.fetchone().get('raw_count', 0)
+
         # Total storage used (in GB)
-        storage_params = base_params.copy()
-        cursor.execute(f"SELECT COALESCE(SUM(object_size), 0) as total_size FROM minio_data_catalog {where_clause}", storage_params)
-        total_bytes = cursor.fetchone()['total_size'] or 0
+        cursor.execute(f"SELECT COALESCE(SUM(object_size), 0) as total_size FROM minio_data_catalog {where_clause}", params)
+        total_bytes = cursor.fetchone().get('total_size', 0)
         total_storage_gb = round(total_bytes / (1024**3), 2)
-        
+
         # Files by format
-        format_params = base_params.copy()
         format_clause = where_clause + (" AND " if where_clause else "WHERE ") + "file_format IS NOT NULL"
         cursor.execute(f"""
             SELECT file_format, COUNT(*) as count 
@@ -272,100 +304,94 @@ async def get_dashboard_metrics(current_user: Annotated[User, Depends(get_curren
             {format_clause}
             GROUP BY file_format
             ORDER BY count DESC
-        """, format_params)
+        """, params)
         files_by_format = cursor.fetchall()
-        
+
         # Recent activity
-        recent_params = base_params.copy()
         cursor.execute(f"""
             SELECT object_name, file_format, created_at, object_size
             FROM minio_data_catalog
             {where_clause}
             ORDER BY created_at DESC
             LIMIT 5
-        """, recent_params)
+        """, params)
         recent_activity = cursor.fetchall()
-        
+
+        # User count for admins
+        total_users = 0
+        if current_user.role == 'admin':
+            cursor.execute("SELECT COUNT(*) as count FROM users")
+            total_users = cursor.fetchone().get('count', 0)
+
         return {
             "total_documents": total_docs,
             "processed_today": processed_today,
             "files_in_raw": raw_count,
             "total_storage_gb": total_storage_gb,
+            "total_users": total_users,
             "files_by_format": [dict(row) for row in files_by_format],
             "recent_activity": [dict(row) for row in recent_activity]
         }
-        
+
     except Exception as e:
         logger.exception("Metrics query failed")
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="An error occurred while fetching metrics.")
     finally:
         cursor.close()
         conn.close()
 
 # ==================== FILE MANAGEMENT ====================
 
-@app.get("/api/files")
+@app.get("/api/files", tags=["Files"])
 async def list_files(
-    current_user: Annotated[User, Depends(get_current_user)],  # Requires login
-    limit: int = 50,
-    offset: int = 0,
+    current_user: Annotated[User, Depends(get_current_user)],
+    limit: int = Query(50, ge=1, le=100),
+    offset: int = Query(0, ge=0),
     format: Optional[str] = None,
     search: Optional[str] = None
 ):
-    """List files with pagination and filtering – respects user ownership"""
+    """List files with RBAC (Users only see their own files, Admins see all)"""
     conn = get_db()
     cursor = conn.cursor()
     
     try:
-        where_clauses = []
+        where_clauses = ["1=1"]
         params = []
         
         # RBAC: regular users only see their own files
         if current_user.role != "admin":
-            where_clauses.append("uploaded_by = %s")
+            where_clauses.append("c.uploaded_by = %s")
             params.append(current_user.id)
         
         if format:
-            where_clauses.append("file_format = %s")
+            where_clauses.append("c.file_format = %s")
             params.append(format)
         
         if search:
-            where_clauses.append("object_name ILIKE %s")
+            where_clauses.append("c.object_name ILIKE %s")
             params.append(f"%{search}%")
         
-        where_sql = " AND ".join(where_clauses) if where_clauses else "1=1"
+        where_sql = " AND ".join(where_clauses)
         
-        # Get total count
-        count_params = params.copy()
-        cursor.execute(f"SELECT COUNT(*) as total FROM minio_data_catalog WHERE {where_sql}", count_params)
+        # Count total
+        cursor.execute(f"SELECT COUNT(*) as total FROM minio_data_catalog c WHERE {where_sql}", params)
         total = cursor.fetchone()['total']
         
-        # Get paginated results
-        query_params = params.copy()
+        # Get files with uploader username
         cursor.execute(f"""
-            SELECT catalog_id, bucket_name, object_name,object_size,
-                file_format,
-                row_count,
-                text_extracted,
-                content_hash,
-                created_at,
-                last_modified,
-                metadata
-            FROM minio_data_catalog
+            SELECT 
+                c.catalog_id, c.bucket_name, c.object_name, c.object_size,
+                c.file_format, c.created_at, c.metadata,
+                u.username as uploaded_by_user
+            FROM minio_data_catalog c
+            LEFT JOIN users u ON c.uploaded_by = u.id
             WHERE {where_sql}
-            ORDER BY created_at DESC
+            ORDER BY c.created_at DESC
             LIMIT %s OFFSET %s
-        """, query_params + [limit, offset])
+        """, params + [limit, offset])
         
         files = cursor.fetchall()
-        
-        return {
-            "total": total,
-            "files": files,
-            "limit": limit,
-            "offset": offset
-        }
-        
+        return {"total": total, "files": files, "limit": limit, "offset": offset}
     finally:
         cursor.close()
         conn.close()
@@ -408,30 +434,35 @@ async def get_file_details(catalog_id: int):
     finally:
         cursor.close()
         conn.close()
-
-@app.delete("/api/files/{catalog_id}")
-async def delete_file(catalog_id: int):
+        
+@app.delete("/api/files/{catalog_id}", tags=["Files"])
+async def delete_file(catalog_id: int, current_user: Annotated[User, Depends(get_current_user)]):
     """Delete a file from both catalog and MinIO"""
     conn = get_db()
     cursor = conn.cursor()
     
     try:
         # Get file info
-        cursor.execute("SELECT bucket_name, object_name FROM minio_data_catalog WHERE catalog_id = %s", (catalog_id,))
+        cursor.execute("SELECT bucket_name, object_name, uploaded_by FROM minio_data_catalog WHERE catalog_id = %s", (catalog_id,))
         file_info = cursor.fetchone()
         
         if not file_info:
             raise HTTPException(status_code=404, detail="File not found")
         
+        # RBAC check
+        if current_user.role != 'admin' and file_info['uploaded_by'] != current_user.id:
+            raise HTTPException(status_code=403, detail="Not authorized to delete this file")
+
         # Delete from MinIO
         try:
             minio_client.remove_object(file_info['bucket_name'], file_info['object_name'])
         except Exception as e:
-            print(f"MinIO delete failed: {e}")
+            logger.error(f"MinIO delete failed: {e}")
         
         # Delete from catalog
         cursor.execute("DELETE FROM minio_data_catalog WHERE catalog_id = %s", (catalog_id,))
         conn.commit()
+        log_audit(current_user.id, "DELETE_FILE", f"Deleted: {file_info['object_name']}")
         
         return {"status": "deleted", "catalog_id": catalog_id}
         
@@ -439,35 +470,68 @@ async def delete_file(catalog_id: int):
         cursor.close()
         conn.close()
 
+@app.get("/api/files/download/{catalog_id}", tags=["Files"])
+async def download_file(catalog_id: int, current_user: Annotated[User, Depends(get_current_user)]):
+    """Download a file from MinIO with authorization check"""
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute("SELECT bucket_name, object_name, uploaded_by FROM minio_data_catalog WHERE catalog_id = %s", (catalog_id,))
+        file_info = cursor.fetchone()
+        
+        if not file_info:
+            raise HTTPException(status_code=404, detail="File not found")
+            
+        # RBAC check
+        if current_user.role != 'admin' and file_info['uploaded_by'] != current_user.id:
+            raise HTTPException(status_code=403, detail="Not authorized to download this file")
+            
+        try:
+            response = minio_client.get_object(file_info['bucket_name'], file_info['object_name'])
+            # Stream the response
+            from fastapi.responses import StreamingResponse
+            return StreamingResponse(
+                response,
+                media_type="application/octet-stream",
+                headers={"Content-Disposition": f"attachment; filename={file_info['object_name'].split('/')[-1]}"}
+            )
+        except Exception as e:
+            logger.error(f"MinIO download failed: {e}")
+            raise HTTPException(status_code=500, detail="Failed to retrieve file from storage")
+            
+    finally:
+        cursor.close()
+        conn.close()
+
 # ==================== FILE UPLOAD ====================
 
-@app.post("/api/upload")
-async def upload_file(current_user: Annotated[User, Depends(get_current_user)] ,file: UploadFile = File(...)):
-    """Upload a file to MinIO raw bucket"""
-    
+@app.post("/api/upload", tags=["Files"])
+async def upload_file(
+    current_user: Annotated[User, Depends(get_current_user)],
+    file: UploadFile = File(...)
+):
+    """Enterprise Upload with MIME detection and Pipeline Triggering"""
     if not file.filename:
         raise HTTPException(status_code=400, detail="No filename provided")
     
-    # Validate extension
-    ext = file.filename.rsplit('.', 1)[-1].lower() if '.' in file.filename else ''
+    filename = secure_filename(file.filename)
+    ext = filename.rsplit('.', 1)[-1].lower() if '.' in filename else ''
+    
     if ext not in ALLOWED_EXT:
         raise HTTPException(status_code=400, detail=f"File type .{ext} not supported")
     
-    filename = secure_filename(file.filename)
+    # MIME detection using magic
+    content = await file.read()
+    mime_type = magic.from_buffer(content, mime=True)
     
-    # Determine file type category (same as before)
     file_type_map = {
         'csv': 'structured', 'json': 'structured', 'parquet': 'structured',
         'pdf': 'pdf', 'docx': 'docx', 'doc': 'docx',
-        'png': 'image', 'jpg': 'image', 'jpeg': 'image', 'tiff': 'image',
-        'pptx': 'ppt', 'ppt': 'ppt'
+        'png': 'image', 'jpg': 'image', 'jpeg': 'image'
     }
-    file_type = file_type_map.get(ext, 'other')
-    
+    file_type = file_type_map.get(ext, 'unstructured')
     object_name = f"raw/{file_type}/{filename}"
-    
-    # Read file content
-    content = await file.read()
     
     try:
         # Upload to MinIO
@@ -476,27 +540,93 @@ async def upload_file(current_user: Annotated[User, Depends(get_current_user)] ,
             object_name,
             io.BytesIO(content),
             length=len(content),
-            content_type=file.content_type or 'application/octet-stream'
+            content_type=mime_type or file.content_type
         )
         
-        # Update catalog with uploaded_by
+        # Prepare metadata
+        metadata = {
+            "original_filename": file.filename,
+            "mime_type": mime_type,
+            "uploaded_by_username": current_user.username,
+            "upload_timestamp": datetime.utcnow().isoformat(),
+            "enterprise_tier": "gold"
+        }
+        
+        # Update Catalog
         update_catalog(
             bucket=BUCKET,
             object_name=object_name,
             object_size=len(content),
-            file_format=file_type,
-            uploaded_by=current_user.id
+            file_format=ext,
+            uploaded_by=current_user.id,
+            metadata=metadata
         )
+        
+        log_audit(current_user.id, "UPLOAD", f"Uploaded file: {object_name}")
         
         return {
             "status": "success",
             "object_name": object_name,
-            "size": len(content),
-            "message": "File uploaded successfully. Processing will begin shortly."
+            "metadata": metadata,
+            "message": "Data ingested. ETL pipeline automatically queued."
         }
-        
     except Exception as e:
+        logger.exception("Upload failed")
         raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
+
+@app.get("/api/jobs", tags=["Jobs"])
+async def list_jobs(current_user: Annotated[User, Depends(get_current_user)]):
+    """Fetch ETL job status from Airflow API"""
+    try:
+        # Fetch DAGs
+        dags_resp = requests.get(
+            f"{AIRFLOW_URL}/dags",
+            auth=HTTPBasicAuth(AIRFLOW_USER, AIRFLOW_PASS),
+            timeout=5
+        )
+        dags_resp.raise_for_status()
+        dags = dags_resp.json().get('dags', [])
+        
+        # Fetch recent runs for the first few DAGs
+        job_list = []
+        for dag in dags[:10]:  # Limit for performance
+            dag_id = dag['dag_id']
+            runs_resp = requests.get(
+                f"{AIRFLOW_URL}/dags/{dag_id}/dagRuns?limit=1&order_by=-execution_date",
+                auth=HTTPBasicAuth(AIRFLOW_USER, AIRFLOW_PASS),
+                timeout=2
+            )
+            runs = runs_resp.json().get('dag_runs', []) if runs_resp.status_code == 200 else []
+            
+            job_list.append({
+                "id": dag_id,
+                "label": dag.get('description') or dag_id,
+                "status": runs[0]['state'] if runs else "never_run",
+                "last_run": runs[0]['execution_date'] if runs else None,
+                "is_paused": dag.get('is_paused', False)
+            })
+            
+        return {"jobs": job_list}
+    except Exception as e:
+        logger.error(f"Airflow API unreachable: {e}")
+        return {"jobs": [], "warning": "Airflow service unreachable"}
+
+@app.post("/api/jobs/trigger/{dag_id}", tags=["Jobs"])
+async def trigger_job(dag_id: str, current_user: Annotated[User, Depends(get_current_user)]):
+    """Trigger an Airflow DAG run"""
+    try:
+        resp = requests.post(
+            f"{AIRFLOW_URL}/dags/{dag_id}/dagRuns",
+            auth=HTTPBasicAuth(AIRFLOW_USER, AIRFLOW_PASS),
+            json={},  # Empty conf
+            timeout=5
+        )
+        resp.raise_for_status()
+        log_audit(current_user.id, "TRIGGER_JOB", f"Triggered DAG: {dag_id}")
+        return {"status": "success", "data": resp.json()}
+    except Exception as e:
+        logger.error(f"Failed to trigger DAG {dag_id}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to trigger pipeline: {str(e)}")
 
 # ==================== SEARCH ====================
 
@@ -522,11 +652,7 @@ async def search_documents(query: str, limit: int = 20):
         
         results = cursor.fetchall()
         
-        return {
-            "query": query,
-            "count": len(results),
-            "results": results
-        }
+        return results
         
     finally:
         cursor.close()
@@ -627,15 +753,100 @@ async def get_processing_stats(current_user: Annotated[User, Depends(get_current
         cursor.close()
         conn.close()
 
+# ==================== USER MANAGEMENT (ADMIN ONLY) ====================
+
+@app.get("/api/admin/users", response_model=List[User])
+async def list_users(admin: Annotated[User, Depends(admin_only)]):
+    """List all users in the system"""
+    conn = get_db()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT id, username, role FROM users ORDER BY id ASC")
+        users = cursor.fetchall()
+        return [User(**u) for u in users]
+    finally:
+        cursor.close()
+        conn.close()
+
+class CreateUser(BaseModel):
+    username: str
+    password: str
+    role: str = "user"
+
+@app.post("/api/admin/users")
+async def create_user(payload: CreateUser, admin: Annotated[User, Depends(admin_only)]):
+    """Create a new user"""
+    hashed_password = pwd_context.hash(payload.password)
+    conn = get_db()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "INSERT INTO users (username, password_hash, role) VALUES (%s, %s, %s)",
+            (payload.username, hashed_password, payload.role)
+        )
+        conn.commit()
+        return {"status": "User created successfully"}
+    except psycopg2.IntegrityError:
+        conn.rollback()
+        raise HTTPException(status_code=409, detail="Username already taken")
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to create user: {str(e)}")
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.delete("/api/admin/users/{user_id}")
+async def delete_user(user_id: int, admin: Annotated[User, Depends(admin_only)]):
+    """Delete a user"""
+    if admin.id == user_id:
+        raise HTTPException(status_code=400, detail="Cannot delete your own account")
+        
+    conn = get_db()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("DELETE FROM users WHERE id = %s", (user_id,))
+        if cursor.rowcount == 0:
+            raise HTTPException(status_code=404, detail="User not found")
+        conn.commit()
+        log_audit(admin.id, "DELETE_USER", f"Deleted user ID: {user_id}")
+        return {"status": "User deleted"}
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.get("/api/admin/audit-logs", tags=["Admin"])
+async def get_audit_logs(admin: Annotated[User, Depends(admin_only)], limit: int = 50):
+    """Fetch recent system audit logs"""
+    conn = get_db()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""
+            SELECT a.id, a.action, a.details, a.ip_address, a.created_at, u.username
+            FROM audit_logs a
+            LEFT JOIN users u ON a.user_id = u.id
+            ORDER BY a.created_at DESC
+            LIMIT %s
+        """, (limit,))
+        logs = cursor.fetchall()
+        return logs
+    finally:
+        cursor.close()
+        conn.close()
+
+
 # ==================== HEALTH CHECK ====================
 
-@app.get("/api/health")
+@app.get("/api/health", tags=["Health"])
 async def health_check():
     """Check health of all services"""
     health = {
+        "status": "healthy",
         "api": "ok",
         "postgres": "unknown",
-        "minio": "unknown"
+        "minio": "unknown",
+        "airflow": "unknown",
+        "timestamp": datetime.utcnow().isoformat()
     }
     
     # Check PostgreSQL
@@ -647,21 +858,74 @@ async def health_check():
         conn.close()
         health["postgres"] = "ok"
     except Exception as e:
-        health["postgres"] = f"error: {str(e)}"
+        health["postgres"] = f"error"
+        health["status"] = "degraded"
     
     # Check MinIO
     try:
         minio_client.bucket_exists(BUCKET)
         health["minio"] = "ok"
     except Exception as e:
-        health["minio"] = f"error: {str(e)}"
+        health["minio"] = f"error"
+        health["status"] = "degraded"
+
+    # Check Airflow
+    try:
+        resp = requests.get(f"{AIRFLOW_URL}/health", timeout=2)
+        if resp.status_code == 200:
+            health["airflow"] = "ok"
+        else:
+            health["airflow"] = "degraded"
+    except:
+        health["airflow"] = "offline"
     
     return health
 
-def update_catalog(bucket, object_name, object_size=None, file_format=None, uploaded_by=None):
+@app.get("/api/admin/diagnostics", tags=["Admin"])
+async def get_diagnostics(admin: Annotated[User, Depends(admin_only)]):
+    """System diagnostics for the console"""
+    import platform
+    import psutil
+    
+    return {
+        "os": platform.system(),
+        "processor": platform.processor(),
+        "cpu_usage": psutil.cpu_percent(),
+        "memory": psutil.virtual_memory()._asdict(),
+        "disk": psutil.disk_usage('/')._asdict(),
+        "python_version": platform.python_version(),
+        "active_threads": psutil.Process().num_threads(),
+        "open_files": len(psutil.Process().open_files()),
+        "network": psutil.net_io_counters()._asdict()
+    }
+
+@app.get("/api/admin/system/stats", tags=["Admin"])
+async def get_system_stats(admin: Annotated[User, Depends(admin_only)]):
+    """Detailed system stats for Admin only"""
     conn = get_db()
     cursor = conn.cursor()
     try:
+        cursor.execute("SELECT COUNT(*) as count FROM users")
+        user_count = cursor.fetchone()['count']
+        
+        cursor.execute("SELECT COUNT(*) as count FROM minio_data_catalog")
+        file_count = cursor.fetchone()['count']
+        
+        return {
+            "total_users": user_count,
+            "total_documents": file_count,
+            "api_version": "2.0.0-enterprise",
+            "environment": os.getenv('NODE_ENV', 'production')
+        }
+    finally:
+        cursor.close()
+        conn.close()
+
+def update_catalog(bucket, object_name, object_size=None, file_format=None, uploaded_by=None, metadata: dict = None):
+    conn = get_db()
+    cursor = conn.cursor()
+    try:
+        # Schema migration/check included in update
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS minio_data_catalog (
                 catalog_id SERIAL PRIMARY KEY,
@@ -671,24 +935,30 @@ def update_catalog(bucket, object_name, object_size=None, file_format=None, uplo
                 file_format TEXT,
                 row_count INTEGER,
                 text_extracted BOOLEAN DEFAULT FALSE,
+                metadata JSONB DEFAULT '{}'::JSONB,
                 last_modified TIMESTAMP,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                uploaded_by INTEGER,
+                uploaded_by INTEGER REFERENCES users(id),
                 UNIQUE(bucket_name, object_name)
             )
         """)
+        # Ensure metadata column exists (for older versions)
+        cursor.execute("ALTER TABLE minio_data_catalog ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::JSONB")
+        
         cursor.execute("""
-            INSERT INTO minio_data_catalog (bucket_name, object_name, object_size, file_format, uploaded_by)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO minio_data_catalog (bucket_name, object_name, object_size, file_format, uploaded_by, metadata)
+            VALUES (%s, %s, %s, %s, %s, %s)
             ON CONFLICT (bucket_name, object_name) DO UPDATE
             SET object_size = EXCLUDED.object_size,
                 file_format = EXCLUDED.file_format,
                 uploaded_by = EXCLUDED.uploaded_by,
+                metadata = EXCLUDED.metadata,
                 last_modified = CURRENT_TIMESTAMP
-        """, (bucket, object_name, object_size, file_format, uploaded_by))
+        """, (bucket, object_name, object_size, file_format, uploaded_by, json.dumps(metadata or {})))
         conn.commit()
     except Exception as e:
         conn.rollback()
+        logger.error(f"Catalog update failed: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Catalog update failed: {str(e)}")
     finally:
         cursor.close()
@@ -697,4 +967,3 @@ def update_catalog(bucket, object_name, object_size=None, file_format=None, uplo
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-    

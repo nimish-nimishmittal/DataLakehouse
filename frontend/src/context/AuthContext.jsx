@@ -47,14 +47,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (username, password) => {
     try {
-        const formData = new URLSearchParams();
-        formData.append('username', username);
-        formData.append('password', password);
-
-        await api.post('/auth/register', formData, {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        });
-
+        await api.post('/auth/register', { username, password });
         return true;
     } catch (err) {
         console.error('Register failed:', err.response?.data || err);

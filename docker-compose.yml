@@ -121,9 +121,10 @@ services:
       PYTHONPATH: /opt/python-etl
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__CORE__FERNET_KEY: ZIKgh6_b8bdt0HxpSQAwgOh4jdlO2qWEjFgPr8K4eWs=
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow_db
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow_db
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW__WEBSERVER__RBAC: "True"
+      AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: 120
       AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth
       MINIO_ENDPOINT: minio:9000
       MINIO_ACCESS_KEY: minioadmin

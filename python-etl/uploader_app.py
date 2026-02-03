@@ -40,12 +40,22 @@ minio_client = Minio(
     secure=False
 )
 
-pg_conn = psycopg2.connect(
-    host=os.getenv('POSTGRES_HOST', 'postgres'),
-    database=os.getenv('POSTGRES_DB', 'lakehouse_db'),
-    user=os.getenv('POSTGRES_USER', 'lakehouse_user'),
-    password=os.getenv('POSTGRES_PASSWORD', 'lakehouse_pass')
-)
+import time
+
+pg_conn = None
+while True:
+    try:
+        pg_conn = psycopg2.connect(
+            host=os.getenv('POSTGRES_HOST', 'postgres'),
+            database=os.getenv('POSTGRES_DB', 'lakehouse_db'),
+            user=os.getenv('POSTGRES_USER', 'lakehouse_user'),
+            password=os.getenv('POSTGRES_PASSWORD', 'lakehouse_pass')
+        )
+        logger.info("Connected to Postgres successfully.")
+        break
+    except Exception as e:
+        logger.warning(f"Waiting for Postgres... error: {e}")
+        time.sleep(2)
 pg_conn.autocommit = False
 
 def resolve_uploaded_by(jwt_identity):

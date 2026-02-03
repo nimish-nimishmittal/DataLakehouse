@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     libtesseract-dev \
     libgl1 \
     libglib2.0-0 \
+    libmagic-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Switch back to airflow user

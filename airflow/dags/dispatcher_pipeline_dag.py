@@ -11,7 +11,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from minio import Minio
 
-from etl_manager import run_pipeline_for_object
+# from etl_manager import run_pipeline_for_object  <-- Moved inside function
 
 # ---- Config (kept env-driven so docker-compose can control it) ----
 MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "minio:9000")
@@ -27,6 +27,8 @@ def scan_and_dispatch():
     Scan landing bucket raw/, run ETL pipelines and
     archive original raw files by date into ARCHIVE_BUCKET.
     """
+    from etl_manager import run_pipeline_for_object
+    
     client = Minio(
         MINIO_ENDPOINT,
         access_key=MINIO_ACCESS_KEY,
