@@ -5,6 +5,8 @@ from PIL import Image
 import pytesseract
 import os
 
+from minio import Minio
+
 logger = logging.getLogger(__name__)
 
 
@@ -52,7 +54,7 @@ def _ensure_unstructured_images_table(pg_conn):
                 height INTEGER,
                 ocr_text TEXT,
                 content_hash TEXT UNIQUE,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             )
             """
         )
@@ -65,7 +67,15 @@ def _ensure_unstructured_images_table(pg_conn):
         cursor.close()
 
 
-def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalog_updater, do_ocr=True):
+def process_minio_object(
+        minio_client: Minio, 
+        bucket_name: str, 
+        object_name: str, 
+        pg_conn, 
+        catalog_updater,
+        uploaded_by=None, 
+        do_ocr=True
+        ):
     """
     Process image files from MinIO.
     
@@ -82,6 +92,12 @@ def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalo
     """
     logger.info(f"[image] Processing {object_name}")
     resp = None
+
+    # ---- Fetch uploader identity from MinIO object metadata ---- #
+    stat = minio_client.stat_object(bucket_name, object_name)
+
+    uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+    uploaded_by = int(uploaded_by) if uploaded_by else None
     
     try:
         # 1. Download from MinIO
@@ -107,6 +123,7 @@ def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalo
                     row_count=0,
                     text_extracted=False,
                     content_hash=file_hash,
+                    uploaded_by=uploaded_by
                 )
             except Exception:
                 logger.exception("[image] Failed catalog update for duplicate")
@@ -193,7 +210,8 @@ def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalo
             row_count=None,
             text_extracted=bool(ocr_text and ocr_text.strip()),
             content_hash=file_hash,
-            metadata=image_metadata  # NEW
+            metadata=image_metadata,
+            uploaded_by=uploaded_by
         )
         
         logger.info(

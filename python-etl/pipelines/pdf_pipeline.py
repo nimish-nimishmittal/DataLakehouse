@@ -193,10 +193,12 @@ def _normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 def _process_extracted_table(
     minio_client,
     bucket_name: str,
+    object_name: str,
     table_df: pd.DataFrame,
     table_key: str,
     pg_conn,
     catalog_updater,
+    uploaded_by: int,
 ):
     """
     Process a single extracted table from PDF:
@@ -208,6 +210,13 @@ def _process_extracted_table(
     This function is fault-tolerant and logs errors without failing the entire pipeline.
     """
     try:
+
+        # ---- Fetch uploader identity from MinIO object metadata ---- #
+        stat = minio_client.stat_object(bucket_name, object_name)
+
+        uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+        uploaded_by = int(uploaded_by) if uploaded_by else None
+
         # 0. Normalize the dataframe
         table_df = _normalize_dataframe(table_df)
         
@@ -304,7 +313,8 @@ def _process_extracted_table(
                 file_format='csv',
                 row_count=len(table_df),
                 text_extracted=False,
-                content_hash=None
+                content_hash=None,
+                uploaded_by=uploaded_by
             )
         except Exception as catalog_error:
             logger.warning(f"[pdf] Failed to update catalog for {table_key}: {catalog_error}")
@@ -322,6 +332,7 @@ def process_minio_object(
     object_name: str,
     pg_conn,
     catalog_updater,
+    uploaded_by=None
 ):
     """
     Main entry point for PDF processing.
@@ -345,7 +356,13 @@ def process_minio_object(
     
     response = None
     data = None
-    
+
+    # ---- Fetch uploader identity from MinIO object metadata ---- #
+    stat = minio_client.stat_object(bucket_name, object_name)
+
+    uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+    uploaded_by = int(uploaded_by) if uploaded_by else None
+
     try:
         # 1. Download from MinIO
         response = minio_client.get_object(bucket_name, object_name)
@@ -382,6 +399,7 @@ def process_minio_object(
                 row_count=0,
                 text_extracted=False,
                 content_hash=file_hash,
+                uploaded_by=uploaded_by,
             )
         except Exception as e:
             logger.warning(f"[pdf] Failed catalog update for duplicate: {e}")
@@ -405,7 +423,8 @@ def process_minio_object(
             'title': pdf_meta.get('/Title'),
             'creation_date': pdf_meta.get('/CreationDate'),
             'page_count': page_count,
-            'table_count': table_count
+            'table_count': table_count,
+            'uploaded_by' : uploaded_by
         }
         
         for page_num, page in enumerate(reader.pages, 1):
@@ -450,6 +469,7 @@ def process_minio_object(
                     file_type="pdf",
                     text=full_text,
                     content_hash=file_hash,
+                    uploaded_by=uploaded_by
                 )
             except Exception as e:
                 logger.warning(f"[pdf] Failed to save unstructured doc: {e}")
@@ -501,10 +521,12 @@ def process_minio_object(
                             _process_extracted_table(
                                 minio_client=minio_client,
                                 bucket_name=bucket_name,
+                                object_name=object_name,
                                 table_df=df,
                                 table_key=table_key,
                                 pg_conn=pg_conn,
                                 catalog_updater=catalog_updater,
+                                uploaded_by=uploaded_by
                             )
 
                             table_count += 1
@@ -537,7 +559,8 @@ def process_minio_object(
         row_count=table_count,
         text_extracted=bool(full_text.strip()),
         content_hash=file_hash,
-        metadata=pdf_metadata  # NEW
+        metadata=pdf_metadata,
+        uploaded_by=uploaded_by
     )
         logger.info(f"[pdf] Updated catalog for {object_name}")
     except Exception as e:

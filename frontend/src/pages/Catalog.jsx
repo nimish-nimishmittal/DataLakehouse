@@ -8,11 +8,9 @@ const Catalog = () => {
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
-    const [format, setFormat] = useState('');
-
     const fetchFiles = async () => {
         try {
-            const res = await dashboardAPI.getFiles({ search, format });
+            const res = await dashboardAPI.getFiles({ search });
             setFiles(res.data.files || []);
         } catch (err) {
             console.error(err);
@@ -21,7 +19,7 @@ const Catalog = () => {
         }
     };
 
-    useEffect(() => { fetchFiles(); }, [search, format]);
+    useEffect(() => { fetchFiles(); }, [search]);
 
     return (
         <div className="space-y-10 pb-20">
@@ -29,26 +27,6 @@ const Catalog = () => {
                 <div>
                     <h2 className="text-4xl font-black text-white tracking-tight">Enterprise Catalog</h2>
                     <p className="text-slate-400 mt-2 text-lg">Cross-platform data discovery and management</p>
-                </div>
-                <div className="flex items-center gap-3 p-1.5 bg-slate-900/50 rounded-2xl border border-white/5 backdrop-blur-md">
-                    <button
-                        onClick={() => setFormat('')}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${!format ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'text-slate-500 hover:text-white'}`}
-                    >
-                        All
-                    </button>
-                    <button
-                        onClick={() => setFormat('csv')}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${format === 'csv' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'text-slate-500 hover:text-white'}`}
-                    >
-                        CSV
-                    </button>
-                    <button
-                        onClick={() => setFormat('json')}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${format === 'json' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'text-slate-500 hover:text-white'}`}
-                    >
-                        JSON
-                    </button>
                 </div>
             </header>
 

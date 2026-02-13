@@ -57,6 +57,19 @@ const UserDashboard = () => {
     </div>
   );
 
+  // Helper to parse storage string (e.g. "4.2 GB") to number for progress bar
+  const getStoragePercentage = (storageStr) => {
+    if (!storageStr) return 0;
+    const val = parseFloat(storageStr);
+    const unit = storageStr.split(' ')[1];
+    let gb = val;
+    if (unit === 'MB') gb = val / 1024;
+    return Math.min(gb * 10, 100); // Mock quota logic: 10GB limit
+  };
+
+  const storageUsed = data.metrics?.total_storage || '0 GB';
+  const storagePercent = getStoragePercentage(storageUsed);
+
   return (
     <div className="space-y-10 pb-20">
       <header className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -77,7 +90,7 @@ const UserDashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <StatCard title="My Assets" value={data.metrics?.total_documents || 0} icon={FileText} color="blue" sub="Managed Files" />
         <StatCard title="Activity" value={data.metrics?.processed_today || 0} icon={Activity} color="emerald" sub="Processed Today" />
-        <StatCard title="Storage" value={`${data.metrics?.total_storage_gb || 0} GB`} icon={HardDrive} color="indigo" sub="Quota: 10 GB" />
+        <StatCard title="Storage" value={storageUsed} icon={HardDrive} color="indigo" sub="Quota: 10 GB" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -98,12 +111,12 @@ const UserDashboard = () => {
             <div>
               <div className="flex justify-between text-xs text-slate-400 mb-3 font-bold uppercase tracking-widest">
                 <span>Storage Utilization</span>
-                <span className="text-blue-400">{(data.metrics?.total_storage_gb || 0) * 10}%</span>
+                <span className="text-blue-400">{storagePercent.toFixed(1)}%</span>
               </div>
               <div className="w-full bg-slate-900/50 h-4 rounded-full overflow-hidden border border-white/5 p-1">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: `${(data.metrics?.total_storage_gb || 0) * 10}%` }}
+                  animate={{ width: `${storagePercent}%` }}
                   className="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]"
                 />
               </div>

@@ -23,20 +23,28 @@ const AdminDashboard = () => {
   const fetchData = async () => {
     setRefreshing(true);
     try {
-      const [mRes, fRes, hRes, aRes] = await Promise.all([
+      const results = await Promise.allSettled([
         dashboardAPI.getMetrics(),
         dashboardAPI.getFiles({ limit: 5 }),
         dashboardAPI.getHealth(),
         dashboardAPI.getAuditLogs()
       ]);
+
+      const [mRes, fRes, hRes, aRes] = results;
+
+      if (mRes.status === 'rejected') console.error('Metrics failed', mRes.reason);
+      if (fRes.status === 'rejected') console.error('Files failed', fRes.reason);
+      if (hRes.status === 'rejected') console.error('Health failed', hRes.reason);
+      if (aRes.status === 'rejected') console.error('Audit logs failed', aRes.reason);
+
       setData({
-        metrics: mRes.data,
-        files: fRes.data.files || [],
-        health: hRes.data,
-        auditLogs: aRes.data.slice(0, 5)
+        metrics: mRes.status === 'fulfilled' ? mRes.value.data : null,
+        files: fRes.status === 'fulfilled' ? (fRes.value.data.files || []) : [],
+        health: hRes.status === 'fulfilled' ? hRes.value.data : null,
+        auditLogs: aRes.status === 'fulfilled' ? (aRes.value.data || []) : []
       });
     } catch (err) {
-      console.error(err);
+      console.error('Critical dashboard error', err);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -76,15 +84,11 @@ const AdminDashboard = () => {
     </div>
   );
 
-  const chartData = [
-    { name: 'Mon', ingest: 400 },
-    { name: 'Tue', ingest: 300 },
-    { name: 'Wed', ingest: 700 },
-    { name: 'Thu', ingest: 500 },
-    { name: 'Fri', ingest: 900 },
-    { name: 'Sat', ingest: 600 },
-    { name: 'Sun', ingest: 800 },
-  ];
+  // Transform processing trend for chart
+  const chartData = data.metrics?.processing_trend?.map(item => ({
+    name: new Date(item.date).toLocaleDateString('en-US', { weekday: 'short' }),
+    ingest: item.count
+  })) || [];
 
   return (
     <div className="space-y-10 pb-20">
@@ -110,14 +114,14 @@ const AdminDashboard = () => {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard title="Total Users" value={data.metrics?.total_users || 0} icon={Users} color="blue" sub="Active Accounts" trend="+12%" />
-        <StatCard title="Total Assets" value={data.metrics?.total_documents || 0} icon={FileText} color="indigo" sub="Catalog Items" trend="+8%" />
-        <StatCard title="Storage" value="4.2 TB" icon={Database} color="purple" sub="Bucket Usage" trend="+5.4 GB" />
-        <StatCard title="System Load" value="24%" icon={Activity} color="emerald" sub="API Gateway" trend="-2%" />
+        <StatCard title="Total Users" value={data.metrics?.total_users || '-'} icon={Users} color="blue" sub="Active Accounts" trend="" />
+        <StatCard title="Total Assets" value={data.metrics?.total_documents || 0} icon={FileText} color="indigo" sub="Catalog Items" trend="" />
+        <StatCard title="Storage" value={data.metrics?.total_storage || '0 GB'} icon={Database} color="purple" sub="Bucket Usage" trend="" />
+        <StatCard title="Extraction Rate" value={`${data.metrics?.extraction_rate || 0}%`} icon={Activity} color="emerald" sub="Success Ratio" trend="" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 glass-card">
+        {/* <div className="lg:col-span-2 glass-card">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-blue-400" />
@@ -125,30 +129,33 @@ const AdminDashboard = () => {
             </h3>
             <select className="bg-slate-900/50 border border-white/10 rounded-lg px-3 py-1 text-[10px] font-bold text-slate-400 uppercase outline-none">
               <option>Last 7 Days</option>
-              <option>Last 30 Days</option>
             </select>
           </div>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={chartData}>
-                <defs>
-                  <linearGradient id="colorIngest" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
-                <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
-                <YAxis stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
-                <Tooltip
-                  contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #ffffff10', borderRadius: '12px' }}
-                  itemStyle={{ color: '#fff', fontSize: '12px' }}
-                />
-                <Area type="monotone" dataKey="ingest" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorIngest)" />
-              </AreaChart>
+              {chartData.length > 0 ? (
+                <AreaChart data={chartData}>
+                  <defs>
+                    <linearGradient id="colorIngest" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
+                  <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+                  <YAxis stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #ffffff10', borderRadius: '12px' }}
+                    itemStyle={{ color: '#fff', fontSize: '12px' }}
+                  />
+                  <Area type="monotone" dataKey="ingest" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorIngest)" />
+                </AreaChart>
+              ) : (
+                <div className="flex items-center justify-center h-full text-slate-500 text-sm">No data available</div>
+              )}
             </ResponsiveContainer>
           </div>
-        </div>
+        </div> */}
 
         <div className="glass-card">
           <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
@@ -165,15 +172,16 @@ const AdminDashboard = () => {
               <div key={svc.label} className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
                 <span className="text-sm font-medium text-slate-300">{svc.label}</span>
                 <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase 
-                            ${svc.status === 'ok' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-500'}`}>
-                  {svc.status === 'ok' ? 'Online' : 'Degraded'}
+                            ${svc.status === 'ok' ? 'bg-emerald-500/10 text-emerald-400' :
+                    svc.status === 'error' ? 'bg-red-500/10 text-red-500' : 'bg-slate-500/10 text-slate-500'}`}>
+                  {svc.status === 'ok' ? 'Online' : svc.status === 'error' ? 'Offline' : 'Unknown'}
                 </div>
               </div>
             ))}
           </div>
           <div className="mt-8 p-4 bg-slate-900/50 rounded-2xl border border-white/5 border-dashed flex items-center gap-3">
             <Terminal className="w-5 h-5 text-slate-500" />
-            <span className="text-[10px] font-mono text-slate-500">Uptime: 99.998% | LAT: 12ms</span>
+            <span className="text-[10px] font-mono text-slate-500">System Monitoring Active</span>
           </div>
         </div>
       </div>
@@ -198,19 +206,26 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
-                  {data.auditLogs?.map((log) => (
+                  {data.auditLogs?.length > 0 ? data.auditLogs.map((log) => (
                     <tr key={log.id} className="hover:bg-white/5 transition-colors group">
                       <td className="p-4 pl-6">
-                        <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase">
-                          {log.action}
-                        </span>
+                        <div className="flex flex-col">
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase w-fit">
+                            {log.action}
+                          </span>
+                          <span className="text-[10px] text-slate-500 truncate max-w-[150px] mt-1">{log.details}</span>
+                        </div>
                       </td>
                       <td className="p-4 text-sm text-slate-300 font-medium">{log.username || 'System'}</td>
                       <td className="p-4 text-right pr-6 text-xs font-mono text-slate-500">
                         {new Date(log.created_at).toLocaleTimeString()}
                       </td>
                     </tr>
-                  ))}
+                  )) : (
+                    <tr>
+                      <td colSpan="3" className="p-8 text-center text-slate-500 text-sm">No recent activity</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -221,7 +236,10 @@ const AdminDashboard = () => {
       <div className="space-y-6">
         <h3 className="text-2xl font-black text-white">Recent Global Ingestions</h3>
         <div className="glass-card p-0 overflow-hidden">
-          <FileList files={data.files} onRefresh={fetchData} />
+          <FileUpload onUploadSuccess={fetchData} />
+          <div className="px-6 pb-6">
+            <FileList files={data.files} onRefresh={fetchData} />
+          </div>
         </div>
       </div>
     </div>

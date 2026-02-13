@@ -20,11 +20,15 @@ api.interceptors.request.use((config) => {
 
 export const dashboardAPI = {
   login: (credentials) => api.post('/auth/login', credentials),
-  register: (credentials) => api.post('/auth/register', credentials),
+  // register: (credentials) => api.post('/auth/register', credentials),
   getMetrics: () => api.get('/dashboard/metrics'),
   getFiles: (params = {}) => api.get('/files', { params }),
-  uploadFile: (formData) => api.post('/upload', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
+  // uploadFile: (formData) => api.post('/upload', formData),
+  uploadFile: (formData) =>
+  api.post('/upload', formData, {
+    headers: {
+      'Content-Type': undefined,
+    },
   }),
   deleteFile: (id) => api.delete(`/files/${id}`),
   getHealth: () => api.get('/health'),

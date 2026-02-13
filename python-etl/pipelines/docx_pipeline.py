@@ -120,7 +120,8 @@ def _ensure_unstructured_table(pg_conn):
                 file_type    TEXT NOT NULL,
                 text_content TEXT,
                 content_hash TEXT UNIQUE,
-                created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                uploaded_by INTEGER
             )
             """
         )
@@ -139,6 +140,7 @@ def _save_unstructured_doc(
     file_type: str,
     text_content: str,
     content_hash: str,
+    uploaded_by: int
 ):
     """
     Save raw text into "unstructured_documents" for search/QA later.
@@ -154,12 +156,13 @@ def _save_unstructured_doc(
             """
             INSERT INTO unstructured_documents
                 (object_name, file_type, text_content, content_hash)
-            VALUES (%s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s)
             ON CONFLICT (content_hash) DO UPDATE
             SET text_content = EXCLUDED.text_content,
-                object_name  = EXCLUDED.object_name
+                object_name  = EXCLUDED.object_name,
+                uploaded_by = EXCLUDED.uploaded_by,
             """,
-            (object_name, file_type, text_content, content_hash),
+            (object_name, file_type, text_content, content_hash, uploaded_by),
         )
         pg_conn.commit()
         logger.info(f"[docx] Saved text to unstructured_documents for {object_name}")
@@ -173,6 +176,7 @@ def _save_unstructured_doc(
 def _process_extracted_table(
     minio_client,
     bucket_name: str,
+    object_name: str,
     table_df: pd.DataFrame,
     table_key: str,
     pg_conn,
@@ -185,6 +189,12 @@ def _process_extracted_table(
     3. Update catalog
     """
     try:
+        # ---- Fetch uploader identity from MinIO object metadata ---- #
+        stat = minio_client.stat_object(bucket_name, object_name)
+
+        uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+        uploaded_by = int(uploaded_by) if uploaded_by else None
+
         # 1. Upload CSV to MinIO
         csv_bytes = table_df.to_csv(index=False).encode("utf-8")
         minio_client.put_object(
@@ -247,7 +257,8 @@ def _process_extracted_table(
             file_format='csv',
             row_count=len(table_df),
             text_extracted=False,
-            content_hash=None
+            content_hash=None,
+            uploaded_by=uploaded_by
         )
 
     except Exception as e:
@@ -264,6 +275,7 @@ def process_minio_object(
     object_name: str,
     pg_conn,
     catalog_updater,
+    uploaded_by=None
 ):
     """
     Main function used by LakehouseETL.run_pipeline_for_object.
@@ -281,6 +293,12 @@ def process_minio_object(
         - Update catalog for each table
     6. Update minio_data_catalog for original DOCX file via catalog_updater(...).
     """
+
+    # ---- Fetch uploader identity from MinIO object metadata ---- #
+    stat = minio_client.stat_object(bucket_name, object_name)
+
+    uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+    uploaded_by = int(uploaded_by) if uploaded_by else None
 
     logger.info(f"[docx] Processing {object_name}")
 
@@ -365,6 +383,7 @@ def process_minio_object(
             file_type=file_type,
             text_content=text,
             content_hash=file_hash,
+            uploaded_by=uploaded_by
         )
     else:
         logger.warning(f"[docx] No text extracted from {object_name}")
@@ -388,6 +407,7 @@ def process_minio_object(
             _process_extracted_table(
                 minio_client=minio_client,
                 bucket_name=bucket_name,
+                object_name=object_name,
                 table_df=df,
                 table_key=table_key,
                 pg_conn=pg_conn,
@@ -424,7 +444,8 @@ def process_minio_object(
             row_count=total_rows,
             text_extracted=bool(text and text.strip()),
             content_hash=file_hash,
-            metadata=doc_metadata  # NEW
+            metadata=doc_metadata,
+            uploaded_by=uploaded_by
         )
         logger.info(f"[docx] Updated catalog for {object_name}")
     except Exception as e:

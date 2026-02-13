@@ -13,6 +13,8 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 import pandas as pd
 import psycopg2
 
+import json
+
 logger = logging.getLogger(__name__)
 
 
@@ -269,6 +271,7 @@ def extract_images_from_pptx(data: bytes, file_root: str) -> List[Dict[str, Any]
 def _process_extracted_table(
     minio_client,
     bucket_name: str,
+    object_name: str,
     table_df: pd.DataFrame,
     table_key: str,
     pg_conn,
@@ -279,6 +282,13 @@ def _process_extracted_table(
     Similar to PDF table processing.
     """
     try:
+
+        # ---- Fetch uploader identity from MinIO object metadata ---- #
+        stat = minio_client.stat_object(bucket_name, object_name)
+
+        uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+        uploaded_by = int(uploaded_by) if uploaded_by else None
+
         # Import from structured_pipeline for consistency
         from pipelines.structured_pipeline import (
             sanitize_table_name,
@@ -371,7 +381,8 @@ def _process_extracted_table(
                 file_format='csv',
                 row_count=len(table_df),
                 text_extracted=False,
-                content_hash=None
+                content_hash=None,
+                uploaded_by=uploaded_by
             )
         except Exception as catalog_error:
             logger.warning(f"[ppt] Failed to update catalog for {table_key}: {catalog_error}")
@@ -388,6 +399,7 @@ def process_minio_object(
     object_name: str,
     pg_conn,
     catalog_updater,
+    uploaded_by=None
 ):
     """
     Main entry point for PowerPoint processing.
@@ -411,6 +423,12 @@ def process_minio_object(
     
     response = None
     data = None
+
+    # ---- Fetch uploader identity from MinIO object metadata ---- #
+    stat = minio_client.stat_object(bucket_name, object_name)
+
+    uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+    uploaded_by = int(uploaded_by) if uploaded_by else None
     
     try:
         # 1. Download from MinIO
@@ -447,6 +465,7 @@ def process_minio_object(
                 row_count=0,
                 text_extracted=False,
                 content_hash=file_hash,
+                uploaded_by=uploaded_by
             )
         except Exception as e:
             logger.warning(f"[ppt] Failed catalog update for duplicate: {e}")
@@ -494,6 +513,7 @@ def process_minio_object(
                         _process_extracted_table(
                             minio_client=minio_client,
                             bucket_name=bucket_name,
+                            object_name=object_name,
                             table_df=table_df,
                             table_key=table_key,
                             pg_conn=pg_conn,
@@ -547,6 +567,7 @@ def process_minio_object(
                     file_type="pptx",
                     text=full_text,
                     content_hash=file_hash,
+                    uploaded_by=uploaded_by
                 )
             except Exception as e:
                 logger.warning(f"[ppt] Failed to save unstructured doc: {e}")
@@ -616,7 +637,8 @@ def process_minio_object(
             row_count=table_count,
             text_extracted=bool(full_text.strip()),
             content_hash=file_hash,
-            metadata=ppt_metadata  # NEW
+            metadata=ppt_metadata,
+            uploaded_by=uploaded_by
         )
         logger.info(f"[ppt] Updated catalog for {object_name}")
     except Exception as e:
