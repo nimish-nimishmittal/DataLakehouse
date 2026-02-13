@@ -14,7 +14,14 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        setAuth({ token, user: decoded, loading: false });
+        setAuth({
+          token,
+          user: {
+            username: decoded.sub,
+            role: decoded.role,
+          },
+          loading: false,
+        });
       } catch (e) {
         localStorage.removeItem('token');
         setAuth({ token: null, user: null, loading: false });
@@ -25,35 +32,47 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
-    try {
-        const formData = new URLSearchParams();
-        formData.append('username', username);
-        formData.append('password', password);
+    const params = new URLSearchParams();
+    params.append("username", username);
+    params.append("password", password);
 
-        const res = await api.post('/auth/login', formData, {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        });
+    const response = await api.post(
+      "/auth/login",
+      params,
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
 
-        const token = res.data.access_token;
-        localStorage.setItem('token', token);
-        const decoded = jwtDecode(token);
-        setAuth({ token, user: decoded, loading: false });
-        return true;
-    } catch (err) {
-        console.error('Login failed:', err.response?.data || err);
-        return false;
-    }
-    };
+    const token = response.data.access_token;
+    const decoded = jwtDecode(token);
 
-    const register = async (username, password) => {
-    try {
-        await api.post('/auth/register', { username, password });
-        return true;
-    } catch (err) {
-        console.error('Register failed:', err.response?.data || err);
-        return false;
-    }
-    };
+    // Store token
+    localStorage.setItem("token", token);
+
+    // Update auth state (THIS replaces setAuthToken)
+    setAuth({
+      token,
+      user: {
+        username: decoded.sub,
+        role: decoded.role,
+      },
+      loading: false,
+    });
+  };
+
+
+    // const register = async (username, password) => {
+    // try {
+    //     await api.post('/auth/register', { username, password });
+    //     return true;
+    // } catch (err) {
+    //     console.error('Register failed:', err.response?.data || err);
+    //     return false;
+    // }
+    // };
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -61,7 +80,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ auth, login, register, logout }}>
+    <AuthContext.Provider value={{ auth, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

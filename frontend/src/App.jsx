@@ -12,7 +12,6 @@ import AdminDashboard from './pages/AdminDashboard';
 import UserDashboard from './pages/UserDashboard';
 import Catalog from './pages/Catalog';
 import Jobs from './pages/Jobs';
-import SystemStatus from './pages/SystemStatus';
 import Users from './pages/Users';
 import AuditLogs from './pages/AuditLogs';
 import SearchPage from './pages/Search';
@@ -49,12 +48,6 @@ const App = () => {
         <Route path="/jobs" element={
           <ProtectedRoute>
             <Jobs />
-          </ProtectedRoute>
-        } />
-
-        <Route path="/system" element={
-          <ProtectedRoute>
-            <SystemStatus />
           </ProtectedRoute>
         } />
 

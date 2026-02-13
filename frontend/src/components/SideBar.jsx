@@ -1,4 +1,4 @@
-// src/components/Sidebar.jsx
+// src/components/SideBar.jsx
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -16,7 +16,7 @@ import {
 import AuthContext from '../context/AuthContext';
 import { clsx } from 'clsx';
 
-const Sidebar = () => {
+const SideBar = () => {
     const { auth, logout } = useContext(AuthContext);
     const location = useLocation();
     const isAdmin = auth.user?.role === 'admin';
@@ -24,14 +24,13 @@ const Sidebar = () => {
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
         { name: 'Data Catalog', icon: FileStack, path: '/catalog' },
-        { name: 'Semantic Search', icon: Search, path: '/search' },
+        // { name: 'Semantic Search', icon: Search, path: '/search' },
         { name: 'Data Pipelines', icon: Activity, path: '/jobs' },
     ];
 
     if (isAdmin) {
         menuItems.push({ name: 'Identity & Access', icon: Users, path: '/users' });
         menuItems.push({ name: 'Audit Trail', icon: Shield, path: '/audit' });
-        menuItems.push({ name: 'Cluster Health', icon: Database, path: '/system' });
     }
 
     return (
@@ -43,7 +42,6 @@ const Sidebar = () => {
                     </div>
                     <div>
                         <h1 className="text-xl font-bold text-white tracking-tight">Data Lakehouse</h1>
-                        <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest">Enterprise Platform</p>
                     </div>
                 </div>
 
@@ -97,4 +95,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default SideBar;

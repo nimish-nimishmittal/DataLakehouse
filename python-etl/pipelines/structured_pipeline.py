@@ -9,6 +9,7 @@ from psycopg2.extras import execute_values
 import logging
 import re
 from typing import Any, List, Dict
+from minio import Minio
 
 logger = logging.getLogger(__name__)
 
@@ -487,7 +488,14 @@ def save_to_parquet(df, minio_client, bucket_name, object_name):
         logger.warning(f"[Parquet] Continuing despite parquet save failure")
 
 
-def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalog_updater):
+def process_minio_object(
+        minio_client: Minio, 
+        bucket_name: str, 
+        object_name: str, 
+        pg_conn, 
+        catalog_updater,
+        uploaded_by=None
+        ):
     """
     Main entry point for structured data processing.
     Called by etl_manager.run_pipeline_for_object()
@@ -498,6 +506,13 @@ def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalo
     resp = None
 
     try:
+
+        # ---- Fetch uploader identity from MinIO object metadata ---- #
+        stat = minio_client.stat_object(bucket_name, object_name)
+
+        uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+        uploaded_by = int(uploaded_by) if uploaded_by else None
+
         # 1. Read raw data from MinIO
         resp = minio_client.get_object(bucket_name, object_name)
         data = resp.read()
@@ -558,8 +573,8 @@ def process_minio_object(minio_client, bucket_name, object_name, pg_conn, catalo
             file_format=file_type,
             row_count=len(df),
             text_extracted=False,
-            content_hash=None,
-            metadata=structured_metadata  # NEW
+            metadata=structured_metadata,
+            uploaded_by=uploaded_by
         )
         
         logger.info(f"[structured] ✅ Successfully processed {object_name}")

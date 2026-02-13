@@ -50,9 +50,6 @@ const Login = () => {
             Login
           </button>
         </form>
-        <p className="text-gray-400 text-center mt-4">
-          No account? <Link to="/register" className="text-blue-400 hover:underline">Register</Link>
-        </p>
       </div>
     </div>
   );

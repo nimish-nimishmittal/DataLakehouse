@@ -76,7 +76,7 @@ def resolve_uploaded_by(jwt_identity):
         user = get_user(jwt_identity)
         if not user:
             raise ValueError("JWT identity username not found in DB")
-        return user[0]  # user_id
+        return user["id"]  # user_id
 
     # Case 3: Anything else → reject
     raise ValueError(f"Unsupported JWT identity type: {type(jwt_identity)}")
@@ -177,7 +177,7 @@ def update_catalog(bucket, object_name, object_size=None, file_format=None, row_
                 row_count = EXCLUDED.row_count,
                 text_extracted = EXCLUDED.text_extracted,
                 uploaded_by = EXCLUDED.uploaded_by,
-                metadata = EXCLUDED.metadata,  -- NEW
+                metadata = EXCLUDED.metadata,
                 last_modified = CURRENT_TIMESTAMP
         """, (bucket, object_name, object_size, file_format, row_count, text_extracted, uploaded_by, json.dumps(metadata or {})))
         pg_conn.commit()

@@ -210,7 +210,7 @@ class LakehouseETL:
         self.ensure_bucket_exists()
         self.create_data_catalog()
         
-        # Upload sample data to MinIO
+        # Upload sample data to MinIO --- FOR TEST ONLY!!
         sample_files = [
             ('/sample-data/products.csv', 'raw/products.csv'),
             ('/sample-data/sales.csv', 'raw/sales.csv'),
@@ -224,7 +224,7 @@ class LakehouseETL:
                 )
                 logger.info(f"📤 Uploaded {minio_path}")
         
-        # ETL Process: Extract → Transform → Load
+        # ETL Process: Extract → Transform → Load --FOR TEST ONLY
         tables = {
             'raw/products.csv': 'products_warehouse',
             'raw/sales.csv': 'sales_warehouse',
@@ -253,50 +253,64 @@ class LakehouseETL:
 def run_pipeline_for_object(object_name: str):
     """
     Called by Airflow.
-    Downloads raw file from MinIO,
-    auto-detects type,
-    runs appropriate pipeline,
-    uploads processed output,
-    updates catalog.
+    Reads uploader metadata from MinIO,
+    runs pipeline,
+    ensures derived assets keep ownership.
     """
-    from pipelines import structured_pipeline, pdf_pipeline, docx_pipeline, image_pipeline, ppt_pipeline
+    from pipelines import (
+        structured_pipeline,
+        pdf_pipeline,
+        docx_pipeline,
+        image_pipeline,
+        ppt_pipeline
+    )
 
     etl = LakehouseETL()
 
-    ext = object_name.rsplit('.', 1)[-1].lower()
+    # READ METADATA FROM MINIO
+    stat = etl.minio_client.stat_object(etl.bucket_name, object_name)
+
+    uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
+    uploaded_by = int(uploaded_by) if uploaded_by else None
+
+    ext = object_name.rsplit(".", 1)[-1].lower()
+
+    common_kwargs = {
+        "minio_client": etl.minio_client,
+        "bucket_name": etl.bucket_name,
+        "object_name": object_name,
+        "pg_conn": etl.pg_conn,
+        "catalog_updater": etl.update_catalog,
+        "uploaded_by": uploaded_by # this fix if removed would result in broken rbac
+    }
 
     if ext in ("csv", "json", "parquet"):
-        structured_pipeline.process_minio_object(
-            etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
-        )
+        structured_pipeline.process_minio_object(**common_kwargs)
+
     elif ext == "pdf":
-        pdf_pipeline.process_minio_object(
-            etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
-        )
+        pdf_pipeline.process_minio_object(**common_kwargs)
+
     elif ext in ("doc", "docx"):
-        docx_pipeline.process_minio_object(
-            etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
-        )
+        docx_pipeline.process_minio_object(**common_kwargs)
+
     elif ext in ("png", "jpg", "jpeg", "tiff"):
-        image_pipeline.process_minio_object(
-            etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
-        )
+        image_pipeline.process_minio_object(**common_kwargs)
+
     elif ext in ("ppt", "pptx"):
-        ppt_pipeline.process_minio_object(
-            etl.minio_client, etl.bucket_name, object_name, etl.pg_conn, etl.update_catalog
-        )
+        ppt_pipeline.process_minio_object(**common_kwargs)
+
     else:
         logger.error(f"Unsupported format: {ext}")
         return
 
-    logger.info(f"Processing complete for: {object_name}")
+    logger.info(f"ETL completed: {object_name}")
     etl.pg_conn.commit()
     etl.pg_conn.close()
 
 
 if __name__ == "__main__":
     import time
-    time.sleep(15)  # Wait for services
+    time.sleep(15)
     
     etl = LakehouseETL()
     try:

@@ -19,4 +19,4 @@ python-jose[cryptography]==3.3.0
 bcrypt
 flask_jwt_extended
 python-magic
-exifread  
+exifread
