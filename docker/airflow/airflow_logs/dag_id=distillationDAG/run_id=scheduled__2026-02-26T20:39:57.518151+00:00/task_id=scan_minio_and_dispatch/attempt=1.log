@@ -1,0 +1,105 @@
+[2026-02-26T20:41:09.796+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T20:39:57.518151+00:00 [queued]>
+[2026-02-26T20:41:09.804+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T20:39:57.518151+00:00 [queued]>
+[2026-02-26T20:41:09.804+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-02-26T20:41:09.816+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-26 20:39:57.518151+00:00
+[2026-02-26T20:41:09.822+0000] {standard_task_runner.py:57} INFO - Started process 313 to run task
+[2026-02-26T20:41:09.826+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-26T20:39:57.518151+00:00', '--job-id', '1701', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmp7d4js8oj']
+[2026-02-26T20:41:09.829+0000] {standard_task_runner.py:85} INFO - Job 1701: Subtask scan_minio_and_dispatch
+[2026-02-26T20:41:09.891+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T20:39:57.518151+00:00 [running]> on host 227ec2203d16
+[2026-02-26T20:41:10.172+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-26T20:39:57.518151+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-26T20:39:57.518151+00:00'
+[2026-02-26T20:41:10.182+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc2_employee_data.pdf
+[2026-02-26T20:41:10.572+0000] {pdf_pipeline.py:354} INFO - [pdf] Processing raw/doc2_employee_data.pdf
+[2026-02-26T20:41:10.576+0000] {pdf_pipeline.py:408} INFO - [pdf] Extracting text from PDF...
+[2026-02-26T20:41:10.628+0000] {pdf_pipeline.py:429} INFO - [pdf] Extracted 1190 characters of text from 3 pages
+[2026-02-26T20:41:10.633+0000] {pdf_pipeline.py:448} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/doc2_employee_data.txt
+[2026-02-26T20:41:10.633+0000] {pdf_pipeline.py:465} WARNING - [pdf] Failed to save unstructured doc: _save_unstructured_doc() got an unexpected keyword argument 'uploaded_by'
+[2026-02-26T20:41:10.633+0000] {pdf_pipeline.py:471} INFO - [pdf] Extracting tables from PDF...
+[2026-02-26T20:41:10.777+0000] {pdf_pipeline.py:541} INFO - [pdf] Extracted 0 tables with 0 total rows
+[2026-02-26T20:41:10.781+0000] {pdf_pipeline.py:569} INFO - [pdf] Updated catalog for raw/doc2_employee_data.pdf
+[2026-02-26T20:41:10.781+0000] {pdf_pipeline.py:574} INFO - [pdf] ✅ Completed processing: raw/doc2_employee_data.pdf | pages=3 | tables=0 | rows=0 | text_chars=1190
+[2026-02-26T20:41:10.781+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc2_employee_data.pdf
+[2026-02-26T20:41:10.782+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc2_employee_data.pdf -> raw-data/2026-02-26/doc2_employee_data.pdf
+[2026-02-26T20:41:10.792+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc2_employee_data.pdf
+[2026-02-26T20:41:10.792+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc2_employee_directory.docx
+[2026-02-26T20:41:10.806+0000] {docx_pipeline.py:435} INFO - [docx] Processing raw/doc2_employee_directory.docx
+[2026-02-26T20:41:10.811+0000] {docx_pipeline.py:492} INFO - [docx] Extracting text…
+[2026-02-26T20:41:10.820+0000] {docx_pipeline.py:494} INFO - [docx] Extracted 240 characters of text
+[2026-02-26T20:41:10.821+0000] {docx_pipeline.py:499} INFO - [docx] Extracting tables…
+[2026-02-26T20:41:10.840+0000] {docx_pipeline.py:501} INFO - [docx] Found 3 table(s)
+[2026-02-26T20:41:10.846+0000] {docx_pipeline.py:526} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/doc2_employee_directory.txt
+[2026-02-26T20:41:10.859+0000] {docx_pipeline.py:193} WARNING - [docx] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-02-26T20:41:10.863+0000] {docx_pipeline.py:257} INFO - [docx] Inserted into unstructured_documents for raw/doc2_employee_directory.docx
+[2026-02-26T20:41:10.864+0000] {docx_pipeline.py:547} INFO - [docx] Processing 3 table(s)…
+[2026-02-26T20:41:10.877+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc2_employee_directory_table_1.csv
+[2026-02-26T20:41:10.878+0000] {structured_pipeline.py:108} INFO - Table name: data_doc2_employee_directory_table_1
+[2026-02-26T20:41:10.879+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T20:41:10.883+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.892+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc2_employee_directory_table_1
+[2026-02-26T20:41:10.895+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 5 rows into 'data_doc2_employee_directory_table_1'
+[2026-02-26T20:41:10.897+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 1/3: 5 rows × 5 cols
+[2026-02-26T20:41:10.905+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc2_employee_directory_table_2.csv
+[2026-02-26T20:41:10.905+0000] {structured_pipeline.py:108} INFO - Table name: data_doc2_employee_directory_table_2
+[2026-02-26T20:41:10.906+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T20:41:10.908+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.910+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.912+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.914+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.916+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.917+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc2_employee_directory_table_2
+[2026-02-26T20:41:10.920+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc2_employee_directory_table_2'
+[2026-02-26T20:41:10.922+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 2/3: 4 rows × 5 cols
+[2026-02-26T20:41:10.929+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc2_employee_directory_table_3.csv
+[2026-02-26T20:41:10.930+0000] {structured_pipeline.py:108} INFO - Table name: data_doc2_employee_directory_table_3
+[2026-02-26T20:41:10.930+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-02-26T20:41:10.933+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.935+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.937+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc2_employee_directory_table_3
+[2026-02-26T20:41:10.939+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc2_employee_directory_table_3'
+[2026-02-26T20:41:10.941+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 3/3: 4 rows × 4 cols
+[2026-02-26T20:41:10.946+0000] {docx_pipeline.py:606} INFO - [docx] Updated catalog for raw/doc2_employee_directory.docx
+[2026-02-26T20:41:10.946+0000] {docx_pipeline.py:612} INFO - [docx] ✅ Completed raw/doc2_employee_directory.docx | tables=3 | total_rows=13 | text_chars=240
+[2026-02-26T20:41:10.947+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc2_employee_directory.docx
+[2026-02-26T20:41:10.947+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc2_employee_directory.docx -> raw-data/2026-02-26/doc2_employee_directory.docx
+[2026-02-26T20:41:10.954+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc2_employee_directory.docx
+[2026-02-26T20:41:10.955+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/movies.csv
+[2026-02-26T20:41:10.967+0000] {structured_pipeline.py:505} INFO - [structured] Processing raw/movies.csv
+[2026-02-26T20:41:10.969+0000] {structured_pipeline.py:519} INFO - [structured] Downloaded 584 bytes
+[2026-02-26T20:41:10.970+0000] {structured_pipeline.py:523} INFO - [structured] Detected file type: csv
+[2026-02-26T20:41:10.970+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-02-26T20:41:10.970+0000] {structured_pipeline.py:237} INFO - [CSV] Attempting to decode with ascii
+[2026-02-26T20:41:10.972+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-02-26T20:41:10.972+0000] {structured_pipeline.py:268} INFO - [CSV] Read attempt 1
+[2026-02-26T20:41:10.975+0000] {structured_pipeline.py:272} INFO - [CSV] Successfully read 8 rows with 8 columns
+[2026-02-26T20:41:10.975+0000] {structured_pipeline.py:546} INFO - [structured] Initial read: 8 rows, 8 columns
+[2026-02-26T20:41:10.975+0000] {structured_pipeline.py:363} INFO - [Clean] Cleaning dataframe...
+[2026-02-26T20:41:10.979+0000] {structured_pipeline.py:388} INFO - [Clean] Cleaned dataframe: 8 rows, 8 columns
+[2026-02-26T20:41:10.979+0000] {structured_pipeline.py:108} INFO - Table name: data_movies
+[2026-02-26T20:41:10.979+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 8 columns
+[2026-02-26T20:41:10.981+0000] {structured_pipeline.py:402} INFO - [PostgreSQL] Dropped existing table: data_movies
+[2026-02-26T20:41:10.984+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.985+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'movieid' -> TEXT
+[2026-02-26T20:41:10.986+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.986+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'title' -> TEXT
+[2026-02-26T20:41:10.987+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.988+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'director' -> TEXT
+[2026-02-26T20:41:10.989+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T20:41:10.989+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'genre' -> TEXT
+[2026-02-26T20:41:10.990+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'releaseyear' -> INTEGER
+[2026-02-26T20:41:10.991+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'rating' -> NUMERIC
+[2026-02-26T20:41:10.991+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'duration_min' -> INTEGER
+[2026-02-26T20:41:10.992+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'boxoffice__m' -> NUMERIC
+[2026-02-26T20:41:10.995+0000] {structured_pipeline.py:422} INFO - [PostgreSQL] Created table: data_movies
+[2026-02-26T20:41:11.000+0000] {structured_pipeline.py:444} INFO - [PostgreSQL] Loaded 8 rows into data_movies
+[2026-02-26T20:41:11.000+0000] {structured_pipeline.py:457} INFO - [Parquet] Writing Parquet file...
+[2026-02-26T20:41:11.052+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/pyarrow/pandas_compat.py:373 FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+[2026-02-26T20:41:11.060+0000] {structured_pipeline.py:484} INFO - [Parquet] Saved to: processed/structured/movies.parquet
+[2026-02-26T20:41:11.062+0000] {structured_pipeline.py:580} INFO - [structured] ✅ Successfully processed raw/movies.csv
+[2026-02-26T20:41:11.062+0000] {etl_manager.py:306} INFO - ETL completed: raw/movies.csv
+[2026-02-26T20:41:11.063+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/movies.csv -> raw-data/2026-02-26/movies.csv
+[2026-02-26T20:41:11.070+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/movies.csv
+[2026-02-26T20:41:11.070+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-26T20:41:11.084+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260226T203957, start_date=20260226T204109, end_date=20260226T204111
+[2026-02-26T20:41:11.120+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-26T20:41:11.143+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

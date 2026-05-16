@@ -1,0 +1,36 @@
+[2026-04-25T09:24:26.493+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-04-25T09:23:39.740043+00:00 [queued]>
+[2026-04-25T09:24:26.502+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-04-25T09:23:39.740043+00:00 [queued]>
+[2026-04-25T09:24:26.503+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-04-25T09:24:26.517+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-04-25 09:23:39.740043+00:00
+[2026-04-25T09:24:26.528+0000] {standard_task_runner.py:57} INFO - Started process 589 to run task
+[2026-04-25T09:24:26.534+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-04-25T09:23:39.740043+00:00', '--job-id', '2989', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmp44xe0f6e']
+[2026-04-25T09:24:26.539+0000] {standard_task_runner.py:85} INFO - Job 2989: Subtask scan_minio_and_dispatch
+[2026-04-25T09:24:26.678+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-04-25T09:23:39.740043+00:00 [running]> on host b6d1753d38d9
+[2026-04-25T09:24:27.066+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-04-25T09:23:39.740043+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-25T09:23:39.740043+00:00'
+[2026-04-25T09:24:27.096+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/certificateanthropic.pdf
+[2026-04-25T09:24:27.440+0000] {pdf_pipeline.py:395} INFO - [pdf] Processing raw/certificateanthropic.pdf
+[2026-04-25T09:24:27.443+0000] {pdf_pipeline.py:427} INFO - [pdf] Extracting text from PDF...
+[2026-04-25T09:24:27.452+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracted 39 characters of text from 1 pages
+[2026-04-25T09:24:27.456+0000] {pdf_pipeline.py:468} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/certificateanthropic.txt
+[2026-04-25T09:24:27.461+0000] {pdf_pipeline.py:77} ERROR - [pdf] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 60, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-04-25T09:24:27.462+0000] {pdf_pipeline.py:80} WARNING - [pdf] Continuing pipeline despite unstructured_documents save failure
+[2026-04-25T09:24:27.467+0000] {pdf_pipeline.py:498} INFO - [pdf] Created catalog entry for extracted text: processed/unstructured/text-extracted/certificateanthropic.txt
+[2026-04-25T09:24:27.467+0000] {pdf_pipeline.py:505} INFO - [pdf] Extracting tables from PDF...
+[2026-04-25T09:24:27.482+0000] {pdf_pipeline.py:584} INFO - [pdf] Extracted 0 tables with 0 total rows
+[2026-04-25T09:24:27.487+0000] {pdf_pipeline.py:615} INFO - [pdf] Marked raw entry as processed: raw/certificateanthropic.pdf
+[2026-04-25T09:24:27.488+0000] {pdf_pipeline.py:627} INFO - [pdf] Created processed catalog entry: processed/certificateanthropic.pdf
+[2026-04-25T09:24:27.490+0000] {pdf_pipeline.py:639} INFO - [pdf] Removed old catalog entry: raw/certificateanthropic.pdf
+[2026-04-25T09:24:27.490+0000] {pdf_pipeline.py:646} INFO - [pdf] ✅ Completed processing: raw/certificateanthropic.pdf | pages=1 | tables=0 | rows=0 | text_chars=39
+[2026-04-25T09:24:27.490+0000] {etl_manager.py:287} INFO - ETL completed: raw/certificateanthropic.pdf
+[2026-04-25T09:24:27.491+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/certificateanthropic.pdf -> raw-data/2026-04-25/certificateanthropic.pdf
+[2026-04-25T09:24:27.509+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-04-25/certificateanthropic.pdf
+[2026-04-25T09:24:27.516+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/certificateanthropic.pdf
+[2026-04-25T09:24:27.517+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-04-25T09:24:27.539+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260425T092339, start_date=20260425T092426, end_date=20260425T092427
+[2026-04-25T09:24:27.594+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-04-25T09:24:27.631+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

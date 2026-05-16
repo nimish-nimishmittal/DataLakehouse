@@ -1,0 +1,20 @@
+[2026-03-20T00:08:14.721+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-03-20T00:00:00+00:00 [queued]>
+[2026-03-20T00:08:14.743+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-03-20T00:00:00+00:00 [queued]>
+[2026-03-20T00:08:14.743+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-03-20T00:08:14.774+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): cleanup_embeddings> on 2026-03-20 00:00:00+00:00
+[2026-03-20T00:08:14.788+0000] {standard_task_runner.py:57} INFO - Started process 3465 to run task
+[2026-03-20T00:08:14.804+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'cleanup_embeddings', 'scheduled__2026-03-20T00:00:00+00:00', '--job-id', '2409', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpws17piaq']
+[2026-03-20T00:08:14.813+0000] {standard_task_runner.py:85} INFO - Job 2409: Subtask cleanup_embeddings
+[2026-03-20T00:08:15.005+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-03-20T00:00:00+00:00 [running]> on host 76de17b6f6da
+[2026-03-20T00:08:15.319+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='cleanup_embeddings' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T00:00:00+00:00'
+[2026-03-20T00:08:17.996+0000] {embedding_pipeline.py:213} WARNING - [cleanup] Found 2 orphaned table(s) in row_embeddings: ['data_8051_features_architecture_page3_table1', 'data_customers']
+[2026-03-20T00:08:17.998+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 6 orphaned embeddings for dropped table: data_8051_features_architecture_page3_table1
+[2026-03-20T00:08:18.003+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_8051_features_architecture_page3_table1
+[2026-03-20T00:08:18.005+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_customers
+[2026-03-20T00:08:18.009+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_customers
+[2026-03-20T00:08:18.014+0000] {embedding_pipeline.py:241} INFO - [cleanup] Orphan cleanup done — 2 table(s), 14 embeddings removed.
+[2026-03-20T00:08:18.411+0000] {embedding_pipeline.py:356} INFO - [cleanup] Truncate/bulk-delete check done — checked 53 tables, removed 0 stale embeddings.
+[2026-03-20T00:08:18.470+0000] {python.py:194} INFO - Done. Returned value was: {'orphaned_tables': ['data_8051_features_architecture_page3_table1', 'data_customers'], 'orphan_embeddings_removed': 14, 'truncate_embeddings_removed': 0, 'truncate_tables_checked': 53, 'total_removed': 14}
+[2026-03-20T00:08:18.553+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=cleanup_embeddings, execution_date=20260320T000000, start_date=20260320T000814, end_date=20260320T000818
+[2026-03-20T00:08:18.652+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-20T00:08:18.743+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

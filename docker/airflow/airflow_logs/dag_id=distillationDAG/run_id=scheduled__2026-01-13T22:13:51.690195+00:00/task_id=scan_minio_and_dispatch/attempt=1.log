@@ -1,0 +1,14 @@
+[2026-01-13T22:14:40.151+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-13T22:13:51.690195+00:00 [queued]>
+[2026-01-13T22:14:40.178+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-13T22:13:51.690195+00:00 [queued]>
+[2026-01-13T22:14:40.179+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-01-13T22:14:40.214+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-01-13 22:13:51.690195+00:00
+[2026-01-13T22:14:40.233+0000] {standard_task_runner.py:57} INFO - Started process 3479 to run task
+[2026-01-13T22:14:40.251+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-01-13T22:13:51.690195+00:00', '--job-id', '1124', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpcfa7x8s2']
+[2026-01-13T22:14:40.261+0000] {standard_task_runner.py:85} INFO - Job 1124: Subtask scan_minio_and_dispatch
+[2026-01-13T22:14:40.321+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-01-13T22:14:40.453+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-13T22:13:51.690195+00:00 [running]> on host a72c5ce51dac
+[2026-01-13T22:14:41.167+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-13T22:13:51.690195+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-13T22:13:51.690195+00:00'
+[2026-01-13T22:14:41.190+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-01-13T22:14:41.228+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260113T221351, start_date=20260113T221440, end_date=20260113T221441
+[2026-01-13T22:14:41.304+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-01-13T22:14:41.375+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,8 +1,6 @@
 # python-etl/pipelines/ppt_pipeline.py
-
 import io
 import logging
-import hashlib
 
 from typing import List, Dict, Any, Optional
 from zipfile import ZipFile
@@ -11,40 +9,10 @@ from minio import Minio
 from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 import pandas as pd
-import psycopg2
 
 import json
 
 logger = logging.getLogger(__name__)
-
-
-def calculate_file_hash(data: bytes) -> str:
-    """Return SHA-256 hash of a bytes buffer."""
-    return hashlib.sha256(data).hexdigest()
-
-
-def is_duplicate(pg_conn, content_hash: str) -> bool:
-    """Check if this hash already exists in the catalog."""
-    if pg_conn is None:
-        return False
-
-    cursor = pg_conn.cursor()
-    try:
-        cursor.execute(
-            """
-            SELECT 1 FROM minio_data_catalog
-            WHERE content_hash = %s
-            LIMIT 1
-            """,
-            (content_hash,),
-        )
-        return cursor.fetchone() is not None
-    except Exception as e:
-        logger.warning(f"[ppt] Error checking duplicate: {e}")
-        return False
-    finally:
-        cursor.close()
-
 
 def _ensure_unstructured_table(pg_conn):
     """Ensure unstructured_documents table exists."""
@@ -53,35 +21,17 @@ def _ensure_unstructured_table(pg_conn):
         cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS unstructured_documents (
-                id SERIAL PRIMARY KEY,
-                object_name TEXT NOT NULL,
-                file_type TEXT,
+                id           SERIAL PRIMARY KEY,
+                object_name  TEXT NOT NULL,
+                file_type    TEXT,
                 text_content TEXT,
-                content_hash TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                uploaded_by  INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE (object_name)
             )
             """
         )
-        
-        # Try to add UNIQUE constraint if it doesn't exist
-        try:
-            cursor.execute(
-                """
-                ALTER TABLE unstructured_documents 
-                ADD CONSTRAINT unstructured_documents_content_hash_key 
-                UNIQUE (content_hash)
-                """
-            )
-            logger.info("[ppt] Added UNIQUE constraint to content_hash")
-        except psycopg2.errors.DuplicateTable:
-            pg_conn.rollback()
-            logger.debug("[ppt] UNIQUE constraint already exists on content_hash")
-        except Exception as e:
-            pg_conn.rollback()
-            logger.warning(f"[ppt] Could not add UNIQUE constraint: {e}")
-        
         pg_conn.commit()
-        
     except Exception as e:
         pg_conn.rollback()
         logger.exception(f"[ppt] Failed ensuring unstructured_documents table: {e}")
@@ -95,63 +45,40 @@ def _save_unstructured_doc(
     object_name: str,
     file_type: str,
     text: str,
-    content_hash: str,
+    uploaded_by: int = None,
 ):
-    """Save extracted text to unstructured_documents table."""
+    """
+    Upsert extracted text into unstructured_documents keyed by object_name.
+    Deduplication is by object_name — filenames are already unique at upload time.
+    """
     if not pg_conn:
         logger.warning("[ppt] No database connection, skipping unstructured doc save")
         return
-    
+
     _ensure_unstructured_table(pg_conn)
     cursor = pg_conn.cursor()
-    
     try:
-        # Check if this hash already exists
         cursor.execute(
             """
-            SELECT id FROM unstructured_documents 
-            WHERE content_hash = %s 
-            LIMIT 1
+            INSERT INTO unstructured_documents
+                (object_name, file_type, text_content, uploaded_by)
+            VALUES (%s, %s, %s, %s)
+            ON CONFLICT (object_name) DO UPDATE
+            SET text_content = EXCLUDED.text_content,
+                file_type    = EXCLUDED.file_type,
+                uploaded_by  = EXCLUDED.uploaded_by,
+                created_at   = CURRENT_TIMESTAMP
             """,
-            (content_hash,)
+            (object_name, file_type, text, uploaded_by),
         )
-        existing = cursor.fetchone()
-        
-        if existing:
-            # Update existing record
-            cursor.execute(
-                """
-                UPDATE unstructured_documents
-                SET text_content = %s,
-                    object_name = %s,
-                    file_type = %s,
-                    created_at = CURRENT_TIMESTAMP
-                WHERE content_hash = %s
-                """,
-                (text, object_name, file_type, content_hash),
-            )
-            logger.info(f"[ppt] Updated existing record in unstructured_documents for {object_name}")
-        else:
-            # Insert new record
-            cursor.execute(
-                """
-                INSERT INTO unstructured_documents 
-                    (object_name, file_type, text_content, content_hash)
-                VALUES (%s, %s, %s, %s)
-                """,
-                (object_name, file_type, text, content_hash),
-            )
-            logger.info(f"[ppt] Inserted new record into unstructured_documents for {object_name}")
-        
         pg_conn.commit()
-        
+        logger.info(f"[ppt] Saved unstructured doc for {object_name}")
     except Exception as e:
         pg_conn.rollback()
         logger.exception(f"[ppt] Failed saving to unstructured_documents: {e}")
         logger.warning("[ppt] Continuing pipeline despite unstructured_documents save failure")
     finally:
         cursor.close()
-
 
 def extract_text_from_slide(slide) -> Dict[str, Any]:
     """
@@ -381,7 +308,6 @@ def _process_extracted_table(
                 file_format='csv',
                 row_count=len(table_df),
                 text_extracted=False,
-                content_hash=None,
                 uploaded_by=uploaded_by
             )
         except Exception as catalog_error:
@@ -448,30 +374,9 @@ def process_minio_object(
         return
 
     file_size = len(data)
-    file_hash = calculate_file_hash(data)
     file_root = object_name.split("/")[-1].rsplit(".", 1)[0]
 
-    # 2. Check for duplicates
-    if is_duplicate(pg_conn, file_hash):
-        logger.info(
-            f"[ppt] Duplicate detected via content_hash, "
-            f"skipping heavy processing: {object_name}"
-        )
-        try:
-            catalog_updater(
-                object_name=object_name,
-                object_size=file_size,
-                file_format="pptx",
-                row_count=0,
-                text_extracted=False,
-                content_hash=file_hash,
-                uploaded_by=uploaded_by
-            )
-        except Exception as e:
-            logger.warning(f"[ppt] Failed catalog update for duplicate: {e}")
-        return
-
-    # 3. Extract content from PowerPoint
+    # 2. Extract content from PowerPoint
     logger.info(f"[ppt] Extracting content from PowerPoint...")
     
     slides_data = []
@@ -566,7 +471,6 @@ def process_minio_object(
                     object_name=object_name,
                     file_type="pptx",
                     text=full_text,
-                    content_hash=file_hash,
                     uploaded_by=uploaded_by
                 )
             except Exception as e:
@@ -613,7 +517,10 @@ def process_minio_object(
     except Exception as e:
         logger.warning(f"[ppt] Failed to extract images: {e}")
 
-    # 7. Update catalog for original PPTX file
+    # 7. Update catalog for processed PPTX file
+    # Change prefix from raw/ to processed/ to reflect final location
+    processed_object_name = object_name.replace("raw/", "processed/", 1) if object_name.startswith("raw/") else object_name
+
     try:
         prs = Presentation(io.BytesIO(data))
         props = prs.core_properties
@@ -630,17 +537,44 @@ def process_minio_object(
             'image_count': len(images)
         }
 
+        # First, mark the old raw/ entry as processed (don't delete - preserve audit trail)
         catalog_updater(
             object_name=object_name,
             object_size=file_size,
             file_format="pptx",
             row_count=table_count,
+            text_extracted=True,
+            metadata={**ppt_metadata, "status": "processed", "migrated_to": processed_object_name},
+            uploaded_by=uploaded_by
+        )
+        logger.info(f"[ppt] Marked raw entry as processed: {object_name}")
+
+        # Then create/update the processed/ entry with full metadata
+        catalog_updater(
+            object_name=processed_object_name,
+            object_size=file_size,
+            file_format="pptx",
+            row_count=table_count,
             text_extracted=bool(full_text.strip()),
-            content_hash=file_hash,
             metadata=ppt_metadata,
             uploaded_by=uploaded_by
         )
-        logger.info(f"[ppt] Updated catalog for {object_name}")
+        logger.info(f"[ppt] Created processed catalog entry: {processed_object_name}")
+
+        # Remove the old raw/ entry from catalog (it has been processed)
+        if object_name != processed_object_name and object_name.startswith("raw/"):
+            try:
+                cursor = pg_conn.cursor()
+                cursor.execute(
+                    "DELETE FROM minio_data_catalog WHERE bucket_name = %s AND object_name = %s",
+                    (bucket_name, object_name)
+                )
+                pg_conn.commit()
+                cursor.close()
+                logger.info(f"[ppt] Removed old catalog entry: {object_name}")
+            except Exception as delete_err:
+                logger.warning(f"[ppt] Failed to remove old raw/ entry: {delete_err}")
+
     except Exception as e:
         logger.exception(f"[ppt] Failed catalog update for {object_name}: {e}")
 

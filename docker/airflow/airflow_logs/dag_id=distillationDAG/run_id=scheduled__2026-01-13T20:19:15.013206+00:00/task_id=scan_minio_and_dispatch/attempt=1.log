@@ -1,0 +1,109 @@
+[2026-01-13T20:20:16.777+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-13T20:19:15.013206+00:00 [queued]>
+[2026-01-13T20:20:16.820+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-13T20:19:15.013206+00:00 [queued]>
+[2026-01-13T20:20:16.821+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-01-13T20:20:16.890+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-01-13 20:19:15.013206+00:00
+[2026-01-13T20:20:16.917+0000] {standard_task_runner.py:57} INFO - Started process 561 to run task
+[2026-01-13T20:20:16.932+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-01-13T20:19:15.013206+00:00', '--job-id', '988', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpzv4w3af5']
+[2026-01-13T20:20:16.946+0000] {standard_task_runner.py:85} INFO - Job 988: Subtask scan_minio_and_dispatch
+[2026-01-13T20:20:17.018+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-01-13T20:20:17.177+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-13T20:19:15.013206+00:00 [running]> on host a72c5ce51dac
+[2026-01-13T20:20:17.983+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-13T20:19:15.013206+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-13T20:19:15.013206+00:00'
+[2026-01-13T20:20:18.047+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/docx/CCPRAC01.docx
+[2026-01-13T20:20:19.165+0000] {docx_pipeline.py:285} INFO - [docx] Processing raw/docx/CCPRAC01.docx
+[2026-01-13T20:20:19.180+0000] {docx_pipeline.py:325} INFO - [docx] Extracting text from DOCX...
+[2026-01-13T20:20:19.385+0000] {docx_pipeline.py:327} INFO - [docx] Extracted 4925 characters of text
+[2026-01-13T20:20:19.385+0000] {docx_pipeline.py:329} INFO - [docx] Extracting tables from DOCX...
+[2026-01-13T20:20:19.465+0000] {docx_pipeline.py:331} INFO - [docx] Found 0 tables
+[2026-01-13T20:20:19.480+0000] {docx_pipeline.py:360} INFO - [docx] Uploaded extracted text -> processed/unstructured/text-extracted/CCPRAC01.txt
+[2026-01-13T20:20:19.484+0000] {docx_pipeline.py:168} ERROR - [docx] Failed inserting into unstructured_documents
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/docx_pipeline.py", line 153, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-01-13T20:20:19.613+0000] {docx_pipeline.py:429} INFO - [docx] Updated catalog for raw/docx/CCPRAC01.docx
+[2026-01-13T20:20:19.614+0000] {docx_pipeline.py:434} INFO - [docx] ✅ Completed processing raw/docx/CCPRAC01.docx | tables=0 | total_rows=0 | text_chars=4925
+[2026-01-13T20:20:19.614+0000] {etl_manager.py:292} INFO - Processing complete for: raw/docx/CCPRAC01.docx
+[2026-01-13T20:20:19.618+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/docx/CCPRAC01.docx -> raw-data/2026-01-13/CCPRAC01.docx
+[2026-01-13T20:20:19.641+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/docx/CCPRAC01.docx
+[2026-01-13T20:20:19.641+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/docx/Document1.docx
+[2026-01-13T20:20:19.672+0000] {docx_pipeline.py:285} INFO - [docx] Processing raw/docx/Document1.docx
+[2026-01-13T20:20:19.688+0000] {docx_pipeline.py:325} INFO - [docx] Extracting text from DOCX...
+[2026-01-13T20:20:19.748+0000] {docx_pipeline.py:327} INFO - [docx] Extracted 1673 characters of text
+[2026-01-13T20:20:19.749+0000] {docx_pipeline.py:329} INFO - [docx] Extracting tables from DOCX...
+[2026-01-13T20:20:19.791+0000] {docx_pipeline.py:331} INFO - [docx] Found 0 tables
+[2026-01-13T20:20:19.800+0000] {docx_pipeline.py:360} INFO - [docx] Uploaded extracted text -> processed/unstructured/text-extracted/Document1.txt
+[2026-01-13T20:20:19.803+0000] {docx_pipeline.py:168} ERROR - [docx] Failed inserting into unstructured_documents
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/docx_pipeline.py", line 153, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-01-13T20:20:19.883+0000] {docx_pipeline.py:429} INFO - [docx] Updated catalog for raw/docx/Document1.docx
+[2026-01-13T20:20:19.883+0000] {docx_pipeline.py:434} INFO - [docx] ✅ Completed processing raw/docx/Document1.docx | tables=0 | total_rows=0 | text_chars=1673
+[2026-01-13T20:20:19.884+0000] {etl_manager.py:292} INFO - Processing complete for: raw/docx/Document1.docx
+[2026-01-13T20:20:19.885+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/docx/Document1.docx -> raw-data/2026-01-13/Document1.docx
+[2026-01-13T20:20:19.931+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/docx/Document1.docx
+[2026-01-13T20:20:19.931+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/pdf/THE_PLOT.pdf
+[2026-01-13T20:20:19.981+0000] {pdf_pipeline.py:344} INFO - [pdf] Processing raw/pdf/THE_PLOT.pdf
+[2026-01-13T20:20:20.000+0000] {pdf_pipeline.py:391} INFO - [pdf] Extracting text from PDF...
+[2026-01-13T20:20:20.011+0000] {pdf_pipeline.py:423} ERROR - [pdf] Text extraction failed for raw/pdf/THE_PLOT.pdf: cannot access local variable 'table_count' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 408, in process_minio_object
+    'table_count': table_count
+                   ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'table_count' where it is not associated with a value
+[2026-01-13T20:20:20.013+0000] {pdf_pipeline.py:458} WARNING - [pdf] No text extracted from raw/pdf/THE_PLOT.pdf
+[2026-01-13T20:20:20.014+0000] {pdf_pipeline.py:461} INFO - [pdf] Extracting tables from PDF...
+[2026-01-13T20:20:20.986+0000] {pdf_pipeline.py:529} INFO - [pdf] Extracted 0 tables with 0 total rows
+[2026-01-13T20:20:20.986+0000] {pdf_pipeline.py:544} ERROR - [pdf] Failed catalog update for raw/pdf/THE_PLOT.pdf: cannot access local variable 'pdf_metadata' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 540, in process_minio_object
+    metadata=pdf_metadata  # NEW
+             ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pdf_metadata' where it is not associated with a value
+[2026-01-13T20:20:20.988+0000] {pdf_pipeline.py:547} INFO - [pdf] ✅ Completed processing: raw/pdf/THE_PLOT.pdf | pages=5 | tables=0 | rows=0 | text_chars=0
+[2026-01-13T20:20:20.988+0000] {etl_manager.py:292} INFO - Processing complete for: raw/pdf/THE_PLOT.pdf
+[2026-01-13T20:20:20.990+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/pdf/THE_PLOT.pdf -> raw-data/2026-01-13/THE_PLOT.pdf
+[2026-01-13T20:20:21.018+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/pdf/THE_PLOT.pdf
+[2026-01-13T20:20:21.019+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/structured/StudentsPerformance.csv
+[2026-01-13T20:20:21.048+0000] {structured_pipeline.py:497} INFO - [structured] Processing raw/structured/StudentsPerformance.csv
+[2026-01-13T20:20:21.059+0000] {structured_pipeline.py:504} INFO - [structured] Downloaded 72036 bytes
+[2026-01-13T20:20:21.059+0000] {structured_pipeline.py:508} INFO - [structured] Detected file type: csv
+[2026-01-13T20:20:21.070+0000] {structured_pipeline.py:21} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-01-13T20:20:21.070+0000] {structured_pipeline.py:236} INFO - [CSV] Attempting to decode with ascii
+[2026-01-13T20:20:21.074+0000] {structured_pipeline.py:40} INFO - Sniffer detected delimiter: ','
+[2026-01-13T20:20:21.074+0000] {structured_pipeline.py:267} INFO - [CSV] Read attempt 1
+[2026-01-13T20:20:21.109+0000] {structured_pipeline.py:271} INFO - [CSV] Successfully read 1000 rows with 8 columns
+[2026-01-13T20:20:21.110+0000] {structured_pipeline.py:531} INFO - [structured] Initial read: 1000 rows, 8 columns
+[2026-01-13T20:20:21.110+0000] {structured_pipeline.py:362} INFO - [Clean] Cleaning dataframe...
+[2026-01-13T20:20:21.142+0000] {structured_pipeline.py:387} INFO - [Clean] Cleaned dataframe: 1000 rows, 8 columns
+[2026-01-13T20:20:21.142+0000] {structured_pipeline.py:107} INFO - Table name: data_studentsperformance
+[2026-01-13T20:20:21.143+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 8 columns
+[2026-01-13T20:20:21.149+0000] {structured_pipeline.py:401} INFO - [PostgreSQL] Dropped existing table: data_studentsperformance
+[2026-01-13T20:20:21.157+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-13T20:20:21.161+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'gender' -> TEXT
+[2026-01-13T20:20:21.166+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-13T20:20:21.167+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'race_ethnicity' -> TEXT
+[2026-01-13T20:20:21.171+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-13T20:20:21.172+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'parental_level_of_education' -> TEXT
+[2026-01-13T20:20:21.176+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-13T20:20:21.177+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'lunch' -> TEXT
+[2026-01-13T20:20:21.181+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-13T20:20:21.182+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'test_preparation_course' -> TEXT
+[2026-01-13T20:20:21.186+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'math_score' -> INTEGER
+[2026-01-13T20:20:21.187+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'reading_score' -> INTEGER
+[2026-01-13T20:20:21.189+0000] {structured_pipeline.py:410} INFO - [PostgreSQL] Column 'writing_score' -> INTEGER
+[2026-01-13T20:20:21.203+0000] {structured_pipeline.py:421} INFO - [PostgreSQL] Created table: data_studentsperformance
+[2026-01-13T20:20:21.262+0000] {structured_pipeline.py:443} INFO - [PostgreSQL] Loaded 1000 rows into data_studentsperformance
+[2026-01-13T20:20:21.263+0000] {structured_pipeline.py:456} INFO - [Parquet] Writing Parquet file...
+[2026-01-13T20:20:21.456+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/pyarrow/pandas_compat.py:373 FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+[2026-01-13T20:20:21.505+0000] {structured_pipeline.py:483} INFO - [Parquet] Saved to: processed/structured/structured/StudentsPerformance.parquet
+[2026-01-13T20:20:21.511+0000] {structured_pipeline.py:565} INFO - [structured] ✅ Successfully processed raw/structured/StudentsPerformance.csv
+[2026-01-13T20:20:21.512+0000] {etl_manager.py:292} INFO - Processing complete for: raw/structured/StudentsPerformance.csv
+[2026-01-13T20:20:21.512+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/structured/StudentsPerformance.csv -> raw-data/2026-01-13/StudentsPerformance.csv
+[2026-01-13T20:20:21.535+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/structured/StudentsPerformance.csv
+[2026-01-13T20:20:21.536+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-01-13T20:20:21.577+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260113T201915, start_date=20260113T202016, end_date=20260113T202021
+[2026-01-13T20:20:21.665+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-01-13T20:20:21.731+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

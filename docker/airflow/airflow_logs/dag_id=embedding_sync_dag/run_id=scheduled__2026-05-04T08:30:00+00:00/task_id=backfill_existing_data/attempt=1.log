@@ -1,0 +1,31 @@
+[2026-05-04T08:39:38.090+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.backfill_existing_data scheduled__2026-05-04T08:30:00+00:00 [queued]>
+[2026-05-04T08:39:38.099+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.backfill_existing_data scheduled__2026-05-04T08:30:00+00:00 [queued]>
+[2026-05-04T08:39:38.100+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-05-04T08:39:38.111+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): backfill_existing_data> on 2026-05-04 08:30:00+00:00
+[2026-05-04T08:39:38.121+0000] {standard_task_runner.py:57} INFO - Started process 2842 to run task
+[2026-05-04T08:39:38.128+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'backfill_existing_data', 'scheduled__2026-05-04T08:30:00+00:00', '--job-id', '4232', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp9zla5o9q']
+[2026-05-04T08:39:38.133+0000] {standard_task_runner.py:85} INFO - Job 4232: Subtask backfill_existing_data
+[2026-05-04T08:39:38.215+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.backfill_existing_data scheduled__2026-05-04T08:30:00+00:00 [running]> on host e8610aa59365
+[2026-05-04T08:39:38.335+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='backfill_existing_data' AIRFLOW_CTX_EXECUTION_DATE='2026-05-04T08:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-04T08:30:00+00:00'
+[2026-05-04T08:39:39.214+0000] {embedding_pipeline.py:430} INFO - [embed] Backfill needed — source~1085, fully embedded=0, gap~1085
+[2026-05-04T08:39:39.216+0000] {embedding_pipeline.py:448} INFO - [embed] Scanning 15 tables for unembedded rows...
+[2026-05-04T08:39:39.224+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 10 rows from data_datatest1
+[2026-05-04T08:39:39.229+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 10 rows from data_datatest2
+[2026-05-04T08:39:39.232+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 10 rows from data_datatest3
+[2026-05-04T08:39:39.234+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 10 rows from data_datatest4
+[2026-05-04T08:39:39.237+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 2 rows from data_iotpblfilecover_page1_table1
+[2026-05-04T08:39:39.240+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 2 rows from data_mispblintro_page1_table1
+[2026-05-04T08:39:39.243+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 4 rows from data_sample_1_page1_table1
+[2026-05-04T08:39:39.246+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 3 rows from data_sample_2_page1_table1
+[2026-05-04T08:39:39.250+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 7 rows from data_sample_3_page1_table1
+[2026-05-04T08:39:39.254+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 6 rows from data_sample_4_page1_table1
+[2026-05-04T08:39:39.257+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 6 rows from data_sample_5_page1_table1
+[2026-05-04T08:39:39.270+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 1000 rows from data_studentsperformance
+[2026-05-04T08:39:39.274+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 41 rows from minio_data_catalog
+[2026-05-04T08:39:39.290+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 103 rows from unstructured_documents
+[2026-05-04T08:39:39.293+0000] {embedding_pipeline.py:492} INFO - [embed] Queued 19 rows from unstructured_images
+[2026-05-04T08:39:39.296+0000] {embedding_pipeline.py:501} INFO - [embed] Backfill complete — 1233 rows queued
+[2026-05-04T08:39:39.316+0000] {python.py:194} INFO - Done. Returned value was: 1233
+[2026-05-04T08:39:39.357+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=backfill_existing_data, execution_date=20260504T083000, start_date=20260504T083938, end_date=20260504T083939
+[2026-05-04T08:39:39.423+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-05-04T08:39:39.456+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

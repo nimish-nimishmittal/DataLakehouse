@@ -1,0 +1,26 @@
+[2026-04-23T02:02:22.249+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-04-21T15:20:00+00:00 [queued]>
+[2026-04-23T02:02:22.278+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-04-21T15:20:00+00:00 [queued]>
+[2026-04-23T02:02:22.279+0000] {taskinstance.py:1359} INFO - Starting attempt 4 of 3
+[2026-04-23T02:02:22.318+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-04-21 15:20:00+00:00
+[2026-04-23T02:02:22.342+0000] {standard_task_runner.py:57} INFO - Started process 189 to run task
+[2026-04-23T02:02:22.359+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-04-21T15:20:00+00:00', '--job-id', '2816', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp4ui6uvls']
+[2026-04-23T02:02:22.368+0000] {standard_task_runner.py:85} INFO - Job 2816: Subtask process_queue
+[2026-04-23T02:02:22.562+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-04-21T15:20:00+00:00 [running]> on host bc8b7376be4c
+[2026-04-23T02:02:22.913+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-04-21T15:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-21T15:20:00+00:00'
+[2026-04-23T02:02:25.581+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_machinesdata
+[2026-04-23T02:02:25.585+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_newsampleehehe_table_1
+[2026-04-23T02:02:25.587+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_newsampleehehe_table_2
+[2026-04-23T02:02:25.589+0000] {embedding_pipeline.py:531} INFO - [embed] Attached triggers to 3 new table(s)
+[2026-04-23T02:02:25.619+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-04-23T02:15:52.486+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-04-23T02:15:55.718+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-04-23T02:15:55.770+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-04-23T02:19:42.716+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-04-23T02:19:44.493+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-04-23T02:19:44.518+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-04-23T02:22:03.905+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-04-23T02:22:05.464+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-04-23T02:22:05.488+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 4: 200 events
+[2026-04-23T02:22:08.400+0000] {embedding_pipeline.py:76} WARNING - [embed] Ollama call failed: Remote end closed connection without response
+[2026-04-23T02:22:08.408+0000] {embedding_pipeline.py:599} WARNING - [embed] Ollama unavailable — embedding_768 will be NULL for this batch
+[2026-04-23T02:22:09.934+0000] {local_task_job_runner.py:115} ERROR - Received SIGTERM. Terminating subprocesses

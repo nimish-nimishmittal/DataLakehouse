@@ -1,0 +1,600 @@
+[2026-01-08T10:04:46.242+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-08T10:03:56.585645+00:00 [queued]>
+[2026-01-08T10:04:46.262+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-08T10:03:56.585645+00:00 [queued]>
+[2026-01-08T10:04:46.262+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-01-08T10:04:46.297+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-01-08 10:03:56.585645+00:00
+[2026-01-08T10:04:46.315+0000] {standard_task_runner.py:57} INFO - Started process 4496 to run task
+[2026-01-08T10:04:46.326+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-01-08T10:03:56.585645+00:00', '--job-id', '615', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpm03vl1eb']
+[2026-01-08T10:04:46.334+0000] {standard_task_runner.py:85} INFO - Job 615: Subtask scan_minio_and_dispatch
+[2026-01-08T10:04:46.387+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-01-08T10:04:46.462+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-08T10:03:56.585645+00:00 [running]> on host 566595df5d5e
+[2026-01-08T10:04:47.049+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-08T10:03:56.585645+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-08T10:03:56.585645+00:00'
+[2026-01-08T10:04:47.080+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/Invoice_2449088033.pdf
+[2026-01-08T10:04:47.535+0000] {pdf_pipeline.py:344} INFO - [pdf] Processing raw/Invoice_2449088033.pdf
+[2026-01-08T10:04:47.544+0000] {pdf_pipeline.py:391} INFO - [pdf] Extracting text from PDF...
+[2026-01-08T10:04:47.725+0000] {pdf_pipeline.py:408} INFO - [pdf] Extracted 3251 characters of text from 2 pages
+[2026-01-08T10:04:47.731+0000] {pdf_pipeline.py:427} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/Invoice_2449088033.txt
+[2026-01-08T10:04:47.736+0000] {pdf_pipeline.py:87} WARNING - [pdf] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-01-08T10:04:47.737+0000] {pdf_pipeline.py:153} INFO - [pdf] Inserted new record into unstructured_documents for raw/Invoice_2449088033.pdf
+[2026-01-08T10:04:47.739+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracting tables from PDF...
+[2026-01-08T10:04:48.177+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Invoice_2449088033_page1_table1.csv
+[2026-01-08T10:04:48.177+0000] {structured_pipeline.py:107} INFO - Table name: data_invoice_2449088033_page1_table1
+[2026-01-08T10:04:48.183+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-01-08T10:04:48.192+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:48.206+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_invoice_2449088033_page1_table1
+[2026-01-08T10:04:48.210+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 6 rows into data_invoice_2449088033_page1_table1
+[2026-01-08T10:04:48.213+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/Invoice_2449088033_page1_table1.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:48.213+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 1: 6 rows, 2 columns
+[2026-01-08T10:04:48.228+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Invoice_2449088033_page1_table2.csv
+[2026-01-08T10:04:48.229+0000] {structured_pipeline.py:107} INFO - Table name: data_invoice_2449088033_page1_table2
+[2026-01-08T10:04:48.230+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:48.233+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_invoice_2449088033_page1_table2: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:48.235+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/Invoice_2449088033_page1_table2.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:48.236+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 2: 11 rows, 1 columns
+[2026-01-08T10:04:48.532+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Invoice_2449088033_page2_table1.csv
+[2026-01-08T10:04:48.532+0000] {structured_pipeline.py:107} INFO - Table name: data_invoice_2449088033_page2_table1
+[2026-01-08T10:04:48.533+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:48.537+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:48.539+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_invoice_2449088033_page2_table1
+[2026-01-08T10:04:48.542+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 26 rows into data_invoice_2449088033_page2_table1
+[2026-01-08T10:04:48.543+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/Invoice_2449088033_page2_table1.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:48.544+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 3: 26 rows, 1 columns
+[2026-01-08T10:04:48.544+0000] {pdf_pipeline.py:517} INFO - [pdf] Extracted 3 tables with 43 total rows
+[2026-01-08T10:04:48.545+0000] {pdf_pipeline.py:531} ERROR - [pdf] Failed catalog update for raw/Invoice_2449088033.pdf: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 521, in process_minio_object
+    catalog_updater(
+  File "/opt/python-etl/etl_manager.py", line 49, in update_catalog
+    cursor.execute(
+psycopg2.errors.SyntaxError: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:48.546+0000] {pdf_pipeline.py:534} INFO - [pdf] ✅ Completed processing: raw/Invoice_2449088033.pdf | pages=2 | tables=3 | rows=43 | text_chars=3251
+[2026-01-08T10:04:48.546+0000] {etl_manager.py:283} INFO - Processing complete for: raw/Invoice_2449088033.pdf
+[2026-01-08T10:04:48.547+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/Invoice_2449088033.pdf -> raw-data/2026-01-08/Invoice_2449088033.pdf
+[2026-01-08T10:04:48.563+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/Invoice_2449088033.pdf
+[2026-01-08T10:04:48.564+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/nimish_Research_AI.pdf
+[2026-01-08T10:04:48.581+0000] {pdf_pipeline.py:344} INFO - [pdf] Processing raw/nimish_Research_AI.pdf
+[2026-01-08T10:04:48.595+0000] {pdf_pipeline.py:391} INFO - [pdf] Extracting text from PDF...
+[2026-01-08T10:04:49.204+0000] {pdf_pipeline.py:408} INFO - [pdf] Extracted 22080 characters of text from 6 pages
+[2026-01-08T10:04:49.210+0000] {pdf_pipeline.py:427} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/nimish_Research_AI.txt
+[2026-01-08T10:04:49.213+0000] {pdf_pipeline.py:87} WARNING - [pdf] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-01-08T10:04:49.216+0000] {pdf_pipeline.py:153} INFO - [pdf] Inserted new record into unstructured_documents for raw/nimish_Research_AI.pdf
+[2026-01-08T10:04:49.218+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracting tables from PDF...
+[2026-01-08T10:04:50.056+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table1.csv
+[2026-01-08T10:04:50.057+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table1
+[2026-01-08T10:04:50.058+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.065+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.070+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page3_table1
+[2026-01-08T10:04:50.075+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 20 rows into data_nimish_research_ai_page3_table1
+[2026-01-08T10:04:50.076+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page3_table1.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.077+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 1: 20 rows, 2 columns
+[2026-01-08T10:04:50.089+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table2.csv
+[2026-01-08T10:04:50.090+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table2
+[2026-01-08T10:04:50.092+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.094+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page3_table2: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.094+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page3_table2.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.095+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 2: 2 rows, 2 columns
+[2026-01-08T10:04:50.107+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table3.csv
+[2026-01-08T10:04:50.107+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table3
+[2026-01-08T10:04:50.109+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.113+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.115+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page3_table3
+[2026-01-08T10:04:50.119+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page3_table3
+[2026-01-08T10:04:50.120+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page3_table3.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.121+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 3: 2 rows, 2 columns
+[2026-01-08T10:04:50.132+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table4.csv
+[2026-01-08T10:04:50.133+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table4
+[2026-01-08T10:04:50.134+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.135+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page3_table4: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.136+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page3_table4.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.138+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 4: 2 rows, 2 columns
+[2026-01-08T10:04:50.149+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table5.csv
+[2026-01-08T10:04:50.149+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table5
+[2026-01-08T10:04:50.152+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.155+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.159+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page3_table5
+[2026-01-08T10:04:50.161+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page3_table5
+[2026-01-08T10:04:50.163+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page3_table5.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.163+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 5: 2 rows, 2 columns
+[2026-01-08T10:04:50.174+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table6.csv
+[2026-01-08T10:04:50.174+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table6
+[2026-01-08T10:04:50.175+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.176+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page3_table6: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.177+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page3_table6.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.178+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 6: 2 rows, 2 columns
+[2026-01-08T10:04:50.191+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table7.csv
+[2026-01-08T10:04:50.191+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table7
+[2026-01-08T10:04:50.192+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.198+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.201+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page3_table7
+[2026-01-08T10:04:50.204+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 5 rows into data_nimish_research_ai_page3_table7
+[2026-01-08T10:04:50.205+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page3_table7.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.206+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 7: 5 rows, 2 columns
+[2026-01-08T10:04:50.219+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table8.csv
+[2026-01-08T10:04:50.220+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table8
+[2026-01-08T10:04:50.221+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.223+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page3_table8: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.223+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page3_table8.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.224+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 8: 5 rows, 1 columns
+[2026-01-08T10:04:50.235+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table9.csv
+[2026-01-08T10:04:50.236+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table9
+[2026-01-08T10:04:50.239+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.243+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.245+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page3_table9
+[2026-01-08T10:04:50.251+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 8 rows into data_nimish_research_ai_page3_table9
+[2026-01-08T10:04:50.253+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page3_table9.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.253+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 9: 8 rows, 2 columns
+[2026-01-08T10:04:50.266+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table10.csv
+[2026-01-08T10:04:50.266+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table10
+[2026-01-08T10:04:50.269+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.271+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page3_table10: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.272+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page3_table10.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.272+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 10: 2 rows, 2 columns
+[2026-01-08T10:04:50.287+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table11.csv
+[2026-01-08T10:04:50.287+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table11
+[2026-01-08T10:04:50.288+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.292+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.295+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page3_table11
+[2026-01-08T10:04:50.298+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 8 rows into data_nimish_research_ai_page3_table11
+[2026-01-08T10:04:50.299+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page3_table11.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.300+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 11: 8 rows, 2 columns
+[2026-01-08T10:04:50.313+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page3_table12.csv
+[2026-01-08T10:04:50.313+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page3_table12
+[2026-01-08T10:04:50.314+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.317+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page3_table12: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.318+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page3_table12.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.318+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 12: 5 rows, 1 columns
+[2026-01-08T10:04:50.808+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table1.csv
+[2026-01-08T10:04:50.808+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table1
+[2026-01-08T10:04:50.809+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.813+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.817+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table1
+[2026-01-08T10:04:50.821+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 3 rows into data_nimish_research_ai_page4_table1
+[2026-01-08T10:04:50.822+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table1.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.823+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 13: 3 rows, 1 columns
+[2026-01-08T10:04:50.833+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table2.csv
+[2026-01-08T10:04:50.833+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table2
+[2026-01-08T10:04:50.834+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.835+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table2: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.835+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table2.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.836+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 14: 1 rows, 1 columns
+[2026-01-08T10:04:50.843+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table3.csv
+[2026-01-08T10:04:50.844+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table3
+[2026-01-08T10:04:50.845+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.848+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table3
+[2026-01-08T10:04:50.850+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 1 rows into data_nimish_research_ai_page4_table3
+[2026-01-08T10:04:50.851+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table3.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.851+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 15: 1 rows, 1 columns
+[2026-01-08T10:04:50.862+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table4.csv
+[2026-01-08T10:04:50.862+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table4
+[2026-01-08T10:04:50.863+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.865+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table4: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.865+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table4.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.866+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 16: 3 rows, 2 columns
+[2026-01-08T10:04:50.875+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table5.csv
+[2026-01-08T10:04:50.875+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table5
+[2026-01-08T10:04:50.876+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.879+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.881+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table5
+[2026-01-08T10:04:50.884+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 4 rows into data_nimish_research_ai_page4_table5
+[2026-01-08T10:04:50.885+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table5.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.885+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 17: 4 rows, 2 columns
+[2026-01-08T10:04:50.902+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table6.csv
+[2026-01-08T10:04:50.903+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table6
+[2026-01-08T10:04:50.904+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.906+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table6: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.907+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table6.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.908+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 18: 6 rows, 1 columns
+[2026-01-08T10:04:50.917+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table7.csv
+[2026-01-08T10:04:50.918+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table7
+[2026-01-08T10:04:50.919+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.923+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.927+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table7
+[2026-01-08T10:04:50.930+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page4_table7
+[2026-01-08T10:04:50.930+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table7.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.931+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 19: 2 rows, 2 columns
+[2026-01-08T10:04:50.940+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table8.csv
+[2026-01-08T10:04:50.940+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table8
+[2026-01-08T10:04:50.941+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.943+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table8: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.943+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table8.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.944+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 20: 1 rows, 1 columns
+[2026-01-08T10:04:50.953+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table9.csv
+[2026-01-08T10:04:50.954+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table9
+[2026-01-08T10:04:50.955+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.958+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:50.960+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table9
+[2026-01-08T10:04:50.962+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page4_table9
+[2026-01-08T10:04:50.963+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table9.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:50.963+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 21: 2 rows, 2 columns
+[2026-01-08T10:04:50.975+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table10.csv
+[2026-01-08T10:04:50.975+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table10
+[2026-01-08T10:04:50.976+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:50.979+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table10: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.981+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table10.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:50.982+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 22: 2 rows, 1 columns
+[2026-01-08T10:04:50.993+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table11.csv
+[2026-01-08T10:04:50.993+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table11
+[2026-01-08T10:04:50.994+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-01-08T10:04:51.002+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table11
+[2026-01-08T10:04:51.005+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page4_table11
+[2026-01-08T10:04:51.006+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table11.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.007+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 23: 2 rows, 2 columns
+[2026-01-08T10:04:51.020+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table12.csv
+[2026-01-08T10:04:51.021+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table12
+[2026-01-08T10:04:51.023+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.025+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table12: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.026+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table12.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.026+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 24: 2 rows, 1 columns
+[2026-01-08T10:04:51.038+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table13.csv
+[2026-01-08T10:04:51.038+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table13
+[2026-01-08T10:04:51.039+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.042+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:51.047+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table13
+[2026-01-08T10:04:51.051+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page4_table13
+[2026-01-08T10:04:51.052+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table13.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.052+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 25: 2 rows, 2 columns
+[2026-01-08T10:04:51.064+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table14.csv
+[2026-01-08T10:04:51.064+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table14
+[2026-01-08T10:04:51.065+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.066+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table14: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.067+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table14.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.067+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 26: 4 rows, 1 columns
+[2026-01-08T10:04:51.077+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table15.csv
+[2026-01-08T10:04:51.077+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table15
+[2026-01-08T10:04:51.078+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.082+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:51.085+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table15
+[2026-01-08T10:04:51.087+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 7 rows into data_nimish_research_ai_page4_table15
+[2026-01-08T10:04:51.089+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table15.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.089+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 27: 7 rows, 1 columns
+[2026-01-08T10:04:51.099+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table16.csv
+[2026-01-08T10:04:51.100+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table16
+[2026-01-08T10:04:51.101+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.102+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page4_table16: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.103+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page4_table16.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.104+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 28: 5 rows, 2 columns
+[2026-01-08T10:04:51.114+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page4_table17.csv
+[2026-01-08T10:04:51.114+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page4_table17
+[2026-01-08T10:04:51.115+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.118+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:51.121+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page4_table17
+[2026-01-08T10:04:51.123+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 4 rows into data_nimish_research_ai_page4_table17
+[2026-01-08T10:04:51.124+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page4_table17.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.125+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 29: 4 rows, 2 columns
+[2026-01-08T10:04:51.447+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page5_table1.csv
+[2026-01-08T10:04:51.448+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page5_table1
+[2026-01-08T10:04:51.449+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-01-08T10:04:51.451+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page5_table1: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.452+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page5_table1.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.452+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 30: 5 rows, 4 columns
+[2026-01-08T10:04:51.839+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table1.csv
+[2026-01-08T10:04:51.839+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table1
+[2026-01-08T10:04:51.840+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.844+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page6_table1
+[2026-01-08T10:04:51.846+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 1 rows into data_nimish_research_ai_page6_table1
+[2026-01-08T10:04:51.846+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page6_table1.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.847+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 31: 1 rows, 1 columns
+[2026-01-08T10:04:51.859+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table2.csv
+[2026-01-08T10:04:51.860+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table2
+[2026-01-08T10:04:51.860+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.861+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page6_table2: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.862+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page6_table2.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.862+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 32: 7 rows, 1 columns
+[2026-01-08T10:04:51.871+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table3.csv
+[2026-01-08T10:04:51.871+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table3
+[2026-01-08T10:04:51.872+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.875+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:51.878+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page6_table3
+[2026-01-08T10:04:51.880+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 3 rows into data_nimish_research_ai_page6_table3
+[2026-01-08T10:04:51.881+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page6_table3.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.881+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 33: 3 rows, 2 columns
+[2026-01-08T10:04:51.897+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table4.csv
+[2026-01-08T10:04:51.898+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table4
+[2026-01-08T10:04:51.899+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.902+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page6_table4: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.905+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page6_table4.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.906+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 34: 1 rows, 1 columns
+[2026-01-08T10:04:51.921+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table5.csv
+[2026-01-08T10:04:51.921+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table5
+[2026-01-08T10:04:51.923+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.929+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:51.934+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page6_table5
+[2026-01-08T10:04:51.941+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_nimish_research_ai_page6_table5
+[2026-01-08T10:04:51.942+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page6_table5.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:51.943+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 35: 2 rows, 1 columns
+[2026-01-08T10:04:51.959+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table6.csv
+[2026-01-08T10:04:51.961+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table6
+[2026-01-08T10:04:51.964+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.967+0000] {pdf_pipeline.py:294} ERROR - [pdf] Database operation failed for data_nimish_research_ai_page6_table6: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.969+0000] {pdf_pipeline.py:313} ERROR - [pdf] Failed processing table processed/structured/pdf-tables/nimish_Research_AI_page6_table6.csv: current transaction is aborted, commands ignored until end of transaction block
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 263, in _process_extracted_table
+    cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+[2026-01-08T10:04:51.970+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 36: 2 rows, 1 columns
+[2026-01-08T10:04:51.988+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/nimish_Research_AI_page6_table7.csv
+[2026-01-08T10:04:51.989+0000] {structured_pipeline.py:107} INFO - Table name: data_nimish_research_ai_page6_table7
+[2026-01-08T10:04:51.991+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T10:04:51.997+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T10:04:52.005+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_nimish_research_ai_page6_table7
+[2026-01-08T10:04:52.011+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 3 rows into data_nimish_research_ai_page6_table7
+[2026-01-08T10:04:52.013+0000] {pdf_pipeline.py:310} WARNING - [pdf] Failed to update catalog for processed/structured/pdf-tables/nimish_Research_AI_page6_table7.csv: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:52.013+0000] {pdf_pipeline.py:500} INFO - [pdf] Processed table 37: 3 rows, 2 columns
+[2026-01-08T10:04:52.014+0000] {pdf_pipeline.py:517} INFO - [pdf] Extracted 37 tables with 138 total rows
+[2026-01-08T10:04:52.015+0000] {pdf_pipeline.py:531} ERROR - [pdf] Failed catalog update for raw/nimish_Research_AI.pdf: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 521, in process_minio_object
+    catalog_updater(
+  File "/opt/python-etl/etl_manager.py", line 49, in update_catalog
+    cursor.execute(
+psycopg2.errors.SyntaxError: syntax error at or near "#"
+LINE 13:                     uploaded_by INTEGER,  # Added
+                                                   ^
+
+[2026-01-08T10:04:52.017+0000] {pdf_pipeline.py:534} INFO - [pdf] ✅ Completed processing: raw/nimish_Research_AI.pdf | pages=6 | tables=37 | rows=138 | text_chars=22080
+[2026-01-08T10:04:52.018+0000] {etl_manager.py:283} INFO - Processing complete for: raw/nimish_Research_AI.pdf
+[2026-01-08T10:04:52.019+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/nimish_Research_AI.pdf -> raw-data/2026-01-08/nimish_Research_AI.pdf
+[2026-01-08T10:04:52.056+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/nimish_Research_AI.pdf
+[2026-01-08T10:04:52.057+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-01-08T10:04:52.115+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260108T100356, start_date=20260108T100446, end_date=20260108T100452
+[2026-01-08T10:04:52.212+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-01-08T10:04:52.252+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

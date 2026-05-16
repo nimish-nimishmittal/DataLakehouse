@@ -1,0 +1,147 @@
+[2026-03-31T14:06:59.805+0000] {processor.py:157} INFO - Started process (PID=176) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:06:59.807+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:06:59.809+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:06:59.808+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:07:00.382+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:07:00.478+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:07:00.477+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:07:00.542+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:07:00.541+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:06:30.541031+00:00, run_after=2026-03-31T14:07:00.541031+00:00
+[2026-03-31T14:07:00.587+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.807 seconds
+[2026-03-31T14:07:30.692+0000] {processor.py:157} INFO - Started process (PID=203) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:07:30.694+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:07:30.696+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:07:30.695+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:07:31.274+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:07:31.377+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:07:31.376+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:07:31.436+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:07:31.436+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:07:01.435561+00:00, run_after=2026-03-31T14:07:31.435561+00:00
+[2026-03-31T14:07:31.481+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.801 seconds
+[2026-03-31T14:08:01.801+0000] {processor.py:157} INFO - Started process (PID=223) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:08:01.804+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:08:01.806+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:08:01.805+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:08:02.457+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:08:02.548+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:08:02.548+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:08:02.614+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:08:02.614+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:07:32.613727+00:00, run_after=2026-03-31T14:08:02.613727+00:00
+[2026-03-31T14:08:02.661+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.870 seconds
+[2026-03-31T14:08:33.045+0000] {processor.py:157} INFO - Started process (PID=247) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:08:33.048+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:08:33.051+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:08:33.049+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:08:33.676+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:08:33.812+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:08:33.811+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:08:34.237+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:08:34.237+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:08:04.237003+00:00, run_after=2026-03-31T14:08:34.237003+00:00
+[2026-03-31T14:08:34.293+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.290 seconds
+[2026-03-31T14:09:04.671+0000] {processor.py:157} INFO - Started process (PID=265) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:09:04.685+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:09:04.688+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:09:04.687+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:09:05.547+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:09:05.626+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:09:05.625+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:09:05.680+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:09:05.679+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:08:35.679252+00:00, run_after=2026-03-31T14:09:05.679252+00:00
+[2026-03-31T14:09:05.743+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.081 seconds
+[2026-03-31T14:09:35.932+0000] {processor.py:157} INFO - Started process (PID=283) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:09:35.935+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:09:35.937+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:09:35.936+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:09:36.839+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:09:36.917+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:09:36.917+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:09:36.969+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:09:36.968+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:09:06.968454+00:00, run_after=2026-03-31T14:09:36.968454+00:00
+[2026-03-31T14:09:37.016+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.093 seconds
+[2026-03-31T14:10:07.213+0000] {processor.py:157} INFO - Started process (PID=301) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:10:07.216+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:10:07.219+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:10:07.218+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:10:08.098+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:10:08.175+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:10:08.174+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:10:08.229+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:10:08.228+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:09:38.228179+00:00, run_after=2026-03-31T14:10:08.228179+00:00
+[2026-03-31T14:10:08.274+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.071 seconds
+[2026-03-31T14:10:38.472+0000] {processor.py:157} INFO - Started process (PID=320) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:10:38.474+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:10:38.476+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:10:38.475+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:10:39.370+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:10:39.447+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:10:39.446+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:10:39.500+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:10:39.499+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:10:09.499394+00:00, run_after=2026-03-31T14:10:39.499394+00:00
+[2026-03-31T14:10:39.540+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.078 seconds
+[2026-03-31T14:11:09.747+0000] {processor.py:157} INFO - Started process (PID=338) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:11:09.750+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:11:09.753+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:11:09.752+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:11:10.710+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:11:10.796+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:11:10.795+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:11:10.855+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:11:10.855+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:10:40.854965+00:00, run_after=2026-03-31T14:11:10.854965+00:00
+[2026-03-31T14:11:10.902+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.168 seconds
+[2026-03-31T14:11:41.139+0000] {processor.py:157} INFO - Started process (PID=356) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:11:41.141+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:11:41.143+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:11:41.142+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:11:42.031+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:11:42.114+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:11:42.113+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:11:42.166+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:11:42.165+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:11:12.165185+00:00, run_after=2026-03-31T14:11:42.165185+00:00
+[2026-03-31T14:11:42.205+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.077 seconds
+[2026-03-31T14:12:12.918+0000] {processor.py:157} INFO - Started process (PID=374) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:12:12.920+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:12:12.923+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:12:12.922+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:12:13.567+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:12:13.699+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:12:13.699+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:12:13.767+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:12:13.767+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:11:43.766486+00:00, run_after=2026-03-31T14:12:13.766486+00:00
+[2026-03-31T14:12:13.833+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.929 seconds
+[2026-03-31T14:12:44.330+0000] {processor.py:157} INFO - Started process (PID=392) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:12:44.332+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:12:44.335+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:12:44.334+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:12:44.923+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:12:45.014+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:12:45.013+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:12:45.077+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:12:45.077+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:12:15.076701+00:00, run_after=2026-03-31T14:12:45.076701+00:00
+[2026-03-31T14:12:45.122+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.804 seconds
+[2026-03-31T14:13:15.840+0000] {processor.py:157} INFO - Started process (PID=414) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:13:15.842+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:13:15.845+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:13:15.844+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:13:16.576+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:13:16.689+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:13:16.689+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:13:16.759+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:13:16.759+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:13:15.191742+00:00, run_after=2026-03-31T14:13:45.191742+00:00
+[2026-03-31T14:13:16.828+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.005 seconds
+[2026-03-31T14:13:47.199+0000] {processor.py:157} INFO - Started process (PID=452) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:13:47.202+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:13:47.205+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:13:47.204+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:13:47.854+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:13:47.966+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:13:47.965+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:13:48.045+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:13:48.044+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:13:20.532047+00:00, run_after=2026-03-31T14:13:50.532047+00:00
+[2026-03-31T14:13:48.102+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.916 seconds
+[2026-03-31T14:14:18.627+0000] {processor.py:157} INFO - Started process (PID=470) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:14:18.631+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:14:18.634+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:14:18.633+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:14:19.340+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:14:19.447+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:14:19.447+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:14:19.523+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:14:19.523+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:13:49.522566+00:00, run_after=2026-03-31T14:14:19.522566+00:00
+[2026-03-31T14:14:19.576+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.965 seconds
+[2026-03-31T14:14:49.889+0000] {processor.py:157} INFO - Started process (PID=488) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:14:49.892+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:14:49.895+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:14:49.894+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:14:50.444+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:14:50.530+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:14:50.530+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:14:50.588+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:14:50.588+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:14:20.587709+00:00, run_after=2026-03-31T14:14:50.587709+00:00
+[2026-03-31T14:14:50.630+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.753 seconds
+[2026-03-31T14:15:21.356+0000] {processor.py:157} INFO - Started process (PID=506) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:15:21.360+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:15:21.363+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:15:21.361+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:15:21.957+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:15:22.053+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:15:22.053+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:15:22.114+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:15:22.114+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:14:52.113572+00:00, run_after=2026-03-31T14:15:22.113572+00:00
+[2026-03-31T14:15:22.162+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.818 seconds
+[2026-03-31T14:15:52.682+0000] {processor.py:157} INFO - Started process (PID=524) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:15:52.685+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:15:52.688+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:15:52.687+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:15:53.277+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:15:53.373+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:15:53.373+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:15:53.440+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:15:53.440+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:15:23.439734+00:00, run_after=2026-03-31T14:15:53.439734+00:00
+[2026-03-31T14:15:53.488+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.817 seconds
+[2026-03-31T14:16:23.996+0000] {processor.py:157} INFO - Started process (PID=542) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:16:23.999+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:16:24.002+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:16:24.000+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:16:24.601+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:16:24.688+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:16:24.687+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:16:24.746+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:16:24.745+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:15:54.745143+00:00, run_after=2026-03-31T14:16:24.745143+00:00
+[2026-03-31T14:16:24.787+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.803 seconds
+[2026-03-31T14:16:55.821+0000] {processor.py:157} INFO - Started process (PID=560) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:16:55.824+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:16:55.826+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:16:55.825+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:16:56.398+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:16:56.495+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:16:56.494+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:16:56.560+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:16:56.559+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:16:26.559136+00:00, run_after=2026-03-31T14:16:56.559136+00:00
+[2026-03-31T14:16:56.606+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.796 seconds
+[2026-03-31T14:17:27.065+0000] {processor.py:157} INFO - Started process (PID=578) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:17:27.068+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-03-31T14:17:27.070+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:17:27.069+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:17:27.648+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-03-31T14:17:27.738+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:17:27.737+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-31T14:17:27.797+0000] {logging_mixin.py:151} INFO - [2026-03-31T14:17:27.797+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-03-31T14:16:57.796757+00:00, run_after=2026-03-31T14:17:27.796757+00:00
+[2026-03-31T14:17:27.838+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 0.785 seconds

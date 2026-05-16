@@ -1,0 +1,71 @@
+[2026-03-12T19:25:27.329+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-09T06:40:00+00:00 [queued]>
+[2026-03-12T19:25:27.351+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-09T06:40:00+00:00 [queued]>
+[2026-03-12T19:25:27.352+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 3
+[2026-03-12T19:25:27.387+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-03-09 06:40:00+00:00
+[2026-03-12T19:25:27.401+0000] {standard_task_runner.py:57} INFO - Started process 188 to run task
+[2026-03-12T19:25:27.411+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-03-09T06:40:00+00:00', '--job-id', '2392', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp6ulge1oh']
+[2026-03-12T19:25:27.419+0000] {standard_task_runner.py:85} INFO - Job 2392: Subtask process_queue
+[2026-03-12T19:25:27.598+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-09T06:40:00+00:00 [running]> on host fe08636ff5df
+[2026-03-12T19:25:27.894+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-03-09T06:40:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-09T06:40:00+00:00'
+[2026-03-12T19:25:30.361+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 1: 200 events
+[2026-03-12T19:27:50.793+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:27:52.207+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:27:52.238+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 2: 200 events
+[2026-03-12T19:30:08.563+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:30:09.809+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:30:09.835+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 3: 200 events
+[2026-03-12T19:34:30.949+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:34:32.014+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:34:32.036+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 4: 200 events
+[2026-03-12T19:38:26.089+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:38:27.197+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:38:27.218+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 5: 200 events
+[2026-03-12T19:43:09.473+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:43:10.655+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:43:10.676+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 6: 200 events
+[2026-03-12T19:47:24.008+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:47:25.031+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:47:25.051+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 7: 200 events
+[2026-03-12T19:49:47.410+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:49:48.295+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:49:48.315+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 8: 200 events
+[2026-03-12T19:52:31.663+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:52:32.697+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:52:32.731+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 9: 200 events
+[2026-03-12T19:55:48.521+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T19:55:49.393+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T19:55:49.414+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 10: 200 events
+[2026-03-12T20:03:11.550+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T20:03:12.438+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T20:03:12.459+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 11: 200 events
+[2026-03-12T20:06:07.771+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T20:06:08.898+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T20:06:08.939+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 12: 200 events
+[2026-03-12T20:14:35.660+0000] {embedding_pipeline.py:387} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-12T20:14:36.629+0000] {embedding_pipeline.py:448} INFO - [embed] Upserted 200 rows
+[2026-03-12T20:14:36.676+0000] {embedding_pipeline.py:345} INFO - [embed] Batch 13: 134 events
+[2026-03-13T16:05:49.165+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to up_for_retry. Terminating instance.
+[2026-03-13T16:05:49.195+0000] {process_utils.py:131} INFO - Sending 15 to group 188. PIDs of all processes in the group: [188]
+[2026-03-13T16:05:49.196+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 188
+[2026-03-13T16:05:49.199+0000] {taskinstance.py:1630} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-03-13T16:05:49.200+0000] {embedding_pipeline.py:76} WARNING - [embed] Ollama call failed: Task received SIGTERM signal
+[2026-03-13T16:05:49.213+0000] {embedding_pipeline.py:389} WARNING - [embed] Ollama unavailable — embedding_768 will be NULL for this batch
+[2026-03-13T16:06:16.906+0000] {embedding_pipeline.py:96} INFO - [embed] Loading all-MiniLM-L6-v2...
+[2026-03-13T16:06:16.909+0000] {SentenceTransformer.py:219} INFO - Use pytorch device_name: cpu
+[2026-03-13T16:06:16.909+0000] {SentenceTransformer.py:227} INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+[2026-03-13T16:06:24.394+0000] {logging_mixin.py:151} WARNING - 'EOF occurred in violation of protocol (_ssl.c:1006)' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/./modules.json
+[2026-03-13T16:06:24.394+0000] {_http.py:473} WARNING - 'EOF occurred in violation of protocol (_ssl.c:1006)' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/./modules.json
+[2026-03-13T16:06:24.395+0000] {logging_mixin.py:151} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-13T16:06:24.395+0000] {_http.py:486} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-13T16:06:25.397+0000] {SentenceTransformer.py:2098} WARNING - No sentence-transformers model found with name sentence-transformers/all-MiniLM-L6-v2. Creating a new one with mean pooling.
+[2026-03-13T16:06:27.851+0000] {logging_mixin.py:151} WARNING - 'EOF occurred in violation of protocol (_ssl.c:1006)' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json
+[2026-03-13T16:06:27.851+0000] {_http.py:473} WARNING - 'EOF occurred in violation of protocol (_ssl.c:1006)' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json
+[2026-03-13T16:06:27.853+0000] {logging_mixin.py:151} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-13T16:06:27.853+0000] {_http.py:486} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-13T16:06:28.857+0000] {embedding_pipeline.py:105} ERROR - [embed] MiniLM failed: Cannot send a request, as the client has been closed.
+[2026-03-13T16:06:28.857+0000] {embedding_pipeline.py:399} ERROR - [embed] MiniLM also failed — batch will error
+[2026-03-13T16:06:28.939+0000] {embedding_pipeline.py:342} INFO - [embed] Queue empty after 2400 rows.
+[2026-03-13T16:06:28.940+0000] {embedding_pipeline.py:480} INFO - [embed] ✅ Done. processed=2400 errors=134
+[2026-03-13T16:06:28.990+0000] {python.py:194} INFO - Done. Returned value was: {'processed': 2400, 'errors': 134}
+[2026-03-13T16:06:29.073+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=process_queue, execution_date=20260309T064000, start_date=20260312T192527, end_date=20260313T160629
+[2026-03-13T16:06:29.272+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=188, status='terminated', exitcode=0, started='19:25:27') (188) terminated with exit code 0

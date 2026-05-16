@@ -1,0 +1,28 @@
+[2026-02-27T07:32:18.964+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-27T07:31:32.447407+00:00 [queued]>
+[2026-02-27T07:32:18.971+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-27T07:31:32.447407+00:00 [queued]>
+[2026-02-27T07:32:18.971+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-02-27T07:32:18.982+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-27 07:31:32.447407+00:00
+[2026-02-27T07:32:18.988+0000] {standard_task_runner.py:57} INFO - Started process 327 to run task
+[2026-02-27T07:32:18.991+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-27T07:31:32.447407+00:00', '--job-id', '1852', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmp978h3x1r']
+[2026-02-27T07:32:18.994+0000] {standard_task_runner.py:85} INFO - Job 1852: Subtask scan_minio_and_dispatch
+[2026-02-27T07:32:19.053+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-27T07:31:32.447407+00:00 [running]> on host 620a423860ea
+[2026-02-27T07:32:19.324+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-27T07:31:32.447407+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-27T07:31:32.447407+00:00'
+[2026-02-27T07:32:19.333+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/image111.jpeg
+[2026-02-27T07:32:19.571+0000] {image_pipeline.py:262} INFO - [image] Processing raw/image111.jpeg
+[2026-02-27T07:32:19.581+0000] {image_pipeline.py:304} INFO - [image] 270x148 | format=JPEG | mode=RGB
+[2026-02-27T07:32:19.582+0000] {image_pipeline.py:312} INFO - [image] Running Moondream2 VLM...
+[2026-02-27T07:32:19.584+0000] {image_pipeline.py:43} INFO - [image] Loading Moondream2 model (first use — may take a moment)...
+[2026-02-27T07:32:19.584+0000] {image_pipeline.py:50} INFO - [image] Moondream2 loaded successfully
+[2026-02-27T07:32:20.089+0000] {image_pipeline.py:200} WARNING - [image] Moondream inference failed for raw/image111.jpeg: HTTP Error 401: Unauthorized
+[2026-02-27T07:32:20.089+0000] {image_pipeline.py:320} INFO - [image] Running Tesseract OCR...
+[2026-02-27T07:32:20.247+0000] {image_pipeline.py:220} INFO - [image] OCR produced no text for raw/image111.jpeg
+[2026-02-27T07:32:20.247+0000] {image_pipeline.py:356} INFO - [image] No text produced for raw/image111.jpeg
+[2026-02-27T07:32:20.259+0000] {image_pipeline.py:400} INFO - [image] Saved to unstructured_images
+[2026-02-27T07:32:20.261+0000] {image_pipeline.py:430} INFO - [image] ✅ Completed raw/image111.jpeg | 270x148 | fmt=JPEG | ocr=no | vlm=no | text_chars=0
+[2026-02-27T07:32:20.262+0000] {etl_manager.py:306} INFO - ETL completed: raw/image111.jpeg
+[2026-02-27T07:32:20.262+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/image111.jpeg -> raw-data/2026-02-27/image111.jpeg
+[2026-02-27T07:32:20.271+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/image111.jpeg
+[2026-02-27T07:32:20.271+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-27T07:32:20.285+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260227T073132, start_date=20260227T073218, end_date=20260227T073220
+[2026-02-27T07:32:20.327+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-27T07:32:20.350+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

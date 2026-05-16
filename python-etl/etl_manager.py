@@ -39,56 +39,34 @@ class LakehouseETL:
         file_format: str | None = None,
         row_count: int | None = None,
         text_extracted: bool = False,
-        content_hash: str | None = None,
         uploaded_by: int | None = None,
-        metadata: dict | None = None,  # NEW
+        metadata: dict | None = None,
     ):
         """
-        Upsert entry into minio_data_catalog table.
+        Upsert entry into minio_data_catalog.
+        Table must already exist (created by init SQL script).
+        content_hash has been intentionally removed from this system.
+        Duplicate filenames are handled at upload time via (1)(2)(3) renaming.
         """
         cursor = self.pg_conn.cursor()
         try:
             cursor.execute(
                 """
-                CREATE TABLE IF NOT EXISTS minio_data_catalog (
-                    catalog_id SERIAL PRIMARY KEY,
-                    bucket_name TEXT NOT NULL,
-                    object_name TEXT NOT NULL,
-                    object_size BIGINT,
-                    file_format TEXT,
-                    row_count INTEGER,
-                    text_extracted BOOLEAN DEFAULT FALSE,
-                    content_hash TEXT,
-                    last_modified TIMESTAMP,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    uploaded_by INTEGER,
-                    UNIQUE(bucket_name, object_name)
-                )
-                """
-            )
-
-            cursor.execute(
-                """
-                ALTER TABLE minio_data_catalog ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::JSONB
-                """
-            )
-
-            cursor.execute(
-                """
                 INSERT INTO minio_data_catalog
-                (bucket_name, object_name, object_size, file_format, row_count, text_extracted, content_hash, uploaded_by, metadata)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    (bucket_name, object_name, object_size, file_format,
+                     row_count, text_extracted, uploaded_by, metadata)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (bucket_name, object_name) DO UPDATE
-                SET object_size = EXCLUDED.object_size,
-                    file_format = EXCLUDED.file_format,
-                    row_count = EXCLUDED.row_count,
+                SET object_size    = EXCLUDED.object_size,
+                    file_format    = EXCLUDED.file_format,
+                    row_count      = EXCLUDED.row_count,
                     text_extracted = EXCLUDED.text_extracted,
-                    content_hash = EXCLUDED.content_hash,
-                    uploaded_by = EXCLUDED.uploaded_by,
-                    metadata = EXCLUDED.metadata,  -- NEW
-                    last_modified = CURRENT_TIMESTAMP
+                    uploaded_by    = EXCLUDED.uploaded_by,
+                    metadata       = EXCLUDED.metadata,
+                    last_modified  = CURRENT_TIMESTAMP
                 """,
-                (self.bucket_name, object_name, object_size, file_format, row_count, text_extracted, content_hash, uploaded_by, json.dumps(metadata or {}))
+                (self.bucket_name, object_name, object_size, file_format,
+                 row_count, text_extracted, uploaded_by, json.dumps(metadata or {})),
             )
             self.pg_conn.commit()
         finally:
@@ -177,19 +155,22 @@ class LakehouseETL:
             cursor.close()
     
     def create_data_catalog(self):
-        """Create metadata catalog for MinIO objects"""
+        """Create metadata catalog for MinIO objects (legacy helper — prefer init SQL)."""
         try:
             cursor = self.pg_conn.cursor()
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS minio_data_catalog (
-                    catalog_id SERIAL PRIMARY KEY,
-                    bucket_name TEXT NOT NULL,
-                    object_name TEXT NOT NULL,
-                    object_size BIGINT,
-                    file_format TEXT,
-                    row_count INTEGER,
-                    last_modified TIMESTAMP,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    catalog_id     SERIAL PRIMARY KEY,
+                    bucket_name    TEXT NOT NULL,
+                    object_name    TEXT NOT NULL,
+                    object_size    BIGINT,
+                    file_format    TEXT,
+                    row_count      INTEGER,
+                    text_extracted BOOLEAN DEFAULT FALSE,
+                    last_modified  TIMESTAMP,
+                    created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    uploaded_by    INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                    metadata       JSONB DEFAULT '{}'::JSONB,
                     UNIQUE(bucket_name, object_name)
                 )
             """)

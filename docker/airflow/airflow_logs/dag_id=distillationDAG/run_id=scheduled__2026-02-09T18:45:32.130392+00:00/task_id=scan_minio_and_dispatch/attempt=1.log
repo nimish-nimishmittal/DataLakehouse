@@ -1,0 +1,313 @@
+[2026-02-09T18:46:28.690+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-09T18:45:32.130392+00:00 [queued]>
+[2026-02-09T18:46:28.701+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-09T18:45:32.130392+00:00 [queued]>
+[2026-02-09T18:46:28.701+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-02-09T18:46:28.725+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-09 18:45:32.130392+00:00
+[2026-02-09T18:46:28.733+0000] {standard_task_runner.py:57} INFO - Started process 2249 to run task
+[2026-02-09T18:46:28.737+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-09T18:45:32.130392+00:00', '--job-id', '1262', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpfnzy7__m']
+[2026-02-09T18:46:28.741+0000] {standard_task_runner.py:85} INFO - Job 1262: Subtask scan_minio_and_dispatch
+[2026-02-09T18:46:28.819+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-09T18:45:32.130392+00:00 [running]> on host 608fe9809e7c
+[2026-02-09T18:46:29.188+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-09T18:45:32.130392+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-09T18:45:32.130392+00:00'
+[2026-02-09T18:46:29.200+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/docx/Vacation_pay_before_it_is_earned-India.docx
+[2026-02-09T18:46:29.558+0000] {docx_pipeline.py:285} INFO - [docx] Processing raw/docx/Vacation_pay_before_it_is_earned-India.docx
+[2026-02-09T18:46:29.569+0000] {docx_pipeline.py:301} INFO - [docx] Duplicate detected via content_hash, skipping heavy processing: raw/docx/Vacation_pay_before_it_is_earned-India.docx
+[2026-02-09T18:46:29.571+0000] {etl_manager.py:292} INFO - Processing complete for: raw/docx/Vacation_pay_before_it_is_earned-India.docx
+[2026-02-09T18:46:29.572+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/docx/Vacation_pay_before_it_is_earned-India.docx -> raw-data/2026-02-09/Vacation_pay_before_it_is_earned-India.docx
+[2026-02-09T18:46:29.588+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/docx/Vacation_pay_before_it_is_earned-India.docx
+[2026-02-09T18:46:29.588+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf
+[2026-02-09T18:46:29.600+0000] {pdf_pipeline.py:344} INFO - [pdf] Processing raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf
+[2026-02-09T18:46:29.612+0000] {pdf_pipeline.py:391} INFO - [pdf] Extracting text from PDF...
+[2026-02-09T18:46:29.684+0000] {pdf_pipeline.py:423} ERROR - [pdf] Text extraction failed for raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf: cannot access local variable 'table_count' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 408, in process_minio_object
+    'table_count': table_count
+                   ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'table_count' where it is not associated with a value
+[2026-02-09T18:46:29.685+0000] {pdf_pipeline.py:458} WARNING - [pdf] No text extracted from raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf
+[2026-02-09T18:46:29.685+0000] {pdf_pipeline.py:461} INFO - [pdf] Extracting tables from PDF...
+[2026-02-09T18:46:36.216+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page15_table1.csv
+[2026-02-09T18:46:36.216+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page15_ta
+[2026-02-09T18:46:36.217+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:36.223+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:36.227+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:36.231+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:36.233+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page15_ta
+[2026-02-09T18:46:36.293+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 20 rows into data_2025_review_thoughtworks_employee_privacy_notice_page15_ta
+[2026-02-09T18:46:36.383+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 1: 20 rows, 3 columns
+[2026-02-09T18:46:36.924+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page16_table1.csv
+[2026-02-09T18:46:36.925+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page16_ta
+[2026-02-09T18:46:36.925+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:36.928+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:36.930+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:36.931+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:36.933+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page16_ta
+[2026-02-09T18:46:36.935+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 29 rows into data_2025_review_thoughtworks_employee_privacy_notice_page16_ta
+[2026-02-09T18:46:36.937+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 2: 29 rows, 3 columns
+[2026-02-09T18:46:37.545+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page17_table1.csv
+[2026-02-09T18:46:37.545+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page17_ta
+[2026-02-09T18:46:37.546+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:37.549+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:37.551+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:37.552+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:37.554+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page17_ta
+[2026-02-09T18:46:37.556+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 30 rows into data_2025_review_thoughtworks_employee_privacy_notice_page17_ta
+[2026-02-09T18:46:37.559+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 3: 30 rows, 3 columns
+[2026-02-09T18:46:38.171+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page18_table1.csv
+[2026-02-09T18:46:38.172+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page18_ta
+[2026-02-09T18:46:38.173+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:38.176+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:38.178+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:38.180+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:38.182+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page18_ta
+[2026-02-09T18:46:38.185+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 31 rows into data_2025_review_thoughtworks_employee_privacy_notice_page18_ta
+[2026-02-09T18:46:38.187+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 4: 31 rows, 3 columns
+[2026-02-09T18:46:38.889+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page19_table1.csv
+[2026-02-09T18:46:38.889+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page19_ta
+[2026-02-09T18:46:38.890+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-09T18:46:38.894+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:38.896+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:38.899+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:38.901+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page19_ta
+[2026-02-09T18:46:38.904+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 27 rows into data_2025_review_thoughtworks_employee_privacy_notice_page19_ta
+[2026-02-09T18:46:38.906+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 5: 27 rows, 5 columns
+[2026-02-09T18:46:39.676+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page20_table1.csv
+[2026-02-09T18:46:39.676+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page20_ta
+[2026-02-09T18:46:39.677+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:39.681+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:39.684+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:39.686+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:39.687+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page20_ta
+[2026-02-09T18:46:39.690+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 30 rows into data_2025_review_thoughtworks_employee_privacy_notice_page20_ta
+[2026-02-09T18:46:39.692+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 6: 30 rows, 4 columns
+[2026-02-09T18:46:40.330+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page21_table1.csv
+[2026-02-09T18:46:40.331+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-02-09T18:46:40.332+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:40.335+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.337+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.340+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.342+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-02-09T18:46:40.344+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 6 rows into data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-02-09T18:46:40.346+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 7: 6 rows, 3 columns
+[2026-02-09T18:46:40.356+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page21_table2.csv
+[2026-02-09T18:46:40.357+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-02-09T18:46:40.358+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:40.362+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.364+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.367+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.369+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-02-09T18:46:40.373+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 26 rows into data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-02-09T18:46:40.376+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 8: 26 rows, 3 columns
+[2026-02-09T18:46:40.912+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page22_table1.csv
+[2026-02-09T18:46:40.913+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page22_ta
+[2026-02-09T18:46:40.913+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:40.916+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.918+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.920+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:40.922+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page22_ta
+[2026-02-09T18:46:40.924+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 34 rows into data_2025_review_thoughtworks_employee_privacy_notice_page22_ta
+[2026-02-09T18:46:40.926+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 9: 34 rows, 3 columns
+[2026-02-09T18:46:41.465+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page23_table1.csv
+[2026-02-09T18:46:41.465+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-02-09T18:46:41.466+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:41.473+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:41.478+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:41.484+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:41.486+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-02-09T18:46:41.490+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 17 rows into data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-02-09T18:46:41.492+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 10: 17 rows, 3 columns
+[2026-02-09T18:46:41.503+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page23_table2.csv
+[2026-02-09T18:46:41.503+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-02-09T18:46:41.504+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:41.511+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:41.513+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:41.516+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:41.518+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-02-09T18:46:41.523+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 11 rows into data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-02-09T18:46:41.526+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 11: 11 rows, 3 columns
+[2026-02-09T18:46:42.486+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page24_table1.csv
+[2026-02-09T18:46:42.487+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page24_ta
+[2026-02-09T18:46:42.488+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:42.491+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:42.493+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:42.495+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:42.498+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page24_ta
+[2026-02-09T18:46:42.501+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 30 rows into data_2025_review_thoughtworks_employee_privacy_notice_page24_ta
+[2026-02-09T18:46:42.503+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 12: 30 rows, 3 columns
+[2026-02-09T18:46:43.091+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page25_table1.csv
+[2026-02-09T18:46:43.091+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-02-09T18:46:43.092+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:43.095+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.097+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.099+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.101+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-02-09T18:46:43.104+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 7 rows into data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-02-09T18:46:43.107+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 13: 7 rows, 3 columns
+[2026-02-09T18:46:43.118+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page25_table2.csv
+[2026-02-09T18:46:43.119+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-02-09T18:46:43.123+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:43.126+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.129+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.131+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.133+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-02-09T18:46:43.137+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 22 rows into data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-02-09T18:46:43.141+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 14: 22 rows, 3 columns
+[2026-02-09T18:46:43.728+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page26_table1.csv
+[2026-02-09T18:46:43.728+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-02-09T18:46:43.729+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:43.732+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.734+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.736+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.739+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-02-09T18:46:43.741+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 9 rows into data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-02-09T18:46:43.743+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 15: 9 rows, 3 columns
+[2026-02-09T18:46:43.753+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page26_table2.csv
+[2026-02-09T18:46:43.753+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-02-09T18:46:43.754+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:43.757+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.759+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.761+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:43.762+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-02-09T18:46:43.765+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 23 rows into data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-02-09T18:46:43.768+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 16: 23 rows, 3 columns
+[2026-02-09T18:46:44.298+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page27_table1.csv
+[2026-02-09T18:46:44.299+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-02-09T18:46:44.299+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:44.303+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.305+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.307+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.308+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-02-09T18:46:44.311+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 23 rows into data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-02-09T18:46:44.313+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 17: 23 rows, 3 columns
+[2026-02-09T18:46:44.322+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page27_table2.csv
+[2026-02-09T18:46:44.322+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-02-09T18:46:44.323+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:44.326+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.328+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.330+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.332+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-02-09T18:46:44.336+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 10 rows into data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-02-09T18:46:44.338+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 18: 10 rows, 3 columns
+[2026-02-09T18:46:44.846+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page28_table1.csv
+[2026-02-09T18:46:44.846+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page28_ta
+[2026-02-09T18:46:44.847+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:44.850+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.852+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.855+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:44.857+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page28_ta
+[2026-02-09T18:46:44.859+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 31 rows into data_2025_review_thoughtworks_employee_privacy_notice_page28_ta
+[2026-02-09T18:46:44.861+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 19: 31 rows, 3 columns
+[2026-02-09T18:46:45.463+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page29_table1.csv
+[2026-02-09T18:46:45.463+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page29_ta
+[2026-02-09T18:46:45.464+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:45.467+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:45.469+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:45.471+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:45.473+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page29_ta
+[2026-02-09T18:46:45.476+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 29 rows into data_2025_review_thoughtworks_employee_privacy_notice_page29_ta
+[2026-02-09T18:46:45.478+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 20: 29 rows, 3 columns
+[2026-02-09T18:46:46.094+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page30_table1.csv
+[2026-02-09T18:46:46.094+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page30_ta
+[2026-02-09T18:46:46.095+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:46.098+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.101+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.103+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.105+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page30_ta
+[2026-02-09T18:46:46.127+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 28 rows into data_2025_review_thoughtworks_employee_privacy_notice_page30_ta
+[2026-02-09T18:46:46.179+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 21: 28 rows, 3 columns
+[2026-02-09T18:46:46.831+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page31_table1.csv
+[2026-02-09T18:46:46.831+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-02-09T18:46:46.832+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:46.835+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.837+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.838+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.840+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-02-09T18:46:46.843+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 7 rows into data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-02-09T18:46:46.855+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 22: 7 rows, 3 columns
+[2026-02-09T18:46:46.880+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page31_table2.csv
+[2026-02-09T18:46:46.880+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-02-09T18:46:46.881+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:46.885+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.888+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.891+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:46.893+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-02-09T18:46:46.896+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 22 rows into data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-02-09T18:46:46.907+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 23: 22 rows, 3 columns
+[2026-02-09T18:46:47.637+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page32_table1.csv
+[2026-02-09T18:46:47.637+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-02-09T18:46:47.638+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:47.641+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.643+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.645+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.647+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-02-09T18:46:47.649+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 14 rows into data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-02-09T18:46:47.651+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 24: 14 rows, 3 columns
+[2026-02-09T18:46:47.661+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page32_table2.csv
+[2026-02-09T18:46:47.661+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-02-09T18:46:47.662+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:47.665+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.667+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.669+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.671+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-02-09T18:46:47.673+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 16 rows into data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-02-09T18:46:47.675+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 25: 16 rows, 3 columns
+[2026-02-09T18:46:47.831+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page33_table1.csv
+[2026-02-09T18:46:47.831+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-02-09T18:46:47.832+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:47.836+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.838+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.841+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:47.843+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-02-09T18:46:47.845+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 4 rows into data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-02-09T18:46:47.847+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 26: 4 rows, 3 columns
+[2026-02-09T18:46:47.859+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page33_table2.csv
+[2026-02-09T18:46:47.859+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-02-09T18:46:47.860+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-02-09T18:46:47.866+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-02-09T18:46:47.871+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 1 rows into data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-02-09T18:46:47.873+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 27: 1 rows, 3 columns
+[2026-02-09T18:46:48.169+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page34_table1.csv
+[2026-02-09T18:46:48.169+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page34_ta
+[2026-02-09T18:46:48.170+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-02-09T18:46:48.173+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.175+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.177+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page34_ta
+[2026-02-09T18:46:48.179+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 4 rows into data_2025_review_thoughtworks_employee_privacy_notice_page34_ta
+[2026-02-09T18:46:48.182+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 28: 4 rows, 2 columns
+[2026-02-09T18:46:48.458+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page35_table1.csv
+[2026-02-09T18:46:48.459+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page35_ta
+[2026-02-09T18:46:48.459+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-02-09T18:46:48.462+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.465+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.466+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page35_ta
+[2026-02-09T18:46:48.469+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 5 rows into data_2025_review_thoughtworks_employee_privacy_notice_page35_ta
+[2026-02-09T18:46:48.471+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 29: 5 rows, 2 columns
+[2026-02-09T18:46:48.729+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page36_table1.csv
+[2026-02-09T18:46:48.729+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page36_ta
+[2026-02-09T18:46:48.730+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-02-09T18:46:48.733+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.736+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.738+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page36_ta
+[2026-02-09T18:46:48.741+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 5 rows into data_2025_review_thoughtworks_employee_privacy_notice_page36_ta
+[2026-02-09T18:46:48.743+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 30: 5 rows, 2 columns
+[2026-02-09T18:46:48.939+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice_page37_table1.csv
+[2026-02-09T18:46:48.939+0000] {structured_pipeline.py:107} INFO - Table name: data_2025_review_thoughtworks_employee_privacy_notice_page37_ta
+[2026-02-09T18:46:48.940+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-02-09T18:46:48.943+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.945+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-09T18:46:48.947+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_2025_review_thoughtworks_employee_privacy_notice_page37_ta
+[2026-02-09T18:46:48.951+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 5 rows into data_2025_review_thoughtworks_employee_privacy_notice_page37_ta
+[2026-02-09T18:46:48.953+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 31: 5 rows, 2 columns
+[2026-02-09T18:46:48.954+0000] {pdf_pipeline.py:529} INFO - [pdf] Extracted 31 tables with 556 total rows
+[2026-02-09T18:46:48.954+0000] {pdf_pipeline.py:544} ERROR - [pdf] Failed catalog update for raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf: cannot access local variable 'pdf_metadata' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 539, in process_minio_object
+    content_hash=file_hash,
+                 ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pdf_metadata' where it is not associated with a value
+[2026-02-09T18:46:48.955+0000] {pdf_pipeline.py:547} INFO - [pdf] ✅ Completed processing: raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf | pages=37 | tables=31 | rows=556 | text_chars=0
+[2026-02-09T18:46:48.955+0000] {etl_manager.py:292} INFO - Processing complete for: raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf
+[2026-02-09T18:46:48.956+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf -> raw-data/2026-02-09/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf
+[2026-02-09T18:46:48.979+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/pdf/2025_REVIEW_Thoughtworks_Employee_Privacy_Notice.pdf
+[2026-02-09T18:46:48.979+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-09T18:46:48.999+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260209T184532, start_date=20260209T184628, end_date=20260209T184648
+[2026-02-09T18:46:49.074+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-09T18:46:49.104+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

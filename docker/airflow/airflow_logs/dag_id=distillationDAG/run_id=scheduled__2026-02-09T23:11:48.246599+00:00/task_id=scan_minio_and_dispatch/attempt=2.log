@@ -1,0 +1,35 @@
+[2026-02-09T23:12:53.993+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-09T23:11:48.246599+00:00 [queued]>
+[2026-02-09T23:12:54.033+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-09T23:11:48.246599+00:00 [queued]>
+[2026-02-09T23:12:54.034+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 4
+[2026-02-09T23:12:54.072+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-09 23:11:48.246599+00:00
+[2026-02-09T23:12:54.097+0000] {standard_task_runner.py:57} INFO - Started process 343 to run task
+[2026-02-09T23:12:54.112+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-09T23:11:48.246599+00:00', '--job-id', '1433', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmptymahruv']
+[2026-02-09T23:12:54.124+0000] {standard_task_runner.py:85} INFO - Job 1433: Subtask scan_minio_and_dispatch
+[2026-02-09T23:12:54.367+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-09T23:11:48.246599+00:00 [running]> on host a35ff7978799
+[2026-02-09T23:12:55.133+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-09T23:11:48.246599+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-09T23:11:48.246599+00:00'
+[2026-02-09T23:12:55.167+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/Nitin_gavhane_Resume.docx
+[2026-02-09T23:12:56.049+0000] {docx_pipeline.py:300} INFO - [docx] Processing raw/Nitin_gavhane_Resume.docx
+[2026-02-09T23:12:56.068+0000] {docx_pipeline.py:340} INFO - [docx] Extracting text from DOCX...
+[2026-02-09T23:12:56.374+0000] {docx_pipeline.py:342} INFO - [docx] Extracted 3850 characters of text
+[2026-02-09T23:12:56.374+0000] {docx_pipeline.py:344} INFO - [docx] Extracting tables from DOCX...
+[2026-02-09T23:12:56.431+0000] {docx_pipeline.py:346} INFO - [docx] Found 1 tables
+[2026-02-09T23:12:56.451+0000] {docx_pipeline.py:375} INFO - [docx] Uploaded extracted text -> processed/unstructured/text-extracted/Nitin_gavhane_Resume.txt
+[2026-02-09T23:12:56.457+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/dispatcher_pipeline_dag.py", line 56, in scan_and_dispatch
+    run_pipeline_for_object(object_name)
+  File "/opt/python-etl/etl_manager.py", line 294, in run_pipeline_for_object
+    docx_pipeline.process_minio_object(**common_kwargs)
+  File "/opt/python-etl/pipelines/docx_pipeline.py", line 377, in process_minio_object
+    _save_unstructured_doc(
+TypeError: _save_unstructured_doc() got an unexpected keyword argument 'uploaded_by'
+[2026-02-09T23:12:56.501+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260209T231148, start_date=20260209T231253, end_date=20260209T231256
+[2026-02-09T23:12:56.537+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 1433 for task scan_minio_and_dispatch (_save_unstructured_doc() got an unexpected keyword argument 'uploaded_by'; 343)
+[2026-02-09T23:12:56.586+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2026-02-09T23:12:56.699+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

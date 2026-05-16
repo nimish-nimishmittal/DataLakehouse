@@ -1,0 +1,20 @@
+[2026-03-20T07:00:37.832+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.attach_triggers scheduled__2026-03-20T06:55:00+00:00 [queued]>
+[2026-03-20T07:00:37.841+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.attach_triggers scheduled__2026-03-20T06:55:00+00:00 [queued]>
+[2026-03-20T07:00:37.842+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-03-20T07:00:37.855+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): attach_triggers> on 2026-03-20 06:55:00+00:00
+[2026-03-20T07:00:37.863+0000] {standard_task_runner.py:57} INFO - Started process 1233 to run task
+[2026-03-20T07:00:37.867+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'attach_triggers', 'scheduled__2026-03-20T06:55:00+00:00', '--job-id', '2474', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp8tuxw6x1']
+[2026-03-20T07:00:37.873+0000] {standard_task_runner.py:85} INFO - Job 2474: Subtask attach_triggers
+[2026-03-20T07:00:37.949+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.attach_triggers scheduled__2026-03-20T06:55:00+00:00 [running]> on host f9d03ff7592b
+[2026-03-20T07:00:38.085+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='attach_triggers' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T06:55:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T06:55:00+00:00'
+[2026-03-20T07:00:39.325+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_26t1s2ds25f1002315_page1_table1
+[2026-03-20T07:00:39.326+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_26t1s2ds25f1002315_page1_table2
+[2026-03-20T07:00:39.329+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_26t1s2ds25f1002315_page2_table1
+[2026-03-20T07:00:39.330+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_financial_data_1
+[2026-03-20T07:00:39.331+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_financial_data_2
+[2026-03-20T07:00:39.334+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_financial_table_1_page1_table1
+[2026-03-20T07:00:39.336+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_financial_table_2_page1_table1
+[2026-03-20T07:00:39.365+0000] {python.py:194} INFO - Done. Returned value was: 7
+[2026-03-20T07:00:39.444+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=attach_triggers, execution_date=20260320T065500, start_date=20260320T070037, end_date=20260320T070039
+[2026-03-20T07:00:39.546+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-20T07:00:39.636+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

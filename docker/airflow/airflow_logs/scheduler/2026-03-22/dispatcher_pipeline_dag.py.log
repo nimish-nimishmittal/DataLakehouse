@@ -1,0 +1,546 @@
+[2026-03-22T04:21:43.043+0000] {processor.py:157} INFO - Started process (PID=11831) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:21:43.050+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:21:43.056+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:21:43.054+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:21:45.715+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:21:45.794+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:21:45.793+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:21:45.849+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:21:45.848+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:21:00.848160+00:00, run_after=2026-03-22T04:21:45.848160+00:00
+[2026-03-22T04:21:45.889+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.871 seconds
+[2026-03-22T04:22:16.233+0000] {processor.py:157} INFO - Started process (PID=11858) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:22:16.237+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:22:16.240+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:22:16.239+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:22:18.345+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:22:18.437+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:22:18.436+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:22:18.497+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:22:18.496+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:21:33.496343+00:00, run_after=2026-03-22T04:22:18.496343+00:00
+[2026-03-22T04:22:18.545+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.323 seconds
+[2026-03-22T04:22:48.853+0000] {processor.py:157} INFO - Started process (PID=11881) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:22:48.856+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:22:48.858+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:22:48.857+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:22:50.598+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:22:50.680+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:22:50.679+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:22:50.735+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:22:50.735+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:22:05.734674+00:00, run_after=2026-03-22T04:22:50.734674+00:00
+[2026-03-22T04:22:50.775+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.932 seconds
+[2026-03-22T04:23:21.258+0000] {processor.py:157} INFO - Started process (PID=11901) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:23:21.260+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:23:21.263+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:23:21.262+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:23:23.180+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:23:23.262+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:23:23.261+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:23:23.320+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:23:23.320+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:22:38.319725+00:00, run_after=2026-03-22T04:23:23.319725+00:00
+[2026-03-22T04:23:23.364+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.117 seconds
+[2026-03-22T04:23:53.676+0000] {processor.py:157} INFO - Started process (PID=11919) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:23:53.678+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:23:53.681+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:23:53.680+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:23:55.515+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:23:55.593+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:23:55.592+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:23:55.645+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:23:55.645+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:23:10.644586+00:00, run_after=2026-03-22T04:23:55.644586+00:00
+[2026-03-22T04:23:55.687+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.024 seconds
+[2026-03-22T04:24:25.985+0000] {processor.py:157} INFO - Started process (PID=11937) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:24:25.987+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:24:25.989+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:24:25.988+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:24:27.766+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:24:27.843+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:24:27.842+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:24:27.896+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:24:27.896+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:23:42.895785+00:00, run_after=2026-03-22T04:24:27.895785+00:00
+[2026-03-22T04:24:27.935+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.962 seconds
+[2026-03-22T04:24:58.181+0000] {processor.py:157} INFO - Started process (PID=11955) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:24:58.184+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:24:58.186+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:24:58.185+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:25:00.062+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:25:00.147+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:25:00.146+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:25:00.204+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:25:00.204+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:24:15.203828+00:00, run_after=2026-03-22T04:25:00.203828+00:00
+[2026-03-22T04:25:00.245+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.075 seconds
+[2026-03-22T04:25:30.540+0000] {processor.py:157} INFO - Started process (PID=11973) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:25:30.542+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:25:30.545+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:25:30.544+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:25:32.333+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:25:32.410+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:25:32.409+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:25:32.460+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:25:32.460+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:24:47.460072+00:00, run_after=2026-03-22T04:25:32.460072+00:00
+[2026-03-22T04:25:32.500+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.972 seconds
+[2026-03-22T04:26:02.818+0000] {processor.py:157} INFO - Started process (PID=11991) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:26:02.820+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:26:02.822+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:26:02.821+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:26:04.604+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:26:04.680+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:26:04.679+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:26:04.733+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:26:04.733+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:25:19.732935+00:00, run_after=2026-03-22T04:26:04.732935+00:00
+[2026-03-22T04:26:04.771+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.965 seconds
+[2026-03-22T04:27:38.992+0000] {processor.py:157} INFO - Started process (PID=167) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:27:38.998+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:27:39.003+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:27:39.002+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:27:40.967+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:27:41.064+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:27:41.061+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:27:41.136+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:27:41.136+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:26:56.135532+00:00, run_after=2026-03-22T04:27:41.135532+00:00
+[2026-03-22T04:27:41.186+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.205 seconds
+[2026-03-22T04:28:11.618+0000] {processor.py:157} INFO - Started process (PID=212) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:28:11.620+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:28:11.622+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:28:11.621+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:28:13.514+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:28:13.603+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:28:13.602+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:28:13.664+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:28:13.663+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:27:28.662955+00:00, run_after=2026-03-22T04:28:13.662955+00:00
+[2026-03-22T04:28:13.717+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.110 seconds
+[2026-03-22T04:28:43.873+0000] {processor.py:157} INFO - Started process (PID=232) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:28:43.876+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:28:43.878+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:28:43.877+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:28:45.653+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:28:45.733+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:28:45.732+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:28:45.790+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:28:45.789+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:28:00.789433+00:00, run_after=2026-03-22T04:28:45.789433+00:00
+[2026-03-22T04:28:45.830+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.966 seconds
+[2026-03-22T04:29:16.148+0000] {processor.py:157} INFO - Started process (PID=254) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:29:16.151+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:29:16.153+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:29:16.152+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:29:18.235+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:29:18.336+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:29:18.335+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:29:18.404+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:29:18.403+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:28:33.403024+00:00, run_after=2026-03-22T04:29:18.403024+00:00
+[2026-03-22T04:29:18.453+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.317 seconds
+[2026-03-22T04:29:48.866+0000] {processor.py:157} INFO - Started process (PID=272) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:29:48.869+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:29:48.872+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:29:48.871+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:29:50.963+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:29:51.041+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:29:51.040+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:29:51.096+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:29:51.096+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:29:06.095642+00:00, run_after=2026-03-22T04:29:51.095642+00:00
+[2026-03-22T04:29:51.135+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.281 seconds
+[2026-03-22T04:30:21.460+0000] {processor.py:157} INFO - Started process (PID=290) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:30:21.463+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:30:21.466+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:30:21.464+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:30:23.490+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:30:23.573+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:30:23.572+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:30:23.638+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:30:23.637+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:29:38.637487+00:00, run_after=2026-03-22T04:30:23.637487+00:00
+[2026-03-22T04:30:23.688+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.240 seconds
+[2026-03-22T04:30:54.032+0000] {processor.py:157} INFO - Started process (PID=308) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:30:54.035+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:30:54.038+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:30:54.036+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:30:56.168+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:30:56.248+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:30:56.246+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:30:56.299+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:30:56.299+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:30:11.298999+00:00, run_after=2026-03-22T04:30:56.298999+00:00
+[2026-03-22T04:30:56.339+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.320 seconds
+[2026-03-22T04:31:26.671+0000] {processor.py:157} INFO - Started process (PID=326) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:31:26.674+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:31:26.677+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:31:26.675+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:31:28.710+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:31:28.794+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:31:28.793+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:31:28.854+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:31:28.854+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:30:43.853719+00:00, run_after=2026-03-22T04:31:28.853719+00:00
+[2026-03-22T04:31:28.898+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.239 seconds
+[2026-03-22T04:31:59.100+0000] {processor.py:157} INFO - Started process (PID=344) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:31:59.103+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:31:59.105+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:31:59.104+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:32:00.875+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:32:00.954+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:32:00.953+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:32:01.006+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:32:01.005+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:31:16.005119+00:00, run_after=2026-03-22T04:32:01.005119+00:00
+[2026-03-22T04:32:01.045+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.956 seconds
+[2026-03-22T04:32:31.708+0000] {processor.py:157} INFO - Started process (PID=362) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:32:31.711+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:32:31.714+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:32:31.712+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:32:33.364+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:32:33.456+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:32:33.455+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:32:33.518+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:32:33.517+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:31:48.517097+00:00, run_after=2026-03-22T04:32:33.517097+00:00
+[2026-03-22T04:32:33.566+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.869 seconds
+[2026-03-22T04:33:03.943+0000] {processor.py:157} INFO - Started process (PID=380) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:33:03.945+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:33:03.949+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:33:03.947+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:33:05.775+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:33:05.883+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:33:05.882+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:33:05.954+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:33:05.954+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:32:20.953469+00:00, run_after=2026-03-22T04:33:05.953469+00:00
+[2026-03-22T04:33:06.006+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.075 seconds
+[2026-03-22T04:33:36.256+0000] {processor.py:157} INFO - Started process (PID=398) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:33:36.259+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:33:36.262+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:33:36.260+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:33:37.973+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:33:38.065+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:33:38.064+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:33:38.125+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:33:38.125+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:32:53.124587+00:00, run_after=2026-03-22T04:33:38.124587+00:00
+[2026-03-22T04:33:38.171+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.927 seconds
+[2026-03-22T04:34:08.754+0000] {processor.py:157} INFO - Started process (PID=416) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:34:08.756+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:34:08.759+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:34:08.758+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:34:10.480+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:34:10.573+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:34:10.572+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:34:10.639+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:34:10.638+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:33:25.638318+00:00, run_after=2026-03-22T04:34:10.638318+00:00
+[2026-03-22T04:34:10.688+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.947 seconds
+[2026-03-22T04:34:41.335+0000] {processor.py:157} INFO - Started process (PID=434) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:34:41.337+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:34:41.340+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:34:41.339+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:34:43.105+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:34:43.213+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:34:43.211+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:34:43.283+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:34:43.283+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:33:58.282460+00:00, run_after=2026-03-22T04:34:43.282460+00:00
+[2026-03-22T04:34:43.336+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.013 seconds
+[2026-03-22T04:35:13.569+0000] {processor.py:157} INFO - Started process (PID=452) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:35:13.572+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:35:13.575+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:35:13.574+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:35:15.292+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:35:15.388+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:35:15.387+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:35:15.450+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:35:15.449+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:34:30.449130+00:00, run_after=2026-03-22T04:35:15.449130+00:00
+[2026-03-22T04:35:15.500+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.943 seconds
+[2026-03-22T04:35:46.164+0000] {processor.py:157} INFO - Started process (PID=470) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:35:46.166+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:35:46.169+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:35:46.167+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:35:47.924+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:35:48.033+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:35:48.032+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:35:48.108+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:35:48.107+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:35:03.107212+00:00, run_after=2026-03-22T04:35:48.107212+00:00
+[2026-03-22T04:35:48.160+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.007 seconds
+[2026-03-22T04:36:18.426+0000] {processor.py:157} INFO - Started process (PID=488) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:36:18.428+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:36:18.431+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:36:18.430+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:36:20.105+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:36:20.200+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:36:20.199+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:36:20.262+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:36:20.261+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:35:35.261268+00:00, run_after=2026-03-22T04:36:20.261268+00:00
+[2026-03-22T04:36:20.308+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.895 seconds
+[2026-03-22T04:36:50.974+0000] {processor.py:157} INFO - Started process (PID=506) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:36:50.978+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:36:50.980+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:36:50.979+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:36:52.822+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:36:52.927+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:36:52.926+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:36:52.998+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:36:52.997+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:36:07.996738+00:00, run_after=2026-03-22T04:36:52.996738+00:00
+[2026-03-22T04:36:53.057+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.095 seconds
+[2026-03-22T04:37:23.328+0000] {processor.py:157} INFO - Started process (PID=524) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:37:23.330+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:37:23.333+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:37:23.332+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:37:25.014+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:37:25.106+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:37:25.105+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:37:25.170+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:37:25.170+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:36:40.169783+00:00, run_after=2026-03-22T04:37:25.169783+00:00
+[2026-03-22T04:37:25.216+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.901 seconds
+[2026-03-22T04:37:55.487+0000] {processor.py:157} INFO - Started process (PID=545) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:37:55.491+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:37:55.494+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:37:55.492+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:37:57.263+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:37:57.366+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:37:57.365+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:37:57.430+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:37:57.430+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:37:12.429934+00:00, run_after=2026-03-22T04:37:57.429934+00:00
+[2026-03-22T04:37:57.480+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.006 seconds
+[2026-03-22T04:38:27.772+0000] {processor.py:157} INFO - Started process (PID=565) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:38:27.776+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:38:27.779+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:38:27.778+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:38:29.611+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:38:29.714+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:38:29.713+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:38:29.782+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:38:29.782+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:37:44.781476+00:00, run_after=2026-03-22T04:38:29.781476+00:00
+[2026-03-22T04:38:29.838+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.078 seconds
+[2026-03-22T04:39:00.147+0000] {processor.py:157} INFO - Started process (PID=583) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:39:00.149+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:39:00.152+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:39:00.150+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:39:01.895+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:39:02.003+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:39:02.001+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:39:02.077+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:39:02.076+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:38:17.075875+00:00, run_after=2026-03-22T04:39:02.075875+00:00
+[2026-03-22T04:39:02.128+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.994 seconds
+[2026-03-22T04:39:32.433+0000] {processor.py:157} INFO - Started process (PID=601) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:39:32.436+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:39:32.439+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:39:32.438+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:39:34.134+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:39:34.230+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:39:34.229+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:39:34.293+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:39:34.292+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:38:49.292161+00:00, run_after=2026-03-22T04:39:34.292161+00:00
+[2026-03-22T04:39:34.339+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.918 seconds
+[2026-03-22T04:40:04.951+0000] {processor.py:157} INFO - Started process (PID=619) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:40:04.954+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:40:04.957+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:40:04.956+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:40:06.711+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:40:06.817+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:40:06.816+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:40:06.891+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:40:06.891+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:39:21.890393+00:00, run_after=2026-03-22T04:40:06.890393+00:00
+[2026-03-22T04:40:06.944+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.005 seconds
+[2026-03-22T04:40:37.248+0000] {processor.py:157} INFO - Started process (PID=637) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:40:37.251+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:40:37.254+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:40:37.252+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:40:39.084+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:40:39.191+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:40:39.190+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:40:39.262+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:40:39.262+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:39:54.261376+00:00, run_after=2026-03-22T04:40:39.261376+00:00
+[2026-03-22T04:40:39.323+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.087 seconds
+[2026-03-22T04:41:09.643+0000] {processor.py:157} INFO - Started process (PID=655) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:41:09.646+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:41:09.649+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:41:09.647+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:41:11.471+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:41:11.574+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:41:11.573+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:41:11.643+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:41:11.642+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:40:26.642270+00:00, run_after=2026-03-22T04:41:11.642270+00:00
+[2026-03-22T04:41:11.699+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.068 seconds
+[2026-03-22T04:41:42.033+0000] {processor.py:157} INFO - Started process (PID=673) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:41:42.036+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:41:42.038+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:41:42.037+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:41:43.785+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:41:43.893+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:41:43.892+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:41:43.965+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:41:43.964+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:40:58.964237+00:00, run_after=2026-03-22T04:41:43.964237+00:00
+[2026-03-22T04:41:44.016+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.995 seconds
+[2026-03-22T04:42:14.319+0000] {processor.py:157} INFO - Started process (PID=691) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:42:14.323+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:42:14.326+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:42:14.325+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:42:16.107+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:42:16.200+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:42:16.199+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:42:16.262+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:42:16.262+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:41:31.261449+00:00, run_after=2026-03-22T04:42:16.261449+00:00
+[2026-03-22T04:42:16.308+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.002 seconds
+[2026-03-22T04:42:46.638+0000] {processor.py:157} INFO - Started process (PID=709) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:42:46.641+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:42:46.643+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:42:46.642+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:42:48.350+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:42:48.444+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:42:48.442+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:42:48.508+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:42:48.508+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:42:03.507681+00:00, run_after=2026-03-22T04:42:48.507681+00:00
+[2026-03-22T04:42:48.554+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.928 seconds
+[2026-03-22T04:43:19.124+0000] {processor.py:157} INFO - Started process (PID=727) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:43:19.127+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:43:19.129+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:43:19.128+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:43:20.772+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:43:20.865+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:43:20.864+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:43:20.926+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:43:20.925+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:42:35.925343+00:00, run_after=2026-03-22T04:43:20.925343+00:00
+[2026-03-22T04:43:20.972+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.860 seconds
+[2026-03-22T04:43:51.075+0000] {processor.py:157} INFO - Started process (PID=745) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:43:51.077+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:43:51.080+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:43:51.079+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:43:52.769+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:43:52.861+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:43:52.860+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:43:52.923+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:43:52.923+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:43:07.922714+00:00, run_after=2026-03-22T04:43:52.922714+00:00
+[2026-03-22T04:43:52.973+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.910 seconds
+[2026-03-22T04:44:23.154+0000] {processor.py:157} INFO - Started process (PID=763) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:44:23.157+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:44:23.160+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:44:23.158+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:44:24.912+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:44:25.025+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:44:25.023+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:44:25.101+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:44:25.100+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:43:40.099873+00:00, run_after=2026-03-22T04:44:25.099873+00:00
+[2026-03-22T04:44:25.152+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.010 seconds
+[2026-03-22T04:44:55.448+0000] {processor.py:157} INFO - Started process (PID=781) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:44:55.452+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:44:55.456+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:44:55.455+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:44:57.283+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:44:57.393+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:44:57.391+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:44:57.462+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:44:57.462+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:44:12.461778+00:00, run_after=2026-03-22T04:44:57.461778+00:00
+[2026-03-22T04:44:57.514+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.079 seconds
+[2026-03-22T04:45:27.768+0000] {processor.py:157} INFO - Started process (PID=806) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:45:27.771+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:45:27.774+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:45:27.772+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:45:29.378+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:45:29.471+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:45:29.470+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:45:29.532+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:45:29.532+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:44:44.531697+00:00, run_after=2026-03-22T04:45:29.531697+00:00
+[2026-03-22T04:45:29.581+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.825 seconds
+[2026-03-22T04:45:59.819+0000] {processor.py:157} INFO - Started process (PID=824) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:45:59.822+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:45:59.825+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:45:59.823+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:46:01.653+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:46:01.759+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:46:01.758+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:46:01.832+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:46:01.832+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:45:16.831498+00:00, run_after=2026-03-22T04:46:01.831498+00:00
+[2026-03-22T04:46:01.883+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.077 seconds
+[2026-03-22T04:46:32.143+0000] {processor.py:157} INFO - Started process (PID=842) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:46:32.145+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:46:32.148+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:46:32.147+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:46:33.809+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:46:33.905+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:46:33.904+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:46:33.971+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:46:33.970+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:45:48.970162+00:00, run_after=2026-03-22T04:46:33.970162+00:00
+[2026-03-22T04:46:34.022+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.891 seconds
+[2026-03-22T04:47:04.600+0000] {processor.py:157} INFO - Started process (PID=860) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:47:04.603+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:47:04.606+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:47:04.605+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:47:06.265+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:47:06.356+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:47:06.355+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:47:06.418+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:47:06.418+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:46:21.417410+00:00, run_after=2026-03-22T04:47:06.417410+00:00
+[2026-03-22T04:47:06.467+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.879 seconds
+[2026-03-22T04:47:36.620+0000] {processor.py:157} INFO - Started process (PID=878) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:47:36.623+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:47:36.626+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:47:36.624+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:47:38.393+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:47:38.497+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:47:38.496+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:47:38.570+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:47:38.570+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:46:53.569600+00:00, run_after=2026-03-22T04:47:38.569600+00:00
+[2026-03-22T04:47:38.623+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.016 seconds
+[2026-03-22T04:48:08.963+0000] {processor.py:157} INFO - Started process (PID=896) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:48:08.966+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:48:08.969+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:48:08.968+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:48:10.793+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:48:10.900+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:48:10.899+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:48:10.971+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:48:10.971+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:47:25.970456+00:00, run_after=2026-03-22T04:48:10.970456+00:00
+[2026-03-22T04:48:11.023+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.073 seconds
+[2026-03-22T04:48:41.155+0000] {processor.py:157} INFO - Started process (PID=919) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:48:41.158+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:48:41.161+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:48:41.160+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:48:42.832+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:48:42.925+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:48:42.924+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:48:42.987+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:48:42.986+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:47:57.986191+00:00, run_after=2026-03-22T04:48:42.986191+00:00
+[2026-03-22T04:48:43.035+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.892 seconds
+[2026-03-22T04:49:13.294+0000] {processor.py:157} INFO - Started process (PID=937) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:49:13.297+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:49:13.300+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:49:13.299+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:49:15.045+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:49:15.150+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:49:15.149+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:49:15.214+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:49:15.213+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:48:30.213142+00:00, run_after=2026-03-22T04:49:15.213142+00:00
+[2026-03-22T04:49:15.259+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.977 seconds
+[2026-03-22T04:49:45.563+0000] {processor.py:157} INFO - Started process (PID=955) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:49:45.565+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:49:45.568+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:49:45.567+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:49:47.369+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:49:47.476+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:49:47.474+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:49:47.549+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:49:47.548+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:49:02.547987+00:00, run_after=2026-03-22T04:49:47.547987+00:00
+[2026-03-22T04:49:47.599+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.049 seconds
+[2026-03-22T04:50:17.911+0000] {processor.py:157} INFO - Started process (PID=973) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:50:17.913+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:50:17.916+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:50:17.915+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:50:19.722+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:50:19.823+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:50:19.822+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:50:19.892+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:50:19.891+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:49:34.890863+00:00, run_after=2026-03-22T04:50:19.890863+00:00
+[2026-03-22T04:50:19.946+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.048 seconds
+[2026-03-22T04:50:50.248+0000] {processor.py:157} INFO - Started process (PID=991) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:50:50.251+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:50:50.254+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:50:50.253+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:50:52.064+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:50:52.171+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:50:52.170+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:50:52.241+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:50:52.240+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:50:07.239990+00:00, run_after=2026-03-22T04:50:52.239990+00:00
+[2026-03-22T04:50:52.292+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.056 seconds
+[2026-03-22T04:51:22.596+0000] {processor.py:157} INFO - Started process (PID=1009) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:51:22.598+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:51:22.601+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:51:22.600+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:51:24.344+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:51:24.445+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:51:24.444+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:51:24.515+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:51:24.514+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:50:39.514070+00:00, run_after=2026-03-22T04:51:24.514070+00:00
+[2026-03-22T04:51:24.565+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.982 seconds
+[2026-03-22T04:51:54.878+0000] {processor.py:157} INFO - Started process (PID=1027) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:51:54.881+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:51:54.884+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:51:54.882+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:51:56.628+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:51:56.731+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:51:56.729+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:51:56.804+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:51:56.804+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:51:11.803457+00:00, run_after=2026-03-22T04:51:56.803457+00:00
+[2026-03-22T04:51:56.854+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.988 seconds
+[2026-03-22T04:52:27.153+0000] {processor.py:157} INFO - Started process (PID=1045) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:52:27.155+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:52:27.158+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:52:27.156+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:52:28.947+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:52:29.049+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:52:29.048+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:52:29.117+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:52:29.117+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:51:44.116437+00:00, run_after=2026-03-22T04:52:29.116437+00:00
+[2026-03-22T04:52:29.167+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.027 seconds
+[2026-03-22T04:52:59.484+0000] {processor.py:157} INFO - Started process (PID=1063) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:52:59.487+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:52:59.489+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:52:59.488+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:53:01.239+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:53:01.341+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:53:01.340+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:53:01.414+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:53:01.413+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:52:16.413268+00:00, run_after=2026-03-22T04:53:01.413268+00:00
+[2026-03-22T04:53:01.464+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.993 seconds
+[2026-03-22T04:53:31.766+0000] {processor.py:157} INFO - Started process (PID=1081) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:53:31.768+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:53:31.771+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:53:31.770+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:53:33.515+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:53:33.619+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:53:33.618+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:53:33.688+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:53:33.687+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:52:48.686734+00:00, run_after=2026-03-22T04:53:33.686734+00:00
+[2026-03-22T04:53:33.738+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.985 seconds
+[2026-03-22T04:54:04.051+0000] {processor.py:157} INFO - Started process (PID=1099) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:54:04.054+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:54:04.057+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:54:04.056+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:54:05.799+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:54:05.903+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:54:05.902+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:54:05.973+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:54:05.973+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:53:20.972731+00:00, run_after=2026-03-22T04:54:05.972731+00:00
+[2026-03-22T04:54:06.025+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.987 seconds
+[2026-03-22T04:54:36.328+0000] {processor.py:157} INFO - Started process (PID=1117) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:54:36.331+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:54:36.333+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:54:36.332+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:54:38.071+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:54:38.174+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:54:38.173+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:54:38.249+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:54:38.249+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:53:53.248260+00:00, run_after=2026-03-22T04:54:38.248260+00:00
+[2026-03-22T04:54:38.299+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.983 seconds
+[2026-03-22T04:55:08.608+0000] {processor.py:157} INFO - Started process (PID=1135) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:55:08.611+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:55:08.614+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:55:08.612+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:55:10.362+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:55:10.468+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:55:10.467+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:55:10.540+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:55:10.540+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:54:25.539575+00:00, run_after=2026-03-22T04:55:10.539575+00:00
+[2026-03-22T04:55:10.591+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.995 seconds
+[2026-03-22T04:55:40.895+0000] {processor.py:157} INFO - Started process (PID=1153) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:55:40.897+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:55:40.900+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:55:40.899+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:55:42.704+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:55:42.807+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:55:42.806+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:55:42.876+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:55:42.876+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:54:57.875544+00:00, run_after=2026-03-22T04:55:42.875544+00:00
+[2026-03-22T04:55:42.929+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.047 seconds
+[2026-03-22T04:56:13.331+0000] {processor.py:157} INFO - Started process (PID=1171) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:56:13.334+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:56:13.336+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:56:13.335+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:56:15.099+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:56:15.202+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:56:15.201+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:56:15.274+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:56:15.273+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:55:30.273333+00:00, run_after=2026-03-22T04:56:15.273333+00:00
+[2026-03-22T04:56:15.326+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.008 seconds
+[2026-03-22T04:56:45.535+0000] {processor.py:157} INFO - Started process (PID=1189) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:56:45.538+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:56:45.541+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:56:45.539+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:56:47.346+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:56:47.451+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:56:47.449+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:56:47.520+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:56:47.519+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:56:02.519194+00:00, run_after=2026-03-22T04:56:47.519194+00:00
+[2026-03-22T04:56:47.570+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.047 seconds
+[2026-03-22T04:57:17.773+0000] {processor.py:157} INFO - Started process (PID=1207) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:57:17.776+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:57:17.779+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:57:17.777+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:57:19.579+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:57:19.682+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:57:19.681+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:57:19.750+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:57:19.749+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:56:34.749175+00:00, run_after=2026-03-22T04:57:19.749175+00:00
+[2026-03-22T04:57:19.800+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.040 seconds
+[2026-03-22T04:57:50.019+0000] {processor.py:157} INFO - Started process (PID=1225) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:57:50.022+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:57:50.025+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:57:50.024+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:57:51.767+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:57:51.868+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:57:51.867+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:57:51.940+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:57:51.939+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:57:06.938947+00:00, run_after=2026-03-22T04:57:51.938947+00:00
+[2026-03-22T04:57:51.989+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.982 seconds
+[2026-03-22T04:58:22.252+0000] {processor.py:157} INFO - Started process (PID=1243) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:58:22.255+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:58:22.258+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:58:22.257+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:58:24.009+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:58:24.114+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:58:24.113+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:58:24.184+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:58:24.184+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:57:39.183426+00:00, run_after=2026-03-22T04:58:24.183426+00:00
+[2026-03-22T04:58:24.235+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.995 seconds
+[2026-03-22T04:58:54.469+0000] {processor.py:157} INFO - Started process (PID=1261) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:58:54.472+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:58:54.475+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:58:54.473+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:58:56.218+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:58:56.321+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:58:56.319+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:58:56.389+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:58:56.389+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:58:11.388767+00:00, run_after=2026-03-22T04:58:56.388767+00:00
+[2026-03-22T04:58:56.440+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.983 seconds
+[2026-03-22T04:59:26.676+0000] {processor.py:157} INFO - Started process (PID=1279) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:59:26.678+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:59:26.681+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:59:26.680+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:59:28.427+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:59:28.529+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:59:28.528+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T04:59:28.600+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:59:28.600+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:58:43.599776+00:00, run_after=2026-03-22T04:59:28.599776+00:00
+[2026-03-22T04:59:28.651+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.987 seconds
+[2026-03-22T04:59:58.912+0000] {processor.py:157} INFO - Started process (PID=1297) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T04:59:58.914+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T04:59:58.917+0000] {logging_mixin.py:151} INFO - [2026-03-22T04:59:58.916+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:00:00.652+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:00:00.750+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:00:00.749+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:00:00.819+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:00:00.818+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:59:15.817857+00:00, run_after=2026-03-22T05:00:00.817857+00:00
+[2026-03-22T05:00:00.868+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.968 seconds
+[2026-03-22T05:00:31.136+0000] {processor.py:157} INFO - Started process (PID=1315) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:00:31.139+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:00:31.142+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:00:31.140+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:00:32.884+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:00:32.992+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:00:32.991+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:00:33.062+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:00:33.062+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T04:59:48.061801+00:00, run_after=2026-03-22T05:00:33.061801+00:00
+[2026-03-22T05:00:33.113+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.989 seconds
+[2026-03-22T05:01:03.382+0000] {processor.py:157} INFO - Started process (PID=1336) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:01:03.385+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:01:03.388+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:01:03.386+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:01:05.192+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:01:05.304+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:01:05.303+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:01:05.379+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:01:05.379+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:00:20.378411+00:00, run_after=2026-03-22T05:01:05.378411+00:00
+[2026-03-22T05:01:05.429+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.061 seconds
+[2026-03-22T05:01:35.712+0000] {processor.py:157} INFO - Started process (PID=1356) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:01:35.715+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:01:35.718+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:01:35.716+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:01:37.524+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:01:37.628+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:01:37.627+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:01:37.696+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:01:37.696+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:00:52.695594+00:00, run_after=2026-03-22T05:01:37.695594+00:00
+[2026-03-22T05:01:37.747+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 2.048 seconds
+[2026-03-22T05:02:07.990+0000] {processor.py:157} INFO - Started process (PID=1381) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:02:07.993+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:02:07.995+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:02:07.994+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:02:09.748+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:02:09.850+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:02:09.849+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:02:09.920+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:02:09.920+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:01:24.919451+00:00, run_after=2026-03-22T05:02:09.919451+00:00
+[2026-03-22T05:02:09.975+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.997 seconds
+[2026-03-22T05:02:40.232+0000] {processor.py:157} INFO - Started process (PID=1399) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:02:40.235+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:02:40.238+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:02:40.236+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:02:41.979+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:02:42.083+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:02:42.082+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:02:42.155+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:02:42.154+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:01:57.154258+00:00, run_after=2026-03-22T05:02:42.154258+00:00
+[2026-03-22T05:02:42.205+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.986 seconds
+[2026-03-22T05:03:12.449+0000] {processor.py:157} INFO - Started process (PID=1417) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:03:12.452+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:03:12.455+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:03:12.454+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:03:14.213+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:03:14.316+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:03:14.314+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:03:14.384+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:03:14.383+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:02:29.383288+00:00, run_after=2026-03-22T05:03:14.383288+00:00
+[2026-03-22T05:03:14.435+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.998 seconds
+[2026-03-22T05:03:44.668+0000] {processor.py:157} INFO - Started process (PID=1435) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:03:44.671+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:03:44.674+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:03:44.672+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:03:46.418+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:03:46.521+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:03:46.520+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:03:46.594+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:03:46.593+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:03:01.592997+00:00, run_after=2026-03-22T05:03:46.592997+00:00
+[2026-03-22T05:03:46.644+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.988 seconds
+[2026-03-22T05:04:16.887+0000] {processor.py:157} INFO - Started process (PID=1453) to work on /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:04:16.890+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/dispatcher_pipeline_dag.py for tasks to queue
+[2026-03-22T05:04:16.893+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:04:16.891+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:04:18.638+0000] {processor.py:839} INFO - DAG(s) dict_keys(['distillationDAG']) retrieved from /opt/airflow/dags/dispatcher_pipeline_dag.py
+[2026-03-22T05:04:18.748+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:04:18.747+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-03-22T05:04:18.818+0000] {logging_mixin.py:151} INFO - [2026-03-22T05:04:18.818+0000] {dag.py:3696} INFO - Setting next_dagrun for distillationDAG to 2026-03-22T05:03:33.817472+00:00, run_after=2026-03-22T05:04:18.817472+00:00
+[2026-03-22T05:04:18.869+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/dispatcher_pipeline_dag.py took 1.994 seconds

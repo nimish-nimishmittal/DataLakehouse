@@ -1,0 +1,24 @@
+[2026-03-20T02:40:27.864+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T02:35:00+00:00 [queued]>
+[2026-03-20T02:40:27.877+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T02:35:00+00:00 [queued]>
+[2026-03-20T02:40:27.877+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-03-20T02:40:27.893+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-03-20 02:35:00+00:00
+[2026-03-20T02:40:27.901+0000] {standard_task_runner.py:57} INFO - Started process 7691 to run task
+[2026-03-20T02:40:27.906+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-03-20T02:35:00+00:00', '--job-id', '2458', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp4v4xg1fo']
+[2026-03-20T02:40:27.910+0000] {standard_task_runner.py:85} INFO - Job 2458: Subtask process_queue
+[2026-03-20T02:40:27.982+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T02:35:00+00:00 [running]> on host 76de17b6f6da
+[2026-03-20T02:40:28.097+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T02:35:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T02:35:00+00:00'
+[2026-03-20T02:40:28.913+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-03-20T02:41:04.412+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T02:41:04.889+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T02:41:04.898+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-03-20T02:41:46.434+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T02:41:46.822+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T02:41:46.831+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-03-20T02:42:17.849+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T02:42:18.323+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T02:42:18.335+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 4: 200 events
+[2026-03-20T02:42:29.155+0000] {embedding_pipeline.py:76} WARNING - [embed] Ollama call failed: Remote end closed connection without response
+[2026-03-20T02:42:29.157+0000] {embedding_pipeline.py:599} WARNING - [embed] Ollama unavailable — embedding_768 will be NULL for this batch
+[2026-03-20T02:42:30.548+0000] {local_task_job_runner.py:115} ERROR - Received SIGTERM. Terminating subprocesses
+[2026-03-20T02:42:30.553+0000] {process_utils.py:131} INFO - Sending 15 to group 7691. PIDs of all processes in the group: [7691]
+[2026-03-20T02:42:30.553+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 7691

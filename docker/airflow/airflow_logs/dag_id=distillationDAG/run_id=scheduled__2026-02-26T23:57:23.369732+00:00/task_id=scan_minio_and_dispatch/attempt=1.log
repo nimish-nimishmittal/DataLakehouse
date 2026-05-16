@@ -1,0 +1,81 @@
+[2026-02-26T23:58:43.601+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T23:57:23.369732+00:00 [queued]>
+[2026-02-26T23:58:43.636+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T23:57:23.369732+00:00 [queued]>
+[2026-02-26T23:58:43.637+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-02-26T23:58:43.672+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-26 23:57:23.369732+00:00
+[2026-02-26T23:58:43.697+0000] {standard_task_runner.py:57} INFO - Started process 743 to run task
+[2026-02-26T23:58:43.715+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-26T23:57:23.369732+00:00', '--job-id', '1718', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpd6py3tqm']
+[2026-02-26T23:58:43.732+0000] {standard_task_runner.py:85} INFO - Job 1718: Subtask scan_minio_and_dispatch
+[2026-02-26T23:58:43.997+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T23:57:23.369732+00:00 [running]> on host 9dc8d7c4ba28
+[2026-02-26T23:58:44.800+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-26T23:57:23.369732+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-26T23:57:23.369732+00:00'
+[2026-02-26T23:58:44.832+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc4_financial.pdf
+[2026-02-26T23:58:45.836+0000] {pdf_pipeline.py:354} INFO - [pdf] Processing raw/doc4_financial.pdf
+[2026-02-26T23:58:45.850+0000] {pdf_pipeline.py:408} INFO - [pdf] Extracting text from PDF...
+[2026-02-26T23:58:45.869+0000] {pdf_pipeline.py:441} ERROR - [pdf] Text extraction failed for raw/doc4_financial.pdf: cannot access local variable 'table_count' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 425, in process_minio_object
+    'table_count': table_count,
+                   ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'table_count' where it is not associated with a value
+[2026-02-26T23:58:45.872+0000] {pdf_pipeline.py:477} WARNING - [pdf] No text extracted from raw/doc4_financial.pdf
+[2026-02-26T23:58:45.872+0000] {pdf_pipeline.py:480} INFO - [pdf] Extracting tables from PDF...
+[2026-02-26T23:58:46.409+0000] {pdf_pipeline.py:550} INFO - [pdf] Extracted 0 tables with 0 total rows
+[2026-02-26T23:58:46.409+0000] {pdf_pipeline.py:566} ERROR - [pdf] Failed catalog update for raw/doc4_financial.pdf: cannot access local variable 'pdf_metadata' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 561, in process_minio_object
+    metadata=pdf_metadata,
+             ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pdf_metadata' where it is not associated with a value
+[2026-02-26T23:58:46.411+0000] {pdf_pipeline.py:569} INFO - [pdf] ✅ Completed processing: raw/doc4_financial.pdf | pages=3 | tables=0 | rows=0 | text_chars=0
+[2026-02-26T23:58:46.412+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc4_financial.pdf
+[2026-02-26T23:58:46.413+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc4_financial.pdf -> raw-data/2026-02-26/doc4_financial.pdf
+[2026-02-26T23:58:46.442+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc4_financial.pdf
+[2026-02-26T23:58:46.442+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc4_financial_statement.docx
+[2026-02-26T23:58:46.505+0000] {docx_pipeline.py:435} INFO - [docx] Processing raw/doc4_financial_statement.docx
+[2026-02-26T23:58:46.540+0000] {docx_pipeline.py:492} INFO - [docx] Extracting text…
+[2026-02-26T23:58:46.587+0000] {docx_pipeline.py:494} INFO - [docx] Extracted 181 characters of text
+[2026-02-26T23:58:46.588+0000] {docx_pipeline.py:499} INFO - [docx] Extracting tables…
+[2026-02-26T23:58:46.661+0000] {docx_pipeline.py:501} INFO - [docx] Found 3 table(s)
+[2026-02-26T23:58:46.671+0000] {docx_pipeline.py:526} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/doc4_financial_statement.txt
+[2026-02-26T23:58:46.684+0000] {docx_pipeline.py:193} WARNING - [docx] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-02-26T23:58:46.688+0000] {docx_pipeline.py:257} INFO - [docx] Inserted into unstructured_documents for raw/doc4_financial_statement.docx
+[2026-02-26T23:58:46.697+0000] {docx_pipeline.py:547} INFO - [docx] Processing 3 table(s)…
+[2026-02-26T23:58:46.741+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc4_financial_statement_table_1.csv
+[2026-02-26T23:58:46.742+0000] {structured_pipeline.py:108} INFO - Table name: data_doc4_financial_statement_table_1
+[2026-02-26T23:58:46.747+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T23:58:46.764+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.772+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.777+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.782+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.793+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.801+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc4_financial_statement_table_1
+[2026-02-26T23:58:46.806+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc4_financial_statement_table_1'
+[2026-02-26T23:58:46.812+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 1/3: 4 rows × 5 cols
+[2026-02-26T23:58:46.831+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc4_financial_statement_table_2.csv
+[2026-02-26T23:58:46.832+0000] {structured_pipeline.py:108} INFO - Table name: data_doc4_financial_statement_table_2
+[2026-02-26T23:58:46.834+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T23:58:46.843+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.854+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc4_financial_statement_table_2
+[2026-02-26T23:58:46.859+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc4_financial_statement_table_2'
+[2026-02-26T23:58:46.867+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 2/3: 4 rows × 5 cols
+[2026-02-26T23:58:46.895+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc4_financial_statement_table_3.csv
+[2026-02-26T23:58:46.895+0000] {structured_pipeline.py:108} INFO - Table name: data_doc4_financial_statement_table_3
+[2026-02-26T23:58:46.900+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T23:58:46.911+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.917+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.924+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.930+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.943+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:58:46.947+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc4_financial_statement_table_3
+[2026-02-26T23:58:46.952+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc4_financial_statement_table_3'
+[2026-02-26T23:58:46.957+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 3/3: 4 rows × 5 cols
+[2026-02-26T23:58:46.974+0000] {docx_pipeline.py:606} INFO - [docx] Updated catalog for raw/doc4_financial_statement.docx
+[2026-02-26T23:58:46.975+0000] {docx_pipeline.py:612} INFO - [docx] ✅ Completed raw/doc4_financial_statement.docx | tables=3 | total_rows=12 | text_chars=181
+[2026-02-26T23:58:46.975+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc4_financial_statement.docx
+[2026-02-26T23:58:46.977+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc4_financial_statement.docx -> raw-data/2026-02-26/doc4_financial_statement.docx
+[2026-02-26T23:58:46.998+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc4_financial_statement.docx
+[2026-02-26T23:58:46.999+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-26T23:58:47.049+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260226T235723, start_date=20260226T235843, end_date=20260226T235847
+[2026-02-26T23:58:47.133+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-26T23:58:47.221+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

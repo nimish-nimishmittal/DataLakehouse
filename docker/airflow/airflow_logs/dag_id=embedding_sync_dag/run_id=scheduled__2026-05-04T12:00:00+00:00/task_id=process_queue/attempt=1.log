@@ -1,0 +1,41 @@
+[2026-05-04T12:08:46.587+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T12:00:00+00:00 [queued]>
+[2026-05-04T12:08:46.597+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T12:00:00+00:00 [queued]>
+[2026-05-04T12:08:46.597+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-05-04T12:08:46.611+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-05-04 12:00:00+00:00
+[2026-05-04T12:08:46.617+0000] {standard_task_runner.py:57} INFO - Started process 4343 to run task
+[2026-05-04T12:08:46.622+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-05-04T12:00:00+00:00', '--job-id', '4269', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpz2l7x756']
+[2026-05-04T12:08:46.626+0000] {standard_task_runner.py:85} INFO - Job 4269: Subtask process_queue
+[2026-05-04T12:08:46.709+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T12:00:00+00:00 [running]> on host e8610aa59365
+[2026-05-04T12:08:46.912+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-05-04T12:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-04T12:00:00+00:00'
+[2026-05-04T12:08:47.946+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-05-04T12:09:14.812+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T12:09:15.529+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T12:09:15.551+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-05-06T02:58:04.668+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to up_for_retry. Terminating instance.
+[2026-05-06T02:58:04.706+0000] {process_utils.py:131} INFO - Sending 15 to group 4343. PIDs of all processes in the group: [4343]
+[2026-05-06T02:58:04.711+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 4343
+[2026-05-06T02:58:04.711+0000] {taskinstance.py:1630} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-05-06T02:58:04.718+0000] {embedding_pipeline.py:76} WARNING - [embed] Ollama call failed: Task received SIGTERM signal
+[2026-05-06T02:58:04.752+0000] {embedding_pipeline.py:599} WARNING - [embed] Ollama unavailable — embedding_768 will be NULL for this batch
+[2026-05-06T02:58:22.806+0000] {embedding_pipeline.py:96} INFO - [embed] Loading all-MiniLM-L6-v2...
+[2026-05-06T02:58:22.808+0000] {SentenceTransformer.py:219} INFO - Use pytorch device_name: cpu
+[2026-05-06T02:58:22.809+0000] {SentenceTransformer.py:227} INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+[2026-05-06T02:58:24.387+0000] {logging_mixin.py:151} WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-05-06T02:58:24.387+0000] {_http.py:916} WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-05-06T02:58:45.444+0000] {logging_mixin.py:151} WARNING - Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+[2026-05-06T02:58:45.532+0000] {logging_mixin.py:151} WARNING - Loading weights: 100%|##########| 103/103 [00:00<00:00, 1193.90it/s]
+[2026-05-06T02:58:45.557+0000] {logging_mixin.py:151} WARNING - BertModel LOAD REPORT from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[2026-05-06T02:58:50.508+0000] {embedding_pipeline.py:98} INFO - [embed] MiniLM loaded.
+[2026-05-06T02:59:01.005+0000] {embedding_pipeline.py:607} INFO - [embed] MiniLM produced 200 × 384-dim vectors
+[2026-05-06T02:59:02.682+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-06T02:59:02.705+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-05-06T02:59:04.726+0000] {process_utils.py:149} WARNING - process psutil.Process(pid=4343, name='airflow task ru', status='sleeping', started='2026-05-04 12:08:45') did not respond to SIGTERM. Trying SIGKILL
+[2026-05-06T02:59:04.732+0000] {process_utils.py:86} INFO - Sending the signal 9 to group 4343
+[2026-05-06T02:59:05.195+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=4343, name='airflow task ru', status='terminated', exitcode=<Negsignal.SIGKILL: -9>, started='2026-05-04 12:08:45') (4343) terminated with exit code -9
+[2026-05-06T02:59:05.199+0000] {standard_task_runner.py:172} ERROR - Job 4269 was killed before it finished (likely due to running out of memory)

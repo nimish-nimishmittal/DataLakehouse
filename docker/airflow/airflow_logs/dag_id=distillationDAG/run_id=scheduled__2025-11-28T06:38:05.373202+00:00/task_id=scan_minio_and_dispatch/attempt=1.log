@@ -1,0 +1,25 @@
+[2025-11-28T06:38:59.879+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-28T06:38:05.373202+00:00 [queued]>
+[2025-11-28T06:38:59.899+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-28T06:38:05.373202+00:00 [queued]>
+[2025-11-28T06:38:59.900+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2025-11-28T06:38:59.929+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2025-11-28 06:38:05.373202+00:00
+[2025-11-28T06:38:59.945+0000] {standard_task_runner.py:57} INFO - Started process 8107 to run task
+[2025-11-28T06:38:59.954+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2025-11-28T06:38:05.373202+00:00', '--job-id', '562', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpog9hjks_']
+[2025-11-28T06:38:59.963+0000] {standard_task_runner.py:85} INFO - Job 562: Subtask scan_minio_and_dispatch
+[2025-11-28T06:39:00.020+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-28T06:39:00.160+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-28T06:38:05.373202+00:00 [running]> on host ca4e2af379ef
+[2025-11-28T06:39:00.926+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T06:38:05.373202+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-28T06:38:05.373202+00:00'
+[2025-11-28T06:39:00.952+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/test_11.jpeg
+[2025-11-28T06:39:01.490+0000] {image_pipeline.py:85} INFO - [image] Processing raw/test_11.jpeg
+[2025-11-28T06:39:01.528+0000] {image_pipeline.py:122} INFO - [image] Image metadata: 241x209, format=JPEG
+[2025-11-28T06:39:01.528+0000] {image_pipeline.py:128} INFO - [image] Running OCR on raw/test_11.jpeg...
+[2025-11-28T06:39:05.226+0000] {image_pipeline.py:132} INFO - [image] OCR extracted 419 characters
+[2025-11-28T06:39:05.239+0000] {image_pipeline.py:145} INFO - [image] OCR text uploaded to processed/unstructured/text-extracted/test_11.txt
+[2025-11-28T06:39:05.247+0000] {image_pipeline.py:173} INFO - [image] Saved metadata to unstructured_images for raw/test_11.jpeg
+[2025-11-28T06:39:05.252+0000] {image_pipeline.py:187} INFO - [image] ✅ Completed processing raw/test_11.jpeg | size=241x209 | format=JPEG | ocr_chars=419
+[2025-11-28T06:39:05.253+0000] {etl_manager.py:295} INFO - Processing complete for: raw/test_11.jpeg
+[2025-11-28T06:39:05.255+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/test_11.jpeg -> raw-data/2025-11-28/test_11.jpeg
+[2025-11-28T06:39:05.279+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/test_11.jpeg
+[2025-11-28T06:39:05.280+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-11-28T06:39:05.337+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20251128T063805, start_date=20251128T063859, end_date=20251128T063905
+[2025-11-28T06:39:05.407+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-11-28T06:39:05.469+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

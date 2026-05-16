@@ -1,0 +1,77 @@
+[2026-02-27T09:27:01.802+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-27T09:26:15.291798+00:00 [queued]>
+[2026-02-27T09:27:01.811+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-27T09:26:15.291798+00:00 [queued]>
+[2026-02-27T09:27:01.811+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-02-27T09:27:01.825+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-27 09:26:15.291798+00:00
+[2026-02-27T09:27:01.833+0000] {standard_task_runner.py:57} INFO - Started process 2085 to run task
+[2026-02-27T09:27:01.839+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-27T09:26:15.291798+00:00', '--job-id', '1989', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmparvzffsg']
+[2026-02-27T09:27:01.842+0000] {standard_task_runner.py:85} INFO - Job 1989: Subtask scan_minio_and_dispatch
+[2026-02-27T09:27:01.921+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-27T09:26:15.291798+00:00 [running]> on host 17944091c9eb
+[2026-02-27T09:27:02.212+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-27T09:26:15.291798+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-27T09:26:15.291798+00:00'
+[2026-02-27T09:27:02.224+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc1111.docx
+[2026-02-27T09:27:02.525+0000] {docx_pipeline.py:452} INFO - [docx] Processing raw/doc1111.docx
+[2026-02-27T09:27:02.529+0000] {docx_pipeline.py:509} INFO - [docx] Extracting text…
+[2026-02-27T09:27:02.539+0000] {docx_pipeline.py:511} INFO - [docx] Extracted 198 characters of text
+[2026-02-27T09:27:02.539+0000] {docx_pipeline.py:516} INFO - [docx] Extracting tables…
+[2026-02-27T09:27:02.561+0000] {docx_pipeline.py:518} INFO - [docx] Found 3 table(s)
+[2026-02-27T09:27:02.565+0000] {docx_pipeline.py:543} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/doc1111.txt
+[2026-02-27T09:27:02.567+0000] {docx_pipeline.py:193} WARNING - [docx] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-02-27T09:27:02.568+0000] {docx_pipeline.py:257} INFO - [docx] Inserted into unstructured_documents for raw/doc1111.docx
+[2026-02-27T09:27:02.570+0000] {docx_pipeline.py:564} INFO - [docx] Processing 3 table(s)…
+[2026-02-27T09:27:02.584+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc1111_table_1.csv
+[2026-02-27T09:27:02.584+0000] {structured_pipeline.py:108} INFO - Table name: data_doc1111_table_1
+[2026-02-27T09:27:02.585+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-27T09:27:02.590+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.593+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.595+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.597+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.599+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.601+0000] {docx_pipeline.py:378} INFO - [docx] Created table: data_doc1111_table_1
+[2026-02-27T09:27:02.604+0000] {docx_pipeline.py:390} INFO - [docx] Loaded 4 rows into 'data_doc1111_table_1'
+[2026-02-27T09:27:02.607+0000] {docx_pipeline.py:587} INFO - [docx] Processed table 1/3: 4 rows × 5 cols
+[2026-02-27T09:27:02.616+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc1111_table_2.csv
+[2026-02-27T09:27:02.616+0000] {structured_pipeline.py:108} INFO - Table name: data_doc1111_table_2
+[2026-02-27T09:27:02.617+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-27T09:27:02.620+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.622+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.625+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.626+0000] {docx_pipeline.py:378} INFO - [docx] Created table: data_doc1111_table_2
+[2026-02-27T09:27:02.628+0000] {docx_pipeline.py:390} INFO - [docx] Loaded 4 rows into 'data_doc1111_table_2'
+[2026-02-27T09:27:02.630+0000] {docx_pipeline.py:587} INFO - [docx] Processed table 2/3: 4 rows × 5 cols
+[2026-02-27T09:27:02.638+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc1111_table_3.csv
+[2026-02-27T09:27:02.638+0000] {structured_pipeline.py:108} INFO - Table name: data_doc1111_table_3
+[2026-02-27T09:27:02.639+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-27T09:27:02.641+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.642+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.645+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.647+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.650+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-27T09:27:02.652+0000] {docx_pipeline.py:378} INFO - [docx] Created table: data_doc1111_table_3
+[2026-02-27T09:27:02.654+0000] {docx_pipeline.py:390} INFO - [docx] Loaded 4 rows into 'data_doc1111_table_3'
+[2026-02-27T09:27:02.657+0000] {docx_pipeline.py:587} INFO - [docx] Processed table 3/3: 4 rows × 5 cols
+[2026-02-27T09:27:02.664+0000] {docx_pipeline.py:623} INFO - [docx] Updated catalog for raw/doc1111.docx
+[2026-02-27T09:27:02.664+0000] {docx_pipeline.py:629} INFO - [docx] ✅ Completed raw/doc1111.docx | tables=3 | total_rows=12 | text_chars=198
+[2026-02-27T09:27:02.665+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc1111.docx
+[2026-02-27T09:27:02.665+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc1111.docx -> raw-data/2026-02-27/doc1111.docx
+[2026-02-27T09:27:02.674+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc1111.docx
+[2026-02-27T09:27:02.674+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc1111.pdf
+[2026-02-27T09:27:02.689+0000] {pdf_pipeline.py:478} INFO - [pdf] Processing raw/doc1111.pdf
+[2026-02-27T09:27:02.694+0000] {pdf_pipeline.py:532} INFO - [pdf] Extracting text from PDF...
+[2026-02-27T09:27:02.730+0000] {pdf_pipeline.py:554} INFO - [pdf] Extracted 765 characters of text from 2 pages
+[2026-02-27T09:27:02.737+0000] {pdf_pipeline.py:573} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/doc1111.txt
+[2026-02-27T09:27:02.740+0000] {pdf_pipeline.py:86} WARNING - [pdf] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-02-27T09:27:02.741+0000] {pdf_pipeline.py:154} INFO - [pdf] Inserted new record into unstructured_documents for raw/doc1111.pdf
+[2026-02-27T09:27:02.742+0000] {pdf_pipeline.py:596} INFO - [pdf] Extracting tables from PDF...
+[2026-02-27T09:27:02.819+0000] {pdf_pipeline.py:675} INFO - [pdf] Extracted 0 tables with 0 total rows
+[2026-02-27T09:27:02.821+0000] {pdf_pipeline.py:703} INFO - [pdf] Updated catalog for raw/doc1111.pdf
+[2026-02-27T09:27:02.821+0000] {pdf_pipeline.py:708} INFO - [pdf] ✅ Completed processing: raw/doc1111.pdf | pages=2 | tables=0 | rows=0 | text_chars=765
+[2026-02-27T09:27:02.821+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc1111.pdf
+[2026-02-27T09:27:02.822+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc1111.pdf -> raw-data/2026-02-27/doc1111.pdf
+[2026-02-27T09:27:02.832+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc1111.pdf
+[2026-02-27T09:27:02.833+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-02-27T09:27:02.849+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260227T092615, start_date=20260227T092701, end_date=20260227T092702
+[2026-02-27T09:27:02.897+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-02-27T09:27:02.926+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

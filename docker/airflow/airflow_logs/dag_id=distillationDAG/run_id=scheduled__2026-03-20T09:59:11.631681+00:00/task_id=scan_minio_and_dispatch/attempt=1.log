@@ -1,0 +1,306 @@
+[2026-03-20T10:00:11.844+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-20T09:59:11.631681+00:00 [queued]>
+[2026-03-20T10:00:11.854+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-20T09:59:11.631681+00:00 [queued]>
+[2026-03-20T10:00:11.854+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-03-20T10:00:11.868+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-03-20 09:59:11.631681+00:00
+[2026-03-20T10:00:11.876+0000] {standard_task_runner.py:57} INFO - Started process 2620 to run task
+[2026-03-20T10:00:11.880+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-03-20T09:59:11.631681+00:00', '--job-id', '2483', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmptmw8pcjf']
+[2026-03-20T10:00:11.885+0000] {standard_task_runner.py:85} INFO - Job 2483: Subtask scan_minio_and_dispatch
+[2026-03-20T10:00:12.033+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-20T09:59:11.631681+00:00 [running]> on host f9d03ff7592b
+[2026-03-20T10:00:12.637+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T09:59:11.631681+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T09:59:11.631681+00:00'
+[2026-03-20T10:00:12.668+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:12.997+0000] {pdf_pipeline.py:395} INFO - [pdf] Processing raw/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:13.003+0000] {pdf_pipeline.py:427} INFO - [pdf] Extracting text from PDF...
+[2026-03-20T10:00:13.104+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracted 5486 characters of text from 2 pages
+[2026-03-20T10:00:13.111+0000] {pdf_pipeline.py:468} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/26T1S2DS25F1002315.txt
+[2026-03-20T10:00:13.113+0000] {pdf_pipeline.py:77} ERROR - [pdf] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 60, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:13.114+0000] {pdf_pipeline.py:80} WARNING - [pdf] Continuing pipeline despite unstructured_documents save failure
+[2026-03-20T10:00:13.114+0000] {pdf_pipeline.py:490} INFO - [pdf] Extracting tables from PDF...
+[2026-03-20T10:00:13.347+0000] {pdf_pipeline.py:263} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/26T1S2DS25F1002315_page1_table1.csv
+[2026-03-20T10:00:13.347+0000] {structured_pipeline.py:108} INFO - Table name: data_26t1s2ds25f1002315_page1_table1
+[2026-03-20T10:00:13.348+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:13.359+0000] {pdf_pipeline.py:327} INFO - [pdf] Created table: data_26t1s2ds25f1002315_page1_table1
+[2026-03-20T10:00:13.363+0000] {pdf_pipeline.py:340} INFO - [pdf] Loaded 1 rows into data_26t1s2ds25f1002315_page1_table1
+[2026-03-20T10:00:13.367+0000] {pdf_pipeline.py:552} INFO - [pdf] Processed table 1: 1 rows, 5 columns
+[2026-03-20T10:00:13.381+0000] {pdf_pipeline.py:263} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/26T1S2DS25F1002315_page1_table2.csv
+[2026-03-20T10:00:13.382+0000] {structured_pipeline.py:108} INFO - Table name: data_26t1s2ds25f1002315_page1_table2
+[2026-03-20T10:00:13.382+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 8 columns
+[2026-03-20T10:00:13.388+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-20T10:00:13.391+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-20T10:00:13.394+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-20T10:00:13.397+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-20T10:00:13.399+0000] {pdf_pipeline.py:327} INFO - [pdf] Created table: data_26t1s2ds25f1002315_page1_table2
+[2026-03-20T10:00:13.402+0000] {pdf_pipeline.py:340} INFO - [pdf] Loaded 14 rows into data_26t1s2ds25f1002315_page1_table2
+[2026-03-20T10:00:13.405+0000] {pdf_pipeline.py:552} INFO - [pdf] Processed table 2: 14 rows, 8 columns
+[2026-03-20T10:00:13.634+0000] {pdf_pipeline.py:263} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/26T1S2DS25F1002315_page2_table1.csv
+[2026-03-20T10:00:13.635+0000] {structured_pipeline.py:108} INFO - Table name: data_26t1s2ds25f1002315_page2_table1
+[2026-03-20T10:00:13.636+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-03-20T10:00:13.640+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-20T10:00:13.642+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-20T10:00:13.644+0000] {pdf_pipeline.py:327} INFO - [pdf] Created table: data_26t1s2ds25f1002315_page2_table1
+[2026-03-20T10:00:13.648+0000] {pdf_pipeline.py:340} INFO - [pdf] Loaded 9 rows into data_26t1s2ds25f1002315_page2_table1
+[2026-03-20T10:00:13.650+0000] {pdf_pipeline.py:552} INFO - [pdf] Processed table 3: 9 rows, 2 columns
+[2026-03-20T10:00:13.651+0000] {pdf_pipeline.py:569} INFO - [pdf] Extracted 3 tables with 24 total rows
+[2026-03-20T10:00:13.653+0000] {pdf_pipeline.py:596} INFO - [pdf] Updated catalog for raw/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:13.653+0000] {pdf_pipeline.py:601} INFO - [pdf] ✅ Completed processing: raw/26T1S2DS25F1002315.pdf | pages=2 | tables=3 | rows=24 | text_chars=5486
+[2026-03-20T10:00:13.653+0000] {etl_manager.py:287} INFO - ETL completed: raw/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:13.654+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/26T1S2DS25F1002315.pdf -> raw-data/2026-03-20/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:13.674+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/26T1S2DS25F1002315.pdf: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:13.675+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:13.683+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/26T1S2DS25F1002315.pdf
+[2026-03-20T10:00:13.683+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_data_3.csv
+[2026-03-20T10:00:13.703+0000] {structured_pipeline.py:615} INFO - [structured] Processing raw/financial_data_3.csv
+[2026-03-20T10:00:13.707+0000] {structured_pipeline.py:629} INFO - [structured] Downloaded 549 bytes
+[2026-03-20T10:00:13.708+0000] {structured_pipeline.py:633} INFO - [structured] Detected file type: csv
+[2026-03-20T10:00:13.708+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-03-20T10:00:13.708+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-03-20T10:00:13.711+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-03-20T10:00:13.711+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-03-20T10:00:13.714+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 15 rows with 4 columns
+[2026-03-20T10:00:13.715+0000] {structured_pipeline.py:656} INFO - [structured] Initial read: 15 rows, 4 columns
+[2026-03-20T10:00:13.715+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-03-20T10:00:13.718+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 15 rows, 4 columns
+[2026-03-20T10:00:13.718+0000] {structured_pipeline.py:108} INFO - Table name: data_financial_data_3
+[2026-03-20T10:00:13.718+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:13.724+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'date' -> TIMESTAMP
+[2026-03-20T10:00:13.725+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'revenue' -> NUMERIC
+[2026-03-20T10:00:13.726+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'expenses' -> NUMERIC
+[2026-03-20T10:00:13.727+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'profit' -> NUMERIC
+[2026-03-20T10:00:13.728+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_financial_data_3
+[2026-03-20T10:00:13.732+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_financial_data_3
+[2026-03-20T10:00:13.737+0000] {structured_pipeline.py:553} INFO - [PostgreSQL] Loaded 15 rows into data_financial_data_3
+[2026-03-20T10:00:13.737+0000] {structured_pipeline.py:567} INFO - [Parquet] Writing Parquet file...
+[2026-03-20T10:00:13.764+0000] {structured_pipeline.py:594} INFO - [Parquet] Saved to: processed/structured/financial_data_3.parquet
+[2026-03-20T10:00:13.770+0000] {structured_pipeline.py:690} INFO - [structured] ✅ Successfully processed raw/financial_data_3.csv
+[2026-03-20T10:00:13.770+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_data_3.csv
+[2026-03-20T10:00:13.770+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_data_3.csv -> raw-data/2026-03-20/financial_data_3.csv
+[2026-03-20T10:00:13.780+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_data_3.csv: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:13.781+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_data_3.csv
+[2026-03-20T10:00:13.785+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_data_3.csv
+[2026-03-20T10:00:13.785+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_data_4.csv
+[2026-03-20T10:00:13.805+0000] {structured_pipeline.py:615} INFO - [structured] Processing raw/financial_data_4.csv
+[2026-03-20T10:00:13.810+0000] {structured_pipeline.py:629} INFO - [structured] Downloaded 552 bytes
+[2026-03-20T10:00:13.810+0000] {structured_pipeline.py:633} INFO - [structured] Detected file type: csv
+[2026-03-20T10:00:13.811+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-03-20T10:00:13.812+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-03-20T10:00:13.813+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-03-20T10:00:13.814+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-03-20T10:00:13.816+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 15 rows with 4 columns
+[2026-03-20T10:00:13.817+0000] {structured_pipeline.py:656} INFO - [structured] Initial read: 15 rows, 4 columns
+[2026-03-20T10:00:13.817+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-03-20T10:00:13.822+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 15 rows, 4 columns
+[2026-03-20T10:00:13.823+0000] {structured_pipeline.py:108} INFO - Table name: data_financial_data_4
+[2026-03-20T10:00:13.823+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:13.828+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'date' -> TIMESTAMP
+[2026-03-20T10:00:13.830+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'revenue' -> NUMERIC
+[2026-03-20T10:00:13.832+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'expenses' -> NUMERIC
+[2026-03-20T10:00:13.834+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'profit' -> NUMERIC
+[2026-03-20T10:00:13.836+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_financial_data_4
+[2026-03-20T10:00:13.842+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_financial_data_4
+[2026-03-20T10:00:13.851+0000] {structured_pipeline.py:553} INFO - [PostgreSQL] Loaded 15 rows into data_financial_data_4
+[2026-03-20T10:00:13.852+0000] {structured_pipeline.py:567} INFO - [Parquet] Writing Parquet file...
+[2026-03-20T10:00:13.868+0000] {structured_pipeline.py:594} INFO - [Parquet] Saved to: processed/structured/financial_data_4.parquet
+[2026-03-20T10:00:13.880+0000] {structured_pipeline.py:690} INFO - [structured] ✅ Successfully processed raw/financial_data_4.csv
+[2026-03-20T10:00:13.881+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_data_4.csv
+[2026-03-20T10:00:13.882+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_data_4.csv -> raw-data/2026-03-20/financial_data_4.csv
+[2026-03-20T10:00:13.900+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_data_4.csv: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:13.901+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_data_4.csv
+[2026-03-20T10:00:13.912+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_data_4.csv
+[2026-03-20T10:00:13.912+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_data_5.csv
+[2026-03-20T10:00:13.950+0000] {structured_pipeline.py:615} INFO - [structured] Processing raw/financial_data_5.csv
+[2026-03-20T10:00:13.961+0000] {structured_pipeline.py:629} INFO - [structured] Downloaded 548 bytes
+[2026-03-20T10:00:13.962+0000] {structured_pipeline.py:633} INFO - [structured] Detected file type: csv
+[2026-03-20T10:00:13.963+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-03-20T10:00:13.963+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-03-20T10:00:13.966+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-03-20T10:00:13.967+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-03-20T10:00:13.971+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 15 rows with 4 columns
+[2026-03-20T10:00:13.971+0000] {structured_pipeline.py:656} INFO - [structured] Initial read: 15 rows, 4 columns
+[2026-03-20T10:00:13.972+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-03-20T10:00:13.980+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 15 rows, 4 columns
+[2026-03-20T10:00:13.982+0000] {structured_pipeline.py:108} INFO - Table name: data_financial_data_5
+[2026-03-20T10:00:13.983+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:13.988+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'date' -> TIMESTAMP
+[2026-03-20T10:00:13.990+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'revenue' -> NUMERIC
+[2026-03-20T10:00:13.992+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'expenses' -> NUMERIC
+[2026-03-20T10:00:13.995+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'profit' -> NUMERIC
+[2026-03-20T10:00:13.997+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_financial_data_5
+[2026-03-20T10:00:14.003+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_financial_data_5
+[2026-03-20T10:00:14.011+0000] {structured_pipeline.py:553} INFO - [PostgreSQL] Loaded 15 rows into data_financial_data_5
+[2026-03-20T10:00:14.012+0000] {structured_pipeline.py:567} INFO - [Parquet] Writing Parquet file...
+[2026-03-20T10:00:14.027+0000] {structured_pipeline.py:594} INFO - [Parquet] Saved to: processed/structured/financial_data_5.parquet
+[2026-03-20T10:00:14.040+0000] {structured_pipeline.py:690} INFO - [structured] ✅ Successfully processed raw/financial_data_5.csv
+[2026-03-20T10:00:14.040+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_data_5.csv
+[2026-03-20T10:00:14.041+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_data_5.csv -> raw-data/2026-03-20/financial_data_5.csv
+[2026-03-20T10:00:14.074+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_data_5.csv: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:14.075+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_data_5.csv
+[2026-03-20T10:00:14.083+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_data_5.csv
+[2026-03-20T10:00:14.084+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_report_3.docx
+[2026-03-20T10:00:14.132+0000] {docx_pipeline.py:368} INFO - [docx] Processing raw/financial_report_3.docx
+[2026-03-20T10:00:14.147+0000] {docx_pipeline.py:404} INFO - [docx] Extracting text…
+[2026-03-20T10:00:14.216+0000] {docx_pipeline.py:406} INFO - [docx] Extracted 725 characters of text
+[2026-03-20T10:00:14.216+0000] {docx_pipeline.py:411} INFO - [docx] Extracting tables…
+[2026-03-20T10:00:14.260+0000] {docx_pipeline.py:413} INFO - [docx] Found 0 table(s)
+[2026-03-20T10:00:14.288+0000] {docx_pipeline.py:438} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/financial_report_3.txt
+[2026-03-20T10:00:14.293+0000] {docx_pipeline.py:80} ERROR - [docx] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/docx_pipeline.py", line 63, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:14.347+0000] {docx_pipeline.py:516} INFO - [docx] Updated catalog for raw/financial_report_3.docx
+[2026-03-20T10:00:14.347+0000] {docx_pipeline.py:522} INFO - [docx] ✅ Completed raw/financial_report_3.docx | tables=0 | total_rows=0 | text_chars=725
+[2026-03-20T10:00:14.348+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_report_3.docx
+[2026-03-20T10:00:14.348+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_report_3.docx -> raw-data/2026-03-20/financial_report_3.docx
+[2026-03-20T10:00:14.373+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_report_3.docx: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:14.373+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_report_3.docx
+[2026-03-20T10:00:14.381+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_report_3.docx
+[2026-03-20T10:00:14.381+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_report_4.docx
+[2026-03-20T10:00:14.418+0000] {docx_pipeline.py:368} INFO - [docx] Processing raw/financial_report_4.docx
+[2026-03-20T10:00:14.427+0000] {docx_pipeline.py:404} INFO - [docx] Extracting text…
+[2026-03-20T10:00:14.480+0000] {docx_pipeline.py:406} INFO - [docx] Extracted 719 characters of text
+[2026-03-20T10:00:14.480+0000] {docx_pipeline.py:411} INFO - [docx] Extracting tables…
+[2026-03-20T10:00:14.526+0000] {docx_pipeline.py:413} INFO - [docx] Found 0 table(s)
+[2026-03-20T10:00:14.534+0000] {docx_pipeline.py:438} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/financial_report_4.txt
+[2026-03-20T10:00:14.541+0000] {docx_pipeline.py:80} ERROR - [docx] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/docx_pipeline.py", line 63, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:14.595+0000] {docx_pipeline.py:516} INFO - [docx] Updated catalog for raw/financial_report_4.docx
+[2026-03-20T10:00:14.595+0000] {docx_pipeline.py:522} INFO - [docx] ✅ Completed raw/financial_report_4.docx | tables=0 | total_rows=0 | text_chars=719
+[2026-03-20T10:00:14.596+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_report_4.docx
+[2026-03-20T10:00:14.596+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_report_4.docx -> raw-data/2026-03-20/financial_report_4.docx
+[2026-03-20T10:00:14.631+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_report_4.docx: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:14.632+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_report_4.docx
+[2026-03-20T10:00:14.649+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_report_4.docx
+[2026-03-20T10:00:14.650+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_report_5.docx
+[2026-03-20T10:00:14.701+0000] {docx_pipeline.py:368} INFO - [docx] Processing raw/financial_report_5.docx
+[2026-03-20T10:00:14.710+0000] {docx_pipeline.py:404} INFO - [docx] Extracting text…
+[2026-03-20T10:00:14.759+0000] {docx_pipeline.py:406} INFO - [docx] Extracted 723 characters of text
+[2026-03-20T10:00:14.760+0000] {docx_pipeline.py:411} INFO - [docx] Extracting tables…
+[2026-03-20T10:00:14.803+0000] {docx_pipeline.py:413} INFO - [docx] Found 0 table(s)
+[2026-03-20T10:00:14.814+0000] {docx_pipeline.py:438} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/financial_report_5.txt
+[2026-03-20T10:00:14.822+0000] {docx_pipeline.py:80} ERROR - [docx] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/docx_pipeline.py", line 63, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:14.925+0000] {docx_pipeline.py:516} INFO - [docx] Updated catalog for raw/financial_report_5.docx
+[2026-03-20T10:00:14.925+0000] {docx_pipeline.py:522} INFO - [docx] ✅ Completed raw/financial_report_5.docx | tables=0 | total_rows=0 | text_chars=723
+[2026-03-20T10:00:14.925+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_report_5.docx
+[2026-03-20T10:00:14.926+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_report_5.docx -> raw-data/2026-03-20/financial_report_5.docx
+[2026-03-20T10:00:14.952+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_report_5.docx: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:14.952+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_report_5.docx
+[2026-03-20T10:00:14.960+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_report_5.docx
+[2026-03-20T10:00:14.960+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_table_3.pdf
+[2026-03-20T10:00:15.003+0000] {pdf_pipeline.py:395} INFO - [pdf] Processing raw/financial_table_3.pdf
+[2026-03-20T10:00:15.011+0000] {pdf_pipeline.py:427} INFO - [pdf] Extracting text from PDF...
+[2026-03-20T10:00:15.036+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracted 467 characters of text from 1 pages
+[2026-03-20T10:00:15.047+0000] {pdf_pipeline.py:468} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/financial_table_3.txt
+[2026-03-20T10:00:15.053+0000] {pdf_pipeline.py:77} ERROR - [pdf] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 60, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:15.054+0000] {pdf_pipeline.py:80} WARNING - [pdf] Continuing pipeline despite unstructured_documents save failure
+[2026-03-20T10:00:15.055+0000] {pdf_pipeline.py:490} INFO - [pdf] Extracting tables from PDF...
+[2026-03-20T10:00:15.178+0000] {pdf_pipeline.py:263} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/financial_table_3_page1_table1.csv
+[2026-03-20T10:00:15.179+0000] {structured_pipeline.py:108} INFO - Table name: data_financial_table_3_page1_table1
+[2026-03-20T10:00:15.183+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:15.213+0000] {pdf_pipeline.py:327} INFO - [pdf] Created table: data_financial_table_3_page1_table1
+[2026-03-20T10:00:15.218+0000] {pdf_pipeline.py:340} INFO - [pdf] Loaded 12 rows into data_financial_table_3_page1_table1
+[2026-03-20T10:00:15.227+0000] {pdf_pipeline.py:552} INFO - [pdf] Processed table 1: 12 rows, 4 columns
+[2026-03-20T10:00:15.228+0000] {pdf_pipeline.py:569} INFO - [pdf] Extracted 1 tables with 12 total rows
+[2026-03-20T10:00:15.231+0000] {pdf_pipeline.py:596} INFO - [pdf] Updated catalog for raw/financial_table_3.pdf
+[2026-03-20T10:00:15.232+0000] {pdf_pipeline.py:601} INFO - [pdf] ✅ Completed processing: raw/financial_table_3.pdf | pages=1 | tables=1 | rows=12 | text_chars=467
+[2026-03-20T10:00:15.232+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_table_3.pdf
+[2026-03-20T10:00:15.233+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_table_3.pdf -> raw-data/2026-03-20/financial_table_3.pdf
+[2026-03-20T10:00:15.253+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_table_3.pdf: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:15.254+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_table_3.pdf
+[2026-03-20T10:00:15.263+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_table_3.pdf
+[2026-03-20T10:00:15.263+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_table_4.pdf
+[2026-03-20T10:00:15.298+0000] {pdf_pipeline.py:395} INFO - [pdf] Processing raw/financial_table_4.pdf
+[2026-03-20T10:00:15.307+0000] {pdf_pipeline.py:427} INFO - [pdf] Extracting text from PDF...
+[2026-03-20T10:00:15.325+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracted 471 characters of text from 1 pages
+[2026-03-20T10:00:15.335+0000] {pdf_pipeline.py:468} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/financial_table_4.txt
+[2026-03-20T10:00:15.339+0000] {pdf_pipeline.py:77} ERROR - [pdf] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 60, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:15.340+0000] {pdf_pipeline.py:80} WARNING - [pdf] Continuing pipeline despite unstructured_documents save failure
+[2026-03-20T10:00:15.340+0000] {pdf_pipeline.py:490} INFO - [pdf] Extracting tables from PDF...
+[2026-03-20T10:00:15.464+0000] {pdf_pipeline.py:263} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/financial_table_4_page1_table1.csv
+[2026-03-20T10:00:15.465+0000] {structured_pipeline.py:108} INFO - Table name: data_financial_table_4_page1_table1
+[2026-03-20T10:00:15.467+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:15.486+0000] {pdf_pipeline.py:327} INFO - [pdf] Created table: data_financial_table_4_page1_table1
+[2026-03-20T10:00:15.491+0000] {pdf_pipeline.py:340} INFO - [pdf] Loaded 12 rows into data_financial_table_4_page1_table1
+[2026-03-20T10:00:15.501+0000] {pdf_pipeline.py:552} INFO - [pdf] Processed table 1: 12 rows, 4 columns
+[2026-03-20T10:00:15.502+0000] {pdf_pipeline.py:569} INFO - [pdf] Extracted 1 tables with 12 total rows
+[2026-03-20T10:00:15.506+0000] {pdf_pipeline.py:596} INFO - [pdf] Updated catalog for raw/financial_table_4.pdf
+[2026-03-20T10:00:15.507+0000] {pdf_pipeline.py:601} INFO - [pdf] ✅ Completed processing: raw/financial_table_4.pdf | pages=1 | tables=1 | rows=12 | text_chars=471
+[2026-03-20T10:00:15.507+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_table_4.pdf
+[2026-03-20T10:00:15.508+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_table_4.pdf -> raw-data/2026-03-20/financial_table_4.pdf
+[2026-03-20T10:00:15.527+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_table_4.pdf: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:15.528+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_table_4.pdf
+[2026-03-20T10:00:15.535+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_table_4.pdf
+[2026-03-20T10:00:15.536+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/financial_table_5.pdf
+[2026-03-20T10:00:15.572+0000] {pdf_pipeline.py:395} INFO - [pdf] Processing raw/financial_table_5.pdf
+[2026-03-20T10:00:15.582+0000] {pdf_pipeline.py:427} INFO - [pdf] Extracting text from PDF...
+[2026-03-20T10:00:15.605+0000] {pdf_pipeline.py:449} INFO - [pdf] Extracted 468 characters of text from 1 pages
+[2026-03-20T10:00:15.616+0000] {pdf_pipeline.py:468} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/financial_table_5.txt
+[2026-03-20T10:00:15.623+0000] {pdf_pipeline.py:77} ERROR - [pdf] Failed saving to unstructured_documents: there is no unique or exclusion constraint matching the ON CONFLICT specification
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 60, in _save_unstructured_doc
+    cursor.execute(
+psycopg2.errors.InvalidColumnReference: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+[2026-03-20T10:00:15.624+0000] {pdf_pipeline.py:80} WARNING - [pdf] Continuing pipeline despite unstructured_documents save failure
+[2026-03-20T10:00:15.625+0000] {pdf_pipeline.py:490} INFO - [pdf] Extracting tables from PDF...
+[2026-03-20T10:00:15.742+0000] {pdf_pipeline.py:263} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/financial_table_5_page1_table1.csv
+[2026-03-20T10:00:15.743+0000] {structured_pipeline.py:108} INFO - Table name: data_financial_table_5_page1_table1
+[2026-03-20T10:00:15.745+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-03-20T10:00:15.765+0000] {pdf_pipeline.py:327} INFO - [pdf] Created table: data_financial_table_5_page1_table1
+[2026-03-20T10:00:15.770+0000] {pdf_pipeline.py:340} INFO - [pdf] Loaded 12 rows into data_financial_table_5_page1_table1
+[2026-03-20T10:00:15.779+0000] {pdf_pipeline.py:552} INFO - [pdf] Processed table 1: 12 rows, 4 columns
+[2026-03-20T10:00:15.780+0000] {pdf_pipeline.py:569} INFO - [pdf] Extracted 1 tables with 12 total rows
+[2026-03-20T10:00:15.783+0000] {pdf_pipeline.py:596} INFO - [pdf] Updated catalog for raw/financial_table_5.pdf
+[2026-03-20T10:00:15.784+0000] {pdf_pipeline.py:601} INFO - [pdf] ✅ Completed processing: raw/financial_table_5.pdf | pages=1 | tables=1 | rows=12 | text_chars=468
+[2026-03-20T10:00:15.784+0000] {etl_manager.py:287} INFO - ETL completed: raw/financial_table_5.pdf
+[2026-03-20T10:00:15.785+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/financial_table_5.pdf -> raw-data/2026-03-20/financial_table_5.pdf
+[2026-03-20T10:00:15.805+0000] {logging_mixin.py:151} INFO - [DISPATCHER] catalog_upsert failed for raw-data/2026-03-20/financial_table_5.pdf: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                  row_count, text_extracted, content_hash, up...
+                                                    ^
+[2026-03-20T10:00:15.806+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-03-20/financial_table_5.pdf
+[2026-03-20T10:00:15.817+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/financial_table_5.pdf
+[2026-03-20T10:00:15.818+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-03-20T10:00:15.860+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260320T095911, start_date=20260320T100011, end_date=20260320T100015
+[2026-03-20T10:00:15.966+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-20T10:00:16.057+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

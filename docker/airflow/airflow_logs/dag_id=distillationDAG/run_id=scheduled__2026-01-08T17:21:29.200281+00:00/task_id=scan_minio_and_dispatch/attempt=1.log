@@ -1,0 +1,84 @@
+[2026-01-08T17:22:24.416+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-08T17:21:29.200281+00:00 [queued]>
+[2026-01-08T17:22:24.428+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-08T17:21:29.200281+00:00 [queued]>
+[2026-01-08T17:22:24.429+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-01-08T17:22:24.450+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-01-08 17:21:29.200281+00:00
+[2026-01-08T17:22:24.462+0000] {standard_task_runner.py:57} INFO - Started process 1226 to run task
+[2026-01-08T17:22:24.469+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-01-08T17:21:29.200281+00:00', '--job-id', '889', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpyu7q22lz']
+[2026-01-08T17:22:24.474+0000] {standard_task_runner.py:85} INFO - Job 889: Subtask scan_minio_and_dispatch
+[2026-01-08T17:22:24.523+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-01-08T17:22:24.632+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-01-08T17:21:29.200281+00:00 [running]> on host 9a0568312538
+[2026-01-08T17:22:25.144+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-08T17:21:29.200281+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-08T17:21:29.200281+00:00'
+[2026-01-08T17:22:25.167+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/Report_dev_nimishmittal-1.pdf
+[2026-01-08T17:22:25.640+0000] {pdf_pipeline.py:344} INFO - [pdf] Processing raw/Report_dev_nimishmittal-1.pdf
+[2026-01-08T17:22:25.655+0000] {pdf_pipeline.py:391} INFO - [pdf] Extracting text from PDF...
+[2026-01-08T17:22:25.659+0000] {pdf_pipeline.py:423} ERROR - [pdf] Text extraction failed for raw/Report_dev_nimishmittal-1.pdf: cannot access local variable 'table_count' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 408, in process_minio_object
+    'table_count': table_count
+                   ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'table_count' where it is not associated with a value
+[2026-01-08T17:22:25.661+0000] {pdf_pipeline.py:458} WARNING - [pdf] No text extracted from raw/Report_dev_nimishmittal-1.pdf
+[2026-01-08T17:22:25.661+0000] {pdf_pipeline.py:461} INFO - [pdf] Extracting tables from PDF...
+[2026-01-08T17:22:25.700+0000] {pdffont.py:963} WARNING - Could not get FontBBox from font descriptor because None cannot be parsed as 4 floats
+[2026-01-08T17:22:25.973+0000] {pdf_pipeline.py:484} WARNING - [pdf] Invalid headers on page 1, table 1
+[2026-01-08T17:22:26.001+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page1_table1.csv
+[2026-01-08T17:22:26.002+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page1_table1
+[2026-01-08T17:22:26.006+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T17:22:26.012+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T17:22:26.020+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page1_table1
+[2026-01-08T17:22:26.025+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 3 rows into data_report_dev_nimishmittal_1_page1_table1
+[2026-01-08T17:22:26.030+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 1: 3 rows, 1 columns
+[2026-01-08T17:22:26.040+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page1_table2.csv
+[2026-01-08T17:22:26.041+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page1_table2
+[2026-01-08T17:22:26.041+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T17:22:26.045+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T17:22:26.047+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page1_table2
+[2026-01-08T17:22:26.049+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 6 rows into data_report_dev_nimishmittal_1_page1_table2
+[2026-01-08T17:22:26.051+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 2: 6 rows, 1 columns
+[2026-01-08T17:22:26.067+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page1_table3.csv
+[2026-01-08T17:22:26.067+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page1_table3
+[2026-01-08T17:22:26.068+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-01-08T17:22:26.076+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page1_table3
+[2026-01-08T17:22:26.078+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 1 rows into data_report_dev_nimishmittal_1_page1_table3
+[2026-01-08T17:22:26.080+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 3: 1 rows, 4 columns
+[2026-01-08T17:22:26.090+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page1_table4.csv
+[2026-01-08T17:22:26.091+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page1_table4
+[2026-01-08T17:22:26.091+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-01-08T17:22:26.098+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page1_table4
+[2026-01-08T17:22:26.100+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 2 rows into data_report_dev_nimishmittal_1_page1_table4
+[2026-01-08T17:22:26.103+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 4: 2 rows, 2 columns
+[2026-01-08T17:22:29.359+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page3_table1.csv
+[2026-01-08T17:22:29.359+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page3_table1
+[2026-01-08T17:22:29.360+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 2 columns
+[2026-01-08T17:22:29.365+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:189 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-01-08T17:22:29.372+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page3_table1
+[2026-01-08T17:22:29.375+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 4 rows into data_report_dev_nimishmittal_1_page3_table1
+[2026-01-08T17:22:29.378+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 5: 4 rows, 2 columns
+[2026-01-08T17:22:29.394+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page3_table2.csv
+[2026-01-08T17:22:29.395+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page3_table2
+[2026-01-08T17:22:29.396+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 1 columns
+[2026-01-08T17:22:29.403+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page3_table2
+[2026-01-08T17:22:29.408+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 1 rows into data_report_dev_nimishmittal_1_page3_table2
+[2026-01-08T17:22:29.411+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 6: 1 rows, 7 columns
+[2026-01-08T17:22:29.484+0000] {pdf_pipeline.py:484} WARNING - [pdf] Invalid headers on page 4, table 1
+[2026-01-08T17:22:29.502+0000] {pdf_pipeline.py:228} INFO - [pdf] Uploaded table CSV -> processed/structured/pdf-tables/Report_dev_nimishmittal-1_page4_table1.csv
+[2026-01-08T17:22:29.503+0000] {structured_pipeline.py:107} INFO - Table name: data_report_dev_nimishmittal_1_page4_table1
+[2026-01-08T17:22:29.504+0000] {structured_pipeline.py:123} INFO - [Normalize] Normalizing DataFrame with 3 columns
+[2026-01-08T17:22:29.514+0000] {pdf_pipeline.py:277} INFO - [pdf] Created table: data_report_dev_nimishmittal_1_page4_table1
+[2026-01-08T17:22:29.521+0000] {pdf_pipeline.py:290} INFO - [pdf] Loaded 4 rows into data_report_dev_nimishmittal_1_page4_table1
+[2026-01-08T17:22:29.527+0000] {pdf_pipeline.py:512} INFO - [pdf] Processed table 7: 4 rows, 3 columns
+[2026-01-08T17:22:29.528+0000] {pdf_pipeline.py:529} INFO - [pdf] Extracted 7 tables with 21 total rows
+[2026-01-08T17:22:29.528+0000] {pdf_pipeline.py:544} ERROR - [pdf] Failed catalog update for raw/Report_dev_nimishmittal-1.pdf: cannot access local variable 'pdf_metadata' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 539, in process_minio_object
+    content_hash=file_hash,
+                 ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pdf_metadata' where it is not associated with a value
+[2026-01-08T17:22:29.529+0000] {pdf_pipeline.py:547} INFO - [pdf] ✅ Completed processing: raw/Report_dev_nimishmittal-1.pdf | pages=4 | tables=7 | rows=21 | text_chars=0
+[2026-01-08T17:22:29.529+0000] {etl_manager.py:292} INFO - Processing complete for: raw/Report_dev_nimishmittal-1.pdf
+[2026-01-08T17:22:29.530+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/Report_dev_nimishmittal-1.pdf -> raw-data/2026-01-08/Report_dev_nimishmittal-1.pdf
+[2026-01-08T17:22:29.562+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/Report_dev_nimishmittal-1.pdf
+[2026-01-08T17:22:29.562+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-01-08T17:22:29.597+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260108T172129, start_date=20260108T172224, end_date=20260108T172229
+[2026-01-08T17:22:29.658+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-01-08T17:22:29.705+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

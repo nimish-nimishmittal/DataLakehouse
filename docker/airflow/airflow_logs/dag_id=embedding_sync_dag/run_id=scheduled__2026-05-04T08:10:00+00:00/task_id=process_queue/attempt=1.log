@@ -1,0 +1,36 @@
+[2026-05-04T08:16:51.388+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T08:10:00+00:00 [queued]>
+[2026-05-04T08:16:51.396+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T08:10:00+00:00 [queued]>
+[2026-05-04T08:16:51.396+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-05-04T08:16:51.406+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-05-04 08:10:00+00:00
+[2026-05-04T08:16:51.411+0000] {standard_task_runner.py:57} INFO - Started process 1993 to run task
+[2026-05-04T08:16:51.415+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-05-04T08:10:00+00:00', '--job-id', '4213', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpkv1hc7e7']
+[2026-05-04T08:16:51.418+0000] {standard_task_runner.py:85} INFO - Job 4213: Subtask process_queue
+[2026-05-04T08:16:51.476+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T08:10:00+00:00 [running]> on host e8610aa59365
+[2026-05-04T08:16:51.571+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-05-04T08:10:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-05-04T08:10:00+00:00'
+[2026-05-04T08:16:52.282+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-05-04T08:17:16.179+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T08:17:16.693+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T08:17:16.711+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-05-04T08:18:05.364+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T08:18:05.701+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T08:18:05.709+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-05-04T08:18:47.331+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T08:18:47.694+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T08:18:47.704+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 4: 200 events
+[2026-05-04T08:19:31.988+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T08:19:32.356+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T08:19:32.366+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 5: 200 events
+[2026-05-04T08:20:18.661+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T08:20:19.141+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T08:20:19.170+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 6: 200 events
+[2026-05-04T08:21:45.986+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-05-04T08:21:46.551+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-05-04T08:21:46.560+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 7: 33 events
+[2026-05-04T08:22:07.736+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 33 × 768-dim vectors
+[2026-05-04T08:22:07.812+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 33 rows
+[2026-05-04T08:22:07.817+0000] {embedding_pipeline.py:552} INFO - [embed] Queue empty after 1233 rows.
+[2026-05-04T08:22:07.818+0000] {embedding_pipeline.py:690} INFO - [embed] ✅ Done. processed=1233 errors=0
+[2026-05-04T08:22:07.845+0000] {python.py:194} INFO - Done. Returned value was: {'processed': 1233, 'errors': 0}
+[2026-05-04T08:22:07.884+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=process_queue, execution_date=20260504T081000, start_date=20260504T081651, end_date=20260504T082207
+[2026-05-04T08:22:07.938+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-05-04T08:22:07.971+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

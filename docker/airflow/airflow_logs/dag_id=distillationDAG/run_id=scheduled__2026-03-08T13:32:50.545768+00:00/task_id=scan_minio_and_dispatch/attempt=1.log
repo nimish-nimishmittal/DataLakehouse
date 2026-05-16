@@ -1,0 +1,55 @@
+[2026-03-08T13:33:40.824+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-08T13:32:50.545768+00:00 [queued]>
+[2026-03-08T13:33:40.856+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-08T13:32:50.545768+00:00 [queued]>
+[2026-03-08T13:33:40.856+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-03-08T13:33:40.899+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-03-08 13:32:50.545768+00:00
+[2026-03-08T13:33:40.923+0000] {standard_task_runner.py:57} INFO - Started process 3357 to run task
+[2026-03-08T13:33:40.941+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-03-08T13:32:50.545768+00:00', '--job-id', '2211', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpw5g7kzq3']
+[2026-03-08T13:33:40.951+0000] {standard_task_runner.py:85} INFO - Job 2211: Subtask scan_minio_and_dispatch
+[2026-03-08T13:33:41.221+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-08T13:32:50.545768+00:00 [running]> on host 78f9a73a02d7
+[2026-03-08T13:33:42.680+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-03-08T13:32:50.545768+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-08T13:32:50.545768+00:00'
+[2026-03-08T13:33:42.721+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/photo10.jpg
+[2026-03-08T13:33:44.314+0000] {image_pipeline.py:327} INFO - [image] Processing raw/photo10.jpg
+[2026-03-08T13:33:44.385+0000] {image_pipeline.py:369} INFO - [image] 553x275 | format=JPEG | mode=RGB
+[2026-03-08T13:33:44.386+0000] {image_pipeline.py:377} INFO - [image] Running Moondream2 VLM...
+[2026-03-08T13:37:01.948+0000] {image_pipeline.py:263} INFO - [image] Ollama Moondream caption: 
+The image presents an aerial view of a desert-like landscape, with a large circular structure at the center that appear
+[2026-03-08T13:37:01.950+0000] {image_pipeline.py:385} INFO - [image] Running Tesseract OCR...
+[2026-03-08T13:37:02.456+0000] {image_pipeline.py:285} INFO - [image] OCR produced no text for raw/photo10.jpg
+[2026-03-08T13:37:02.467+0000] {image_pipeline.py:415} INFO - [image] Combined text (368 chars) → processed/unstructured/text-extracted/photo10.txt
+[2026-03-08T13:37:02.507+0000] {image_pipeline.py:465} INFO - [image] Saved to unstructured_images
+[2026-03-08T13:37:02.513+0000] {image_pipeline.py:495} INFO - [image] ✅ Completed raw/photo10.jpg | 553x275 | fmt=JPEG | ocr=no | vlm=yes | text_chars=368
+[2026-03-08T13:37:02.513+0000] {etl_manager.py:306} INFO - ETL completed: raw/photo10.jpg
+[2026-03-08T13:37:02.514+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/photo10.jpg -> raw-data/2026-03-08/photo10.jpg
+[2026-03-08T13:37:02.534+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/photo10.jpg
+[2026-03-08T13:37:02.535+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/photo6.jpg
+[2026-03-08T13:37:02.570+0000] {image_pipeline.py:327} INFO - [image] Processing raw/photo6.jpg
+[2026-03-08T13:37:02.583+0000] {image_pipeline.py:369} INFO - [image] 1200x720 | format=JPEG | mode=RGB
+[2026-03-08T13:37:02.584+0000] {image_pipeline.py:377} INFO - [image] Running Moondream2 VLM...
+[2026-03-08T13:39:43.812+0000] {image_pipeline.py:263} INFO - [image] Ollama Moondream caption: 
+The image presents a bird's eye view of an airport, captured from above and slightly tilted to the left. The airport is
+[2026-03-08T13:39:43.813+0000] {image_pipeline.py:385} INFO - [image] Running Tesseract OCR...
+[2026-03-08T13:39:44.470+0000] {image_pipeline.py:285} INFO - [image] OCR produced no text for raw/photo6.jpg
+[2026-03-08T13:39:44.479+0000] {image_pipeline.py:415} INFO - [image] Combined text (490 chars) → processed/unstructured/text-extracted/photo6.txt
+[2026-03-08T13:39:44.489+0000] {image_pipeline.py:465} INFO - [image] Saved to unstructured_images
+[2026-03-08T13:39:44.494+0000] {image_pipeline.py:495} INFO - [image] ✅ Completed raw/photo6.jpg | 1200x720 | fmt=JPEG | ocr=no | vlm=yes | text_chars=490
+[2026-03-08T13:39:44.495+0000] {etl_manager.py:306} INFO - ETL completed: raw/photo6.jpg
+[2026-03-08T13:39:44.496+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/photo6.jpg -> raw-data/2026-03-08/photo6.jpg
+[2026-03-08T13:39:44.519+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/photo6.jpg
+[2026-03-08T13:39:44.520+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/photo8.jpg
+[2026-03-08T13:39:44.553+0000] {image_pipeline.py:327} INFO - [image] Processing raw/photo8.jpg
+[2026-03-08T13:39:44.564+0000] {image_pipeline.py:369} INFO - [image] 591x525 | format=JPEG | mode=RGB
+[2026-03-08T13:39:44.565+0000] {image_pipeline.py:377} INFO - [image] Running Moondream2 VLM...
+[2026-03-08T13:42:20.469+0000] {image_pipeline.py:263} INFO - [image] Ollama Moondream caption: 
+The image presents a detailed aerial view of an airport, with the main focus being two runways and several buildings sc
+[2026-03-08T13:42:20.470+0000] {image_pipeline.py:385} INFO - [image] Running Tesseract OCR...
+[2026-03-08T13:42:21.143+0000] {image_pipeline.py:283} INFO - [image] OCR extracted 57 characters
+[2026-03-08T13:42:21.156+0000] {image_pipeline.py:415} INFO - [image] Combined text (1064 chars) → processed/unstructured/text-extracted/photo8.txt
+[2026-03-08T13:42:21.167+0000] {image_pipeline.py:465} INFO - [image] Saved to unstructured_images
+[2026-03-08T13:42:21.172+0000] {image_pipeline.py:495} INFO - [image] ✅ Completed raw/photo8.jpg | 591x525 | fmt=JPEG | ocr=yes | vlm=yes | text_chars=1064
+[2026-03-08T13:42:21.173+0000] {etl_manager.py:306} INFO - ETL completed: raw/photo8.jpg
+[2026-03-08T13:42:21.174+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/photo8.jpg -> raw-data/2026-03-08/photo8.jpg
+[2026-03-08T13:42:21.193+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/photo8.jpg
+[2026-03-08T13:42:21.194+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-03-08T13:42:21.234+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260308T133250, start_date=20260308T133340, end_date=20260308T134221
+[2026-03-08T13:42:21.310+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-08T13:42:21.366+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

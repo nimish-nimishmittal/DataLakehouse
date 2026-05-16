@@ -1,0 +1,38 @@
+[2026-03-20T10:29:54.863+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T10:00:00+00:00 [queued]>
+[2026-03-20T10:29:54.886+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T10:00:00+00:00 [queued]>
+[2026-03-20T10:29:54.887+0000] {taskinstance.py:1359} INFO - Starting attempt 4 of 3
+[2026-03-20T10:29:54.917+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-03-20 10:00:00+00:00
+[2026-03-20T10:29:54.931+0000] {standard_task_runner.py:57} INFO - Started process 190 to run task
+[2026-03-20T10:29:54.950+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-03-20T10:00:00+00:00', '--job-id', '2588', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpvzh7gibi']
+[2026-03-20T10:29:54.969+0000] {standard_task_runner.py:85} INFO - Job 2588: Subtask process_queue
+[2026-03-20T10:29:55.215+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T10:00:00+00:00 [running]> on host d573422a378e
+[2026-03-20T10:29:55.524+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T10:00:00+00:00'
+[2026-03-20T10:29:57.921+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-03-20T10:34:11.001+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T10:34:12.274+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T10:34:12.308+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-03-20T10:45:59.123+0000] {local_task_job_runner.py:274} WARNING - Recorded pid 776 does not match the current pid 190
+[2026-03-20T10:45:59.169+0000] {process_utils.py:131} INFO - Sending 15 to group 190. PIDs of all processes in the group: [190]
+[2026-03-20T10:45:59.178+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 190
+[2026-03-20T10:45:59.182+0000] {taskinstance.py:1630} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-03-20T10:45:59.188+0000] {embedding_pipeline.py:76} WARNING - [embed] Ollama call failed: Task received SIGTERM signal
+[2026-03-20T10:45:59.243+0000] {embedding_pipeline.py:599} WARNING - [embed] Ollama unavailable — embedding_768 will be NULL for this batch
+[2026-03-20T10:46:40.153+0000] {embedding_pipeline.py:96} INFO - [embed] Loading all-MiniLM-L6-v2...
+[2026-03-20T10:46:40.159+0000] {SentenceTransformer.py:219} INFO - Use pytorch device_name: cpu
+[2026-03-20T10:46:40.160+0000] {SentenceTransformer.py:227} INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+[2026-03-20T10:46:40.245+0000] {logging_mixin.py:151} WARNING - '[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/./modules.json
+[2026-03-20T10:46:40.245+0000] {_http.py:473} WARNING - '[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/./modules.json
+[2026-03-20T10:46:40.246+0000] {logging_mixin.py:151} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-20T10:46:40.246+0000] {_http.py:486} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-20T10:46:41.248+0000] {SentenceTransformer.py:2098} WARNING - No sentence-transformers model found with name sentence-transformers/all-MiniLM-L6-v2. Creating a new one with mean pooling.
+[2026-03-20T10:46:41.340+0000] {logging_mixin.py:151} WARNING - '[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json
+[2026-03-20T10:46:41.340+0000] {_http.py:473} WARNING - '[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json
+[2026-03-20T10:46:41.342+0000] {logging_mixin.py:151} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-20T10:46:41.342+0000] {_http.py:486} WARNING - Retrying in 1s [Retry 1/5].
+[2026-03-20T10:46:42.345+0000] {embedding_pipeline.py:105} ERROR - [embed] MiniLM failed: Cannot send a request, as the client has been closed.
+[2026-03-20T10:46:42.346+0000] {embedding_pipeline.py:609} ERROR - [embed] MiniLM also failed — batch will error
+[2026-03-20T10:46:42.543+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-03-20T10:46:59.217+0000] {process_utils.py:149} WARNING - process psutil.Process(pid=190, name='airflow task ru', status='sleeping', started='10:29:53') did not respond to SIGTERM. Trying SIGKILL
+[2026-03-20T10:46:59.223+0000] {process_utils.py:86} INFO - Sending the signal 9 to group 190
+[2026-03-20T10:46:59.441+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=190, name='airflow task ru', status='terminated', exitcode=<Negsignal.SIGKILL: -9>, started='10:29:53') (190) terminated with exit code -9
+[2026-03-20T10:46:59.443+0000] {standard_task_runner.py:172} ERROR - Job 2611 was killed before it finished (likely due to running out of memory)

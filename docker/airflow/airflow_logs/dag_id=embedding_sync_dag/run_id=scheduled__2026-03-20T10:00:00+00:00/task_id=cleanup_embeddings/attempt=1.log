@@ -1,0 +1,15 @@
+[2026-03-20T10:07:42.948+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-03-20T10:00:00+00:00 [queued]>
+[2026-03-20T10:07:42.964+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-03-20T10:00:00+00:00 [queued]>
+[2026-03-20T10:07:42.965+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-03-20T10:07:42.987+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): cleanup_embeddings> on 2026-03-20 10:00:00+00:00
+[2026-03-20T10:07:42.996+0000] {standard_task_runner.py:57} INFO - Started process 2913 to run task
+[2026-03-20T10:07:43.006+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'cleanup_embeddings', 'scheduled__2026-03-20T10:00:00+00:00', '--job-id', '2497', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp2bchysp8']
+[2026-03-20T10:07:43.021+0000] {standard_task_runner.py:85} INFO - Job 2497: Subtask cleanup_embeddings
+[2026-03-20T10:07:43.177+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-03-20T10:00:00+00:00 [running]> on host f9d03ff7592b
+[2026-03-20T10:07:43.458+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='cleanup_embeddings' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T10:00:00+00:00'
+[2026-03-20T10:07:45.048+0000] {embedding_pipeline.py:210} INFO - [cleanup] No orphaned embedding tables found.
+[2026-03-20T10:07:45.223+0000] {embedding_pipeline.py:356} INFO - [cleanup] Truncate/bulk-delete check done — checked 22 tables, removed 0 stale embeddings.
+[2026-03-20T10:07:45.268+0000] {python.py:194} INFO - Done. Returned value was: {'orphaned_tables': [], 'orphan_embeddings_removed': 0, 'truncate_embeddings_removed': 0, 'truncate_tables_checked': 22, 'total_removed': 0}
+[2026-03-20T10:07:45.346+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=cleanup_embeddings, execution_date=20260320T100000, start_date=20260320T100742, end_date=20260320T100745
+[2026-03-20T10:07:45.408+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-20T10:07:45.467+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

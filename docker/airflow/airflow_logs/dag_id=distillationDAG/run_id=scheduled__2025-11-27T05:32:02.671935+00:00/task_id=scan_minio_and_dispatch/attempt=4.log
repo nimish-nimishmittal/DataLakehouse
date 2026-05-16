@@ -1,0 +1,60 @@
+[2025-11-27T05:33:46.207+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-27T05:32:02.671935+00:00 [queued]>
+[2025-11-27T05:33:46.217+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-27T05:32:02.671935+00:00 [queued]>
+[2025-11-27T05:33:46.218+0000] {taskinstance.py:1359} INFO - Starting attempt 4 of 4
+[2025-11-27T05:33:46.233+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2025-11-27 05:32:02.671935+00:00
+[2025-11-27T05:33:46.243+0000] {standard_task_runner.py:57} INFO - Started process 286 to run task
+[2025-11-27T05:33:46.248+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2025-11-27T05:32:02.671935+00:00', '--job-id', '429', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmptldc8zsd']
+[2025-11-27T05:33:46.253+0000] {standard_task_runner.py:85} INFO - Job 429: Subtask scan_minio_and_dispatch
+[2025-11-27T05:33:46.283+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-27T05:33:46.349+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-27T05:32:02.671935+00:00 [running]> on host 7ee2414f740c
+[2025-11-27T05:33:46.721+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T05:32:02.671935+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T05:32:02.671935+00:00'
+[2025-11-27T05:33:46.735+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/report_test1.pdf
+[2025-11-27T05:33:46.969+0000] {pdf_pipeline.py:98} INFO - [pdf] Processing raw/report_test1.pdf
+[2025-11-27T05:33:47.101+0000] {pdf_pipeline.py:126} INFO - [pdf] Uploaded extracted text -> processed/unstructured/text-extracted/report_test1.txt
+[2025-11-27T05:33:47.403+0000] {etl_manager.py:95} ERROR - [etl] Failed updating catalog
+Traceback (most recent call last):
+  File "/opt/python-etl/etl_manager.py", line 68, in update_catalog
+    cursor.execute(
+psycopg2.errors.UndefinedColumn: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                      row_count, text_extracted, content_hash...
+                                                        ^
+
+[2025-11-27T05:33:47.404+0000] {pdf_pipeline.py:187} ERROR - [pdf] FAILED raw/report_test1.pdf: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                      row_count, text_extracted, content_hash...
+                                                        ^
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 178, in process_minio_object
+    catalog_updater(
+  File "/opt/python-etl/etl_manager.py", line 68, in update_catalog
+    cursor.execute(
+psycopg2.errors.UndefinedColumn: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                      row_count, text_extracted, content_hash...
+                                                        ^
+
+[2025-11-27T05:33:47.405+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/dispatcher_pipeline_dag.py", line 56, in scan_and_dispatch
+    run_pipeline_for_object(object_name)
+  File "/opt/python-etl/etl_manager.py", line 276, in run_pipeline_for_object
+    pdf_pipeline.process_minio_object(
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 178, in process_minio_object
+    catalog_updater(
+  File "/opt/python-etl/etl_manager.py", line 68, in update_catalog
+    cursor.execute(
+psycopg2.errors.UndefinedColumn: column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                      row_count, text_extracted, content_hash...
+                                                        ^
+
+[2025-11-27T05:33:47.421+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20251127T053202, start_date=20251127T053346, end_date=20251127T053347
+[2025-11-27T05:33:47.434+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 429 for task scan_minio_and_dispatch (column "content_hash" of relation "minio_data_catalog" does not exist
+LINE 4:                      row_count, text_extracted, content_hash...
+                                                        ^
+; 286)
+[2025-11-27T05:33:47.462+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-11-27T05:33:47.495+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

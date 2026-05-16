@@ -2,9 +2,7 @@
 
 import io
 import logging
-import hashlib
 from typing import Optional
-
 from minio import Minio
 from pypdf import PdfReader
 import pdfplumber
@@ -14,80 +12,24 @@ import psycopg2
 logger = logging.getLogger(__name__)
 
 
-def calculate_file_hash(data: bytes) -> str:
-    """Return SHA-256 hash of a bytes buffer."""
-    return hashlib.sha256(data).hexdigest()
-
-
-def is_duplicate(pg_conn, content_hash: str) -> bool:
-    """
-    Check in minio_data_catalog if this hash already exists.
-    If yes, we can skip heavy processing.
-    """
-    if pg_conn is None:
-        return False
-
-    cursor = pg_conn.cursor()
-    try:
-        cursor.execute(
-            """
-            SELECT 1 FROM minio_data_catalog
-            WHERE content_hash = %s
-            LIMIT 1
-            """,
-            (content_hash,),
-        )
-        return cursor.fetchone() is not None
-    except Exception as e:
-        logger.warning(f"[pdf] Error checking duplicate: {e}")
-        return False
-    finally:
-        cursor.close()
-
-
 def _ensure_unstructured_table(pg_conn):
-    """
-    Make sure unstructured_documents table exists with all required columns.
-    Uses a safe creation approach that handles existing tables.
-    """
+    """Ensure unstructured_documents table exists."""
     cursor = pg_conn.cursor()
     try:
-        # First, create the table if it doesn't exist
         cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS unstructured_documents (
-                id SERIAL PRIMARY KEY,
-                object_name TEXT NOT NULL,
-                file_type TEXT,
+                id           SERIAL PRIMARY KEY,
+                object_name  TEXT NOT NULL,
+                file_type    TEXT,
                 text_content TEXT,
-                content_hash TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                uploaded_by  INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE (object_name)
             )
             """
         )
-        
-        # Try to add UNIQUE constraint if it doesn't exist
-        # This will fail silently if the constraint already exists
-        try:
-            cursor.execute(
-                """
-                ALTER TABLE unstructured_documents 
-                ADD CONSTRAINT unstructured_documents_content_hash_key 
-                UNIQUE (content_hash)
-                """
-            )
-            logger.info("[pdf] Added UNIQUE constraint to content_hash")
-        except psycopg2.errors.DuplicateTable:
-            # Constraint already exists, that's fine
-            pg_conn.rollback()
-            logger.debug("[pdf] UNIQUE constraint already exists on content_hash")
-        except Exception as e:
-            # Log but continue - we'll handle conflicts differently
-            pg_conn.rollback()
-            logger.warning(f"[pdf] Could not add UNIQUE constraint: {e}")
-        
         pg_conn.commit()
-        
     except Exception as e:
         pg_conn.rollback()
         logger.exception(f"[pdf] Failed ensuring unstructured_documents table: {e}")
@@ -101,62 +43,39 @@ def _save_unstructured_doc(
     object_name: str,
     file_type: str,
     text: str,
-    content_hash: str,
+    uploaded_by: int = None,
 ):
     """
-    Save raw extracted text + hash into unstructured_documents.
-    Uses a safe upsert approach that works with or without UNIQUE constraint.
+    Upsert raw extracted text into unstructured_documents.
+    Deduplication is by object_name (filename already guaranteed unique
+    by the (1)(2)(3) renaming logic in the uploader).
     """
     if not pg_conn:
         logger.warning("[pdf] No database connection, skipping unstructured doc save")
         return
-    
+
     _ensure_unstructured_table(pg_conn)
     cursor = pg_conn.cursor()
-    
     try:
-        # First, try to check if this hash already exists
         cursor.execute(
             """
-            SELECT id FROM unstructured_documents 
-            WHERE content_hash = %s 
-            LIMIT 1
+            INSERT INTO unstructured_documents
+                (object_name, file_type, text_content, uploaded_by)
+            VALUES (%s, %s, %s, %s)
+            ON CONFLICT (object_name) DO UPDATE
+            SET text_content = EXCLUDED.text_content,
+                file_type    = EXCLUDED.file_type,
+                uploaded_by  = EXCLUDED.uploaded_by,
+                created_at   = CURRENT_TIMESTAMP
             """,
-            (content_hash,)
+            (object_name, file_type, text, uploaded_by),
         )
-        existing = cursor.fetchone()
-        
-        if existing:
-            # Update existing record
-            cursor.execute(
-                """
-                UPDATE unstructured_documents
-                SET text_content = %s,
-                    object_name = %s,
-                    file_type = %s,
-                    created_at = CURRENT_TIMESTAMP
-                WHERE content_hash = %s
-                """,
-                (text, object_name, file_type, content_hash),
-            )
-            logger.info(f"[pdf] Updated existing record in unstructured_documents for {object_name}")
-        else:
-            # Insert new record
-            cursor.execute(
-                """
-                INSERT INTO unstructured_documents 
-                    (object_name, file_type, text_content, content_hash)
-                VALUES (%s, %s, %s, %s)
-                """,
-                (object_name, file_type, text, content_hash),
-            )
-            logger.info(f"[pdf] Inserted new record into unstructured_documents for {object_name}")
-        
         pg_conn.commit()
-        
+        logger.info(f"[pdf] Saved unstructured doc for {object_name}")
     except Exception as e:
         pg_conn.rollback()
         logger.exception(f"[pdf] Failed saving to unstructured_documents: {e}")
+
         # Don't raise - allow pipeline to continue even if this fails
         logger.warning("[pdf] Continuing pipeline despite unstructured_documents save failure")
     finally:
@@ -190,6 +109,120 @@ def _normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+
+
+def _extract_tables_rect_based(page) -> list:
+    """
+    Fallback table extractor for PDFs whose tables have coloured header backgrounds
+    but NO border lines around data rows (pdfplumber's default strategy misses data rows
+    in this case, returning only the header as a 1-row table).
+
+    Detection logic:
+    - Tall rects  (h > 10px) = header cell backgrounds → define column x-boundaries
+    - Thin rects  (h <  3px) = separator lines → mark header bottom and table footer
+    - Data rows               = plain text words between the two separator groups
+
+    Returns a list of raw tables in pdfplumber format: [[header_row], [data_row], ...]
+    so they can be fed directly into the existing DataFrame-building code.
+    """
+    import pandas as pd
+
+    rects = page.rects
+    words = page.extract_words()
+
+    header_rects = [r for r in rects if (r['bottom'] - r['top']) > 10]
+    if not header_rects:
+        return []
+
+    # Group header rects by top-y into per-table sets
+    groups: dict = {}
+    for r in header_rects:
+        key = round(r['top'])
+        groups.setdefault(key, []).append(r)
+
+    sorted_tops = sorted(groups.keys())
+    tables = []
+
+    for gi, top_y in enumerate(sorted_tops):
+        cols = sorted(groups[top_y], key=lambda r: r['x0'])
+        col_bounds = [(c['x0'], c['x1']) for c in cols]
+        table_x0   = cols[0]['x0']
+        table_x1   = cols[-1]['x1']
+        header_top = cols[0]['top']
+        header_bottom = max(c['bottom'] for c in cols)
+        next_table_top = sorted_tops[gi + 1] if gi + 1 < len(sorted_tops) else page.height
+
+        # Thin rects belonging to this table (search from header_top, not header_bottom,
+        # so we include the bottom-border of the header which shares y with header_bottom)
+        my_thin = [r for r in rects
+                   if (r['bottom'] - r['top']) < 3
+                   and r['top'] >= header_top
+                   and r['top'] < next_table_top - 10
+                   and r['x0'] >= table_x0 - 5
+                   and r['x1'] <= table_x1 + 5]
+
+        if not my_thin:
+            continue
+
+        # Group thin rects by y into separator lines
+        thin_by_y: dict = {}
+        for r in my_thin:
+            y_key = round(r['top'] * 10) / 10
+            thin_by_y.setdefault(y_key, []).append(r)
+
+        # Only consider separators AT OR BELOW header bottom
+        below_header = sorted(y for y in thin_by_y if y >= header_bottom - 1)
+        if len(below_header) < 2:
+            continue  # need at least: one after header, one at table end
+
+        data_start = thin_by_y[below_header[0]][0]['bottom']
+        data_end   = thin_by_y[below_header[-1]][0]['top']
+
+        if data_end <= data_start + 5:
+            continue
+
+        # --- Extract header text ---
+        header_row = []
+        for (cx0, cx1) in col_bounds:
+            cell_words = [w['text'] for w in words
+                          if w['x0'] >= cx0 - 2 and w['x0'] <= cx1 + 2
+                          and w['top'] >= header_top - 2
+                          and w['bottom'] <= header_bottom + 2]
+            header_row.append(' '.join(cell_words))
+
+        # --- Extract data words ---
+        data_words = [w for w in words
+                      if w['x0'] >= table_x0 - 3 and w['x0'] <= table_x1 + 3
+                      and w['top'] >= data_start - 1 and w['top'] <= data_end + 2]
+
+        if not data_words:
+            continue
+
+        # Group words into rows by y-position (5pt snap grid)
+        rows_by_y: dict = {}
+        for w in data_words:
+            y_key = round(w['top'] / 5) * 5
+            rows_by_y.setdefault(y_key, []).append(w)
+
+        data_rows = []
+        for y_key in sorted(rows_by_y.keys()):
+            row_words = rows_by_y[y_key]
+            row = []
+            for (cx0, cx1) in col_bounds:
+                cell = ' '.join(
+                    w['text'] for w in sorted(row_words, key=lambda w: w['x0'])
+                    if w['x0'] >= cx0 - 5 and w['x0'] <= cx1 + 5
+                )
+                row.append(cell if cell.strip() else None)
+            if any(c for c in row if c):
+                data_rows.append(row)
+
+        if data_rows:
+            # Return in pdfplumber raw format: [header, row1, row2, ...]
+            tables.append([header_row] + data_rows)
+
+    return tables
+
 def _process_extracted_table(
     minio_client,
     bucket_name: str,
@@ -210,13 +243,6 @@ def _process_extracted_table(
     This function is fault-tolerant and logs errors without failing the entire pipeline.
     """
     try:
-
-        # ---- Fetch uploader identity from MinIO object metadata ---- #
-        stat = minio_client.stat_object(bucket_name, object_name)
-
-        uploaded_by = stat.metadata.get("x-amz-meta-uploaded-by")
-        uploaded_by = int(uploaded_by) if uploaded_by else None
-
         # 0. Normalize the dataframe
         table_df = _normalize_dataframe(table_df)
         
@@ -279,6 +305,21 @@ def _process_extracted_table(
                 except Exception as type_error:
                     logger.warning(f"[pdf] Failed to infer type for column {col}: {type_error}. Using TEXT.")
                     pg_type = 'TEXT'
+
+                # Validate TIMESTAMP/DATE: infer_postgres_type accepts partial dates
+                # like "Dec 2024" but PostgreSQL rejects them during COPY.
+                if pg_type in ("TIMESTAMP", "DATE"):
+                    try:
+                        non_null = table_df[col].dropna()
+                        if len(non_null) > 0:
+                            pd.to_datetime(non_null, format='%Y-%m-%d', exact=False)
+                    except Exception:
+                        logger.warning(
+                            f"[pdf] Column '{col}' inferred as {pg_type} but values don't "
+                            f"parse as full dates. Falling back to TEXT."
+                        )
+                        pg_type = "TEXT"
+
                 column_defs.append(f'"{col}" {pg_type}')
             
             create_sql = f'CREATE TABLE "{table_name}" ({", ".join(column_defs)})'
@@ -313,7 +354,6 @@ def _process_extracted_table(
                 file_format='csv',
                 row_count=len(table_df),
                 text_extracted=False,
-                content_hash=None,
                 uploaded_by=uploaded_by
             )
         except Exception as catalog_error:
@@ -381,52 +421,22 @@ def process_minio_object(
         return
 
     file_size = len(data)
-    file_hash = calculate_file_hash(data)
     file_root = object_name.split("/")[-1].rsplit(".", 1)[0]
 
-    # 2. Check for duplicates
-    if is_duplicate(pg_conn, file_hash):
-        logger.info(
-            f"[pdf] Duplicate detected via content_hash, "
-            f"skipping heavy processing: {object_name}"
-        )
-        # Still update catalog with basic info
-        try:
-            catalog_updater(
-                object_name=object_name,
-                object_size=file_size,
-                file_format="pdf",
-                row_count=0,
-                text_extracted=False,
-                content_hash=file_hash,
-                uploaded_by=uploaded_by,
-            )
-        except Exception as e:
-            logger.warning(f"[pdf] Failed catalog update for duplicate: {e}")
-        return
-
-    # 3. Extract text using pypdf
+    # 2. Extract text using pypdf
     logger.info(f"[pdf] Extracting text from PDF...")
     full_text = ""
     page_count = 0
     
+    # pdf_meta_raw holds raw PDF header fields extracted here.
+    # pdf_metadata (which includes table_count) is built AFTER table extraction
+    # so that table_count is final and accurate — not 0 or unbound.
+    pdf_meta_raw = {}
     try:
         reader = PdfReader(io.BytesIO(data))
         page_count = len(reader.pages)
-        pdf_reader = PdfReader(io.BytesIO(data))
-        pdf_meta = pdf_reader.metadata or {}
-        pdf_metadata = {
-            'author': pdf_meta.get('/Author'),
-            'creator': pdf_meta.get('/Creator'),
-            'producer': pdf_meta.get('/Producer'),
-            'subject': pdf_meta.get('/Subject'),
-            'title': pdf_meta.get('/Title'),
-            'creation_date': pdf_meta.get('/CreationDate'),
-            'page_count': page_count,
-            'table_count': table_count,
-            'uploaded_by' : uploaded_by
-        }
-        
+        pdf_meta_raw = dict(reader.metadata or {})
+
         for page_num, page in enumerate(reader.pages, 1):
             try:
                 page_text = page.extract_text() or ""
@@ -468,12 +478,26 @@ def process_minio_object(
                     object_name=object_name,
                     file_type="pdf",
                     text=full_text,
-                    content_hash=file_hash,
                     uploaded_by=uploaded_by
                 )
             except Exception as e:
                 logger.warning(f"[pdf] Failed to save unstructured doc: {e}")
                 # Continue pipeline even if this fails
+
+        # 6. Update catalog for extracted text file
+        try:
+            catalog_updater(
+                object_name=text_path,
+                object_size=len(text_bytes),
+                file_format="text",
+                row_count=None,
+                text_extracted=True,
+                uploaded_by=uploaded_by,
+                metadata={"source": "pdf_text_extraction", "source_pdf": object_name}
+            )
+            logger.info(f"[pdf] Created catalog entry for extracted text: {text_path}")
+        except Exception as catalog_err:
+            logger.warning(f"[pdf] Failed to update catalog for extracted text: {catalog_err}")
     else:
         logger.warning(f"[pdf] No text extracted from {object_name}")
 
@@ -486,38 +510,47 @@ def process_minio_object(
         with pdfplumber.open(io.BytesIO(data)) as pdf:
             for page_idx, page in enumerate(pdf.pages):
                 try:
-                    tables = page.extract_tables()
-                    
-                    if not tables:
-                        continue
-                    
+                    # --- Primary extraction: pdfplumber line/rect strategy ---
+                    tables = page.extract_tables() or []
+
+                    # --- Fallback: rect-based extractor for styled PDFs ---
+                    # If pdfplumber only returned header-only rows (all len==1),
+                    # the PDF likely uses coloured header backgrounds with no row
+                    # borders. Switch to our geometry-aware extractor.
+                    all_header_only = tables and all(len(t) < 2 for t in tables)
+                    if not tables or all_header_only:
+                        fallback = _extract_tables_rect_based(page)
+                        if fallback:
+                            logger.info(
+                                f"[pdf] Page {page_idx + 1}: pdfplumber found "
+                                f"{len(tables)} header-only table(s); "
+                                f"rect-based fallback found {len(fallback)} table(s)"
+                            )
+                            tables = fallback
+                        elif not tables:
+                            continue
+
                     for table_idx, table in enumerate(tables):
                         if not table or len(table) < 2:
                             logger.debug(f"[pdf] Skipping empty/invalid table on page {page_idx + 1}")
                             continue
 
-                        # Convert to DataFrame (first row as header)
                         try:
-                            # Check if we have valid headers
                             headers = table[0]
                             if not headers or all(h is None or str(h).strip() == '' for h in headers):
                                 logger.warning(f"[pdf] Invalid headers on page {page_idx + 1}, table {table_idx + 1}")
-                                # Use generic column names
                                 headers = [f"column_{i}" for i in range(len(table[0]))]
-                            
+
                             df = pd.DataFrame(table[1:], columns=headers)
-                            
-                            # Quick validation
+
                             if df.empty or len(df.columns) == 0:
                                 continue
-                            
-                            # Generate unique table key
+
                             table_key = (
                                 f"processed/structured/pdf-tables/"
                                 f"{file_root}_page{page_idx + 1}_table{table_idx + 1}.csv"
                             )
 
-                            # Process this table (fault-tolerant)
                             _process_extracted_table(
                                 minio_client=minio_client,
                                 bucket_name=bucket_name,
@@ -526,7 +559,7 @@ def process_minio_object(
                                 table_key=table_key,
                                 pg_conn=pg_conn,
                                 catalog_updater=catalog_updater,
-                                uploaded_by=uploaded_by
+                                uploaded_by=uploaded_by,
                             )
 
                             table_count += 1
@@ -535,37 +568,72 @@ def process_minio_object(
                                 f"[pdf] Processed table {table_count}: "
                                 f"{len(df)} rows, {len(df.columns)} columns"
                             )
-                            
+
                         except Exception as table_error:
                             logger.warning(
                                 f"[pdf] Failed to process table {table_idx + 1} "
                                 f"on page {page_idx + 1}: {table_error}"
                             )
-                            
+
                 except Exception as page_error:
                     logger.warning(f"[pdf] Error processing page {page_idx + 1}: {page_error}")
-                    
+
     except Exception as e:
         logger.exception(f"[pdf] Error during table extraction (pdfplumber): {e}")
 
     logger.info(f"[pdf] Extracted {table_count} tables with {total_rows} total rows")
 
-    # 7. Update catalog for original PDF file
+    # Build pdf_metadata here — table_count is now final and accurate.
+    # pdf_meta_raw was populated during text extraction above (empty dict if that failed).
+    pdf_metadata = {
+        'author':        pdf_meta_raw.get('/Author'),
+        'creator':       pdf_meta_raw.get('/Creator'),
+        'producer':      pdf_meta_raw.get('/Producer'),
+        'subject':       pdf_meta_raw.get('/Subject'),
+        'title':         pdf_meta_raw.get('/Title'),
+        'creation_date': pdf_meta_raw.get('/CreationDate'),
+        'page_count':    page_count,
+        'table_count':   table_count,
+        'uploaded_by':   uploaded_by,
+    }
+
+    # 7. Update catalog for the original PDF file (keep reference to extracted assets)
+    # The original PDF remains in the raw-data bucket; processed outputs are:
+    #   - extracted text: processed/unstructured/text-extracted/<file>.txt
+    #   - extracted tables: processed/structured/pdf-tables/<file>_pageX_tableY.csv
     try:
         catalog_updater(
-        object_name=object_name,
-        object_size=file_size,
-        file_format="pdf",
-        row_count=table_count,
-        text_extracted=bool(full_text.strip()),
-        content_hash=file_hash,
-        metadata=pdf_metadata,
-        uploaded_by=uploaded_by
-    )
-        logger.info(f"[pdf] Updated catalog for {object_name}")
+            object_name=object_name,
+            object_size=file_size,
+            file_format="pdf",
+            row_count=table_count,
+            text_extracted=True,
+            metadata={
+                **pdf_metadata,
+                "status": "processed",
+                "extracted_text": f"processed/unstructured/text-extracted/{root_name}.txt",
+                "extracted_tables_prefix": f"processed/structured/pdf-tables/{root_name}_",
+            },
+            uploaded_by=uploaded_by,
+        )
+        logger.info(f"[pdf] Updated catalog entry for PDF: {object_name}")
     except Exception as e:
         logger.exception(f"[pdf] Failed catalog update for {object_name}: {e}")
         # Don't raise - pipeline has done its work
+
+    # 8. Remove the raw/ catalog entry (file has been processed)
+    if object_name.startswith("raw/"):
+        try:
+            cursor = pg_conn.cursor()
+            cursor.execute(
+                "DELETE FROM minio_data_catalog WHERE bucket_name = %s AND object_name = %s",
+                (bucket_name, object_name)
+            )
+            pg_conn.commit()
+            cursor.close()
+            logger.info(f"[pdf] Removed old catalog entry: {object_name}")
+        except Exception as delete_err:
+            logger.warning(f"[pdf] Failed to remove old raw/ entry: {delete_err}")
 
     logger.info(
         f"[pdf] ✅ Completed processing: {object_name} | "

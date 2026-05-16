@@ -1,0 +1,28 @@
+[2025-11-27T03:49:23.511+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-27T03:48:03.335567+00:00 [queued]>
+[2025-11-27T03:49:23.519+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-27T03:48:03.335567+00:00 [queued]>
+[2025-11-27T03:49:23.519+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 4
+[2025-11-27T03:49:23.529+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2025-11-27 03:48:03.335567+00:00
+[2025-11-27T03:49:23.536+0000] {standard_task_runner.py:57} INFO - Started process 564 to run task
+[2025-11-27T03:49:23.539+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2025-11-27T03:48:03.335567+00:00', '--job-id', '413', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpedmnr5m9']
+[2025-11-27T03:49:23.543+0000] {standard_task_runner.py:85} INFO - Job 413: Subtask scan_minio_and_dispatch
+[2025-11-27T03:49:23.570+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-27T03:49:23.615+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-27T03:48:03.335567+00:00 [running]> on host 69afaec71563
+[2025-11-27T03:49:23.874+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T03:48:03.335567+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T03:48:03.335567+00:00'
+[2025-11-27T03:49:23.883+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/report_test1.pdf
+[2025-11-27T03:49:24.046+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/dispatcher_pipeline_dag.py", line 56, in scan_and_dispatch
+    run_pipeline_for_object(object_name)
+  File "/opt/python-etl/etl_manager.py", line 257, in run_pipeline_for_object
+    pdf_pipeline.process_minio_object(
+TypeError: process_minio_object() takes 4 positional arguments but 5 were given
+[2025-11-27T03:49:24.058+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20251127T034803, start_date=20251127T034923, end_date=20251127T034924
+[2025-11-27T03:49:24.067+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 413 for task scan_minio_and_dispatch (process_minio_object() takes 4 positional arguments but 5 were given; 564)
+[2025-11-27T03:49:24.113+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-11-27T03:49:24.135+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

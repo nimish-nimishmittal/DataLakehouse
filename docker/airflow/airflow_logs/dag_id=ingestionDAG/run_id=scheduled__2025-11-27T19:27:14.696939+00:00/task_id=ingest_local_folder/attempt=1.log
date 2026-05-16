@@ -1,0 +1,14 @@
+[2025-11-27T19:27:49.385+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingestionDAG.ingest_local_folder scheduled__2025-11-27T19:27:14.696939+00:00 [queued]>
+[2025-11-27T19:27:49.405+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingestionDAG.ingest_local_folder scheduled__2025-11-27T19:27:14.696939+00:00 [queued]>
+[2025-11-27T19:27:49.406+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2025-11-27T19:27:49.440+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): ingest_local_folder> on 2025-11-27 19:27:14.696939+00:00
+[2025-11-27T19:27:49.464+0000] {standard_task_runner.py:57} INFO - Started process 183 to run task
+[2025-11-27T19:27:49.499+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingestionDAG', 'ingest_local_folder', 'scheduled__2025-11-27T19:27:14.696939+00:00', '--job-id', '487', '--raw', '--subdir', 'DAGS_FOLDER/ingest_local_folder_dag.py', '--cfg-path', '/tmp/tmpe4dvw0z8']
+[2025-11-27T19:27:49.528+0000] {standard_task_runner.py:85} INFO - Job 487: Subtask ingest_local_folder
+[2025-11-27T19:27:49.620+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-27T19:27:49.752+0000] {task_command.py:415} INFO - Running <TaskInstance: ingestionDAG.ingest_local_folder scheduled__2025-11-27T19:27:14.696939+00:00 [running]> on host 93f0080637f5
+[2025-11-27T19:27:50.097+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingestionDAG' AIRFLOW_CTX_TASK_ID='ingest_local_folder' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T19:27:14.696939+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T19:27:14.696939+00:00'
+[2025-11-27T19:27:50.124+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-11-27T19:27:50.166+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=ingestionDAG, task_id=ingest_local_folder, execution_date=20251127T192714, start_date=20251127T192749, end_date=20251127T192750
+[2025-11-27T19:27:50.280+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-11-27T19:27:50.357+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

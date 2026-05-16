@@ -1,0 +1,69 @@
+[2026-03-20T07:00:40.601+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T06:55:00+00:00 [queued]>
+[2026-03-20T07:00:40.611+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T06:55:00+00:00 [queued]>
+[2026-03-20T07:00:40.612+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-03-20T07:00:40.627+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-03-20 06:55:00+00:00
+[2026-03-20T07:00:40.633+0000] {standard_task_runner.py:57} INFO - Started process 1238 to run task
+[2026-03-20T07:00:40.637+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-03-20T06:55:00+00:00', '--job-id', '2475', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpuytwm49g']
+[2026-03-20T07:00:40.640+0000] {standard_task_runner.py:85} INFO - Job 2475: Subtask process_queue
+[2026-03-20T07:00:40.714+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-03-20T06:55:00+00:00 [running]> on host f9d03ff7592b
+[2026-03-20T07:00:40.829+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-03-20T06:55:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-20T06:55:00+00:00'
+[2026-03-20T07:00:41.718+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-03-20T07:01:49.395+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:01:50.425+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:01:50.436+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-03-20T07:02:27.757+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:02:28.300+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:02:28.308+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-03-20T07:02:59.108+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:02:59.552+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:02:59.561+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 4: 200 events
+[2026-03-20T07:03:32.635+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:03:33.020+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:03:33.029+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 5: 200 events
+[2026-03-20T07:04:10.299+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:04:10.661+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:04:10.670+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 6: 200 events
+[2026-03-20T07:04:47.149+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:04:47.822+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:04:47.830+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 7: 200 events
+[2026-03-20T07:05:30.490+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:05:30.904+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:05:30.915+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 8: 200 events
+[2026-03-20T07:06:16.792+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:06:17.579+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:06:17.598+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 9: 200 events
+[2026-03-20T07:06:58.719+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:06:59.061+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:06:59.069+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 10: 200 events
+[2026-03-20T07:07:46.817+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:07:47.222+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:07:47.230+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 11: 200 events
+[2026-03-20T07:08:46.751+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:08:47.195+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:08:47.206+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 12: 200 events
+[2026-03-20T07:09:18.562+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:09:18.941+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:09:18.949+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 13: 200 events
+[2026-03-20T07:09:55.275+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:09:55.770+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:09:55.783+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 14: 200 events
+[2026-03-20T07:11:04.699+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:11:05.138+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:11:05.150+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 15: 200 events
+[2026-03-20T07:11:41.233+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:11:41.655+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:11:41.663+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 16: 200 events
+[2026-03-20T07:12:17.808+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:12:18.205+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:12:18.224+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 17: 200 events
+[2026-03-20T07:13:58.153+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-03-20T07:13:58.587+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-03-20T07:13:58.595+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 18: 51 events
+[2026-03-20T07:14:20.475+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 51 × 768-dim vectors
+[2026-03-20T07:14:20.607+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 51 rows
+[2026-03-20T07:14:20.610+0000] {embedding_pipeline.py:552} INFO - [embed] Queue empty after 3451 rows.
+[2026-03-20T07:14:20.612+0000] {embedding_pipeline.py:690} INFO - [embed] ✅ Done. processed=3451 errors=0
+[2026-03-20T07:14:20.633+0000] {python.py:194} INFO - Done. Returned value was: {'processed': 3451, 'errors': 0}
+[2026-03-20T07:14:20.666+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=process_queue, execution_date=20260320T065500, start_date=20260320T070040, end_date=20260320T071420
+[2026-03-20T07:14:20.728+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-20T07:14:20.756+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

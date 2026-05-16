@@ -1,0 +1,121 @@
+[2026-03-08T01:29:56.489+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.backfill_existing_data scheduled__2026-03-05T00:40:00+00:00 [queued]>
+[2026-03-08T01:29:56.512+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.backfill_existing_data scheduled__2026-03-05T00:40:00+00:00 [queued]>
+[2026-03-08T01:29:56.513+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-03-08T01:29:56.547+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): backfill_existing_data> on 2026-03-05 00:40:00+00:00
+[2026-03-08T01:29:56.561+0000] {standard_task_runner.py:57} INFO - Started process 318 to run task
+[2026-03-08T01:29:56.571+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'backfill_existing_data', 'scheduled__2026-03-05T00:40:00+00:00', '--job-id', '2149', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpz0rag4kh']
+[2026-03-08T01:29:56.580+0000] {standard_task_runner.py:85} INFO - Job 2149: Subtask backfill_existing_data
+[2026-03-08T01:29:56.759+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.backfill_existing_data scheduled__2026-03-05T00:40:00+00:00 [running]> on host 98946f05c164
+[2026-03-08T01:29:57.050+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='backfill_existing_data' AIRFLOW_CTX_EXECUTION_DATE='2026-03-05T00:40:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-05T00:40:00+00:00'
+[2026-03-08T01:29:59.702+0000] {embedding_pipeline.py:220} INFO - [embed] Backfilling 106 tables...
+[2026-03-08T01:29:59.755+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 20 rows from data_2025_review_thoughtworks_employee_privacy_notice_page15_ta
+[2026-03-08T01:29:59.768+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 29 rows from data_2025_review_thoughtworks_employee_privacy_notice_page16_ta
+[2026-03-08T01:29:59.777+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 30 rows from data_2025_review_thoughtworks_employee_privacy_notice_page17_ta
+[2026-03-08T01:29:59.786+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 31 rows from data_2025_review_thoughtworks_employee_privacy_notice_page18_ta
+[2026-03-08T01:29:59.796+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 27 rows from data_2025_review_thoughtworks_employee_privacy_notice_page19_ta
+[2026-03-08T01:29:59.805+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 30 rows from data_2025_review_thoughtworks_employee_privacy_notice_page20_ta
+[2026-03-08T01:29:59.817+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 26 rows from data_2025_review_thoughtworks_employee_privacy_notice_page21_ta
+[2026-03-08T01:29:59.828+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 34 rows from data_2025_review_thoughtworks_employee_privacy_notice_page22_ta
+[2026-03-08T01:29:59.839+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 11 rows from data_2025_review_thoughtworks_employee_privacy_notice_page23_ta
+[2026-03-08T01:29:59.850+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 30 rows from data_2025_review_thoughtworks_employee_privacy_notice_page24_ta
+[2026-03-08T01:29:59.861+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 22 rows from data_2025_review_thoughtworks_employee_privacy_notice_page25_ta
+[2026-03-08T01:29:59.872+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 23 rows from data_2025_review_thoughtworks_employee_privacy_notice_page26_ta
+[2026-03-08T01:29:59.883+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 10 rows from data_2025_review_thoughtworks_employee_privacy_notice_page27_ta
+[2026-03-08T01:29:59.894+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 31 rows from data_2025_review_thoughtworks_employee_privacy_notice_page28_ta
+[2026-03-08T01:29:59.906+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 29 rows from data_2025_review_thoughtworks_employee_privacy_notice_page29_ta
+[2026-03-08T01:29:59.918+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 28 rows from data_2025_review_thoughtworks_employee_privacy_notice_page30_ta
+[2026-03-08T01:29:59.929+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 22 rows from data_2025_review_thoughtworks_employee_privacy_notice_page31_ta
+[2026-03-08T01:29:59.939+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 16 rows from data_2025_review_thoughtworks_employee_privacy_notice_page32_ta
+[2026-03-08T01:29:59.950+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 1 rows from data_2025_review_thoughtworks_employee_privacy_notice_page33_ta
+[2026-03-08T01:29:59.961+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_2025_review_thoughtworks_employee_privacy_notice_page34_ta
+[2026-03-08T01:29:59.971+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_2025_review_thoughtworks_employee_privacy_notice_page35_ta
+[2026-03-08T01:29:59.982+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_2025_review_thoughtworks_employee_privacy_notice_page36_ta
+[2026-03-08T01:29:59.993+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_2025_review_thoughtworks_employee_privacy_notice_page37_ta
+[2026-03-08T01:30:00.004+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 6 rows from data_8051_features_architecture_page3_table1
+[2026-03-08T01:30:00.016+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_customers
+[2026-03-08T01:30:00.027+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc10_research_data_page2_table1
+[2026-03-08T01:30:00.038+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc10_research_data_page2_table2
+[2026-03-08T01:30:00.048+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc10_research_data_page3_table1
+[2026-03-08T01:30:00.059+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc10_research_dataaaaaa_table_1
+[2026-03-08T01:30:00.069+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc10_research_dataaaaaa_table_2
+[2026-03-08T01:30:00.080+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc10_research_dataaaaaa_table_3
+[2026-03-08T01:30:00.090+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc1111_table_1
+[2026-03-08T01:30:00.101+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc1111_table_2
+[2026-03-08T01:30:00.111+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc1111_table_3
+[2026-03-08T01:30:00.122+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc1_sales_report_table_1
+[2026-03-08T01:30:00.133+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc1_sales_report_table_2
+[2026-03-08T01:30:00.143+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc1_sales_report_table_3
+[2026-03-08T01:30:00.154+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc2_employee_directory_table_1
+[2026-03-08T01:30:00.164+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc2_employee_directory_table_2
+[2026-03-08T01:30:00.174+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc2_employee_directory_table_3
+[2026-03-08T01:30:00.185+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc3_inventory_report_table_1
+[2026-03-08T01:30:00.195+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc3_inventory_report_table_2
+[2026-03-08T01:30:00.205+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc3_inventory_report_table_3
+[2026-03-08T01:30:00.216+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc4_financial_statement_table_1
+[2026-03-08T01:30:00.226+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc4_financial_statement_table_2
+[2026-03-08T01:30:00.236+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc4_financial_statement_table_3
+[2026-03-08T01:30:00.246+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc5_project_status_table_1
+[2026-03-08T01:30:00.257+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc5_project_status_table_2
+[2026-03-08T01:30:00.267+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc5_project_status_table_3
+[2026-03-08T01:30:00.277+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc6_customer_analysis_table_1
+[2026-03-08T01:30:00.287+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc6_customer_analysis_table_2
+[2026-03-08T01:30:00.297+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc6_customer_analysis_table_3
+[2026-03-08T01:30:00.306+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc7_marketing_metricsss_table_1
+[2026-03-08T01:30:00.316+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc7_marketing_metricsss_table_3
+[2026-03-08T01:30:00.328+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc8_it_assets_page2_table1
+[2026-03-08T01:30:00.338+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc8_it_assets_page2_table2
+[2026-03-08T01:30:00.349+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc8_it_assets_page3_table1
+[2026-03-08T01:30:00.359+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc9_quality_assurance_page2_table1
+[2026-03-08T01:30:00.369+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc9_quality_assurance_page2_table2
+[2026-03-08T01:30:00.379+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_doc9_quality_assurance_page3_table1
+[2026-03-08T01:30:00.390+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc9_quality_assuranceeee_table_1
+[2026-03-08T01:30:00.400+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc9_quality_assuranceeee_table_2
+[2026-03-08T01:30:00.410+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_doc9_quality_assuranceeee_table_3
+[2026-03-08T01:30:00.420+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_movies
+[2026-03-08T01:30:00.430+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_nimish_research1_1_page3_table1
+[2026-03-08T01:30:00.440+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_nimish_research3_page4_table1
+[2026-03-08T01:30:00.450+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_nimish_research3_page7_table1
+[2026-03-08T01:30:00.461+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_nitin_gavhane_resume_table_1
+[2026-03-08T01:30:00.509+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 1000 rows from data_organizations_1000
+[2026-03-08T01:30:00.555+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 1000 rows from data_people_1000
+[2026-03-08T01:30:00.566+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_products
+[2026-03-08T01:30:00.576+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_sales
+[2026-03-08T01:30:00.587+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page10_table1
+[2026-03-08T01:30:00.598+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 12 rows from data_sample_tables_page10_table2
+[2026-03-08T01:30:00.609+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 12 rows from data_sample_tables_page11_table1
+[2026-03-08T01:30:00.619+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 2 rows from data_sample_tables_page1_table1
+[2026-03-08T01:30:00.629+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 7 rows from data_sample_tables_page1_table2
+[2026-03-08T01:30:00.639+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_sample_tables_page1_table3
+[2026-03-08T01:30:00.650+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 6 rows from data_sample_tables_page2_table1
+[2026-03-08T01:30:00.660+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_sample_tables_page2_table2
+[2026-03-08T01:30:00.671+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_sample_tables_page2_table3
+[2026-03-08T01:30:00.681+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page3_table1
+[2026-03-08T01:30:00.692+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page3_table2
+[2026-03-08T01:30:00.703+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page3_table3
+[2026-03-08T01:30:00.714+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 13 rows from data_sample_tables_page4_table1
+[2026-03-08T01:30:00.724+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 11 rows from data_sample_tables_page4_table2
+[2026-03-08T01:30:00.735+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_sample_tables_page5_table1
+[2026-03-08T01:30:00.745+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page5_table2
+[2026-03-08T01:30:00.755+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page5_table3
+[2026-03-08T01:30:00.767+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 6 rows from data_sample_tables_page5_table4
+[2026-03-08T01:30:00.779+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 6 rows from data_sample_tables_page6_table1
+[2026-03-08T01:30:00.791+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 10 rows from data_sample_tables_page6_table2
+[2026-03-08T01:30:00.803+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 10 rows from data_sample_tables_page6_table3
+[2026-03-08T01:30:00.814+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 5 rows from data_sample_tables_page7_table1
+[2026-03-08T01:30:00.826+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 7 rows from data_sample_tables_page7_table2
+[2026-03-08T01:30:00.837+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 7 rows from data_sample_tables_page8_table1
+[2026-03-08T01:30:00.847+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 7 rows from data_sample_tables_page8_table2
+[2026-03-08T01:30:00.857+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 3 rows from data_sample_tables_page8_table3
+[2026-03-08T01:30:00.868+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 12 rows from data_sample_tables_page9_table1
+[2026-03-08T01:30:00.878+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 4 rows from data_sample_tables_page9_table2
+[2026-03-08T01:30:00.888+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 6 rows from data_sample_tables_page9_table3
+[2026-03-08T01:30:00.899+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 8 rows from data_social_media
+[2026-03-08T01:30:00.945+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 1000 rows from data_studentsperformance
+[2026-03-08T01:30:00.965+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 118 rows from minio_data_catalog
+[2026-03-08T01:30:01.019+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 103 rows from unstructured_documents
+[2026-03-08T01:30:01.032+0000] {embedding_pipeline.py:270} INFO - [embed] Queued 14 rows from unstructured_images
+[2026-03-08T01:30:01.036+0000] {embedding_pipeline.py:279} INFO - [embed] Backfill complete — 4122 rows queued total
+[2026-03-08T01:30:01.089+0000] {python.py:194} INFO - Done. Returned value was: 4122
+[2026-03-08T01:30:01.175+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=backfill_existing_data, execution_date=20260305T004000, start_date=20260308T012956, end_date=20260308T013001
+[2026-03-08T01:30:01.264+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-03-08T01:30:01.364+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

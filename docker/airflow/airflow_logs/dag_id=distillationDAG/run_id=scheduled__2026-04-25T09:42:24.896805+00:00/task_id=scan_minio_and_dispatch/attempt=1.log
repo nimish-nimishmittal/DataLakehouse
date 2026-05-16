@@ -1,0 +1,133 @@
+[2026-04-25T09:43:11.919+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-04-25T09:42:24.896805+00:00 [queued]>
+[2026-04-25T09:43:11.932+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-04-25T09:42:24.896805+00:00 [queued]>
+[2026-04-25T09:43:11.932+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-04-25T09:43:11.949+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-04-25 09:42:24.896805+00:00
+[2026-04-25T09:43:11.957+0000] {standard_task_runner.py:57} INFO - Started process 1317 to run task
+[2026-04-25T09:43:11.965+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-04-25T09:42:24.896805+00:00', '--job-id', '3014', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpzs67c3og']
+[2026-04-25T09:43:11.975+0000] {standard_task_runner.py:85} INFO - Job 3014: Subtask scan_minio_and_dispatch
+[2026-04-25T09:43:12.127+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-04-25T09:42:24.896805+00:00 [running]> on host b6d1753d38d9
+[2026-04-25T09:43:12.586+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-04-25T09:42:24.896805+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-25T09:42:24.896805+00:00'
+[2026-04-25T09:43:12.623+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/datatest1.csv
+[2026-04-25T09:43:12.951+0000] {structured_pipeline.py:624} INFO - [structured] Processing raw/datatest1.csv
+[2026-04-25T09:43:12.956+0000] {structured_pipeline.py:638} INFO - [structured] Downloaded 195 bytes
+[2026-04-25T09:43:12.956+0000] {structured_pipeline.py:642} INFO - [structured] Detected file type: csv
+[2026-04-25T09:43:12.957+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-04-25T09:43:12.957+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-04-25T09:43:12.958+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-04-25T09:43:12.959+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-04-25T09:43:12.966+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 10 rows with 4 columns
+[2026-04-25T09:43:12.967+0000] {structured_pipeline.py:665} INFO - [structured] Initial read: 10 rows, 4 columns
+[2026-04-25T09:43:12.967+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-04-25T09:43:12.974+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 10 rows, 4 columns
+[2026-04-25T09:43:12.975+0000] {structured_pipeline.py:108} INFO - Table name: data_datatest1
+[2026-04-25T09:43:12.975+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-04-25T09:43:12.977+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'id' -> INTEGER
+[2026-04-25T09:43:12.980+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-04-25T09:43:12.981+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'name' -> TEXT
+[2026-04-25T09:43:12.983+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'age' -> INTEGER
+[2026-04-25T09:43:12.984+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'score' -> NUMERIC
+[2026-04-25T09:43:12.985+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_datatest1
+[2026-04-25T09:43:12.988+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_datatest1
+[2026-04-25T09:43:12.996+0000] {structured_pipeline.py:562} INFO - [PostgreSQL] Loaded 10 rows into data_datatest1
+[2026-04-25T09:43:12.997+0000] {structured_pipeline.py:576} INFO - [Parquet] Writing Parquet file...
+[2026-04-25T09:43:13.033+0000] {structured_pipeline.py:603} INFO - [Parquet] Saved to: processed/structured/datatest1.parquet
+[2026-04-25T09:43:13.042+0000] {structured_pipeline.py:723} INFO - [structured] Removed old catalog entry: raw/datatest1.csv
+[2026-04-25T09:43:13.042+0000] {structured_pipeline.py:728} INFO - [structured] ✅ Successfully processed raw/datatest1.csv -> processed/structured/datatest1.parquet
+[2026-04-25T09:43:13.042+0000] {etl_manager.py:287} INFO - ETL completed: raw/datatest1.csv
+[2026-04-25T09:43:13.044+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/datatest1.csv -> raw-data/2026-04-25/datatest1.csv
+[2026-04-25T09:43:13.068+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-04-25/datatest1.csv
+[2026-04-25T09:43:13.073+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/datatest1.csv
+[2026-04-25T09:43:13.073+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/datatest2.csv
+[2026-04-25T09:43:13.103+0000] {structured_pipeline.py:624} INFO - [structured] Processing raw/datatest2.csv
+[2026-04-25T09:43:13.108+0000] {structured_pipeline.py:638} INFO - [structured] Downloaded 197 bytes
+[2026-04-25T09:43:13.109+0000] {structured_pipeline.py:642} INFO - [structured] Detected file type: csv
+[2026-04-25T09:43:13.109+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-04-25T09:43:13.109+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-04-25T09:43:13.112+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-04-25T09:43:13.115+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-04-25T09:43:13.117+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 10 rows with 4 columns
+[2026-04-25T09:43:13.117+0000] {structured_pipeline.py:665} INFO - [structured] Initial read: 10 rows, 4 columns
+[2026-04-25T09:43:13.117+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-04-25T09:43:13.121+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 10 rows, 4 columns
+[2026-04-25T09:43:13.121+0000] {structured_pipeline.py:108} INFO - Table name: data_datatest2
+[2026-04-25T09:43:13.122+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-04-25T09:43:13.124+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'id' -> INTEGER
+[2026-04-25T09:43:13.129+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-04-25T09:43:13.129+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'name' -> TEXT
+[2026-04-25T09:43:13.132+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'age' -> INTEGER
+[2026-04-25T09:43:13.133+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'score' -> NUMERIC
+[2026-04-25T09:43:13.136+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_datatest2
+[2026-04-25T09:43:13.141+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_datatest2
+[2026-04-25T09:43:13.148+0000] {structured_pipeline.py:562} INFO - [PostgreSQL] Loaded 10 rows into data_datatest2
+[2026-04-25T09:43:13.148+0000] {structured_pipeline.py:576} INFO - [Parquet] Writing Parquet file...
+[2026-04-25T09:43:13.162+0000] {structured_pipeline.py:603} INFO - [Parquet] Saved to: processed/structured/datatest2.parquet
+[2026-04-25T09:43:13.175+0000] {structured_pipeline.py:723} INFO - [structured] Removed old catalog entry: raw/datatest2.csv
+[2026-04-25T09:43:13.175+0000] {structured_pipeline.py:728} INFO - [structured] ✅ Successfully processed raw/datatest2.csv -> processed/structured/datatest2.parquet
+[2026-04-25T09:43:13.175+0000] {etl_manager.py:287} INFO - ETL completed: raw/datatest2.csv
+[2026-04-25T09:43:13.175+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/datatest2.csv -> raw-data/2026-04-25/datatest2.csv
+[2026-04-25T09:43:13.197+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-04-25/datatest2.csv
+[2026-04-25T09:43:13.201+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/datatest2.csv
+[2026-04-25T09:43:13.202+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/datatest3.csv
+[2026-04-25T09:43:13.225+0000] {structured_pipeline.py:624} INFO - [structured] Processing raw/datatest3.csv
+[2026-04-25T09:43:13.230+0000] {structured_pipeline.py:638} INFO - [structured] Downloaded 196 bytes
+[2026-04-25T09:43:13.230+0000] {structured_pipeline.py:642} INFO - [structured] Detected file type: csv
+[2026-04-25T09:43:13.231+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-04-25T09:43:13.231+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-04-25T09:43:13.232+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-04-25T09:43:13.232+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-04-25T09:43:13.235+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 10 rows with 4 columns
+[2026-04-25T09:43:13.236+0000] {structured_pipeline.py:665} INFO - [structured] Initial read: 10 rows, 4 columns
+[2026-04-25T09:43:13.236+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-04-25T09:43:13.240+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 10 rows, 4 columns
+[2026-04-25T09:43:13.240+0000] {structured_pipeline.py:108} INFO - Table name: data_datatest3
+[2026-04-25T09:43:13.240+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-04-25T09:43:13.242+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'id' -> INTEGER
+[2026-04-25T09:43:13.246+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-04-25T09:43:13.246+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'name' -> TEXT
+[2026-04-25T09:43:13.249+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'age' -> INTEGER
+[2026-04-25T09:43:13.250+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'score' -> NUMERIC
+[2026-04-25T09:43:13.255+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_datatest3
+[2026-04-25T09:43:13.257+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_datatest3
+[2026-04-25T09:43:13.263+0000] {structured_pipeline.py:562} INFO - [PostgreSQL] Loaded 10 rows into data_datatest3
+[2026-04-25T09:43:13.263+0000] {structured_pipeline.py:576} INFO - [Parquet] Writing Parquet file...
+[2026-04-25T09:43:13.274+0000] {structured_pipeline.py:603} INFO - [Parquet] Saved to: processed/structured/datatest3.parquet
+[2026-04-25T09:43:13.280+0000] {structured_pipeline.py:723} INFO - [structured] Removed old catalog entry: raw/datatest3.csv
+[2026-04-25T09:43:13.281+0000] {structured_pipeline.py:728} INFO - [structured] ✅ Successfully processed raw/datatest3.csv -> processed/structured/datatest3.parquet
+[2026-04-25T09:43:13.281+0000] {etl_manager.py:287} INFO - ETL completed: raw/datatest3.csv
+[2026-04-25T09:43:13.282+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/datatest3.csv -> raw-data/2026-04-25/datatest3.csv
+[2026-04-25T09:43:13.295+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-04-25/datatest3.csv
+[2026-04-25T09:43:13.299+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/datatest3.csv
+[2026-04-25T09:43:13.299+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/datatest4.csv
+[2026-04-25T09:43:13.320+0000] {structured_pipeline.py:624} INFO - [structured] Processing raw/datatest4.csv
+[2026-04-25T09:43:13.325+0000] {structured_pipeline.py:638} INFO - [structured] Downloaded 197 bytes
+[2026-04-25T09:43:13.326+0000] {structured_pipeline.py:642} INFO - [structured] Detected file type: csv
+[2026-04-25T09:43:13.326+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-04-25T09:43:13.326+0000] {structured_pipeline.py:248} INFO - [CSV] Attempting to decode with ascii
+[2026-04-25T09:43:13.328+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-04-25T09:43:13.328+0000] {structured_pipeline.py:279} INFO - [CSV] Read attempt 1
+[2026-04-25T09:43:13.330+0000] {structured_pipeline.py:283} INFO - [CSV] Successfully read 10 rows with 4 columns
+[2026-04-25T09:43:13.333+0000] {structured_pipeline.py:665} INFO - [structured] Initial read: 10 rows, 4 columns
+[2026-04-25T09:43:13.333+0000] {structured_pipeline.py:374} INFO - [Clean] Cleaning dataframe...
+[2026-04-25T09:43:13.339+0000] {structured_pipeline.py:399} INFO - [Clean] Cleaned dataframe: 10 rows, 4 columns
+[2026-04-25T09:43:13.340+0000] {structured_pipeline.py:108} INFO - Table name: data_datatest4
+[2026-04-25T09:43:13.340+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 4 columns
+[2026-04-25T09:43:13.341+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'id' -> INTEGER
+[2026-04-25T09:43:13.349+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:211 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-04-25T09:43:13.350+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'name' -> TEXT
+[2026-04-25T09:43:13.361+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'age' -> INTEGER
+[2026-04-25T09:43:13.362+0000] {structured_pipeline.py:419} INFO - [PostgreSQL] Column 'score' -> NUMERIC
+[2026-04-25T09:43:13.366+0000] {structured_pipeline.py:431} INFO - [PostgreSQL] Dropped existing table: data_datatest4
+[2026-04-25T09:43:13.368+0000] {structured_pipeline.py:435} INFO - [PostgreSQL] Created table: data_datatest4
+[2026-04-25T09:43:13.373+0000] {structured_pipeline.py:562} INFO - [PostgreSQL] Loaded 10 rows into data_datatest4
+[2026-04-25T09:43:13.373+0000] {structured_pipeline.py:576} INFO - [Parquet] Writing Parquet file...
+[2026-04-25T09:43:13.385+0000] {structured_pipeline.py:603} INFO - [Parquet] Saved to: processed/structured/datatest4.parquet
+[2026-04-25T09:43:13.397+0000] {structured_pipeline.py:723} INFO - [structured] Removed old catalog entry: raw/datatest4.csv
+[2026-04-25T09:43:13.397+0000] {structured_pipeline.py:728} INFO - [structured] ✅ Successfully processed raw/datatest4.csv -> processed/structured/datatest4.parquet
+[2026-04-25T09:43:13.397+0000] {etl_manager.py:287} INFO - ETL completed: raw/datatest4.csv
+[2026-04-25T09:43:13.397+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/datatest4.csv -> raw-data/2026-04-25/datatest4.csv
+[2026-04-25T09:43:13.412+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Catalog updated for archive: raw-data/2026-04-25/datatest4.csv
+[2026-04-25T09:43:13.415+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/datatest4.csv
+[2026-04-25T09:43:13.416+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-04-25T09:43:13.445+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260425T094224, start_date=20260425T094311, end_date=20260425T094313
+[2026-04-25T09:43:13.525+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-04-25T09:43:13.568+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

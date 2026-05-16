@@ -1,0 +1,389 @@
+[2026-05-06T02:57:54.371+0000] {processor.py:157} INFO - Started process (PID=4386) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:57:54.389+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T02:57:54.405+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:57:54.397+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:57:54.556+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:57:54.802+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:57:54.801+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T02:57:55.111+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.847 seconds
+[2026-05-06T02:57:58.458+0000] {processor.py:157} INFO - Started process (PID=4403) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:57:58.465+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T02:57:58.468+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:57:58.467+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:57:58.557+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:57:58.646+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:57:58.646+0000] {taskinstance.py:1937} ERROR - {'DAG Id': 'embedding_sync_dag', 'Task Id': 'process_queue', 'Run Id': 'scheduled__2026-05-04T12:00:00+00:00', 'Hostname': 'e8610aa59365'}
+[2026-05-06T02:57:58.703+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:57:58.703+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=embedding_sync_dag, task_id=process_queue, execution_date=20260504T120000, start_date=20260504T120846, end_date=20260506T025758
+[2026-05-06T02:57:58.728+0000] {processor.py:790} INFO - Executed failure callback for <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-05-04T12:00:00+00:00 [up_for_retry]> in state up_for_retry
+[2026-05-06T02:57:58.795+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:57:58.795+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T02:57:58.896+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.461 seconds
+[2026-05-06T02:58:29.208+0000] {processor.py:157} INFO - Started process (PID=4436) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:58:29.210+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T02:58:29.212+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:58:29.212+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:58:29.258+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:58:29.354+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:58:29.354+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T02:58:29.460+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.263 seconds
+[2026-05-06T02:58:59.933+0000] {processor.py:157} INFO - Started process (PID=4463) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:58:59.939+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T02:58:59.949+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:58:59.945+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:59:00.126+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:59:00.284+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:59:00.284+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T02:59:00.537+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.650 seconds
+[2026-05-06T02:59:30.955+0000] {processor.py:157} INFO - Started process (PID=4478) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:59:30.960+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T02:59:30.963+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:59:30.962+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:59:31.047+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T02:59:31.223+0000] {logging_mixin.py:151} INFO - [2026-05-06T02:59:31.223+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T02:59:31.447+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.516 seconds
+[2026-05-06T03:19:11.922+0000] {processor.py:157} INFO - Started process (PID=4499) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T03:19:12.081+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T03:19:12.143+0000] {logging_mixin.py:151} INFO - [2026-05-06T03:19:12.112+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T03:19:13.175+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T03:19:13.709+0000] {logging_mixin.py:151} INFO - [2026-05-06T03:19:13.709+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T03:19:13.938+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 2.463 seconds
+[2026-05-06T05:08:01.304+0000] {processor.py:157} INFO - Started process (PID=170) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:08:01.313+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:08:01.314+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:08:01.313+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:08:01.412+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:08:01.667+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:08:01.661+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:08:01.823+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.522 seconds
+[2026-05-06T05:08:32.436+0000] {processor.py:157} INFO - Started process (PID=203) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:08:32.441+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:08:32.442+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:08:32.441+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:08:32.592+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:08:32.700+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:08:32.700+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:08:32.988+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.592 seconds
+[2026-05-06T05:09:03.112+0000] {processor.py:157} INFO - Started process (PID=227) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:09:03.113+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:09:03.114+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:09:03.113+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:09:03.138+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:09:03.192+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:09:03.192+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:09:03.255+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.149 seconds
+[2026-05-06T05:09:33.684+0000] {processor.py:157} INFO - Started process (PID=245) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:09:33.688+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:09:33.688+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:09:33.688+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:09:33.714+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:09:33.760+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:09:33.760+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:09:33.812+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.131 seconds
+[2026-05-06T05:10:04.211+0000] {processor.py:157} INFO - Started process (PID=263) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:10:04.212+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:10:04.213+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:10:04.212+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:10:04.243+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:10:04.302+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:10:04.302+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:10:04.346+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.141 seconds
+[2026-05-06T05:10:34.680+0000] {processor.py:157} INFO - Started process (PID=281) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:10:34.682+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:10:34.682+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:10:34.682+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:10:34.706+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:10:34.748+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:10:34.748+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:10:34.786+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.108 seconds
+[2026-05-06T05:11:05.080+0000] {processor.py:157} INFO - Started process (PID=299) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:11:05.081+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:11:05.082+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:11:05.081+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:11:05.108+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:11:05.157+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:11:05.157+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:11:05.207+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.136 seconds
+[2026-05-06T05:11:35.574+0000] {processor.py:157} INFO - Started process (PID=317) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:11:35.577+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:11:35.578+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:11:35.578+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:11:35.601+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:11:35.644+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:11:35.644+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:11:35.684+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.113 seconds
+[2026-05-06T05:12:05.996+0000] {processor.py:157} INFO - Started process (PID=349) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:12:05.998+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:12:05.998+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:12:05.998+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:12:06.013+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:12:06.048+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:12:06.048+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:12:06.089+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.096 seconds
+[2026-05-06T05:12:36.157+0000] {processor.py:157} INFO - Started process (PID=367) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:12:36.161+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:12:36.161+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:12:36.161+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:12:36.191+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:12:36.235+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:12:36.235+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:12:36.284+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.131 seconds
+[2026-05-06T05:13:06.720+0000] {processor.py:157} INFO - Started process (PID=385) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:13:06.721+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:13:06.722+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:13:06.722+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:13:06.750+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:13:06.799+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:13:06.799+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:13:06.846+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.134 seconds
+[2026-05-06T05:13:36.979+0000] {processor.py:157} INFO - Started process (PID=403) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:13:36.980+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:13:36.981+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:13:36.981+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:13:37.000+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:13:37.040+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:13:37.039+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:13:37.084+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.108 seconds
+[2026-05-06T05:14:07.684+0000] {processor.py:157} INFO - Started process (PID=421) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:14:07.685+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:14:07.686+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:14:07.686+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:14:07.705+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:14:07.753+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:14:07.753+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:14:07.807+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.131 seconds
+[2026-05-06T05:14:37.909+0000] {processor.py:157} INFO - Started process (PID=439) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:14:37.912+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:14:37.913+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:14:37.912+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:14:37.940+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:14:37.988+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:14:37.988+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:14:38.038+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.135 seconds
+[2026-05-06T05:15:08.074+0000] {processor.py:157} INFO - Started process (PID=457) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:15:08.078+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:15:08.079+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:15:08.078+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:15:08.104+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:15:08.155+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:15:08.155+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:15:08.208+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.141 seconds
+[2026-05-06T05:15:38.779+0000] {processor.py:157} INFO - Started process (PID=475) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:15:38.779+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:15:38.780+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:15:38.780+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:15:38.808+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:15:38.845+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:15:38.845+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:15:38.881+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.108 seconds
+[2026-05-06T05:16:09.052+0000] {processor.py:157} INFO - Started process (PID=507) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:16:09.052+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:16:09.053+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:16:09.053+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:16:09.067+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:16:09.101+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:16:09.101+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:16:09.137+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.089 seconds
+[2026-05-06T05:16:39.669+0000] {processor.py:157} INFO - Started process (PID=525) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:16:39.671+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:16:39.673+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:16:39.671+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:16:39.698+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:16:39.750+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:16:39.750+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:16:39.795+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.131 seconds
+[2026-05-06T05:17:09.947+0000] {processor.py:157} INFO - Started process (PID=543) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:17:09.951+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:17:09.952+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:17:09.951+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:17:09.969+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:17:10.014+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:17:10.014+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:17:10.054+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.111 seconds
+[2026-05-06T05:17:40.494+0000] {processor.py:157} INFO - Started process (PID=561) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:17:40.496+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:17:40.498+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:17:40.496+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:17:40.522+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:17:40.569+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:17:40.569+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:17:40.610+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.121 seconds
+[2026-05-06T05:18:11.054+0000] {processor.py:157} INFO - Started process (PID=579) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:18:11.055+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:18:11.059+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:18:11.055+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:18:11.075+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:18:11.110+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:18:11.110+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:18:11.152+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.104 seconds
+[2026-05-06T05:18:41.302+0000] {processor.py:157} INFO - Started process (PID=597) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:18:41.304+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:18:41.305+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:18:41.304+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:18:41.336+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:18:41.380+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:18:41.379+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:18:41.414+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.118 seconds
+[2026-05-06T05:19:11.532+0000] {processor.py:157} INFO - Started process (PID=615) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:19:11.534+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:19:11.535+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:19:11.534+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:19:11.554+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:19:11.597+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:19:11.597+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:19:11.639+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.111 seconds
+[2026-05-06T05:19:42.172+0000] {processor.py:157} INFO - Started process (PID=633) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:19:42.175+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:19:42.176+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:19:42.175+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:19:42.201+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:19:42.250+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:19:42.250+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:19:42.302+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.136 seconds
+[2026-05-06T05:20:12.467+0000] {processor.py:157} INFO - Started process (PID=665) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:20:12.468+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:20:12.469+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:20:12.468+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:20:12.494+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:20:12.533+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:20:12.533+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:20:12.579+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.118 seconds
+[2026-05-06T05:20:43.054+0000] {processor.py:157} INFO - Started process (PID=683) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:20:43.058+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:20:43.059+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:20:43.058+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:20:43.075+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:20:43.120+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:20:43.119+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:20:43.168+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.118 seconds
+[2026-05-06T05:21:13.343+0000] {processor.py:157} INFO - Started process (PID=701) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:21:13.344+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:21:13.345+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:21:13.344+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:21:13.366+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:21:13.410+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:21:13.410+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:21:13.454+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.114 seconds
+[2026-05-06T05:21:44.010+0000] {processor.py:157} INFO - Started process (PID=719) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:21:44.014+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:21:44.014+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:21:44.014+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:21:44.035+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:21:44.086+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:21:44.086+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:21:44.136+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.132 seconds
+[2026-05-06T05:22:14.552+0000] {processor.py:157} INFO - Started process (PID=737) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:22:14.553+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:22:14.554+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:22:14.553+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:22:14.577+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:22:14.620+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:22:14.619+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:22:14.803+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.257 seconds
+[2026-05-06T05:22:45.244+0000] {processor.py:157} INFO - Started process (PID=755) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:22:45.248+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:22:45.249+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:22:45.248+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:22:45.275+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:22:45.325+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:22:45.325+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:22:45.368+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.130 seconds
+[2026-05-06T05:23:15.533+0000] {processor.py:157} INFO - Started process (PID=773) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:23:15.534+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:23:15.536+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:23:15.534+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:23:15.557+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:23:15.605+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:23:15.605+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:23:15.654+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.124 seconds
+[2026-05-06T05:23:46.118+0000] {processor.py:157} INFO - Started process (PID=793) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:23:46.119+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:23:46.119+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:23:46.119+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:23:46.135+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:23:46.169+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:23:46.168+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:23:46.193+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:23:46.193+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:20:00+00:00, run_after=2026-05-06T05:25:00+00:00
+[2026-05-06T05:23:46.334+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.220 seconds
+[2026-05-06T05:24:16.469+0000] {processor.py:157} INFO - Started process (PID=811) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:24:16.470+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:24:16.471+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:24:16.471+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:24:16.488+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:24:16.523+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:24:16.523+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:24:16.547+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:24:16.547+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:20:00+00:00, run_after=2026-05-06T05:25:00+00:00
+[2026-05-06T05:24:16.564+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.098 seconds
+[2026-05-06T05:24:47.218+0000] {processor.py:157} INFO - Started process (PID=829) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:24:47.221+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:24:47.223+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:24:47.222+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:24:47.244+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:24:47.278+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:24:47.278+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:24:47.301+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:24:47.301+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:20:00+00:00, run_after=2026-05-06T05:25:00+00:00
+[2026-05-06T05:24:47.318+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.111 seconds
+[2026-05-06T05:25:17.811+0000] {processor.py:157} INFO - Started process (PID=859) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:25:17.812+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:25:17.813+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:25:17.812+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:25:17.827+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:25:17.860+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:25:17.860+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:25:18.035+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.228 seconds
+[2026-05-06T05:25:48.167+0000] {processor.py:157} INFO - Started process (PID=877) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:25:48.168+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:25:48.169+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:25:48.168+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:25:48.183+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:25:48.217+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:25:48.217+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:25:48.372+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.208 seconds
+[2026-05-06T05:26:18.980+0000] {processor.py:157} INFO - Started process (PID=895) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:26:18.981+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:26:18.982+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:26:18.982+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:26:19.007+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:26:19.050+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:26:19.049+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:26:19.092+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.119 seconds
+[2026-05-06T05:26:49.250+0000] {processor.py:157} INFO - Started process (PID=913) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:26:49.251+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:26:49.252+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:26:49.252+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:26:49.277+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:26:49.320+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:26:49.320+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:26:49.493+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.253 seconds
+[2026-05-06T05:27:20.093+0000] {processor.py:157} INFO - Started process (PID=931) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:27:20.094+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:27:20.095+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:27:20.094+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:27:20.113+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:27:20.154+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:27:20.153+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:27:20.365+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.276 seconds
+[2026-05-06T05:27:50.784+0000] {processor.py:157} INFO - Started process (PID=949) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:27:50.786+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:27:50.787+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:27:50.787+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:27:50.817+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:27:50.873+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:27:50.873+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:27:50.977+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.199 seconds
+[2026-05-06T05:28:21.167+0000] {processor.py:157} INFO - Started process (PID=967) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:28:21.169+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:28:21.170+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:28:21.169+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:28:21.198+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:28:21.246+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:28:21.246+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:28:21.285+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.124 seconds
+[2026-05-06T05:28:51.769+0000] {processor.py:157} INFO - Started process (PID=987) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:28:51.771+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:28:51.772+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:28:51.771+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:28:51.789+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:28:51.823+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:28:51.823+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:28:51.974+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:28:51.973+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:25:00+00:00, run_after=2026-05-06T05:30:00+00:00
+[2026-05-06T05:28:51.991+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.226 seconds
+[2026-05-06T05:29:22.354+0000] {processor.py:157} INFO - Started process (PID=1005) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:29:22.358+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:29:22.360+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:29:22.359+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:29:22.387+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:29:22.420+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:29:22.420+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:29:22.443+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:29:22.443+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:25:00+00:00, run_after=2026-05-06T05:30:00+00:00
+[2026-05-06T05:29:22.462+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.118 seconds
+[2026-05-06T05:29:52.614+0000] {processor.py:157} INFO - Started process (PID=1023) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:29:52.615+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:29:52.616+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:29:52.615+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:29:52.632+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:29:52.667+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:29:52.667+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:29:52.691+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:29:52.691+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:25:00+00:00, run_after=2026-05-06T05:30:00+00:00
+[2026-05-06T05:29:52.834+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.226 seconds
+[2026-05-06T05:30:23.509+0000] {processor.py:157} INFO - Started process (PID=1053) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:30:23.513+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:30:23.513+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:30:23.513+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:30:23.530+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:30:23.576+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:30:23.576+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:30:23.752+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.247 seconds
+[2026-05-06T05:30:54.192+0000] {processor.py:157} INFO - Started process (PID=1071) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:30:54.193+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:30:54.196+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:30:54.193+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:30:54.354+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:30:54.384+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:30:54.384+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:30:54.427+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.242 seconds
+[2026-05-06T05:31:24.762+0000] {processor.py:157} INFO - Started process (PID=1089) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:31:24.763+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:31:24.764+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:31:24.764+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:31:24.791+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:31:24.842+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:31:24.842+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:31:24.899+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.146 seconds
+[2026-05-06T05:31:55.198+0000] {processor.py:157} INFO - Started process (PID=1107) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:31:55.199+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:31:55.199+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:31:55.199+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:31:55.221+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:31:55.265+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:31:55.265+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:31:55.308+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.116 seconds
+[2026-05-06T05:32:25.668+0000] {processor.py:157} INFO - Started process (PID=1125) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:32:25.670+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:32:25.671+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:32:25.670+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:32:25.693+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:32:25.750+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:32:25.750+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:32:25.794+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.133 seconds
+[2026-05-06T05:32:55.962+0000] {processor.py:157} INFO - Started process (PID=1140) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:32:55.963+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:32:55.964+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:32:55.963+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:32:55.983+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:32:56.022+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:32:56.022+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:32:56.069+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.115 seconds
+[2026-05-06T05:33:26.255+0000] {processor.py:157} INFO - Started process (PID=1155) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:33:26.259+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:33:26.260+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:33:26.260+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:33:26.280+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:33:26.314+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:33:26.313+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:33:26.352+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.100 seconds
+[2026-05-06T05:33:56.461+0000] {processor.py:157} INFO - Started process (PID=1173) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:33:56.461+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:33:56.462+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:33:56.462+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:33:56.478+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:33:56.511+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:33:56.511+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:33:56.550+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.094 seconds
+[2026-05-06T05:34:26.775+0000] {processor.py:157} INFO - Started process (PID=1193) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:34:26.778+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:34:26.780+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:34:26.779+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:34:26.805+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:34:26.840+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:34:26.840+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:34:26.865+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:34:26.865+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:30:00+00:00, run_after=2026-05-06T05:35:00+00:00
+[2026-05-06T05:34:26.883+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.119 seconds
+[2026-05-06T05:34:57.108+0000] {processor.py:157} INFO - Started process (PID=1211) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:34:57.111+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:34:57.112+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:34:57.112+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:34:57.133+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:34:57.167+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:34:57.167+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:34:57.191+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:34:57.191+0000] {dag.py:3696} INFO - Setting next_dagrun for embedding_sync_dag to 2026-05-06T05:30:00+00:00, run_after=2026-05-06T05:35:00+00:00
+[2026-05-06T05:34:57.209+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.112 seconds
+[2026-05-06T05:35:27.885+0000] {processor.py:157} INFO - Started process (PID=1241) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:35:27.889+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:35:27.890+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:35:27.890+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:35:27.925+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:35:27.993+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:35:27.993+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:35:28.038+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.159 seconds
+[2026-05-06T05:35:58.681+0000] {processor.py:157} INFO - Started process (PID=1259) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:35:58.682+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:35:58.685+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:35:58.684+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:35:58.706+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:35:58.755+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:35:58.755+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:35:58.806+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.137 seconds
+[2026-05-06T05:36:28.905+0000] {processor.py:157} INFO - Started process (PID=1277) to work on /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:36:28.911+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/embedding_sync_dag.py for tasks to queue
+[2026-05-06T05:36:28.912+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:36:28.911+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:36:28.933+0000] {processor.py:839} INFO - DAG(s) dict_keys(['embedding_sync_dag']) retrieved from /opt/airflow/dags/embedding_sync_dag.py
+[2026-05-06T05:36:28.977+0000] {logging_mixin.py:151} INFO - [2026-05-06T05:36:28.977+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-05-06T05:36:29.043+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/embedding_sync_dag.py took 0.142 seconds

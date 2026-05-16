@@ -1,0 +1,61 @@
+[2026-04-23T15:46:06.915+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-04-23T12:20:00+00:00 [queued]>
+[2026-04-23T15:46:06.938+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.process_queue scheduled__2026-04-23T12:20:00+00:00 [queued]>
+[2026-04-23T15:46:06.938+0000] {taskinstance.py:1359} INFO - Starting attempt 3 of 3
+[2026-04-23T15:46:06.971+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): process_queue> on 2026-04-23 12:20:00+00:00
+[2026-04-23T15:46:06.985+0000] {standard_task_runner.py:57} INFO - Started process 4703 to run task
+[2026-04-23T15:46:06.995+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'process_queue', 'scheduled__2026-04-23T12:20:00+00:00', '--job-id', '2953', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpjjufoq36']
+[2026-04-23T15:46:07.004+0000] {standard_task_runner.py:85} INFO - Job 2953: Subtask process_queue
+[2026-04-23T15:46:07.189+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.process_queue scheduled__2026-04-23T12:20:00+00:00 [running]> on host 3d6a52e93bc5
+[2026-04-23T15:46:07.504+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='process_queue' AIRFLOW_CTX_EXECUTION_DATE='2026-04-23T12:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-23T12:20:00+00:00'
+[2026-04-23T15:46:10.031+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeedocx_table_1
+[2026-04-23T15:46:10.034+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeedocx_table_2
+[2026-04-23T15:46:10.037+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page1_table1
+[2026-04-23T15:46:10.040+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page1_table2
+[2026-04-23T15:46:10.044+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page1_table3
+[2026-04-23T15:46:10.047+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page2_table1
+[2026-04-23T15:46:10.049+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page2_table2
+[2026-04-23T15:46:10.050+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page2_table3
+[2026-04-23T15:46:10.052+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page3_table1
+[2026-04-23T15:46:10.053+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page3_table2
+[2026-04-23T15:46:10.055+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page3_table3
+[2026-04-23T15:46:10.057+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page4_table1
+[2026-04-23T15:46:10.060+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page4_table2
+[2026-04-23T15:46:10.063+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page5_table1
+[2026-04-23T15:46:10.065+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page5_table2
+[2026-04-23T15:46:10.069+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page5_table3
+[2026-04-23T15:46:10.072+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page5_table4
+[2026-04-23T15:46:10.078+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page6_table1
+[2026-04-23T15:46:10.079+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page6_table2
+[2026-04-23T15:46:10.084+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page6_table3
+[2026-04-23T15:46:10.087+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page7_table1
+[2026-04-23T15:46:10.094+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page7_table2
+[2026-04-23T15:46:10.098+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page8_table1
+[2026-04-23T15:46:10.101+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page8_table2
+[2026-04-23T15:46:10.106+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page8_table3
+[2026-04-23T15:46:10.109+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page9_table1
+[2026-04-23T15:46:10.110+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page9_table2
+[2026-04-23T15:46:10.114+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page9_table3
+[2026-04-23T15:46:10.117+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page10_table1
+[2026-04-23T15:46:10.119+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page10_table2
+[2026-04-23T15:46:10.120+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_coffeepdf_page11_table1
+[2026-04-23T15:46:10.123+0000] {embedding_pipeline.py:155} INFO - [embed] Trigger attached: data_machinescoffeecsv
+[2026-04-23T15:46:10.127+0000] {embedding_pipeline.py:531} INFO - [embed] Attached triggers to 32 new table(s)
+[2026-04-23T15:46:10.151+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 1: 200 events
+[2026-04-23T15:49:24.348+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-04-23T15:49:26.120+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-04-23T15:49:26.146+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 2: 200 events
+[2026-04-23T15:52:55.927+0000] {embedding_pipeline.py:597} INFO - [embed] Ollama produced 200 × 768-dim vectors
+[2026-04-23T15:52:57.707+0000] {embedding_pipeline.py:658} INFO - [embed] Upserted 200 rows
+[2026-04-23T15:52:57.741+0000] {embedding_pipeline.py:555} INFO - [embed] Batch 3: 200 events
+[2026-04-24T04:19:04.499+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2026-04-24T04:19:04.552+0000] {process_utils.py:131} INFO - Sending 15 to group 4703. PIDs of all processes in the group: [4703]
+[2026-04-24T04:19:04.554+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 4703
+[2026-04-24T04:19:04.556+0000] {taskinstance.py:1630} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-04-24T04:19:04.561+0000] {embedding_pipeline.py:76} WARNING - [embed] Ollama call failed: Task received SIGTERM signal
+[2026-04-24T04:19:04.596+0000] {embedding_pipeline.py:599} WARNING - [embed] Ollama unavailable — embedding_768 will be NULL for this batch
+[2026-04-24T04:19:38.700+0000] {embedding_pipeline.py:96} INFO - [embed] Loading all-MiniLM-L6-v2...
+[2026-04-24T04:19:38.707+0000] {SentenceTransformer.py:219} INFO - Use pytorch device_name: cpu
+[2026-04-24T04:19:38.708+0000] {SentenceTransformer.py:227} INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+[2026-04-24T04:19:38.993+0000] {local_task_job_runner.py:115} ERROR - Received SIGTERM. Terminating subprocesses
+[2026-04-24T04:19:39.034+0000] {process_utils.py:131} INFO - Sending 15 to group 4703. PIDs of all processes in the group: [4703]
+[2026-04-24T04:19:39.040+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 4703

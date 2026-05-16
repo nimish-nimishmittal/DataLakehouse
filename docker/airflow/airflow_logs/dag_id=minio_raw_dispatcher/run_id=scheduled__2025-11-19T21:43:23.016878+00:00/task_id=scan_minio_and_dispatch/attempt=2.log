@@ -1,0 +1,32 @@
+[2025-11-19T21:44:36.873+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_raw_dispatcher.scan_minio_and_dispatch scheduled__2025-11-19T21:43:23.016878+00:00 [queued]>
+[2025-11-19T21:44:36.881+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_raw_dispatcher.scan_minio_and_dispatch scheduled__2025-11-19T21:43:23.016878+00:00 [queued]>
+[2025-11-19T21:44:36.881+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 4
+[2025-11-19T21:44:36.893+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2025-11-19 21:43:23.016878+00:00
+[2025-11-19T21:44:36.900+0000] {standard_task_runner.py:57} INFO - Started process 365 to run task
+[2025-11-19T21:44:36.903+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'minio_raw_dispatcher', 'scan_minio_and_dispatch', 'scheduled__2025-11-19T21:43:23.016878+00:00', '--job-id', '359', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmp_psg4f4l']
+[2025-11-19T21:44:36.907+0000] {standard_task_runner.py:85} INFO - Job 359: Subtask scan_minio_and_dispatch
+[2025-11-19T21:44:36.929+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-19T21:44:36.972+0000] {task_command.py:415} INFO - Running <TaskInstance: minio_raw_dispatcher.scan_minio_and_dispatch scheduled__2025-11-19T21:43:23.016878+00:00 [running]> on host 732f8b14630c
+[2025-11-19T21:44:37.240+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_raw_dispatcher' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2025-11-19T21:43:23.016878+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-19T21:43:23.016878+00:00'
+[2025-11-19T21:44:37.248+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/DevOps_quesbank.pdf
+[2025-11-19T21:44:37.392+0000] {pdf_pipeline.py:24} INFO - [pdf] Processing raw/DevOps_quesbank.pdf
+[2025-11-19T21:44:37.413+0000] {pdf_pipeline.py:36} INFO - [pdf] Uploaded extracted text to processed/unstructured/text-extracted/DevOps_quesbank.txt
+[2025-11-19T21:44:37.417+0000] {etl_manager.py:272} INFO - Processing complete for: raw/DevOps_quesbank.pdf
+[2025-11-19T21:44:37.417+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Moving raw/DevOps_quesbank.pdf → raw/processed/DevOps_quesbank.pdf
+[2025-11-19T21:44:37.418+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/dispatcher_pipeline_dag.py", line 59, in scan_and_dispatch
+    client.copy_object(
+  File "/home/airflow/.local/lib/python3.11/site-packages/minio/api.py", line 1397, in copy_object
+    raise ValueError("source must be CopySource type")
+ValueError: source must be CopySource type
+[2025-11-19T21:44:37.438+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_raw_dispatcher, task_id=scan_minio_and_dispatch, execution_date=20251119T214323, start_date=20251119T214436, end_date=20251119T214437
+[2025-11-19T21:44:37.449+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 359 for task scan_minio_and_dispatch (source must be CopySource type; 365)
+[2025-11-19T21:44:37.477+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-11-19T21:44:37.525+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

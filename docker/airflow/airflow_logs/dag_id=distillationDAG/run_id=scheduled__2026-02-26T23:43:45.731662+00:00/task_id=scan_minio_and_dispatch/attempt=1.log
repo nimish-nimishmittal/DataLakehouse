@@ -1,0 +1,148 @@
+[2026-02-26T23:44:47.646+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T23:43:45.731662+00:00 [queued]>
+[2026-02-26T23:44:47.680+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T23:43:45.731662+00:00 [queued]>
+[2026-02-26T23:44:47.680+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 4
+[2026-02-26T23:44:47.730+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-02-26 23:43:45.731662+00:00
+[2026-02-26T23:44:47.750+0000] {standard_task_runner.py:57} INFO - Started process 378 to run task
+[2026-02-26T23:44:47.761+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-02-26T23:43:45.731662+00:00', '--job-id', '1709', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpdc89z1ms']
+[2026-02-26T23:44:47.770+0000] {standard_task_runner.py:85} INFO - Job 1709: Subtask scan_minio_and_dispatch
+[2026-02-26T23:44:47.959+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-02-26T23:43:45.731662+00:00 [running]> on host 9dc8d7c4ba28
+[2026-02-26T23:44:48.682+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-02-26T23:43:45.731662+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-26T23:43:45.731662+00:00'
+[2026-02-26T23:44:48.707+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc3_inventory.pdf
+[2026-02-26T23:44:49.909+0000] {pdf_pipeline.py:354} INFO - [pdf] Processing raw/doc3_inventory.pdf
+[2026-02-26T23:44:49.921+0000] {pdf_pipeline.py:408} INFO - [pdf] Extracting text from PDF...
+[2026-02-26T23:44:49.935+0000] {pdf_pipeline.py:441} ERROR - [pdf] Text extraction failed for raw/doc3_inventory.pdf: cannot access local variable 'table_count' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 425, in process_minio_object
+    'table_count': table_count,
+                   ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'table_count' where it is not associated with a value
+[2026-02-26T23:44:49.937+0000] {pdf_pipeline.py:477} WARNING - [pdf] No text extracted from raw/doc3_inventory.pdf
+[2026-02-26T23:44:49.938+0000] {pdf_pipeline.py:480} INFO - [pdf] Extracting tables from PDF...
+[2026-02-26T23:44:50.479+0000] {pdf_pipeline.py:550} INFO - [pdf] Extracted 0 tables with 0 total rows
+[2026-02-26T23:44:50.480+0000] {pdf_pipeline.py:566} ERROR - [pdf] Failed catalog update for raw/doc3_inventory.pdf: cannot access local variable 'pdf_metadata' where it is not associated with a value
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/pdf_pipeline.py", line 561, in process_minio_object
+    metadata=pdf_metadata,
+             ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pdf_metadata' where it is not associated with a value
+[2026-02-26T23:44:50.481+0000] {pdf_pipeline.py:569} INFO - [pdf] ✅ Completed processing: raw/doc3_inventory.pdf | pages=3 | tables=0 | rows=0 | text_chars=0
+[2026-02-26T23:44:50.482+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc3_inventory.pdf
+[2026-02-26T23:44:50.483+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc3_inventory.pdf -> raw-data/2026-02-26/doc3_inventory.pdf
+[2026-02-26T23:44:50.517+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc3_inventory.pdf
+[2026-02-26T23:44:50.518+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/doc3_inventory_report.docx
+[2026-02-26T23:44:50.555+0000] {docx_pipeline.py:435} INFO - [docx] Processing raw/doc3_inventory_report.docx
+[2026-02-26T23:44:50.569+0000] {docx_pipeline.py:492} INFO - [docx] Extracting text…
+[2026-02-26T23:44:50.596+0000] {docx_pipeline.py:494} INFO - [docx] Extracted 202 characters of text
+[2026-02-26T23:44:50.597+0000] {docx_pipeline.py:499} INFO - [docx] Extracting tables…
+[2026-02-26T23:44:50.652+0000] {docx_pipeline.py:501} INFO - [docx] Found 3 table(s)
+[2026-02-26T23:44:50.660+0000] {docx_pipeline.py:526} INFO - [docx] Uploaded extracted text → processed/unstructured/text-extracted/doc3_inventory_report.txt
+[2026-02-26T23:44:50.681+0000] {docx_pipeline.py:193} WARNING - [docx] Could not add UNIQUE constraint: could not create unique index "unstructured_documents_content_hash_key"
+DETAIL:  Key (content_hash)=(a95d20adcf0b6ad918e0139c6c2e7fe32b571130949496df092301cfbc685f2e) is duplicated.
+
+[2026-02-26T23:44:50.685+0000] {docx_pipeline.py:257} INFO - [docx] Inserted into unstructured_documents for raw/doc3_inventory_report.docx
+[2026-02-26T23:44:50.688+0000] {docx_pipeline.py:547} INFO - [docx] Processing 3 table(s)…
+[2026-02-26T23:44:50.727+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc3_inventory_report_table_1.csv
+[2026-02-26T23:44:50.728+0000] {structured_pipeline.py:108} INFO - Table name: data_doc3_inventory_report_table_1
+[2026-02-26T23:44:50.733+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T23:44:50.744+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.754+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.761+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.766+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.777+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc3_inventory_report_table_1
+[2026-02-26T23:44:50.782+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc3_inventory_report_table_1'
+[2026-02-26T23:44:50.788+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 1/3: 4 rows × 5 cols
+[2026-02-26T23:44:50.808+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc3_inventory_report_table_2.csv
+[2026-02-26T23:44:50.809+0000] {structured_pipeline.py:108} INFO - Table name: data_doc3_inventory_report_table_2
+[2026-02-26T23:44:50.810+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T23:44:50.817+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.823+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.828+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.833+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.838+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.843+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc3_inventory_report_table_2
+[2026-02-26T23:44:50.847+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc3_inventory_report_table_2'
+[2026-02-26T23:44:50.852+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 2/3: 4 rows × 5 cols
+[2026-02-26T23:44:50.870+0000] {docx_pipeline.py:310} INFO - [docx] Uploaded table CSV → processed/structured/docx-tables/doc3_inventory_report_table_3.csv
+[2026-02-26T23:44:50.871+0000] {structured_pipeline.py:108} INFO - Table name: data_doc3_inventory_report_table_3
+[2026-02-26T23:44:50.873+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 5 columns
+[2026-02-26T23:44:50.881+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.886+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.891+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.897+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:50.900+0000] {docx_pipeline.py:361} INFO - [docx] Created table: data_doc3_inventory_report_table_3
+[2026-02-26T23:44:50.904+0000] {docx_pipeline.py:373} INFO - [docx] Loaded 4 rows into 'data_doc3_inventory_report_table_3'
+[2026-02-26T23:44:50.908+0000] {docx_pipeline.py:570} INFO - [docx] Processed table 3/3: 4 rows × 5 cols
+[2026-02-26T23:44:50.923+0000] {docx_pipeline.py:606} INFO - [docx] Updated catalog for raw/doc3_inventory_report.docx
+[2026-02-26T23:44:50.924+0000] {docx_pipeline.py:612} INFO - [docx] ✅ Completed raw/doc3_inventory_report.docx | tables=3 | total_rows=12 | text_chars=202
+[2026-02-26T23:44:50.924+0000] {etl_manager.py:306} INFO - ETL completed: raw/doc3_inventory_report.docx
+[2026-02-26T23:44:50.925+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/doc3_inventory_report.docx -> raw-data/2026-02-26/doc3_inventory_report.docx
+[2026-02-26T23:44:50.945+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/doc3_inventory_report.docx
+[2026-02-26T23:44:50.945+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/flights.csv
+[2026-02-26T23:44:50.979+0000] {structured_pipeline.py:505} INFO - [structured] Processing raw/flights.csv
+[2026-02-26T23:44:50.987+0000] {structured_pipeline.py:519} INFO - [structured] Downloaded 509 bytes
+[2026-02-26T23:44:50.989+0000] {structured_pipeline.py:523} INFO - [structured] Detected file type: csv
+[2026-02-26T23:44:50.990+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-02-26T23:44:50.991+0000] {structured_pipeline.py:237} INFO - [CSV] Attempting to decode with ascii
+[2026-02-26T23:44:50.995+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-02-26T23:44:50.996+0000] {structured_pipeline.py:268} INFO - [CSV] Read attempt 1
+[2026-02-26T23:44:51.005+0000] {structured_pipeline.py:272} INFO - [CSV] Successfully read 8 rows with 9 columns
+[2026-02-26T23:44:51.006+0000] {structured_pipeline.py:546} INFO - [structured] Initial read: 8 rows, 9 columns
+[2026-02-26T23:44:51.006+0000] {structured_pipeline.py:363} INFO - [Clean] Cleaning dataframe...
+[2026-02-26T23:44:51.019+0000] {structured_pipeline.py:388} INFO - [Clean] Cleaned dataframe: 8 rows, 9 columns
+[2026-02-26T23:44:51.019+0000] {structured_pipeline.py:108} INFO - Table name: data_flights
+[2026-02-26T23:44:51.019+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 9 columns
+[2026-02-26T23:44:51.026+0000] {structured_pipeline.py:402} INFO - [PostgreSQL] Dropped existing table: data_flights
+[2026-02-26T23:44:51.033+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:51.034+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'flightnumber' -> TEXT
+[2026-02-26T23:44:51.039+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:51.041+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'airline' -> TEXT
+[2026-02-26T23:44:51.048+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:51.049+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'origin' -> TEXT
+[2026-02-26T23:44:51.055+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:51.056+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'destination' -> TEXT
+[2026-02-26T23:44:51.061+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:51.063+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'departuretime' -> TIMESTAMP
+[2026-02-26T23:44:51.068+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-02-26T23:44:51.070+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'arrivaltime' -> TIMESTAMP
+[2026-02-26T23:44:51.072+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'duration_min' -> INTEGER
+[2026-02-26T23:44:51.075+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'price' -> INTEGER
+[2026-02-26T23:44:51.077+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'seatsavailable' -> INTEGER
+[2026-02-26T23:44:51.087+0000] {structured_pipeline.py:422} INFO - [PostgreSQL] Created table: data_flights
+[2026-02-26T23:44:51.112+0000] {structured_pipeline.py:448} ERROR - [PostgreSQL] Load failed: invalid input syntax for type timestamp: "08:00"
+CONTEXT:  COPY data_flights, line 1, column departuretime: "08:00"
+
+[2026-02-26T23:44:51.113+0000] {structured_pipeline.py:585} ERROR - [structured] ❌ Error processing raw/flights.csv: invalid input syntax for type timestamp: "08:00"
+CONTEXT:  COPY data_flights, line 1, column departuretime: "08:00"
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 555, in process_minio_object
+    load_to_postgres(df, table_name, pg_conn, use_smart_types=True)
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 438, in load_to_postgres
+    cursor.copy_expert(
+psycopg2.errors.InvalidDatetimeFormat: invalid input syntax for type timestamp: "08:00"
+CONTEXT:  COPY data_flights, line 1, column departuretime: "08:00"
+
+[2026-02-26T23:44:51.117+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/dispatcher_pipeline_dag.py", line 56, in scan_and_dispatch
+    run_pipeline_for_object(object_name)
+  File "/opt/python-etl/etl_manager.py", line 288, in run_pipeline_for_object
+    structured_pipeline.process_minio_object(**common_kwargs)
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 555, in process_minio_object
+    load_to_postgres(df, table_name, pg_conn, use_smart_types=True)
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 438, in load_to_postgres
+    cursor.copy_expert(
+psycopg2.errors.InvalidDatetimeFormat: invalid input syntax for type timestamp: "08:00"
+CONTEXT:  COPY data_flights, line 1, column departuretime: "08:00"
+
+[2026-02-26T23:44:51.166+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260226T234345, start_date=20260226T234447, end_date=20260226T234451
+[2026-02-26T23:44:51.203+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 1709 for task scan_minio_and_dispatch (invalid input syntax for type timestamp: "08:00"
+CONTEXT:  COPY data_flights, line 1, column departuretime: "08:00"
+; 378)
+[2026-02-26T23:44:51.252+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2026-02-26T23:44:51.321+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

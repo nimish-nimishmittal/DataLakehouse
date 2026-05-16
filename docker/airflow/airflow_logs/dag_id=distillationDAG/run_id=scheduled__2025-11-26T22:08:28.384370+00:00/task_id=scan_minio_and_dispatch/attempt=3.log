@@ -1,0 +1,99 @@
+[2025-11-26T22:27:01.035+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-26T22:08:28.384370+00:00 [queued]>
+[2025-11-26T22:27:01.043+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-26T22:08:28.384370+00:00 [queued]>
+[2025-11-26T22:27:01.044+0000] {taskinstance.py:1359} INFO - Starting attempt 3 of 4
+[2025-11-26T22:27:01.055+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2025-11-26 22:08:28.384370+00:00
+[2025-11-26T22:27:01.061+0000] {standard_task_runner.py:57} INFO - Started process 221 to run task
+[2025-11-26T22:27:01.064+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2025-11-26T22:08:28.384370+00:00', '--job-id', '384', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpzh2_y05w']
+[2025-11-26T22:27:01.067+0000] {standard_task_runner.py:85} INFO - Job 384: Subtask scan_minio_and_dispatch
+[2025-11-26T22:27:01.088+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-26T22:27:01.133+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2025-11-26T22:08:28.384370+00:00 [running]> on host 6b6b429d3151
+[2025-11-26T22:27:01.395+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2025-11-26T22:08:28.384370+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-26T22:08:28.384370+00:00'
+[2025-11-26T22:27:01.407+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/CLT_Analysis.pdf
+[2025-11-26T22:27:01.548+0000] {pdf_pipeline.py:24} INFO - [pdf] Processing raw/CLT_Analysis.pdf
+[2025-11-26T22:27:01.562+0000] {pdf_pipeline.py:36} INFO - [pdf] Uploaded extracted text to processed/unstructured/text-extracted/CLT_Analysis.txt
+[2025-11-26T22:27:01.566+0000] {etl_manager.py:272} INFO - Processing complete for: raw/CLT_Analysis.pdf
+[2025-11-26T22:27:01.567+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/CLT_Analysis.pdf -> raw-data/2025-11-26/CLT_Analysis.pdf
+[2025-11-26T22:27:01.575+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/CLT_Analysis.pdf
+[2025-11-26T22:27:01.575+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/customer.csv
+[2025-11-26T22:27:01.584+0000] {structured_pipeline.py:149} INFO - [structured] Processing raw/customer.csv
+[2025-11-26T22:27:01.587+0000] {structured_pipeline.py:156} INFO - [structured] Downloaded 225 bytes
+[2025-11-26T22:27:01.588+0000] {structured_pipeline.py:19} INFO - Detected encoding: ascii (confidence: 1.00)
+[2025-11-26T22:27:01.588+0000] {structured_pipeline.py:167} INFO - [structured] Attempting to decode with ascii
+[2025-11-26T22:27:01.589+0000] {structured_pipeline.py:38} INFO - Sniffer detected delimiter: ','
+[2025-11-26T22:27:01.589+0000] {structured_pipeline.py:205} INFO - [structured] Read attempt 1
+[2025-11-26T22:27:01.599+0000] {structured_pipeline.py:209} INFO - [structured] Successfully read 4 rows with 4 columns
+[2025-11-26T22:27:01.599+0000] {structured_pipeline.py:229} INFO - [structured] Cleaning dataframe...
+[2025-11-26T22:27:01.611+0000] {structured_pipeline.py:251} INFO - [structured] Cleaned dataframe: 4 rows, 4 columns
+[2025-11-26T22:27:01.611+0000] {structured_pipeline.py:116} INFO - Table name: data_customer
+[2025-11-26T22:27:01.617+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:134 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2025-11-26T22:27:01.621+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:134 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2025-11-26T22:27:01.633+0000] {structured_pipeline.py:275} INFO - [structured] Created table: data_customer
+[2025-11-26T22:27:01.640+0000] {structured_pipeline.py:288} INFO - [structured] Loaded 4 rows into data_customer
+[2025-11-26T22:27:01.640+0000] {structured_pipeline.py:292} INFO - [structured] Writing Parquet file...
+[2025-11-26T22:27:01.719+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/pyarrow/pandas_compat.py:373 FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+[2025-11-26T22:27:01.744+0000] {structured_pipeline.py:305} INFO - [structured] Parquet saved to: processed/structured/customer.parquet
+[2025-11-26T22:27:01.746+0000] {structured_pipeline.py:316} INFO - [structured] ✅ Successfully processed raw/customer.csv
+[2025-11-26T22:27:01.747+0000] {etl_manager.py:272} INFO - Processing complete for: raw/customer.csv
+[2025-11-26T22:27:01.747+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/customer.csv -> raw-data/2025-11-26/customer.csv
+[2025-11-26T22:27:01.754+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/customer.csv
+[2025-11-26T22:27:01.755+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/earth-with-text.jpg
+[2025-11-26T22:27:01.764+0000] {image_pipeline.py:18} INFO - [image] Processing raw/earth-with-text.jpg
+[2025-11-26T22:27:01.785+0000] {etl_manager.py:272} INFO - Processing complete for: raw/earth-with-text.jpg
+[2025-11-26T22:27:01.786+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/earth-with-text.jpg -> raw-data/2025-11-26/earth-with-text.jpg
+[2025-11-26T22:27:01.794+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/earth-with-text.jpg
+[2025-11-26T22:27:01.794+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/products.csv
+[2025-11-26T22:27:01.803+0000] {structured_pipeline.py:149} INFO - [structured] Processing raw/products.csv
+[2025-11-26T22:27:01.807+0000] {structured_pipeline.py:156} INFO - [structured] Downloaded 260 bytes
+[2025-11-26T22:27:01.807+0000] {structured_pipeline.py:19} INFO - Detected encoding: ascii (confidence: 1.00)
+[2025-11-26T22:27:01.808+0000] {structured_pipeline.py:167} INFO - [structured] Attempting to decode with ascii
+[2025-11-26T22:27:01.808+0000] {structured_pipeline.py:38} INFO - Sniffer detected delimiter: ','
+[2025-11-26T22:27:01.808+0000] {structured_pipeline.py:205} INFO - [structured] Read attempt 1
+[2025-11-26T22:27:01.810+0000] {structured_pipeline.py:209} INFO - [structured] Successfully read 8 rows with 4 columns
+[2025-11-26T22:27:01.810+0000] {structured_pipeline.py:229} INFO - [structured] Cleaning dataframe...
+[2025-11-26T22:27:01.813+0000] {structured_pipeline.py:251} INFO - [structured] Cleaned dataframe: 8 rows, 4 columns
+[2025-11-26T22:27:01.813+0000] {structured_pipeline.py:116} INFO - Table name: data_products
+[2025-11-26T22:27:01.815+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:134 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2025-11-26T22:27:01.816+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:134 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2025-11-26T22:27:01.819+0000] {structured_pipeline.py:275} INFO - [structured] Created table: data_products
+[2025-11-26T22:27:01.821+0000] {structured_pipeline.py:288} INFO - [structured] Loaded 8 rows into data_products
+[2025-11-26T22:27:01.821+0000] {structured_pipeline.py:292} INFO - [structured] Writing Parquet file...
+[2025-11-26T22:27:01.822+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/pyarrow/pandas_compat.py:373 FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+[2025-11-26T22:27:01.827+0000] {structured_pipeline.py:305} INFO - [structured] Parquet saved to: processed/structured/products.parquet
+[2025-11-26T22:27:01.829+0000] {structured_pipeline.py:316} INFO - [structured] ✅ Successfully processed raw/products.csv
+[2025-11-26T22:27:01.829+0000] {etl_manager.py:272} INFO - Processing complete for: raw/products.csv
+[2025-11-26T22:27:01.830+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/products.csv -> raw-data/2025-11-26/products.csv
+[2025-11-26T22:27:01.837+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/products.csv
+[2025-11-26T22:27:01.837+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/sales.csv
+[2025-11-26T22:27:01.845+0000] {structured_pipeline.py:149} INFO - [structured] Processing raw/sales.csv
+[2025-11-26T22:27:01.849+0000] {structured_pipeline.py:156} INFO - [structured] Downloaded 292 bytes
+[2025-11-26T22:27:01.849+0000] {structured_pipeline.py:19} INFO - Detected encoding: ascii (confidence: 1.00)
+[2025-11-26T22:27:01.849+0000] {structured_pipeline.py:167} INFO - [structured] Attempting to decode with ascii
+[2025-11-26T22:27:01.850+0000] {structured_pipeline.py:38} INFO - Sniffer detected delimiter: ','
+[2025-11-26T22:27:01.850+0000] {structured_pipeline.py:205} INFO - [structured] Read attempt 1
+[2025-11-26T22:27:01.852+0000] {structured_pipeline.py:209} INFO - [structured] Successfully read 8 rows with 6 columns
+[2025-11-26T22:27:01.852+0000] {structured_pipeline.py:229} INFO - [structured] Cleaning dataframe...
+[2025-11-26T22:27:01.854+0000] {structured_pipeline.py:251} INFO - [structured] Cleaned dataframe: 8 rows, 6 columns
+[2025-11-26T22:27:01.854+0000] {structured_pipeline.py:116} INFO - Table name: data_sales
+[2025-11-26T22:27:01.857+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:134 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2025-11-26T22:27:01.860+0000] {structured_pipeline.py:275} INFO - [structured] Created table: data_sales
+[2025-11-26T22:27:01.862+0000] {structured_pipeline.py:288} INFO - [structured] Loaded 8 rows into data_sales
+[2025-11-26T22:27:01.862+0000] {structured_pipeline.py:292} INFO - [structured] Writing Parquet file...
+[2025-11-26T22:27:01.863+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.11/site-packages/pyarrow/pandas_compat.py:373 FutureWarning: is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+[2025-11-26T22:27:01.868+0000] {structured_pipeline.py:305} INFO - [structured] Parquet saved to: processed/structured/sales.parquet
+[2025-11-26T22:27:01.870+0000] {structured_pipeline.py:316} INFO - [structured] ✅ Successfully processed raw/sales.csv
+[2025-11-26T22:27:01.871+0000] {etl_manager.py:272} INFO - Processing complete for: raw/sales.csv
+[2025-11-26T22:27:01.871+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/sales.csv -> raw-data/2025-11-26/sales.csv
+[2025-11-26T22:27:01.878+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/sales.csv
+[2025-11-26T22:27:01.878+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/send.txt
+[2025-11-26T22:27:01.887+0000] {etl_manager.py:269} ERROR - Unsupported format: txt
+[2025-11-26T22:27:01.887+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/send.txt -> raw-data/2025-11-26/send.txt
+[2025-11-26T22:27:01.897+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/send.txt
+[2025-11-26T22:27:01.897+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/testocr.png
+[2025-11-26T22:27:01.906+0000] {image_pipeline.py:18} INFO - [image] Processing raw/testocr.png
+[2025-11-26T22:27:01.913+0000] {etl_manager.py:272} INFO - Processing complete for: raw/testocr.png
+[2025-11-26T22:27:01.913+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Archiving raw/testocr.png -> raw-data/2025-11-26/testocr.png
+[2025-11-26T22:27:01.921+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Completed & removed landing copy: raw/testocr.png
+[2025-11-26T22:27:01.921+0000] {python.py:194} INFO - Done. Returned value was: None
+[2025-11-26T22:27:01.935+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20251126T220828, start_date=20251126T222701, end_date=20251126T222701
+[2025-11-26T22:27:01.998+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-11-26T22:27:02.027+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

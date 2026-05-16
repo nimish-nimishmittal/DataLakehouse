@@ -1,0 +1,75 @@
+[2026-03-09T06:13:14.490+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-09T06:12:02.531045+00:00 [queued]>
+[2026-03-09T06:13:14.554+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-09T06:12:02.531045+00:00 [queued]>
+[2026-03-09T06:13:14.557+0000] {taskinstance.py:1359} INFO - Starting attempt 2 of 4
+[2026-03-09T06:13:14.651+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): scan_minio_and_dispatch> on 2026-03-09 06:12:02.531045+00:00
+[2026-03-09T06:13:14.698+0000] {standard_task_runner.py:57} INFO - Started process 521 to run task
+[2026-03-09T06:13:14.718+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'distillationDAG', 'scan_minio_and_dispatch', 'scheduled__2026-03-09T06:12:02.531045+00:00', '--job-id', '2382', '--raw', '--subdir', 'DAGS_FOLDER/dispatcher_pipeline_dag.py', '--cfg-path', '/tmp/tmpcfdx6cr7']
+[2026-03-09T06:13:14.736+0000] {standard_task_runner.py:85} INFO - Job 2382: Subtask scan_minio_and_dispatch
+[2026-03-09T06:13:15.172+0000] {task_command.py:415} INFO - Running <TaskInstance: distillationDAG.scan_minio_and_dispatch scheduled__2026-03-09T06:12:02.531045+00:00 [running]> on host ad41af5678fb
+[2026-03-09T06:13:16.328+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='distillationDAG' AIRFLOW_CTX_TASK_ID='scan_minio_and_dispatch' AIRFLOW_CTX_EXECUTION_DATE='2026-03-09T06:12:02.531045+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-09T06:12:02.531045+00:00'
+[2026-03-09T06:13:16.361+0000] {logging_mixin.py:151} INFO - [DISPATCHER] Found file: raw/restaurant_menu.csv
+[2026-03-09T06:13:17.284+0000] {structured_pipeline.py:505} INFO - [structured] Processing raw/restaurant_menu.csv
+[2026-03-09T06:13:17.296+0000] {structured_pipeline.py:519} INFO - [structured] Downloaded 787 bytes
+[2026-03-09T06:13:17.297+0000] {structured_pipeline.py:523} INFO - [structured] Detected file type: csv
+[2026-03-09T06:13:17.300+0000] {structured_pipeline.py:22} INFO - Detected encoding: ascii (confidence: 1.00)
+[2026-03-09T06:13:17.300+0000] {structured_pipeline.py:237} INFO - [CSV] Attempting to decode with ascii
+[2026-03-09T06:13:17.305+0000] {structured_pipeline.py:41} INFO - Sniffer detected delimiter: ','
+[2026-03-09T06:13:17.306+0000] {structured_pipeline.py:268} INFO - [CSV] Read attempt 1
+[2026-03-09T06:13:17.319+0000] {structured_pipeline.py:272} INFO - [CSV] Successfully read 8 rows with 8 columns
+[2026-03-09T06:13:17.321+0000] {structured_pipeline.py:546} INFO - [structured] Initial read: 8 rows, 8 columns
+[2026-03-09T06:13:17.321+0000] {structured_pipeline.py:363} INFO - [Clean] Cleaning dataframe...
+[2026-03-09T06:13:17.336+0000] {structured_pipeline.py:388} INFO - [Clean] Cleaned dataframe: 8 rows, 8 columns
+[2026-03-09T06:13:17.338+0000] {structured_pipeline.py:108} INFO - Table name: data_restaurant_menu
+[2026-03-09T06:13:17.339+0000] {structured_pipeline.py:124} INFO - [Normalize] Normalizing DataFrame with 8 columns
+[2026-03-09T06:13:17.352+0000] {structured_pipeline.py:402} INFO - [PostgreSQL] Dropped existing table: data_restaurant_menu
+[2026-03-09T06:13:17.360+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-09T06:13:17.366+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'itemid' -> TEXT
+[2026-03-09T06:13:17.374+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-09T06:13:17.376+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'itemname' -> TEXT
+[2026-03-09T06:13:17.381+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-09T06:13:17.386+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'category' -> TEXT
+[2026-03-09T06:13:17.391+0000] {logging_mixin.py:151} WARNING - /opt/python-etl/pipelines/structured_pipeline.py:190 UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+[2026-03-09T06:13:17.396+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'description' -> TEXT
+[2026-03-09T06:13:17.399+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'price' -> NUMERIC
+[2026-03-09T06:13:17.402+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'calories' -> INTEGER
+[2026-03-09T06:13:17.407+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'isvegetarian' -> INTEGER
+[2026-03-09T06:13:17.410+0000] {structured_pipeline.py:411} INFO - [PostgreSQL] Column 'isglutenfree' -> INTEGER
+[2026-03-09T06:13:17.429+0000] {structured_pipeline.py:422} INFO - [PostgreSQL] Created table: data_restaurant_menu
+[2026-03-09T06:13:17.454+0000] {structured_pipeline.py:448} ERROR - [PostgreSQL] Load failed: invalid input syntax for type integer: "True"
+CONTEXT:  COPY data_restaurant_menu, line 1, column isvegetarian: "True"
+
+[2026-03-09T06:13:17.455+0000] {structured_pipeline.py:585} ERROR - [structured] ❌ Error processing raw/restaurant_menu.csv: invalid input syntax for type integer: "True"
+CONTEXT:  COPY data_restaurant_menu, line 1, column isvegetarian: "True"
+Traceback (most recent call last):
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 555, in process_minio_object
+    load_to_postgres(df, table_name, pg_conn, use_smart_types=True)
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 438, in load_to_postgres
+    cursor.copy_expert(
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: "True"
+CONTEXT:  COPY data_restaurant_menu, line 1, column isvegetarian: "True"
+
+[2026-03-09T06:13:17.459+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/dispatcher_pipeline_dag.py", line 56, in scan_and_dispatch
+    run_pipeline_for_object(object_name)
+  File "/opt/python-etl/etl_manager.py", line 288, in run_pipeline_for_object
+    structured_pipeline.process_minio_object(**common_kwargs)
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 555, in process_minio_object
+    load_to_postgres(df, table_name, pg_conn, use_smart_types=True)
+  File "/opt/python-etl/pipelines/structured_pipeline.py", line 438, in load_to_postgres
+    cursor.copy_expert(
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: "True"
+CONTEXT:  COPY data_restaurant_menu, line 1, column isvegetarian: "True"
+
+[2026-03-09T06:13:17.555+0000] {taskinstance.py:1398} INFO - Marking task as UP_FOR_RETRY. dag_id=distillationDAG, task_id=scan_minio_and_dispatch, execution_date=20260309T061202, start_date=20260309T061314, end_date=20260309T061317
+[2026-03-09T06:13:17.612+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 2382 for task scan_minio_and_dispatch (invalid input syntax for type integer: "True"
+CONTEXT:  COPY data_restaurant_menu, line 1, column isvegetarian: "True"
+; 521)
+[2026-03-09T06:13:17.730+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2026-03-09T06:13:17.923+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

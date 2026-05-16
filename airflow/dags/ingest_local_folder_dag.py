@@ -10,6 +10,7 @@ from minio import Minio
 import psycopg2
 from datetime import datetime
 import magic
+
 import json
 
 # Landing bucket (same as Flask uploader)
@@ -95,7 +96,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id="ingestionDAG",  # <= your clean name for the ingestion DAG
+    dag_id="ingestionDAG",  
     default_args=default_args,
     description="Loads files from local folder into MinIO landing raw/",
     schedule=timedelta(seconds=30),  # every 30 seconds

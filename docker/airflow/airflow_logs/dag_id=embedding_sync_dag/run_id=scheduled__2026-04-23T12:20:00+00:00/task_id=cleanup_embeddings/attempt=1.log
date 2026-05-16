@@ -1,0 +1,126 @@
+[2026-04-23T12:27:29.568+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-04-23T12:20:00+00:00 [queued]>
+[2026-04-23T12:27:29.603+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-04-23T12:20:00+00:00 [queued]>
+[2026-04-23T12:27:29.603+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-04-23T12:27:29.695+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): cleanup_embeddings> on 2026-04-23 12:20:00+00:00
+[2026-04-23T12:27:29.725+0000] {standard_task_runner.py:57} INFO - Started process 3939 to run task
+[2026-04-23T12:27:29.736+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'cleanup_embeddings', 'scheduled__2026-04-23T12:20:00+00:00', '--job-id', '2941', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmp6cva1o0r']
+[2026-04-23T12:27:29.753+0000] {standard_task_runner.py:85} INFO - Job 2941: Subtask cleanup_embeddings
+[2026-04-23T12:27:30.241+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.cleanup_embeddings scheduled__2026-04-23T12:20:00+00:00 [running]> on host 5278b66196f8
+[2026-04-23T12:27:30.885+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='cleanup_embeddings' AIRFLOW_CTX_EXECUTION_DATE='2026-04-23T12:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-23T12:20:00+00:00'
+[2026-04-23T12:27:33.624+0000] {embedding_pipeline.py:213} WARNING - [cleanup] Found 55 orphaned table(s) in row_embeddings: ['data_26t1s2ds25f1002315_page1_table1', 'data_26t1s2ds25f1002315_page1_table2', 'data_26t1s2ds25f1002315_page2_table1', 'data_financial_data_1', 'data_financial_data_2', 'data_financial_data_3', 'data_financial_data_4', 'data_financial_data_5', 'data_financial_table_1_page1_table1', 'data_financial_table_2_page1_table1', 'data_financial_table_3_page1_table1', 'data_financial_table_4_page1_table1', 'data_financial_table_5_page1_table1', 'data_machine_readable_business_employment_data_dec_2025_quarter', 'data_movies', 'data_nimish_research1_1_page3_table1', 'data_nimish_research3_page4_table1', 'data_nimish_research3_page7_table1', 'data_nitin_gavhane_resume_table_1', 'data_organizations_1000', 'data_people_1000', 'data_products', 'data_sales', 'data_sample_tables_page7_table2', 'data_sample_withtables_page10_table1', 'data_sample_withtables_page10_table2', 'data_sample_withtables_page11_table1', 'data_sample_withtables_page1_table1', 'data_sample_withtables_page1_table2', 'data_sample_withtables_page1_table3', 'data_sample_withtables_page2_table1', 'data_sample_withtables_page2_table2', 'data_sample_withtables_page2_table3', 'data_sample_withtables_page3_table1', 'data_sample_withtables_page3_table2', 'data_sample_withtables_page3_table3', 'data_sample_withtables_page4_table1', 'data_sample_withtables_page4_table2', 'data_sample_withtables_page5_table1', 'data_sample_withtables_page5_table2', 'data_sample_withtables_page5_table3', 'data_sample_withtables_page5_table4', 'data_sample_withtables_page6_table1', 'data_sample_withtables_page6_table2', 'data_sample_withtables_page6_table3', 'data_sample_withtables_page7_table1', 'data_sample_withtables_page7_table2', 'data_sample_withtables_page8_table1', 'data_sample_withtables_page8_table2', 'data_sample_withtables_page8_table3', 'data_sample_withtables_page9_table1', 'data_sample_withtables_page9_table2', 'data_sample_withtables_page9_table3', 'data_social_media', 'data_studentsperformance']
+[2026-04-23T12:27:33.627+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 1 orphaned embeddings for dropped table: data_26t1s2ds25f1002315_page1_table1
+[2026-04-23T12:27:33.708+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_26t1s2ds25f1002315_page1_table1
+[2026-04-23T12:27:33.711+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 14 orphaned embeddings for dropped table: data_26t1s2ds25f1002315_page1_table2
+[2026-04-23T12:27:33.723+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_26t1s2ds25f1002315_page1_table2
+[2026-04-23T12:27:33.725+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 9 orphaned embeddings for dropped table: data_26t1s2ds25f1002315_page2_table1
+[2026-04-23T12:27:33.739+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_26t1s2ds25f1002315_page2_table1
+[2026-04-23T12:27:33.744+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 15 orphaned embeddings for dropped table: data_financial_data_1
+[2026-04-23T12:27:33.755+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_data_1
+[2026-04-23T12:27:33.759+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 15 orphaned embeddings for dropped table: data_financial_data_2
+[2026-04-23T12:27:33.770+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_data_2
+[2026-04-23T12:27:33.774+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 15 orphaned embeddings for dropped table: data_financial_data_3
+[2026-04-23T12:27:33.784+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_data_3
+[2026-04-23T12:27:33.788+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 15 orphaned embeddings for dropped table: data_financial_data_4
+[2026-04-23T12:27:33.798+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_data_4
+[2026-04-23T12:27:33.801+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 15 orphaned embeddings for dropped table: data_financial_data_5
+[2026-04-23T12:27:33.813+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_data_5
+[2026-04-23T12:27:33.817+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_financial_table_1_page1_table1
+[2026-04-23T12:27:33.828+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_table_1_page1_table1
+[2026-04-23T12:27:33.830+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_financial_table_2_page1_table1
+[2026-04-23T12:27:33.843+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_table_2_page1_table1
+[2026-04-23T12:27:33.848+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_financial_table_3_page1_table1
+[2026-04-23T12:27:33.862+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_table_3_page1_table1
+[2026-04-23T12:27:33.864+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_financial_table_4_page1_table1
+[2026-04-23T12:27:33.881+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_table_4_page1_table1
+[2026-04-23T12:27:33.883+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_financial_table_5_page1_table1
+[2026-04-23T12:27:33.896+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_financial_table_5_page1_table1
+[2026-04-23T12:27:34.788+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 11779 orphaned embeddings for dropped table: data_machine_readable_business_employment_data_dec_2025_quarter
+[2026-04-23T12:28:30.431+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_machine_readable_business_employment_data_dec_2025_quarter
+[2026-04-23T12:28:30.435+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_movies
+[2026-04-23T12:28:30.506+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_movies
+[2026-04-23T12:28:30.510+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 5 orphaned embeddings for dropped table: data_nimish_research1_1_page3_table1
+[2026-04-23T12:28:30.575+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_nimish_research1_1_page3_table1
+[2026-04-23T12:28:30.579+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 5 orphaned embeddings for dropped table: data_nimish_research3_page4_table1
+[2026-04-23T12:28:30.636+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_nimish_research3_page4_table1
+[2026-04-23T12:28:30.642+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_nimish_research3_page7_table1
+[2026-04-23T12:28:30.689+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_nimish_research3_page7_table1
+[2026-04-23T12:28:30.691+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 5 orphaned embeddings for dropped table: data_nitin_gavhane_resume_table_1
+[2026-04-23T12:28:30.735+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_nitin_gavhane_resume_table_1
+[2026-04-23T12:28:30.830+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 1000 orphaned embeddings for dropped table: data_organizations_1000
+[2026-04-23T12:28:30.853+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_organizations_1000
+[2026-04-23T12:28:30.931+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 1000 orphaned embeddings for dropped table: data_people_1000
+[2026-04-23T12:28:30.954+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_people_1000
+[2026-04-23T12:28:30.955+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_products
+[2026-04-23T12:28:30.976+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_products
+[2026-04-23T12:28:30.978+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_sales
+[2026-04-23T12:28:31.000+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sales
+[2026-04-23T12:28:31.001+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 7 orphaned embeddings for dropped table: data_sample_tables_page7_table2
+[2026-04-23T12:28:31.024+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_tables_page7_table2
+[2026-04-23T12:28:31.026+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 2 orphaned embeddings for dropped table: data_sample_withtables_page10_table1
+[2026-04-23T12:28:31.047+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page10_table1
+[2026-04-23T12:28:31.049+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_sample_withtables_page10_table2
+[2026-04-23T12:28:31.070+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page10_table2
+[2026-04-23T12:28:31.072+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_sample_withtables_page11_table1
+[2026-04-23T12:28:31.093+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page11_table1
+[2026-04-23T12:28:31.094+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 2 orphaned embeddings for dropped table: data_sample_withtables_page1_table1
+[2026-04-23T12:28:31.116+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page1_table1
+[2026-04-23T12:28:31.117+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 7 orphaned embeddings for dropped table: data_sample_withtables_page1_table2
+[2026-04-23T12:28:31.139+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page1_table2
+[2026-04-23T12:28:31.140+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 5 orphaned embeddings for dropped table: data_sample_withtables_page1_table3
+[2026-04-23T12:28:31.163+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page1_table3
+[2026-04-23T12:28:31.164+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 6 orphaned embeddings for dropped table: data_sample_withtables_page2_table1
+[2026-04-23T12:28:31.186+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page2_table1
+[2026-04-23T12:28:31.188+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_sample_withtables_page2_table2
+[2026-04-23T12:28:31.209+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page2_table2
+[2026-04-23T12:28:31.211+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_sample_withtables_page2_table3
+[2026-04-23T12:28:31.233+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page2_table3
+[2026-04-23T12:28:31.234+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 3 orphaned embeddings for dropped table: data_sample_withtables_page3_table1
+[2026-04-23T12:28:31.256+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page3_table1
+[2026-04-23T12:28:31.257+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 3 orphaned embeddings for dropped table: data_sample_withtables_page3_table2
+[2026-04-23T12:28:31.279+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page3_table2
+[2026-04-23T12:28:31.280+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 3 orphaned embeddings for dropped table: data_sample_withtables_page3_table3
+[2026-04-23T12:28:31.301+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page3_table3
+[2026-04-23T12:28:31.303+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 13 orphaned embeddings for dropped table: data_sample_withtables_page4_table1
+[2026-04-23T12:28:31.324+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page4_table1
+[2026-04-23T12:28:31.326+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 11 orphaned embeddings for dropped table: data_sample_withtables_page4_table2
+[2026-04-23T12:28:31.347+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page4_table2
+[2026-04-23T12:28:31.349+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 4 orphaned embeddings for dropped table: data_sample_withtables_page5_table1
+[2026-04-23T12:28:31.370+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page5_table1
+[2026-04-23T12:28:31.371+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 3 orphaned embeddings for dropped table: data_sample_withtables_page5_table2
+[2026-04-23T12:28:31.393+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page5_table2
+[2026-04-23T12:28:31.394+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 3 orphaned embeddings for dropped table: data_sample_withtables_page5_table3
+[2026-04-23T12:28:31.416+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page5_table3
+[2026-04-23T12:28:31.417+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 6 orphaned embeddings for dropped table: data_sample_withtables_page5_table4
+[2026-04-23T12:28:31.438+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page5_table4
+[2026-04-23T12:28:31.440+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 6 orphaned embeddings for dropped table: data_sample_withtables_page6_table1
+[2026-04-23T12:28:31.461+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page6_table1
+[2026-04-23T12:28:31.463+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 10 orphaned embeddings for dropped table: data_sample_withtables_page6_table2
+[2026-04-23T12:28:31.484+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page6_table2
+[2026-04-23T12:28:31.486+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 10 orphaned embeddings for dropped table: data_sample_withtables_page6_table3
+[2026-04-23T12:28:31.507+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page6_table3
+[2026-04-23T12:28:31.509+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 5 orphaned embeddings for dropped table: data_sample_withtables_page7_table1
+[2026-04-23T12:28:31.530+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page7_table1
+[2026-04-23T12:28:31.531+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 7 orphaned embeddings for dropped table: data_sample_withtables_page7_table2
+[2026-04-23T12:28:31.553+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page7_table2
+[2026-04-23T12:28:31.554+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 7 orphaned embeddings for dropped table: data_sample_withtables_page8_table1
+[2026-04-23T12:28:31.576+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page8_table1
+[2026-04-23T12:28:31.577+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 7 orphaned embeddings for dropped table: data_sample_withtables_page8_table2
+[2026-04-23T12:28:31.598+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page8_table2
+[2026-04-23T12:28:31.600+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 3 orphaned embeddings for dropped table: data_sample_withtables_page8_table3
+[2026-04-23T12:28:31.621+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page8_table3
+[2026-04-23T12:28:31.623+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 12 orphaned embeddings for dropped table: data_sample_withtables_page9_table1
+[2026-04-23T12:28:31.646+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page9_table1
+[2026-04-23T12:28:31.647+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 4 orphaned embeddings for dropped table: data_sample_withtables_page9_table2
+[2026-04-23T12:28:31.669+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page9_table2
+[2026-04-23T12:28:31.671+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 6 orphaned embeddings for dropped table: data_sample_withtables_page9_table3
+[2026-04-23T12:28:31.692+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_sample_withtables_page9_table3
+[2026-04-23T12:28:31.694+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 8 orphaned embeddings for dropped table: data_social_media
+[2026-04-23T12:28:31.716+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_social_media
+[2026-04-23T12:28:31.801+0000] {embedding_pipeline.py:229} INFO - [cleanup] Removed 1000 orphaned embeddings for dropped table: data_studentsperformance
+[2026-04-23T12:28:31.823+0000] {embedding_pipeline.py:238} INFO - [cleanup] Cleared pending queue entries for: data_studentsperformance
+[2026-04-23T12:28:31.840+0000] {embedding_pipeline.py:241} INFO - [cleanup] Orphan cleanup done — 55 table(s), 15188 embeddings removed.
+[2026-04-23T12:28:31.887+0000] {embedding_pipeline.py:356} INFO - [cleanup] Truncate/bulk-delete check done — checked 3 tables, removed 0 stale embeddings.
+[2026-04-23T12:28:31.943+0000] {python.py:194} INFO - Done. Returned value was: {'orphaned_tables': ['data_26t1s2ds25f1002315_page1_table1', 'data_26t1s2ds25f1002315_page1_table2', 'data_26t1s2ds25f1002315_page2_table1', 'data_financial_data_1', 'data_financial_data_2', 'data_financial_data_3', 'data_financial_data_4', 'data_financial_data_5', 'data_financial_table_1_page1_table1', 'data_financial_table_2_page1_table1', 'data_financial_table_3_page1_table1', 'data_financial_table_4_page1_table1', 'data_financial_table_5_page1_table1', 'data_machine_readable_business_employment_data_dec_2025_quarter', 'data_movies', 'data_nimish_research1_1_page3_table1', 'data_nimish_research3_page4_table1', 'data_nimish_research3_page7_table1', 'data_nitin_gavhane_resume_table_1', 'data_organizations_1000', 'data_people_1000', 'data_products', 'data_sales', 'data_sample_tables_page7_table2', 'data_sample_withtables_page10_table1', 'data_sample_withtables_page10_table2', 'data_sample_withtables_page11_table1', 'data_sample_withtables_page1_table1', 'data_sample_withtables_page1_table2', 'data_sample_withtables_page1_table3', 'data_sample_withtables_page2_table1', 'data_sample_withtables_page2_table2', 'data_sample_withtables_page2_table3', 'data_sample_withtables_page3_table1', 'data_sample_withtables_page3_table2', 'data_sample_withtables_page3_table3', 'data_sample_withtables_page4_table1', 'data_sample_withtables_page4_table2', 'data_sample_withtables_page5_table1', 'data_sample_withtables_page5_table2', 'data_sample_withtables_page5_table3', 'data_sample_withtables_page5_table4', 'data_sample_withtables_page6_table1', 'data_sample_withtables_page6_table2', 'data_sample_withtables_page6_table3', 'data_sample_withtables_page7_table1', 'data_sample_withtables_page7_table2', 'data_sample_withtables_page8_table1', 'data_sample_withtables_page8_table2', 'data_sample_withtables_page8_table3', 'data_sample_withtables_page9_table1', 'data_sample_withtables_page9_table2', 'data_sample_withtables_page9_table3', 'data_social_media', 'data_studentsperformance'], 'orphan_embeddings_removed': 15188, 'truncate_embeddings_removed': 0, 'truncate_tables_checked': 3, 'total_removed': 15188}
+[2026-04-23T12:28:32.028+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=cleanup_embeddings, execution_date=20260423T122000, start_date=20260423T122729, end_date=20260423T122832
+[2026-04-23T12:28:32.109+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-04-23T12:28:32.189+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

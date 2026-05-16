@@ -1,0 +1,23 @@
+[2026-05-04T08:09:42.546+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: embedding_sync_dag.log_stats scheduled__2026-04-24T04:10:00+00:00 [queued]>
+[2026-05-04T08:09:42.554+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: embedding_sync_dag.log_stats scheduled__2026-04-24T04:10:00+00:00 [queued]>
+[2026-05-04T08:09:42.554+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 3
+[2026-05-04T08:09:42.564+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): log_stats> on 2026-04-24 04:10:00+00:00
+[2026-05-04T08:09:42.570+0000] {standard_task_runner.py:57} INFO - Started process 1716 to run task
+[2026-05-04T08:09:42.573+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'embedding_sync_dag', 'log_stats', 'scheduled__2026-04-24T04:10:00+00:00', '--job-id', '4204', '--raw', '--subdir', 'DAGS_FOLDER/embedding_sync_dag.py', '--cfg-path', '/tmp/tmpplf55xge']
+[2026-05-04T08:09:42.576+0000] {standard_task_runner.py:85} INFO - Job 4204: Subtask log_stats
+[2026-05-04T08:09:42.635+0000] {task_command.py:415} INFO - Running <TaskInstance: embedding_sync_dag.log_stats scheduled__2026-04-24T04:10:00+00:00 [running]> on host e8610aa59365
+[2026-05-04T08:09:42.732+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='lakehouse' AIRFLOW_CTX_DAG_ID='embedding_sync_dag' AIRFLOW_CTX_TASK_ID='log_stats' AIRFLOW_CTX_EXECUTION_DATE='2026-04-24T04:10:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-24T04:10:00+00:00'
+[2026-05-04T08:09:42.786+0000] {embedding_sync_dag.py:159} INFO - =======================================================
+[2026-05-04T08:09:42.786+0000] {embedding_sync_dag.py:160} INFO -   Embedding Sync Summary
+[2026-05-04T08:09:42.786+0000] {embedding_sync_dag.py:161} INFO -   Rows backfill-queued    : 52128
+[2026-05-04T08:09:42.786+0000] {embedding_sync_dag.py:162} INFO -   New tables watched      : 0
+[2026-05-04T08:09:42.786+0000] {embedding_sync_dag.py:163} INFO -   Rows embedded           : 10000
+[2026-05-04T08:09:42.786+0000] {embedding_sync_dag.py:164} INFO -   Embed errors            : 0
+[2026-05-04T08:09:42.787+0000] {embedding_sync_dag.py:165} INFO -   Orphaned tables removed : 2
+[2026-05-04T08:09:42.787+0000] {embedding_sync_dag.py:166} INFO -   Stale embeddings purged : 11
+[2026-05-04T08:09:42.787+0000] {embedding_sync_dag.py:168} WARNING -   Dropped tables cleaned  : ['data_sample3_table_1', 'data_sample3_table_2']
+[2026-05-04T08:09:42.787+0000] {embedding_sync_dag.py:169} INFO - =======================================================
+[2026-05-04T08:09:42.787+0000] {python.py:194} INFO - Done. Returned value was: None
+[2026-05-04T08:09:42.800+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=embedding_sync_dag, task_id=log_stats, execution_date=20260424T041000, start_date=20260504T080942, end_date=20260504T080942
+[2026-05-04T08:09:42.825+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2026-05-04T08:09:42.847+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
