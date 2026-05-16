@@ -63,8 +63,8 @@ const Jobs = () => {
         <div className="space-y-8 pb-20">
             <header className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-3xl font-bold text-white tracking-tight">Data Pipelines</h2>
-                    <p className="text-gray-500 mt-1">Monitor ETL orchestration and automation tasks</p>
+                    <h2 className="text-3xl font-bold text-white tracking-tight">DAGs</h2>
+                    <p className="text-gray-500 mt-1">See Airflow workflows here!</p>
                 </div>
                 <button
                     onClick={fetchJobs}
@@ -123,7 +123,7 @@ const Jobs = () => {
 
             <div className="bg-blue-600/10 border border-blue-500/20 p-8 rounded-3xl text-center">
                 <p className="text-blue-400 text-sm font-medium">
-                    Want to add a new pipeline? Drop a Python script in <code>/airflow/dags</code> to automate your data.
+                    Want to add a new DAG? Drop a DAG Python script in <code>/airflow/dags</code> to automate your data operations.
                 </p>
             </div>
         </div>

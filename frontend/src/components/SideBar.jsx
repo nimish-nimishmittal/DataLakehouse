@@ -4,14 +4,14 @@ import { Link, useLocation } from 'react-router-dom';
 import {
     LayoutDashboard,
     FileStack,
-    Settings,
     Users,
     Activity,
     Database,
     ChevronRight,
     LogOut,
     Shield,
-    Search
+    Search,
+    BrainCircuit,
 } from 'lucide-react';
 import AuthContext from '../context/AuthContext';
 import { clsx } from 'clsx';
@@ -22,15 +22,16 @@ const SideBar = () => {
     const isAdmin = auth.user?.role === 'admin';
 
     const menuItems = [
-        { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
-        { name: 'Data Catalog', icon: FileStack, path: '/catalog' },
-        // { name: 'Semantic Search', icon: Search, path: '/search' },
-        { name: 'Data Pipelines', icon: Activity, path: '/jobs' },
+        { name: 'Dashboard',      icon: LayoutDashboard, path: '/dashboard' },
+        { name: 'Files Catalog',  icon: FileStack,        path: '/catalog' },
+        { name: 'Semantic Search',icon: Search,           path: '/search' },
+        { name: 'RAG Chat',       icon: BrainCircuit,     path: '/rag' },
+        { name: 'DAGs',           icon: Activity,         path: '/jobs' },
     ];
 
     if (isAdmin) {
-        menuItems.push({ name: 'Identity & Access', icon: Users, path: '/users' });
-        menuItems.push({ name: 'Audit Trail', icon: Shield, path: '/audit' });
+        menuItems.push({ name: 'IAM LDAP',    icon: Users,   path: '/users' });
+        menuItems.push({ name: 'Audit Trail', icon: Shield,  path: '/audit' });
     }
 
     return (

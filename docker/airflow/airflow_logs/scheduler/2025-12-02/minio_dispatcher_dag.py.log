@@ -1,0 +1,448 @@
+[2025-12-02T12:15:00.231+0000] {processor.py:157} INFO - Started process (PID=1356) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:15:00.233+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:15:00.235+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:15:00.234+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:15:02.623+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:15:02.694+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:15:02.692+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:15:02.748+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:15:02.747+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:10:02.747217+00:00, run_after=2025-12-02T12:15:02.747217+00:00
+[2025-12-02T12:15:02.785+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.564 seconds
+[2025-12-02T12:15:33.075+0000] {processor.py:157} INFO - Started process (PID=1374) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:15:33.077+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:15:33.082+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:15:33.078+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:15:35.948+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:15:36.028+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:15:36.026+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:15:36.088+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:15:36.087+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:10:36.087439+00:00, run_after=2025-12-02T12:15:36.087439+00:00
+[2025-12-02T12:15:36.134+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 3.069 seconds
+[2025-12-02T12:16:06.248+0000] {processor.py:157} INFO - Started process (PID=1391) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:16:06.250+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:16:06.253+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:16:06.251+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:16:08.661+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:16:08.736+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:16:08.735+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:16:08.788+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:16:08.787+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:11:08.787358+00:00, run_after=2025-12-02T12:16:08.787358+00:00
+[2025-12-02T12:16:08.827+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.589 seconds
+[2025-12-02T12:16:39.558+0000] {processor.py:157} INFO - Started process (PID=1410) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:16:39.560+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:16:39.563+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:16:39.562+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:16:42.080+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:16:42.154+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:16:42.153+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:16:42.208+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:16:42.208+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:11:42.207462+00:00, run_after=2025-12-02T12:16:42.207462+00:00
+[2025-12-02T12:16:42.254+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.708 seconds
+[2025-12-02T12:17:12.558+0000] {processor.py:157} INFO - Started process (PID=1427) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:17:12.561+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:17:12.563+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:17:12.562+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:17:14.970+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:17:15.044+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:17:15.042+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:17:15.100+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:17:15.099+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:12:15.099226+00:00, run_after=2025-12-02T12:17:15.099226+00:00
+[2025-12-02T12:17:15.137+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.591 seconds
+[2025-12-02T12:17:45.759+0000] {processor.py:157} INFO - Started process (PID=1444) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:17:45.762+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:17:45.764+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:17:45.763+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:17:48.323+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:17:48.408+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:17:48.404+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:17:48.463+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:17:48.463+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:12:48.462965+00:00, run_after=2025-12-02T12:17:48.462965+00:00
+[2025-12-02T12:17:48.509+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.761 seconds
+[2025-12-02T12:18:19.042+0000] {processor.py:157} INFO - Started process (PID=1461) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:18:19.045+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:18:19.047+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:18:19.046+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:18:21.471+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:18:21.548+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:18:21.546+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:18:21.601+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:18:21.601+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:13:21.600393+00:00, run_after=2025-12-02T12:18:21.600393+00:00
+[2025-12-02T12:18:21.643+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.612 seconds
+[2025-12-02T12:18:52.415+0000] {processor.py:157} INFO - Started process (PID=1478) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:18:52.417+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:18:52.419+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:18:52.418+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:18:54.811+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:18:54.885+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:18:54.884+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:18:54.938+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:18:54.937+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:13:54.937220+00:00, run_after=2025-12-02T12:18:54.937220+00:00
+[2025-12-02T12:18:54.976+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.572 seconds
+[2025-12-02T12:19:25.687+0000] {processor.py:157} INFO - Started process (PID=1495) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:19:25.689+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:19:25.692+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:19:25.691+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:19:28.117+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:19:28.191+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:19:28.190+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:19:28.245+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:19:28.245+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:14:28.244822+00:00, run_after=2025-12-02T12:19:28.244822+00:00
+[2025-12-02T12:19:28.285+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.608 seconds
+[2025-12-02T12:19:58.776+0000] {processor.py:157} INFO - Started process (PID=1512) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:19:58.779+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:19:58.781+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:19:58.780+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:20:01.183+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:20:01.260+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:20:01.257+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:20:01.311+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:20:01.311+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:15:01.311028+00:00, run_after=2025-12-02T12:20:01.311028+00:00
+[2025-12-02T12:20:01.350+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.584 seconds
+[2025-12-02T12:20:31.864+0000] {processor.py:157} INFO - Started process (PID=1529) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:20:31.867+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:20:31.869+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:20:31.868+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:20:34.412+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:20:34.487+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:20:34.485+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:20:34.540+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:20:34.540+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:15:34.539537+00:00, run_after=2025-12-02T12:20:34.539537+00:00
+[2025-12-02T12:20:34.586+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.733 seconds
+[2025-12-02T12:21:04.856+0000] {processor.py:157} INFO - Started process (PID=1546) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:21:04.858+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:21:04.861+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:21:04.860+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:21:07.276+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:21:07.349+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:21:07.348+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:21:07.400+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:21:07.400+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:16:07.399691+00:00, run_after=2025-12-02T12:21:07.399691+00:00
+[2025-12-02T12:21:07.438+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.593 seconds
+[2025-12-02T12:21:37.713+0000] {processor.py:157} INFO - Started process (PID=1563) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:21:37.715+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:21:37.718+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:21:37.717+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:21:40.145+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:21:40.225+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:21:40.223+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:21:40.281+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:21:40.281+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:16:40.279789+00:00, run_after=2025-12-02T12:21:40.279789+00:00
+[2025-12-02T12:21:40.321+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.619 seconds
+[2025-12-02T12:22:10.609+0000] {processor.py:157} INFO - Started process (PID=1580) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:22:10.612+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:22:10.614+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:22:10.613+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:22:13.322+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:22:13.399+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:22:13.395+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:22:13.450+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:22:13.450+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:17:13.449672+00:00, run_after=2025-12-02T12:22:13.449672+00:00
+[2025-12-02T12:22:13.489+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.891 seconds
+[2025-12-02T12:22:43.801+0000] {processor.py:157} INFO - Started process (PID=1597) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:22:43.804+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:22:43.807+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:22:43.805+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:22:46.452+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:22:46.546+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:22:46.545+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:22:46.615+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:22:46.615+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:17:46.614616+00:00, run_after=2025-12-02T12:22:46.614616+00:00
+[2025-12-02T12:22:46.680+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.891 seconds
+[2025-12-02T12:23:17.013+0000] {processor.py:157} INFO - Started process (PID=1617) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:23:17.019+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:23:17.025+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:23:17.021+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:23:19.769+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:23:19.843+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:23:19.841+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:23:19.895+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:23:19.895+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:18:19.894645+00:00, run_after=2025-12-02T12:23:19.894645+00:00
+[2025-12-02T12:23:19.937+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.936 seconds
+[2025-12-02T12:23:50.200+0000] {processor.py:157} INFO - Started process (PID=1636) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:23:50.203+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:23:50.205+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:23:50.204+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:23:52.724+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:23:52.799+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:23:52.798+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:23:52.855+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:23:52.854+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:18:52.854121+00:00, run_after=2025-12-02T12:23:52.854121+00:00
+[2025-12-02T12:23:52.894+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.704 seconds
+[2025-12-02T12:24:23.223+0000] {processor.py:157} INFO - Started process (PID=1653) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:24:23.225+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:24:23.227+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:24:23.226+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:24:25.627+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:24:25.704+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:24:25.700+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:24:25.755+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:24:25.754+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:19:25.754454+00:00, run_after=2025-12-02T12:24:25.754454+00:00
+[2025-12-02T12:24:25.794+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.581 seconds
+[2025-12-02T12:24:56.496+0000] {processor.py:157} INFO - Started process (PID=1670) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:24:56.498+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:24:56.500+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:24:56.499+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:24:58.882+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:24:58.956+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:24:58.954+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:24:59.007+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:24:59.007+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:19:59.006876+00:00, run_after=2025-12-02T12:24:59.006876+00:00
+[2025-12-02T12:24:59.046+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.561 seconds
+[2025-12-02T12:25:29.734+0000] {processor.py:157} INFO - Started process (PID=1687) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:25:29.737+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:25:29.739+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:25:29.738+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:25:32.143+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:25:32.217+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:25:32.215+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:25:32.267+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:25:32.267+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:20:32.266882+00:00, run_after=2025-12-02T12:25:32.266882+00:00
+[2025-12-02T12:25:32.305+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.583 seconds
+[2025-12-02T12:26:02.991+0000] {processor.py:157} INFO - Started process (PID=1704) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:26:02.994+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:26:02.996+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:26:02.995+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:26:05.419+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:26:05.494+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:26:05.493+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:26:05.548+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:26:05.547+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:21:05.547456+00:00, run_after=2025-12-02T12:26:05.547456+00:00
+[2025-12-02T12:26:05.586+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.606 seconds
+[2025-12-02T12:26:36.331+0000] {processor.py:157} INFO - Started process (PID=1721) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:26:36.333+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:26:36.336+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:26:36.335+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:26:38.749+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:26:38.826+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:26:38.822+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:26:38.877+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:26:38.877+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:21:38.876534+00:00, run_after=2025-12-02T12:26:38.876534+00:00
+[2025-12-02T12:26:38.915+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.595 seconds
+[2025-12-02T12:27:09.671+0000] {processor.py:157} INFO - Started process (PID=1738) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:27:09.673+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:27:09.676+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:27:09.675+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:27:12.133+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:27:12.211+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:27:12.210+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:27:12.265+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:27:12.265+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:22:12.264539+00:00, run_after=2025-12-02T12:27:12.264539+00:00
+[2025-12-02T12:27:12.306+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.647 seconds
+[2025-12-02T12:27:42.584+0000] {processor.py:157} INFO - Started process (PID=1755) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:27:42.586+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:27:42.589+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:27:42.588+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:27:44.994+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:27:45.069+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:27:45.068+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:27:45.120+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:27:45.120+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:22:45.119569+00:00, run_after=2025-12-02T12:27:45.119569+00:00
+[2025-12-02T12:27:45.160+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.588 seconds
+[2025-12-02T12:28:15.648+0000] {processor.py:157} INFO - Started process (PID=1772) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:28:15.651+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:28:15.653+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:28:15.652+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:28:18.062+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:28:18.137+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:28:18.135+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:28:18.190+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:28:18.190+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:23:18.189523+00:00, run_after=2025-12-02T12:28:18.189523+00:00
+[2025-12-02T12:28:18.228+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.591 seconds
+[2025-12-02T12:28:48.978+0000] {processor.py:157} INFO - Started process (PID=1789) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:28:48.980+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:28:48.982+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:28:48.981+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:28:51.411+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:28:51.488+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:28:51.484+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:28:51.539+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:28:51.539+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:23:51.538712+00:00, run_after=2025-12-02T12:28:51.538712+00:00
+[2025-12-02T12:28:51.578+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.612 seconds
+[2025-12-02T12:29:21.807+0000] {processor.py:157} INFO - Started process (PID=1806) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:29:21.810+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:29:21.812+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:29:21.811+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:29:24.213+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:29:24.292+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:29:24.291+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:29:24.345+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:29:24.344+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:24:24.344041+00:00, run_after=2025-12-02T12:29:24.344041+00:00
+[2025-12-02T12:29:24.384+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.588 seconds
+[2025-12-02T12:29:54.677+0000] {processor.py:157} INFO - Started process (PID=1823) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:29:54.680+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:29:54.682+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:29:54.681+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:29:57.081+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:29:57.154+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:29:57.152+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:29:57.204+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:29:57.204+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:24:57.203866+00:00, run_after=2025-12-02T12:29:57.203866+00:00
+[2025-12-02T12:29:57.242+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.576 seconds
+[2025-12-02T12:30:27.360+0000] {processor.py:157} INFO - Started process (PID=1840) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:30:27.362+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:30:27.365+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:30:27.364+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:30:29.753+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:30:29.827+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:30:29.826+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:30:29.881+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:30:29.881+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:25:29.880597+00:00, run_after=2025-12-02T12:30:29.880597+00:00
+[2025-12-02T12:30:29.919+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.570 seconds
+[2025-12-02T12:31:00.195+0000] {processor.py:157} INFO - Started process (PID=1857) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:31:00.197+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:31:00.200+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:31:00.199+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:31:02.621+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:31:02.697+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:31:02.696+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:31:02.749+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:31:02.748+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:26:02.748082+00:00, run_after=2025-12-02T12:31:02.748082+00:00
+[2025-12-02T12:31:02.787+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.604 seconds
+[2025-12-02T12:31:33.049+0000] {processor.py:157} INFO - Started process (PID=1874) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:31:33.052+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:31:33.054+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:31:33.053+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:31:35.506+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:31:35.582+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:31:35.580+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:31:35.633+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:31:35.633+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:26:35.632836+00:00, run_after=2025-12-02T12:31:35.632836+00:00
+[2025-12-02T12:31:35.672+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.634 seconds
+[2025-12-02T12:32:06.409+0000] {processor.py:157} INFO - Started process (PID=1894) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:32:06.411+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:32:06.414+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:32:06.413+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:32:08.819+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:32:08.894+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:32:08.893+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:32:08.945+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:32:08.944+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:27:08.944144+00:00, run_after=2025-12-02T12:32:08.944144+00:00
+[2025-12-02T12:32:08.983+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.585 seconds
+[2025-12-02T12:32:39.074+0000] {processor.py:157} INFO - Started process (PID=1913) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:32:39.076+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:32:39.078+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:32:39.077+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:32:41.470+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:32:41.544+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:32:41.543+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:32:41.598+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:32:41.597+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:27:41.597225+00:00, run_after=2025-12-02T12:32:41.597225+00:00
+[2025-12-02T12:32:41.637+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.573 seconds
+[2025-12-02T12:33:11.905+0000] {processor.py:157} INFO - Started process (PID=1930) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:33:11.908+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:33:11.910+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:33:11.909+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:33:14.304+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:33:14.380+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:33:14.379+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:33:14.431+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:33:14.430+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:28:14.430177+00:00, run_after=2025-12-02T12:33:14.430177+00:00
+[2025-12-02T12:33:14.469+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.574 seconds
+[2025-12-02T12:33:45.125+0000] {processor.py:157} INFO - Started process (PID=1947) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:33:45.127+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:33:45.130+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:33:45.129+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:33:47.525+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:33:47.600+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:33:47.598+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:33:47.651+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:33:47.650+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:28:47.650235+00:00, run_after=2025-12-02T12:33:47.650235+00:00
+[2025-12-02T12:33:47.690+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.577 seconds
+[2025-12-02T12:34:17.980+0000] {processor.py:157} INFO - Started process (PID=1964) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:34:17.982+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:34:17.985+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:34:17.984+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:34:20.396+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:34:20.470+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:34:20.469+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:34:20.521+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:34:20.521+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:29:20.520984+00:00, run_after=2025-12-02T12:34:20.520984+00:00
+[2025-12-02T12:34:20.563+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.595 seconds
+[2025-12-02T12:34:50.826+0000] {processor.py:157} INFO - Started process (PID=1981) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:34:50.828+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:34:50.831+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:34:50.830+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:34:53.281+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:34:53.355+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:34:53.354+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:34:53.409+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:34:53.408+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:29:53.408306+00:00, run_after=2025-12-02T12:34:53.408306+00:00
+[2025-12-02T12:34:53.447+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.632 seconds
+[2025-12-02T12:35:23.744+0000] {processor.py:157} INFO - Started process (PID=1998) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:35:23.747+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:35:23.749+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:35:23.748+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:35:26.147+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:35:26.224+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:35:26.220+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:35:26.275+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:35:26.275+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:30:26.274594+00:00, run_after=2025-12-02T12:35:26.274594+00:00
+[2025-12-02T12:35:26.313+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.580 seconds
+[2025-12-02T12:35:56.574+0000] {processor.py:157} INFO - Started process (PID=2015) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:35:56.577+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:35:56.580+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:35:56.579+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:35:59.003+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:35:59.076+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:35:59.075+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:35:59.127+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:35:59.127+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:30:59.126860+00:00, run_after=2025-12-02T12:35:59.126860+00:00
+[2025-12-02T12:35:59.165+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.603 seconds
+[2025-12-02T12:36:29.453+0000] {processor.py:157} INFO - Started process (PID=2032) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:36:29.455+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:36:29.457+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:36:29.456+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:36:31.909+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:36:31.983+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:36:31.982+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:36:32.034+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:36:32.034+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:31:32.033813+00:00, run_after=2025-12-02T12:36:32.033813+00:00
+[2025-12-02T12:36:32.073+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.631 seconds
+[2025-12-02T12:37:02.181+0000] {processor.py:157} INFO - Started process (PID=2049) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:37:02.185+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:37:02.188+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:37:02.187+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:37:04.909+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:37:05.008+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:37:05.006+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:37:05.070+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:37:05.070+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:32:05.069925+00:00, run_after=2025-12-02T12:37:05.069925+00:00
+[2025-12-02T12:37:05.117+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.953 seconds
+[2025-12-02T12:37:35.290+0000] {processor.py:157} INFO - Started process (PID=2066) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:37:35.293+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:37:35.296+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:37:35.294+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:37:37.863+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:37:37.950+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:37:37.946+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:37:38.013+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:37:38.012+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:32:38.012286+00:00, run_after=2025-12-02T12:37:38.012286+00:00
+[2025-12-02T12:37:38.059+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.778 seconds
+[2025-12-02T12:38:08.553+0000] {processor.py:157} INFO - Started process (PID=2083) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:38:08.555+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:38:08.558+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:38:08.557+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:38:10.989+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:38:11.063+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:38:11.062+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:38:11.114+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:38:11.114+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:33:11.113942+00:00, run_after=2025-12-02T12:38:11.113942+00:00
+[2025-12-02T12:38:11.152+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.611 seconds
+[2025-12-02T12:38:41.428+0000] {processor.py:157} INFO - Started process (PID=2100) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:38:41.431+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:38:41.434+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:38:41.432+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:38:43.856+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:38:43.931+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:38:43.930+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:38:43.983+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:38:43.982+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:33:43.982454+00:00, run_after=2025-12-02T12:38:43.982454+00:00
+[2025-12-02T12:38:44.022+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.605 seconds
+[2025-12-02T12:39:14.300+0000] {processor.py:157} INFO - Started process (PID=2117) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:39:14.303+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:39:14.305+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:39:14.304+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:39:16.771+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:39:16.845+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:39:16.843+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:39:16.899+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:39:16.899+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:34:16.898836+00:00, run_after=2025-12-02T12:39:16.898836+00:00
+[2025-12-02T12:39:16.938+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.649 seconds
+[2025-12-02T12:39:47.233+0000] {processor.py:157} INFO - Started process (PID=2134) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:39:47.236+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:39:47.238+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:39:47.237+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:39:49.669+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:39:49.748+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:39:49.744+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:39:49.799+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:39:49.799+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:34:49.798804+00:00, run_after=2025-12-02T12:39:49.798804+00:00
+[2025-12-02T12:39:49.837+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.615 seconds
+[2025-12-02T12:40:20.153+0000] {processor.py:157} INFO - Started process (PID=2151) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:40:20.156+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:40:20.164+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:40:20.157+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:40:22.770+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:40:22.845+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:40:22.843+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:40:22.896+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:40:22.896+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:35:22.895966+00:00, run_after=2025-12-02T12:40:22.895966+00:00
+[2025-12-02T12:40:22.936+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.795 seconds
+[2025-12-02T12:40:53.219+0000] {processor.py:157} INFO - Started process (PID=2168) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:40:53.221+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:40:53.224+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:40:53.222+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:40:55.700+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:40:55.775+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:40:55.773+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:40:55.826+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:40:55.826+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:35:55.825816+00:00, run_after=2025-12-02T12:40:55.825816+00:00
+[2025-12-02T12:40:55.866+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.657 seconds
+[2025-12-02T12:41:26.528+0000] {processor.py:157} INFO - Started process (PID=2188) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:41:26.530+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:41:26.533+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:41:26.531+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:41:29.073+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:41:29.154+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:41:29.152+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:41:29.211+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:41:29.211+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:36:29.210592+00:00, run_after=2025-12-02T12:41:29.210592+00:00
+[2025-12-02T12:41:29.252+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.736 seconds
+[2025-12-02T12:42:00.860+0000] {processor.py:157} INFO - Started process (PID=2211) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:42:00.862+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:42:00.864+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:42:00.863+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:42:03.157+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:42:03.227+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:42:03.223+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:42:03.278+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:42:03.277+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:37:03.277126+00:00, run_after=2025-12-02T12:42:03.277126+00:00
+[2025-12-02T12:42:03.316+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.466 seconds
+[2025-12-02T12:42:33.669+0000] {processor.py:157} INFO - Started process (PID=2228) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:42:33.674+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:42:33.676+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:42:33.675+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:42:36.437+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:42:36.510+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:42:36.509+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:42:36.561+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:42:36.561+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:37:36.560743+00:00, run_after=2025-12-02T12:42:36.560743+00:00
+[2025-12-02T12:42:36.598+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.952 seconds
+[2025-12-02T12:43:06.759+0000] {processor.py:157} INFO - Started process (PID=2245) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:43:06.762+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:43:06.764+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:43:06.763+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:43:09.293+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:43:09.369+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:43:09.368+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:43:09.428+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:43:09.427+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:38:09.427287+00:00, run_after=2025-12-02T12:43:09.427287+00:00
+[2025-12-02T12:43:09.472+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.730 seconds
+[2025-12-02T12:43:39.720+0000] {processor.py:157} INFO - Started process (PID=2264) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:43:39.722+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:43:39.724+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:43:39.723+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:43:42.115+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:43:42.189+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:43:42.188+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:43:42.243+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:43:42.243+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:38:42.242697+00:00, run_after=2025-12-02T12:43:42.242697+00:00
+[2025-12-02T12:43:42.281+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.571 seconds
+[2025-12-02T12:44:13.060+0000] {processor.py:157} INFO - Started process (PID=2281) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:44:13.062+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:44:13.064+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:44:13.063+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:44:15.422+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:44:15.492+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:44:15.491+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:44:15.541+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:44:15.540+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:39:15.540272+00:00, run_after=2025-12-02T12:44:15.540272+00:00
+[2025-12-02T12:44:15.578+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.528 seconds
+[2025-12-02T12:44:46.173+0000] {processor.py:157} INFO - Started process (PID=2298) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:44:46.175+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:44:46.177+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:44:46.176+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:44:48.533+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:44:48.608+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:44:48.607+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:44:48.660+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:44:48.660+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:39:48.659649+00:00, run_after=2025-12-02T12:44:48.659649+00:00
+[2025-12-02T12:44:48.699+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.536 seconds
+[2025-12-02T12:45:19.462+0000] {processor.py:157} INFO - Started process (PID=2315) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:45:19.465+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:45:19.467+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:45:19.466+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:45:21.834+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:45:21.907+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:45:21.906+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:45:21.956+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:45:21.956+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:40:21.955593+00:00, run_after=2025-12-02T12:45:21.955593+00:00
+[2025-12-02T12:45:21.990+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.540 seconds
+[2025-12-02T12:45:52.759+0000] {processor.py:157} INFO - Started process (PID=2332) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:45:52.761+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:45:52.764+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:45:52.762+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:45:55.128+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:45:55.199+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:45:55.197+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:45:55.252+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:45:55.252+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:40:55.251595+00:00, run_after=2025-12-02T12:45:55.251595+00:00
+[2025-12-02T12:45:55.291+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.542 seconds
+[2025-12-02T12:46:26.012+0000] {processor.py:157} INFO - Started process (PID=2349) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:46:26.015+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:46:26.017+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:46:26.016+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:46:28.384+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:46:28.460+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:46:28.459+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:46:28.510+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:46:28.510+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:41:28.509862+00:00, run_after=2025-12-02T12:46:28.509862+00:00
+[2025-12-02T12:46:28.550+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.548 seconds
+[2025-12-02T12:46:58.826+0000] {processor.py:157} INFO - Started process (PID=2366) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:46:58.829+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:46:58.831+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:46:58.830+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:47:01.197+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:47:01.272+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:47:01.270+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:47:01.323+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:47:01.322+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:42:01.322171+00:00, run_after=2025-12-02T12:47:01.322171+00:00
+[2025-12-02T12:47:01.361+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.546 seconds
+[2025-12-02T12:47:31.640+0000] {processor.py:157} INFO - Started process (PID=2383) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:47:31.643+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:47:31.645+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:47:31.644+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:47:34.041+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:47:34.114+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:47:34.113+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:47:34.165+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:47:34.164+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:42:34.164488+00:00, run_after=2025-12-02T12:47:34.164488+00:00
+[2025-12-02T12:47:34.206+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.577 seconds
+[2025-12-02T12:48:04.477+0000] {processor.py:157} INFO - Started process (PID=2400) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:48:04.479+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:48:04.481+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:48:04.480+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:48:06.877+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:48:06.951+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:48:06.950+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:48:07.005+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:48:07.005+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:43:07.004539+00:00, run_after=2025-12-02T12:48:07.004539+00:00
+[2025-12-02T12:48:07.044+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.579 seconds
+[2025-12-02T12:48:37.742+0000] {processor.py:157} INFO - Started process (PID=2417) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:48:37.745+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:48:37.747+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:48:37.746+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:48:40.126+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:48:40.199+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:48:40.198+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:48:40.250+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:48:40.249+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:43:40.249460+00:00, run_after=2025-12-02T12:48:40.249460+00:00
+[2025-12-02T12:48:40.289+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.559 seconds
+[2025-12-02T12:49:10.956+0000] {processor.py:157} INFO - Started process (PID=2434) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:49:10.959+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:49:10.961+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:49:10.960+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:49:13.384+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:49:13.458+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:49:13.456+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:49:13.508+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:49:13.508+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:44:13.507943+00:00, run_after=2025-12-02T12:49:13.507943+00:00
+[2025-12-02T12:49:13.547+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.602 seconds
+[2025-12-02T12:49:43.839+0000] {processor.py:157} INFO - Started process (PID=2451) to work on /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:49:43.842+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/minio_dispatcher_dag.py for tasks to queue
+[2025-12-02T12:49:43.844+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:49:43.843+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:49:46.375+0000] {processor.py:839} INFO - DAG(s) dict_keys(['minio_dispatcher']) retrieved from /opt/airflow/dags/minio_dispatcher_dag.py
+[2025-12-02T12:49:46.450+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:49:46.448+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-12-02T12:49:46.502+0000] {logging_mixin.py:151} INFO - [2025-12-02T12:49:46.501+0000] {dag.py:3696} INFO - Setting next_dagrun for minio_dispatcher to 2025-12-02T12:44:46.501130+00:00, run_after=2025-12-02T12:49:46.501130+00:00
+[2025-12-02T12:49:46.541+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/minio_dispatcher_dag.py took 2.713 seconds

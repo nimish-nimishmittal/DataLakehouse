@@ -29,9 +29,21 @@ ALLOWED_EXT = {
 MAX_CONTENT_LENGTH = 200 * 1024 * 1024  # 200MB example
 
 app = Flask(__name__)
+
+from flask_cors import CORS
+CORS(app)
+
 app.config['MAX_CONTENT_LENGTH'] = MAX_CONTENT_LENGTH
 app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET', 'super-secret-key')  # From env/docker-compose
 jwt = JWTManager(app)
+
+# Register the search blueprint — provides /search, /search/tables, /search/status
+from search_api import search_bp
+app.register_blueprint(search_bp)
+
+# Register the RAG blueprint — provides /rag/query (SSE stream), /rag/status, /rag/models
+from rag_api import rag_bp
+app.register_blueprint(rag_bp)
 
 minio_client = Minio(
     os.getenv('MINIO_ENDPOINT', 'minio:9000'),
@@ -147,39 +159,73 @@ def register():
     finally:
         cursor.close()
 
-# Catalog updater (updated to include uploaded_by)
-def update_catalog(bucket, object_name, object_size=None, file_format=None, row_count=None, text_extracted=False, uploaded_by=None, metadata: dict = None):
+# ── Duplicate filename resolver ───────────────────────────────
+def resolve_unique_object_name(bucket: str, desired_object_name: str) -> str:
+    """
+    Return a unique object name in MinIO by appending (1), (2), (3)...
+    to the stem if the desired name already exists.
+
+    Examples:
+      raw/report.pdf          → raw/report.pdf          (if free)
+      raw/report.pdf (taken)  → raw/report(1).pdf
+      raw/report(1).pdf taken → raw/report(2).pdf
+      ...
+    """
+    try:
+        minio_client.stat_object(bucket, desired_object_name)
+        # Object exists — need a new name
+    except Exception:
+        # stat_object throws when object does NOT exist — name is free
+        return desired_object_name
+
+    # Split stem and extension
+    if '.' in desired_object_name.split('/')[-1]:
+        prefix = desired_object_name.rsplit('.', 1)[0]   # e.g. "raw/report"
+        ext    = '.' + desired_object_name.rsplit('.', 1)[1]  # e.g. ".pdf"
+    else:
+        prefix = desired_object_name
+        ext    = ''
+
+    counter = 1
+    while True:
+        candidate = f"{prefix}({counter}){ext}"
+        try:
+            minio_client.stat_object(bucket, candidate)
+            counter += 1  # That one also exists, keep going
+        except Exception:
+            return candidate  # Free — use it
+
+
+# ── Catalog updater ───────────────────────────────────────────
+def update_catalog(bucket, object_name, object_size=None, file_format=None,
+                   row_count=None, text_extracted=False, uploaded_by=None,
+                   metadata: dict = None):
+    """
+    Upsert a row into minio_data_catalog.
+    Table must already exist (created by init SQL script).
+    No inline CREATE TABLE — that belongs in the init script only.
+    content_hash has been intentionally removed from this system.
+    """
     cursor = pg_conn.cursor()
     try:
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS minio_data_catalog (
-                catalog_id SERIAL PRIMARY KEY,
-                bucket_name TEXT NOT NULL,
-                object_name TEXT NOT NULL,
-                object_size BIGINT,
-                file_format TEXT,
-                row_count INTEGER,
-                text_extracted BOOLEAN DEFAULT FALSE,
-                last_modified TIMESTAMP,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                uploaded_by INTEGER,
-                UNIQUE(bucket_name, object_name)
-            )
-        """)
-        cursor.execute("""ALTER TABLE minio_data_catalog ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}'::JSONB""")
-        cursor.execute("""
-            INSERT INTO minio_data_catalog 
-                (bucket_name, object_name, object_size, file_format, row_count, text_extracted, uploaded_by, metadata)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+        cursor.execute(
+            """
+            INSERT INTO minio_data_catalog
+                (bucket_name, object_name, object_size, file_format,
+                 row_count, text_extracted, uploaded_by, metadata)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (bucket_name, object_name) DO UPDATE
-            SET object_size = EXCLUDED.object_size,
-                file_format = EXCLUDED.file_format,
-                row_count = EXCLUDED.row_count,
+            SET object_size    = EXCLUDED.object_size,
+                file_format    = EXCLUDED.file_format,
+                row_count      = EXCLUDED.row_count,
                 text_extracted = EXCLUDED.text_extracted,
-                uploaded_by = EXCLUDED.uploaded_by,
-                metadata = EXCLUDED.metadata,
-                last_modified = CURRENT_TIMESTAMP
-        """, (bucket, object_name, object_size, file_format, row_count, text_extracted, uploaded_by, json.dumps(metadata or {})))
+                uploaded_by    = EXCLUDED.uploaded_by,
+                metadata       = EXCLUDED.metadata,
+                last_modified  = CURRENT_TIMESTAMP
+            """,
+            (bucket, object_name, object_size, file_format,
+             row_count, text_extracted, uploaded_by, json.dumps(metadata or {})),
+        )
         pg_conn.commit()
     except Exception:
         pg_conn.rollback()
@@ -188,7 +234,8 @@ def update_catalog(bucket, object_name, object_size=None, file_format=None, row_
     finally:
         cursor.close()
 
-# Upload endpoint (now requires JWT)
+
+# ── Upload endpoint ───────────────────────────────────────────
 @app.route('/upload', methods=['POST'])
 @jwt_required()
 def upload_file():
@@ -207,15 +254,24 @@ def upload_file():
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
 
-    filename = secure_filename(file.filename)
-    ext = filename.rsplit('.', 1)[-1].lower() if '.' in filename else ''
+    filename  = secure_filename(file.filename)
+    ext       = filename.rsplit('.', 1)[-1].lower() if '.' in filename else ''
     file_type = ALLOWED_EXT.get(ext)
 
     if not file_type:
         return jsonify({"error": f"Extension .{ext} not supported"}), 400
 
-    object_name = f"raw/{filename}"
     data = file.read()
+
+    # ── Resolve unique object name (deduplication) ────────────
+    # If raw/report.pdf already exists, this returns raw/report(1).pdf etc.
+    desired_name  = f"raw/{filename}"
+    object_name   = resolve_unique_object_name(BUCKET, desired_name)
+
+    if object_name != desired_name:
+        logger.info(
+            f"Duplicate filename detected — renamed '{desired_name}' → '{object_name}'"
+        )
 
     try:
         minio_client.put_object(
@@ -223,35 +279,42 @@ def upload_file():
             object_name,
             io.BytesIO(data),
             length=len(data),
-            content_type=file.content_type
+            content_type=file.content_type,
+            metadata={"x-amz-meta-uploaded-by": str(uploaded_by)} if uploaded_by else {}
         )
         logger.info(f"Uploaded file to MinIO at {object_name}")
-        
-        # NEW: Basic metadata
-        import magic  # For MIME
+
+        import magic
         from datetime import datetime
-        mime_type = magic.from_buffer(data, mime=True) if data else file.content_type
+        mime_type      = magic.from_buffer(data, mime=True) if data else file.content_type
         basic_metadata = {
             'original_filename': filename,
-            'mime_type': mime_type,
-            'upload_time': datetime.utcnow().isoformat(),
-            'source': 'api_upload'
+            'stored_as':         object_name,          # reflects rename if any
+            'mime_type':         mime_type,
+            'upload_time':       datetime.utcnow().isoformat(),
+            'source':            'api_upload',
         }
-        
-        # Catalog with metadata
+        if object_name != desired_name:
+            basic_metadata['renamed_from'] = desired_name  # audit trail
+
         update_catalog(
-            BUCKET, 
-            object_name, 
-            object_size=len(data), 
-            file_format=file_type, 
-            uploaded_by= uploaded_by,
-            metadata=basic_metadata
+            BUCKET,
+            object_name,
+            object_size=len(data),
+            file_format=file_type,
+            uploaded_by=uploaded_by,
+            metadata=basic_metadata,
         )
     except Exception:
         logger.exception("Failed uploading to MinIO")
         return jsonify({"error": "upload failed"}), 500
 
-    return jsonify({"status": "ok", "object": object_name}), 200
+    return jsonify({
+        "status":      "ok",
+        "object":      object_name,
+        "original":    filename,
+        "renamed":     object_name != desired_name,
+    }), 200
 
 
 if __name__ == "__main__":

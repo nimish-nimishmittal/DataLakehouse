@@ -139,43 +139,64 @@ def normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 def infer_postgres_type(series: pd.Series) -> str:
     """
-    Infer PostgreSQL data type from pandas Series.
-    Handles edge cases and complex types safely.
+    Infer PostgreSQL data type from a pandas Series.
+
+    Order of checks is intentional:
+      1. Empty / all-null  → TEXT  (safe default)
+      2. Already-complex   → JSONB
+      3. JSON strings      → JSONB
+      4. Boolean strings   → BOOLEAN  ← MUST come before numeric so that
+                                         "True"/"False"/"yes"/"no" are never
+                                         misidentified as INTEGER and then
+                                         crash PostgreSQL COPY.
+      5. Numeric           → INTEGER / BIGINT / NUMERIC
+      6. Datetime          → TIMESTAMP
+      7. Fallback          → TEXT
     """
-    # Skip if empty
     if len(series) == 0 or series.isna().all():
         return 'TEXT'
-    
-    # Get non-null sample
+
     sample = series.dropna()
     if len(sample) == 0:
         return 'TEXT'
-    
-    # Check for complex types first (should be JSON strings after normalization)
+
     first_val = sample.iloc[0]
+
+    # ── 1. Already-complex Python types (after json_normalize) ───
     if isinstance(first_val, (dict, list)):
         return 'JSONB'
-    
-    # Check if all values are strings that look like JSON
+
+    # ── 2. JSON-string detection ──────────────────────────────────
     try:
         if sample.dtype == 'object':
-            # Try to detect JSON strings
             sample_vals = sample.head(5)
-            json_like = sum(1 for v in sample_vals if isinstance(v, str) and 
-                          (v.strip().startswith('{') or v.strip().startswith('[')))
-            if json_like >= len(sample_vals) * 0.8:  # 80% threshold
+            json_like = sum(
+                1 for v in sample_vals
+                if isinstance(v, str)
+                and (v.strip().startswith('{') or v.strip().startswith('['))
+            )
+            if json_like >= len(sample_vals) * 0.8:
                 return 'JSONB'
-    except:
+    except Exception:
         pass
-    
-    # Try numeric conversion
+
+    # ── 3. Boolean detection — BEFORE numeric ────────────────────
+    # Covers: True/False, true/false, TRUE/FALSE, yes/no, t/f
+    # Intentionally excludes 1/0 — those stay as INTEGER.
+    try:
+        str_bool_values = {'true', 'false', 'yes', 'no', 't', 'f'}
+        unique_lower = set(str(v).strip().lower() for v in sample.unique()[:20])
+        if unique_lower and unique_lower.issubset(str_bool_values) and len(unique_lower) <= 2:
+            return 'BOOLEAN'
+    except Exception:
+        pass
+
+    # ── 4. Numeric detection ──────────────────────────────────────
     try:
         numeric_series = pd.to_numeric(sample, errors='raise')
-        if (numeric_series == numeric_series.astype(int)).all():
-            # Check range for integer types
+        if (numeric_series % 1 == 0).all():
             min_val = numeric_series.min()
             max_val = numeric_series.max()
-            
             if min_val >= -2147483648 and max_val <= 2147483647:
                 return 'INTEGER'
             else:
@@ -184,24 +205,14 @@ def infer_postgres_type(series: pd.Series) -> str:
             return 'NUMERIC'
     except (ValueError, TypeError):
         pass
-    
-    # Try datetime conversion
+
+    # ── 5. Datetime detection ─────────────────────────────────────
     try:
         pd.to_datetime(sample.head(10), errors='raise')
         return 'TIMESTAMP'
-    except:
+    except Exception:
         pass
-    
-    # Try boolean detection
-    try:
-        unique_lower = set(str(v).lower() for v in sample.unique()[:10])
-        bool_values = {'true', 'false', '1', '0', 'yes', 'no', 't', 'f'}
-        if unique_lower.issubset(bool_values) and len(unique_lower) <= 2:
-            return 'BOOLEAN'
-    except:
-        pass
-    
-    # Default to TEXT
+
     return 'TEXT'
 
 
@@ -392,63 +403,171 @@ def clean_dataframe(df):
 def load_to_postgres(df, table_name, pg_conn, use_smart_types=True):
     """Load DataFrame to PostgreSQL"""
     cursor = pg_conn.cursor()
-    
+
     try:
-        # First, normalize the dataframe (flatten nested structures)
+        # ── Step 1: flatten nested structures ────────────────────
         df = normalize_dataframe(df)
-        
-        # Drop existing table
-        cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
-        logger.info(f"[PostgreSQL] Dropped existing table: {table_name}")
-        
-        # Create table with inferred types
+
+        # ── Step 2: infer column types ────────────────────────────
+        col_types = {}
         column_defs = []
-        
+
         for col in df.columns:
             if use_smart_types:
                 try:
                     pg_type = infer_postgres_type(df[col])
                     logger.info(f"[PostgreSQL] Column '{col}' -> {pg_type}")
                 except Exception as e:
-                    logger.warning(f"[PostgreSQL] Failed to infer type for column '{col}': {e}. Using TEXT.")
+                    logger.warning(f"[PostgreSQL] Type inference failed for '{col}': {e}. Using TEXT.")
                     pg_type = 'TEXT'
             else:
                 pg_type = 'TEXT'
-            
+
+            col_types[col] = pg_type
             column_defs.append(f'"{col}" {pg_type}')
-        
+
+        # ── Step 3: create table ──────────────────────────────────
+        cursor.execute(f'DROP TABLE IF EXISTS "{table_name}"')
+        logger.info(f"[PostgreSQL] Dropped existing table: {table_name}")
+
         create_sql = f'CREATE TABLE "{table_name}" ({", ".join(column_defs)})'
         cursor.execute(create_sql)
         logger.info(f"[PostgreSQL] Created table: {table_name}")
-        
-        # Convert DataFrame to proper types for insertion
+
+        # ── Step 4: prepare COPY-safe export copy ─────────────────
+        # PostgreSQL COPY FORMAT CSV is strict about type representations.
+        # We normalise every column to the string form PostgreSQL expects:
+        #
+        #   BOOLEAN  → 't' or 'f'  (NOT 'True'/'False'/'1'/'0')
+        #   NUMERIC  → strip trailing whitespace, convert nan → NULL marker
+        #   INTEGER  → strip, convert nan → NULL marker
+        #   JSONB    → json.dumps() for dicts/lists; leave strings alone
+        #   TEXT     → str(), strip; None/NaN → NULL marker
+        #   TIMESTAMP→ isoformat string; None/NaN → NULL marker
+        #   NULL     → the literal string '\\N' (COPY NULL token)
+
+        NULL_TOKEN = '\\N'
+
         df_copy = df.copy()
-        
-        # Ensure all values are properly serialized
+
+        def _is_null(v):
+            if v is None:
+                return True
+            try:
+                return pd.isna(v)
+            except Exception:
+                return False
+
         for col in df_copy.columns:
-            df_copy[col] = df_copy[col].apply(
-                lambda x: None if pd.isna(x) else x
-            )
-        
-        # Bulk insert using COPY
+            pg_type = col_types[col]
+
+            if pg_type == 'BOOLEAN':
+                _bool_true  = {'true', 'yes', 't', '1'}
+                _bool_false = {'false', 'no', 'f', '0'}
+
+                def _to_bool(v):
+                    if _is_null(v):
+                        return NULL_TOKEN
+                    s = str(v).strip().lower()
+                    if s in _bool_true:
+                        return 't'
+                    if s in _bool_false:
+                        return 'f'
+                    return NULL_TOKEN  # unrecognised value → NULL
+
+                df_copy[col] = df_copy[col].apply(_to_bool)
+
+            elif pg_type in ('INTEGER', 'BIGINT'):
+                def _to_int(v):
+                    if _is_null(v):
+                        return NULL_TOKEN
+                    try:
+                        return str(int(float(str(v).strip())))
+                    except (ValueError, TypeError):
+                        return NULL_TOKEN
+
+                df_copy[col] = df_copy[col].apply(_to_int)
+
+            elif pg_type == 'NUMERIC':
+                def _to_numeric(v):
+                    if _is_null(v):
+                        return NULL_TOKEN
+                    s = str(v).strip()
+                    if s.lower() in ('nan', 'inf', '-inf', ''):
+                        return NULL_TOKEN
+                    return s
+
+                df_copy[col] = df_copy[col].apply(_to_numeric)
+
+            elif pg_type == 'TIMESTAMP':
+                def _to_ts(v):
+                    if _is_null(v):
+                        return NULL_TOKEN
+                    try:
+                        return pd.Timestamp(v).isoformat()
+                    except Exception:
+                        return NULL_TOKEN
+
+                df_copy[col] = df_copy[col].apply(_to_ts)
+
+            elif pg_type == 'JSONB':
+                def _to_jsonb(v):
+                    if _is_null(v):
+                        return NULL_TOKEN
+                    if isinstance(v, (dict, list)):
+                        return json.dumps(v, ensure_ascii=False)
+                    s = str(v).strip()
+                    return s if s else NULL_TOKEN
+
+                df_copy[col] = df_copy[col].apply(_to_jsonb)
+
+            else:  # TEXT and anything else
+                def _to_text(v):
+                    if _is_null(v):
+                        return NULL_TOKEN
+                    s = str(v).strip()
+                    return s if s not in ('nan', 'NaN', 'None') else NULL_TOKEN
+
+                df_copy[col] = df_copy[col].apply(_to_text)
+
+        # ── Step 5: COPY into PostgreSQL ──────────────────────────
+        # TEXT format: tab-delimited, \N represents NULL, no quoting needed
+        # We must NOT escape backslashes, otherwise \N becomes \\N
+        # First sanitize: replace tabs and newlines in data to avoid breaking the format
+        for col in df_copy.columns:
+            if df_copy[col].dtype == 'object':
+                df_copy[col] = df_copy[col].apply(
+                    lambda x: str(x).replace('\t', ' ').replace('\n', ' ').replace('\r', '') if x is not None and x != NULL_TOKEN else x
+                )
+
         buffer = io.StringIO()
-        df_copy.to_csv(buffer, index=False, header=False, sep='\t', na_rep='\\N')
+        df_copy.to_csv(
+            buffer,
+            index=False,
+            header=False,
+            sep='\t',
+            na_rep=NULL_TOKEN,
+            quoting=csv.QUOTE_NONE,
+            escapechar=None,  # Don't escape - let PostgreSQL handle \N as NULL
+        )
         buffer.seek(0)
-        
+
         cursor.copy_expert(
-            f'COPY "{table_name}" FROM STDIN WITH (FORMAT CSV, DELIMITER E\'\\t\', NULL \'\\N\')',
+            f"COPY \"{table_name}\" FROM STDIN WITH "
+            f"(FORMAT TEXT, DELIMITER E'\\t', NULL '\\N')",
             buffer
         )
-        
+
         pg_conn.commit()
         logger.info(f"[PostgreSQL] Loaded {len(df)} rows into {table_name}")
-        
+
     except Exception as e:
         pg_conn.rollback()
         logger.error(f"[PostgreSQL] Load failed: {e}")
         raise
     finally:
         cursor.close()
+
 
 
 def save_to_parquet(df, minio_client, bucket_name, object_name):
@@ -555,29 +674,58 @@ def process_minio_object(
         load_to_postgres(df, table_name, pg_conn, use_smart_types=True)
 
         # 7. Save as Parquet to MinIO for analytics (skip if already parquet)
+        processed_object_name = None
         if file_type != 'parquet':
             save_to_parquet(df, minio_client, bucket_name, object_name)
+            # Build the processed path (must match logic in save_to_parquet)
+            processed_object_name = object_name.replace('raw/', 'processed/structured/').rsplit('.', 1)[0] + '.parquet'
 
-        # 8. Update catalog
-        # NEW: Metadata (after reading df)
+        # 8. Update catalog with PROCESSED path (not raw path)
+        # The file has been processed - catalog should reflect the processed location
         structured_metadata = {
             'row_count': len(df),
             'column_count': len(df.columns),
             'columns': list(df.columns),
-            'data_types': {col: str(dtype) for col, dtype in df.dtypes.items()}
+            'data_types': {col: str(dtype) for col, dtype in df.dtypes.items()},
+            'original_path': object_name,  # Track where it came from
+            'processed': True,
+            'processed_at': __import__('datetime').datetime.utcnow().isoformat()
         }
 
+        # Use processed path if available, otherwise keep original (for parquet files)
+        catalog_object_name = processed_object_name if processed_object_name else object_name
+        # For parquet input, the processed path is the same as input
+        if file_type == 'parquet':
+            catalog_object_name = object_name.replace('raw/', 'processed/') if object_name.startswith('raw/') else object_name
+
+        # Update catalog with processed path
         catalog_updater(
-            object_name=object_name,
+            object_name=catalog_object_name,
             object_size=len(data),
-            file_format=file_type,
+            file_format='parquet' if processed_object_name else file_type,  # Mark as parquet if converted
             row_count=len(df),
             text_extracted=False,
             metadata=structured_metadata,
             uploaded_by=uploaded_by
         )
-        
-        logger.info(f"[structured] ✅ Successfully processed {object_name}")
+
+        # IMPORTANT: Remove the old raw/ entry from catalog (it has been processed)
+        # Only do this if we actually changed the path
+        if object_name != catalog_object_name and object_name.startswith('raw/'):
+            try:
+                cursor = pg_conn.cursor()
+                cursor.execute(
+                    "DELETE FROM minio_data_catalog WHERE bucket_name = %s AND object_name = %s",
+                    (bucket_name, object_name)
+                )
+                pg_conn.commit()
+                cursor.close()
+                logger.info(f"[structured] Removed old catalog entry: {object_name}")
+            except Exception as e:
+                logger.warning(f"[structured] Failed to remove old raw/ entry: {e}")
+                # Don't fail the pipeline if cleanup fails
+
+        logger.info(f"[structured] ✅ Successfully processed {object_name} -> {catalog_object_name}")
 
     except Exception as e:
         if pg_conn:

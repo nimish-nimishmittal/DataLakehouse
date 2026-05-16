@@ -1,0 +1,14 @@
+[2026-04-24T04:18:56.963+0000] {processor.py:157} INFO - Started process (PID=5096) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-04-24T04:18:56.969+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-04-24T04:18:56.980+0000] {logging_mixin.py:151} INFO - [2026-04-24T04:18:56.972+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-04-24T04:18:57.952+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-04-24T04:18:58.301+0000] {logging_mixin.py:151} INFO - [2026-04-24T04:18:58.301+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-04-24T04:18:58.497+0000] {logging_mixin.py:151} INFO - [2026-04-24T04:18:58.497+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-04-24T04:18:28.496826+00:00, run_after=2026-04-24T04:18:58.496826+00:00
+[2026-04-24T04:18:58.665+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 1.736 seconds
+[2026-04-24T04:19:29.262+0000] {processor.py:157} INFO - Started process (PID=5131) to work on /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-04-24T04:19:29.268+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/ingest_local_folder_dag.py for tasks to queue
+[2026-04-24T04:19:29.274+0000] {logging_mixin.py:151} INFO - [2026-04-24T04:19:29.270+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-04-24T04:19:30.817+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingestionDAG']) retrieved from /opt/airflow/dags/ingest_local_folder_dag.py
+[2026-04-24T04:19:31.056+0000] {logging_mixin.py:151} INFO - [2026-04-24T04:19:31.055+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2026-04-24T04:19:31.271+0000] {logging_mixin.py:151} INFO - [2026-04-24T04:19:31.271+0000] {dag.py:3696} INFO - Setting next_dagrun for ingestionDAG to 2026-04-24T04:19:01.270856+00:00, run_after=2026-04-24T04:19:31.270856+00:00
+[2026-04-24T04:19:31.463+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/ingest_local_folder_dag.py took 2.226 seconds

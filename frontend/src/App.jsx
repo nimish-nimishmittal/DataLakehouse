@@ -15,6 +15,7 @@ import Jobs from './pages/Jobs';
 import Users from './pages/Users';
 import AuditLogs from './pages/AuditLogs';
 import SearchPage from './pages/Search';
+import RAGPage from './pages/RAG';
 
 const ProtectedRoute = ({ children }) => {
   const { auth } = useContext(AuthContext);
@@ -66,6 +67,13 @@ const App = () => {
         <Route path="/search" element={
           <ProtectedRoute>
             <SearchPage />
+          </ProtectedRoute>
+        } />
+
+        {/* RAG Chat — Q&A, Summarization, Prediction */}
+        <Route path="/rag" element={
+          <ProtectedRoute>
+            <RAGPage />
           </ProtectedRoute>
         } />
 
